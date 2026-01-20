@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1767207897035,
+      "tag": "0000_large_pet_avengers",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1767282277054,
+      "tag": "0001_natural_paibok",
+      "breakpoints": true
+    }
+  ]
+}

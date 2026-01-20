@@ -1,0 +1,71 @@
+{
+  "name": "nuxt-beyond",
+  "version": "1.0.0",
+  "description": "An AI-first Nuxt 4 boilerplate for building SaaS products with chat, RAG, authentication, and billing",
+  "author": "Raress96",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BeyondFolder/nuxt-beyond"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 nuxt build",
+    "dev": "nuxt dev",
+    "dev:remote": "CLOUDFLARE_ENV=remote nuxt dev --envName remote",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint:ci": "eslint .",
+    "lint": "eslint . --fix",
+    "typecheck": "nuxt typecheck",
+    "db:generate": "nuxt db generate",
+    "deploy": "NODE_OPTIONS=--max-old-space-size=8192 wrangler deploy"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.15",
+    "@ai-sdk/openai": "^3.0.12",
+    "@ai-sdk/vue": "^3.0.39",
+    "@cloudflare/puppeteer": "^1.0.4",
+    "@cloudflare/workers-types": "^4.20260116.0",
+    "@iconify-json/lucide": "^1.2.85",
+    "@iconify-json/simple-icons": "^1.2.66",
+    "@nuxt/content": "^3.11.0",
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/scripts": "^0.13.2",
+    "@nuxt/ui": "^4.3.0",
+    "@nuxthub/core": "^0.10.4",
+    "@nuxtjs/mdc": "^0.20.0",
+    "@nuxtjs/seo": "^3.3.0",
+    "@nuxtjs/turnstile": "^1.1.1",
+    "@standard-schema/spec": "^1.1.0",
+    "@unlok-co/nuxt-stripe": "^6.0.2",
+    "@vueuse/nuxt": "^14.1.0",
+    "ai": "^6.0.39",
+    "ai-gateway-provider": "^3.0.2",
+    "better-sqlite3": "^12.6.0",
+    "date-fns": "^4.1.0",
+    "drizzle-orm": "^0.45.1",
+    "nuxt": "^4.2.2",
+    "nuxt-auth-utils": "^0.5.27",
+    "nuxt-og-image": "^5.1.13",
+    "nuxt-seo-utils": "^7.0.19",
+    "openai": "^6.16.0",
+    "resend": "^6.7.0",
+    "shiki-stream": "^0.1.4",
+    "workers-ai-provider": "^3.0.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.12.1",
+    "drizzle-kit": "^0.31.8",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.2.2",
+    "wrangler": "^4.59.2",
+    "prettier": "^3.8.0"
+  },
+  "overrides": {
+    "unimport": "4.1.1"
+  }
+}

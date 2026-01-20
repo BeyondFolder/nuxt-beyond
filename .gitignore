@@ -1,0 +1,64 @@
+# Dependencies
+node_modules
+**/node_modules
+
+**/.wrangler
+**/.dev.vars
+
+# Build outputs
+.nuxt
+.output
+.nitro
+.data
+.cache
+dist
+build
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+.fleet
+.history
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# ESLint cache
+.eslintcache
+
+# Temporary folders
+tmp/
+temp/
+
+# Wrangler
+.wrangler
+
+**/auto-imports.d.ts
+**/components.d.ts
+
+apps/saas/.data

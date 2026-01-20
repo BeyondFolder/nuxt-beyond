@@ -1,0 +1,115 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "your-app-name",
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2025-12-14",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "your-domain.com",
+      "zone_name": "your-domain.com",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./.output/public/",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "preview_urls": false,
+  "ai": {
+    "binding": "AI",
+    "remote": true
+  },
+  "r2_buckets": [
+    {
+      "binding": "BLOB",
+      "remote": false
+    }
+  ],
+  "browser": {
+    "binding": "BROWSER",
+    "remote": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "remote": false
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "remote": false
+    }
+  ],
+  // Environment for testing with remote Cloudflare resources
+  // Usage: npm run dev:remote
+  // Note: Bindings are NOT inheritable - must be defined per environment
+  "env": {
+    "remote": {
+      "ai": {
+        "binding": "AI",
+        "remote": true
+      },
+      "r2_buckets": [
+        {
+          "binding": "BLOB",
+          "remote": true,
+          "bucket_name": "your-app-bucket" // Should be changed to your R2 bucket name
+        }
+      ],
+      "browser": {
+        "binding": "BROWSER",
+        "remote": true
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "remote": true,
+          "database_id": "e7e82908-1612-49fe-97b0-f3776bf04fe0" // Should be changed to your D1 database ID
+        }
+      ],
+      "kv_namespaces": [
+        {
+          "binding": "KV",
+          "remote": true,
+          "id": "b64c1a8d9e414f52a5f2264422af2cbb" // Should be changed to your KV id
+        }
+      ]
+    }
+  },
+  // keep_vars: true ensures dashboard environment variables are preserved during deployment
+  //
+  // Environment Variables Configuration:
+  // Set these in Cloudflare Workers & Pages > your-project > Settings
+  //
+  // BUILD-TIME VARIABLES (Settings > Builds and Deployments > Environment variables):
+  // These must be available during build for prerendering, sitemap generation, and SEO:
+  // - NUXT_SITE_URL: Your site URL (e.g., https://yourdomain.com) - used by Nuxt SEO
+  // - NUXT_SITE_ENV: Environment type (production, staging, etc.) - optional
+  // - NUXT_PUBLIC_SITE_URL: Your site URL - used in runtime config
+  // - NUXT_PUBLIC_STRIPE_KEY: Stripe publishable key
+  // - NUXT_PUBLIC_TURNSTILE_SITE_KEY: Cloudflare Turnstile site key
+  //
+  // RUNTIME VARIABLES (Settings > Variables and Secrets):
+  // These are used during Worker execution:
+  // - CLOUDFLARE_ACCOUNT_ID: Your Cloudflare account ID
+  // - CLOUDFLARE_AI_GATEWAY_ID: AI Gateway ID for OpenAI proxy
+  // - CLOUDFLARE_AUTO_RAG_ID: AI Search (AutoRAG) ID for knowledge base
+  // - NUXT_OAUTH_GOOGLE_CLIENT_ID: Google OAuth client ID
+  // - RESEND_AUDIENCE_ID: Resend audience ID for email lists
+  // - STRIPE_PROMO_CODE: Stripe promo code ID (optional)
+  //
+  // RUNTIME SECRETS (Settings > Variables and Secrets > Add > Type: Secret):
+  // - NUXT_SESSION_PASSWORD: Session encryption password (32+ characters)
+  // - NUXT_OAUTH_GOOGLE_CLIENT_SECRET: Google OAuth client secret
+  // - NUXT_STRIPE_KEY: Stripe secret key
+  // - STRIPE_WEBHOOK_SECRET: Stripe webhook signing secret
+  // - RESEND_API_KEY: Resend API key
+  // - CLOUDFLARE_AUTO_RAG_API_TOKEN: AutoRAG API token
+  // - NUXT_TURNSTILE_SECRET_KEY: Turnstile secret key
+  "keep_vars": true
+}

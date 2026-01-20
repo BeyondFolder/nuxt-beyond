@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@source "../../../content/**/*";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+}
+
+:root {
+  --ui-container: var(--container-5xl);
+
+  --ui-primary: #0d9488;
+  --ui-secondary: #70ebe6;
+  --ui-success: #B3EB70;
+  --ui-info: #214F4B;
+  --ui-warning: #F4B266;
+  --ui-error: #EB7075;
+  --ui-neutral: #EFE9F4;
+}
