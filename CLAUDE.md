@@ -344,6 +344,19 @@ window.__nuxtbeyond_config = {
 }
 ```
 
+## Blog System
+
+The boilerplate includes a blog powered by Nuxt Content:
+
+- **Blog pages**: `app/pages/blog/index.vue` (list) and `app/pages/blog/[slug].vue` (detail)
+- **Sample posts**: `content/blog/` contains 2 sample markdown posts:
+  - `how-to-choose-the-best-ai-chatbot-platform.md`
+  - `how-to-create-a-chatbot.md`
+- **Blog metadata**: `content/blog.yml` defines title and description
+- **Blog configuration**: `content.config.ts` configures Nuxt Content
+
+Users should customize or remove the sample blog posts before deploying. The blog is automatically available at `/blog` route.
+
 ## Pricing Tiers
 
 Plan configurations are defined in:

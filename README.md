@@ -79,7 +79,27 @@ This file is served at `/.well-known/llms.txt` and used by AI models when analyz
 
 See the [Wrangler Configuration](#wrangler-configuration) section below for required changes before deployment.
 
-### 3. Update `public/embed.js`
+### 3. Update Blog Content
+
+The boilerplate includes a blog system using Nuxt Content with 2 sample blog posts in `content/blog/`:
+
+- `how-to-choose-the-best-ai-chatbot-platform.md`
+- `how-to-create-a-chatbot.md`
+
+Before deploying:
+
+1. **Update blog metadata** in `content/blog.yml`:
+   - Change `title` to your blog name
+   - Update `description` to match your content
+
+2. **Customize or remove sample posts:**
+   - Delete the sample `.md` files if you don't need them
+   - Add your own blog posts using the same frontmatter structure
+   - Or remove the blog entirely by deleting `app/pages/blog/` and `content/blog/`
+
+The blog is automatically available at `/blog` and includes SEO-optimized pages.
+
+### 4. Update `public/embed.js`
 
 See the [Important: Update Widget Script Before Use](#important-update-widget-script-before-use) section under Embeddable Widget for branding customizations.
 
