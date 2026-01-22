@@ -32,12 +32,13 @@
     "@iconify-json/simple-icons": "^1.2.66",
     "@nuxt/content": "^3.11.0",
     "@nuxt/image": "^2.0.0",
-    "@nuxt/scripts": "^0.13.2",
+    "@nuxt/scripts": "^0.12.2",
     "@nuxt/ui": "^4.3.0",
     "@nuxthub/core": "^0.10.4",
     "@nuxtjs/mdc": "^0.20.0",
     "@nuxtjs/seo": "^3.3.0",
     "@nuxtjs/turnstile": "^1.1.1",
+    "@react-email/render": "^2.0.4",
     "@standard-schema/spec": "^1.1.0",
     "@unlok-co/nuxt-stripe": "^6.0.2",
     "@vueuse/nuxt": "^14.1.0",
@@ -60,10 +61,10 @@
     "@nuxt/eslint": "^1.12.1",
     "drizzle-kit": "^0.31.8",
     "eslint": "^9.39.2",
+    "prettier": "^3.8.0",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.2.2",
-    "wrangler": "^4.59.2",
-    "prettier": "^3.8.0"
+    "wrangler": "^4.59.2"
   },
   "overrides": {
     "unimport": "4.1.1"

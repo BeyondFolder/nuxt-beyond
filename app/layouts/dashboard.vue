@@ -8,6 +8,7 @@ import { ConfirmModal } from '#components';
 useSeoMeta({
   title: 'Dashboard',
   description: 'User dashboard',
+  robots: 'noindex, nofollow',
 });
 
 const route = useRoute();

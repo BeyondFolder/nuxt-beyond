@@ -32,16 +32,16 @@ defineOgImageComponent('NuxtSeo', {
       <div class="max-w-4xl mx-auto">
         <div class="mb-12">
           <h1 class="text-4xl sm:text-5xl font-bold mb-4">
-            {{ page.body.title }}
+            {{ page?.title }}
           </h1>
           <p class="text-muted text-lg">
-            Last updated: {{ page.body.lastUpdated }}
+            Last updated: {{ page?.meta?.lastUpdated }}
           </p>
         </div>
 
         <div class="prose prose-neutral dark:prose-invert max-w-none">
           <div
-            v-for="(section, index) in page.body.sections"
+            v-for="(section, index) in page?.meta?.sections || []"
             :key="index"
             class="mb-12"
           >
@@ -72,7 +72,7 @@ defineOgImageComponent('NuxtSeo', {
             </div>
 
             <USeparator
-              v-if="index < page.body.sections.length - 1"
+              v-if="index < (page?.meta?.sections?.length ?? 0) - 1"
               class="my-10"
             />
           </div>

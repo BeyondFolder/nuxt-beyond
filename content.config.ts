@@ -141,7 +141,6 @@ export const collections = {
   pages: defineCollection({
     source: 'pages/**/*.yml',
     type: 'page',
-    schema: z.object({}),
   }),
   blog: defineCollection({
     source: 'blog.yml',
