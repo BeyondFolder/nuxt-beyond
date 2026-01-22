@@ -29,7 +29,8 @@
   "r2_buckets": [
     {
       "binding": "BLOB",
-      "remote": false
+      "remote": false,
+      "bucket_name": "nuxtbeyond-bucket"
     }
   ],
   "browser": {
@@ -39,13 +40,15 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "remote": false
+      "remote": false,
+      "database_id": "e7e82908-1612-49fe-97b0-f3776bf04fe0"
     }
   ],
   "kv_namespaces": [
     {
       "binding": "KV",
-      "remote": false
+      "remote": false,
+      "id": "40874126eada491194eeec31870facc9"
     }
   ],
   // Environment for testing with remote Cloudflare resources
