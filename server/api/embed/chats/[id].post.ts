@@ -10,15 +10,27 @@ import {
   type UIMessage,
 } from 'ai';
 import { z } from 'zod';
-import { createAiGateway } from 'ai-gateway-provider';
-import { createOpenAI } from '@ai-sdk/openai';
 import { eq } from 'drizzle-orm';
 import type { ProjectConfiguration } from '#shared/types';
 import { PLANS_CONSTANTS } from '#shared/constants';
+import { DEMO_CONFIG } from '#shared/demo';
 import { sendNewSupportQuestionEmail } from '~~/server/utils/resend';
 import { createWorkersAI } from 'workers-ai-provider';
 
 export default defineEventHandler(async (event) => {
+  const kv = hubKV();
+  const today = new Date().toISOString().split('T')[0];
+  const demoConversationsKey = `demo:conversations:${today}`;
+
+  const conversationCount = await kv.get<number>(demoConversationsKey) || 0;
+
+  if (conversationCount >= DEMO_CONFIG.maxAIConversationsPerDay) {
+    throw createError({
+      statusCode: 429,
+      statusMessage: `Demo conversation limit reached (${DEMO_CONFIG.maxAIConversationsPerDay} per day). This limit helps us manage demo costs. Get your own NuxtBeyond instance for unlimited conversations!`,
+    });
+  }
+
   const rateLimit = await checkRateLimit(event, {
     maxRequests: 10,
     windowMs: 120 * 1000,
@@ -66,6 +78,10 @@ export default defineEventHandler(async (event) => {
   }
 
   if (!chat.title) {
+    await kv.set(demoConversationsKey, conversationCount + 1, {
+      ttl: 60 * 60 * 24,
+    });
+
     const workersai = createWorkersAI({
       binding: event.context.cloudflare.env.AI,
       gateway: {
@@ -164,44 +180,19 @@ export default defineEventHandler(async (event) => {
     });
   };
 
-  // You can also use the Workers AI provider if needed
-  // const workersAI = createWorkersAI({
-  //   binding: event.context.cloudflare.env,
-  //   gateway: {
-  //     id: process.env.CLOUDFLARE_AI_GATEWAY_ID!,
-  //   },
-  // });
-
-  const aiGateway = createAiGateway({
-    binding: event.context.cloudflare.env.AI.gateway(process.env.CLOUDFLARE_AI_GATEWAY_ID!),
+  const workersAI = createWorkersAI({
+    binding: event.context.cloudflare.env.AI,
+    gateway: {
+      id: process.env.CLOUDFLARE_AI_GATEWAY_ID!,
+    },
   });
-
-  // You can also use other providers like Claude
-  // const anthropic = createAnthropic({ apiKey: process.env.ANTHROPIC_API_KEY! });
-  // const modelClaude = aiGateway([
-  //   anthropic('claude-haiku-4-5'), // Primary choice, can add fallbacks if first fails
-  // ]);
-  const openai = createOpenAI({
-    apiKey: process.env.OPENAI_API_KEY!,
-  });
-  const modelOpenAI = aiGateway([openai('gpt-5.1-chat-latest')]); // This model seems fast enough and cheaper than Claude
 
   const projectConfiguration = project.configuration as ProjectConfiguration;
 
   const stream = createUIMessageStream({
     execute: async ({ writer }) => {
       const result = streamText({
-        // model: workersAI('@cf/meta/llama-3.3-70b-instruct-fp8-fast'),
-        // model: workersAI('@cf/meta/llama-4-scout-17b-16e-instruct'),
-        // model: modelClaude,
-        model: modelOpenAI,
-        providerOptions: {
-          openai: {
-            // reasoningSummary: 'auto', // 'auto' for condensed or 'detailed' for comprehensive
-            // textVerbosity: 'high', // 'low' for concise, 'medium' (default), or 'high' for verbose
-            // reasoningEffort: 'high', // Increases autonomous exploration
-          },
-        },
+        model: workersAI('@cf/meta/llama-3.3-70b-instruct-fp8-fast'),
         system: `You are a helpful customer support assistant for ${project.name || 'this business'}. ${project.description || ''}.
 
 CORE RULES:

@@ -4,10 +4,6 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true });
 }
 
-const {
-  public: { siteUrl },
-} = useRuntimeConfig();
-
 const title = page.value?.seo?.title || page.value?.title;
 const description = page.value?.seo?.description || page.value?.description;
 
@@ -20,37 +16,6 @@ useSeoMeta({
   twitterTitle: title,
   twitterDescription: description,
 });
-
-useHead({
-  script: [
-    {
-      textContent: `(function(){if(!window.nuxtbeyond || !window.__nuxtbeyond_loaded){window.nuxtbeyond=(...arguments)=>{if(!window.nuxtbeyond.q){window.nuxtbeyond.q=[];}window.nuxtbeyond.q.push(arguments);};window.nuxtbeyond=new Proxy(window.nuxtbeyond,{get(target,prop){if(prop==='q'){return target.q;}return(...args)=> target(prop,...args);},});}const config={"projectId":"047a6c7d-bb21-43d0-bdcb-5aa7536ec784","primaryColor":"#0d9488","position":"bottom-right","logo":"/projects/047a6c7d-bb21-43d0-bdcb-5aa7536ec784/logo"};const onLoad=function(){window.__nuxtbeyond_config=config;const embedScript=document.createElement('script');embedScript.src='${siteUrl}/embed.js';embedScript.onerror=()=>{console.error('NuxtBeyond:Failed to load embed script');};document.body.appendChild(embedScript);};if(document.readyState==='complete'){onLoad();}else{window.addEventListener('load',onLoad);}})();`,
-      type: 'text/javascript',
-      tagPosition: 'bodyClose',
-    },
-  ],
-  style: [
-    {
-      textContent: `
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 2s ease-in-out infinite;
-        }
-      `,
-    },
-  ],
-});
-
-function openProject() {
-  console.log('works', window.nuxtbeyond.open());
-
-  if (window.nuxtbeyond && typeof window.nuxtbeyond.open === 'function') {
-    window.nuxtbeyond.open();
-  }
-}
 </script>
 
 <template>
@@ -76,7 +41,63 @@ function openProject() {
       </template>
     </UPageHero>
 
-    <SubscribeForm />
+    <UPageSection
+      id="problem"
+      :description="page.problem.description"
+      class="relative overflow-hidden"
+    >
+      <template #title>
+        <MDC :value="page.problem.title" />
+      </template>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <div
+          v-for="(item, index) in page.problem.items"
+          :key="index"
+          class="p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
+        >
+          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
+            {{ item.hours }}
+          </div>
+          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+            {{ item.task }}
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            {{ item.description }}
+          </p>
+        </div>
+      </div>
+    </UPageSection>
+
+    <USeparator :ui="{ border: 'border-primary/50' }" />
+
+    <UPageSection
+      id="ai-agents"
+      :description="page.aiAgents.description"
+      class="relative overflow-hidden"
+    >
+      <template #title>
+        <MDC :value="page.aiAgents.title" />
+      </template>
+
+      <div class="flex flex-wrap justify-center gap-8 mt-8">
+        <div
+          v-for="agent in page.aiAgents.agents"
+          :key="agent.name"
+          class="flex flex-col items-center gap-3 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 min-w-[140px]"
+        >
+          <UIcon
+            :name="agent.icon"
+            class="w-12 h-12 text-neutral-700 dark:text-neutral-300"
+          />
+          <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center">
+            {{ agent.name }}
+          </span>
+        </div>
+      </div>
+    </UPageSection>
+
+    <USeparator :ui="{ border: 'border-primary/50' }" />
 
     <UPageSection
       :description="page.section.description"
@@ -101,89 +122,6 @@ function openProject() {
         :alt="page.section.title"
         class="block lg:hidden 2xl:block w-full 2xl:max-w-4xl rounded-lg shadow-xl"
       >
-    </UPageSection>
-
-    <USeparator :ui="{ border: 'border-primary/50' }" />
-
-    <UPageSection
-      id="live-demo"
-      orientation="horizontal"
-      :title="page.liveDemo.title"
-      :description="page.liveDemo.description"
-      :ui="{
-        container: 'py-12 sm:py-16 lg:py-20 lg:grid-cols-2 max-w-4xl',
-        title: 'lg:text-right',
-        description: 'lg:text-right',
-      }"
-    >
-      <template #title>
-        <MDC :value="page.liveDemo.title" />
-      </template>
-
-      <div class="relative flex items-center justify-center mt-8">
-        <UButton
-          size="xl"
-          color="primary"
-          variant="solid"
-          icon="i-lucide-message-circle"
-          class="cursor-pointer z-1"
-          @click="openProject"
-        >
-          Try Live Demo
-        </UButton>
-
-        <div class="absolute -right-50 -bottom-40 hidden lg:block animate-bounce-slow">
-          <svg
-            width="350"
-            height="350"
-            viewBox="0 0 200 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="text-secondary"
-          >
-            <path
-              d="M 40 40 Q 120 60, 160 135"
-              stroke="currentColor"
-              stroke-width="3"
-              fill="none"
-              stroke-linecap="round"
-              stroke-dasharray="5,5"
-            />
-            <path
-              d="M 160 140 L 150 135 M 160 140 L 165 128"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-            />
-          </svg>
-        </div>
-
-        <div class="absolute -right-5 -bottom-20 block lg:hidden animate-bounce-slow">
-          <svg
-            width="200"
-            height="200"
-            viewBox="0 0 200 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="text-primary"
-          >
-            <path
-              d="M 30 30 Q 90 40, 120 80 Q 140 110, 145 160"
-              stroke="currentColor"
-              stroke-width="2.5"
-              fill="none"
-              stroke-linecap="round"
-              stroke-dasharray="5,5"
-            />
-            <path
-              d="M 145 160 L 137 153 M 145 160 L 152 152"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-            />
-          </svg>
-        </div>
-      </div>
     </UPageSection>
 
     <USeparator :ui="{ border: 'border-primary/50' }" />
@@ -254,6 +192,35 @@ function openProject() {
       </template>
     </UPageSection>
 
+    <USeparator :ui="{ border: 'border-primary/30' }" />
+
+    <UPageSection
+      id="tech-stack"
+      :description="page.techStack.description"
+      class="relative overflow-hidden"
+    >
+      <template #title>
+        <MDC :value="page.techStack.title" />
+      </template>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-8">
+        <div
+          v-for="tech in page.techStack.technologies"
+          :key="tech.name"
+          class="flex flex-col items-center gap-3 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
+        >
+          <UIcon
+            :name="tech.icon"
+            class="w-12 h-12"
+            :class="tech.color"
+          />
+          <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center">
+            {{ tech.name }}
+          </span>
+        </div>
+      </div>
+    </UPageSection>
+
     <UPageSection
       id="pricing"
       class="overflow-hidden"
@@ -275,6 +242,14 @@ function openProject() {
         </div>
       </template>
 
+      <PricingProgress
+        :current-price="59"
+        :original-price="249"
+        :sales-count="0"
+        :price-increment="10"
+        :sales-per-increment="5"
+      />
+
       <UPricingPlans scale compact>
         <UPricingPlan
           v-for="(plan, index) in page.pricing.plans"
@@ -291,16 +266,14 @@ function openProject() {
           :features="plan.features"
           :button="plan.button"
           :badge="plan.badge"
-        />
+        >
+          <template v-if="plan.comingSoon" #badge>
+            <UBadge color="warning" size="md">
+              Coming Soon
+            </UBadge>
+          </template>
+        </UPricingPlan>
       </UPricingPlans>
-
-      <UAlert
-        class="w-auto mx-auto"
-        color="neutral"
-        variant="soft"
-        title="*Self Learning"
-        description="After your support team handles a case, the answer can be automatically included in the AI's training data for future responses"
-      />
     </UPageSection>
 
     <UPageSection

@@ -58,7 +58,7 @@ const { loggedIn } = useUserSession();
       </template>
       <template v-else>
         <UButton
-          label="Sign In"
+          label="Try Demo"
           icon="i-lucide-log-in"
           color="neutral"
           variant="outline"
@@ -67,7 +67,7 @@ const { loggedIn } = useUserSession();
         />
 
         <UButton
-          label="Sign in"
+          label="Try Demo"
           icon="i-lucide-user"
           color="neutral"
           variant="outline"
@@ -75,7 +75,7 @@ const { loggedIn } = useUserSession();
           class="hidden lg:inline-flex"
         />
 
-        <UButton label="Sign up" icon="i-lucide-arrow-right" class="hidden lg:inline-flex" to="/signup" />
+        <UButton label="Buy Now" icon="i-lucide-arrow-right" class="hidden lg:inline-flex" to="#pricing" />
       </template>
     </template>
 

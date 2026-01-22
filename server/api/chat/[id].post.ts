@@ -8,8 +8,6 @@ import {
   type UIMessage,
 } from 'ai';
 import { z } from 'zod';
-import { createAiGateway } from 'ai-gateway-provider';
-import { createOpenAI } from '@ai-sdk/openai';
 import { eq } from 'drizzle-orm';
 import { createWorkersAI } from 'workers-ai-provider';
 
@@ -80,18 +78,17 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  const aiGateway = createAiGateway({
-    binding: event.context.cloudflare.env.AI.gateway(process.env.CLOUDFLARE_AI_GATEWAY_ID!),
+  const workersAI = createWorkersAI({
+    binding: event.context.cloudflare.env.AI,
+    gateway: {
+      id: process.env.CLOUDFLARE_AI_GATEWAY_ID!,
+    },
   });
-  const openai = createOpenAI({
-    apiKey: process.env.OPENAI_API_KEY!,
-  });
-  const modelOpenAI = aiGateway([openai('gpt-4.1-mini')]);
 
   const stream = createUIMessageStream({
     execute: async ({ writer }) => {
       const result = streamText({
-        model: modelOpenAI,
+        model: workersAI('@cf/meta/llama-3.3-70b-instruct-fp8-fast'),
         messages: await convertToModelMessages(messages),
         stopWhen: [stepCountIs(5)],
       });

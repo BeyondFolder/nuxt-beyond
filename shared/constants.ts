@@ -13,7 +13,7 @@ export interface PlanConfig {
   WEBSITE_CRAWLING: boolean;
 }
 
-export const planNames = ['free', 'pro', 'advanced',] as const;
+export const planNames = ['free', 'boilerplate', 'bundle'] as const;
 export type PlanName = typeof planNames[number];
 
 export const PLANS_CONSTANTS: Record<PlanName, PlanConfig> = {
@@ -26,7 +26,7 @@ export const PLANS_CONSTANTS: Record<PlanName, PlanConfig> = {
     SELF_LEARNING: false,
     WEBSITE_CRAWLING: false,
   },
-  pro: {
+  boilerplate: {
     MAX_TEXT_LENGTH: 100000,
     MAX_FILE_SIZE: 2 * 1024 * 1024, // 2MB in bytes
     MAX_NB_OF_FILES: 50,
@@ -35,7 +35,7 @@ export const PLANS_CONSTANTS: Record<PlanName, PlanConfig> = {
     SELF_LEARNING: true,
     WEBSITE_CRAWLING: false,
   },
-  advanced: {
+  bundle: {
     MAX_TEXT_LENGTH: 200000,
     MAX_FILE_SIZE: 4 * 1024 * 1024, // 4MB in bytes (AutoRAG limit)
     MAX_NB_OF_FILES: 100,

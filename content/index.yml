@@ -5,20 +5,48 @@ title: Ship AI-powered apps [in days]{.text-primary}, not months
 description: The complete Nuxt 4 boilerplate for building AI-first SaaS products. Authentication, payments, AI chat with RAG, embeddable widgets, and Cloudflare deployment - all pre-configured.
 hero:
   links:
-    - label: Get Started
+    - label: Get NuxtBeyond
       variant: solid
       color: primary
-      to: /signup
+      to: '#pricing'
       icon: i-lucide-arrow-right
-    - label: View Demo
+    - label: Buy Now
       variant: outline
       color: neutral
-      to: /dashboard
-      icon: i-lucide-play
+      to: '#pricing'
+      icon: i-lucide-shopping-cart
   headline: Save 200+ hours of setup
-liveDemo:
-  title: See the [demo]{.text-primary}
-  description: Experience the full SaaS dashboard, AI chat, and embeddable widget. Click the bubble in the bottom-right corner.
+problem:
+  title: Stop wasting [200+ hours]{.text-primary} on boilerplate
+  description: Building AI-powered SaaS shouldn't mean rebuilding the same features over and over
+  items:
+    - hours: 40+
+      task: Authentication & Authorization
+      description: OAuth providers, email verification, password reset, session management
+    - hours: 60+
+      task: AI Integration & RAG
+      description: Vector databases, embeddings, streaming responses, knowledge base search
+    - hours: 50+
+      task: Payment Processing
+      description: Stripe setup, webhooks, subscription management, plan gating
+    - hours: 30+
+      task: Multi-tenancy & Widgets
+      description: Project isolation, embeddable widgets, domain validation
+    - hours: 20+
+      task: Deployment & Infrastructure
+      description: Database setup, storage, KV, environment config
+aiAgents:
+  title: Built for [AI Coding Agents]{.text-primary}
+  description: Includes CLAUDE.md for seamless integration with your AI assistant
+  agents:
+    - name: Claude Code
+      icon: i-simple-icons-anthropic
+    - name: Cursor
+      icon: i-lucide-terminal
+    - name: Windsurf
+      icon: i-lucide-wind
+    - name: GitHub Copilot
+      icon: i-simple-icons-github
 section:
   title: Everything you need to [ship fast]{.text-primary}
   description: Stop rebuilding authentication, payments, and AI integrations from scratch.
@@ -69,6 +97,34 @@ features:
       icon: i-lucide-palette
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
+techStack:
+  title: Modern [Tech Stack]{.text-primary}
+  description: Built with the best tools for performance and developer experience
+  technologies:
+    - name: Nuxt 4
+      icon: i-simple-icons-nuxtdotjs
+      color: text-success-500
+    - name: Vue 3
+      icon: i-simple-icons-vuedotjs
+      color: text-success-500
+    - name: TypeScript
+      icon: i-simple-icons-typescript
+      color: text-info-500
+    - name: Tailwind CSS
+      icon: i-simple-icons-tailwindcss
+      color: text-info-400
+    - name: Cloudflare
+      icon: i-simple-icons-cloudflare
+      color: text-warning-500
+    - name: Stripe
+      icon: i-simple-icons-stripe
+      color: text-primary-500
+    - name: Drizzle ORM
+      icon: i-lucide-database
+      color: text-success-600
+    - name: Vercel AI SDK
+      icon: i-lucide-sparkles
+      color: text-neutral-700 dark:text-neutral-300
 steps:
   title: From Clone to [Production]{.text-primary} in Minutes
   description: Skip months of boilerplate setup. Focus on what makes your product unique.
@@ -84,72 +140,63 @@ steps:
       image: /images/homepage/live.svg
 pricing:
   title: '[One-time]{.text-primary} purchase, lifetime access'
-  description: No subscriptions. Buy once, own forever. Includes all future updates.
+  description: No subscriptions. Buy once, own forever. Build unlimited projects.
   plans:
-    - title: Free
-      planName: free
-      description: For testing and demo
-      price: $0
-      billing_cycle: forever
-      features:
-        - 5 documents
-        - 200 AI replies/month
-        - Basic support
-        - All core features
-      button:
-        label: Get Started Free
-        variant: outline
-        to: '/signup'
-    - title: Pro
-      planName: pro
-      description: For serious builders
-      price: $199
+    - title: NuxtBeyond Boilerplate
+      planName: boilerplate
+      description: Complete Nuxt 4 boilerplate for AI-powered SaaS
+      price: $249
       discount: $59
       billing_cycle: one-time
       features:
         - Full source code access
-        - Private GitHub access
-        - Premium documentation
-        - Discord community
-        - Lifetime updates
-        - Priority support
+        - AI Chat with RAG (Cloudflare AI Search)
+        - Authentication (Google OAuth + Credentials)
+        - Stripe Billing with Subscriptions
+        - Embeddable Widget System
+        - Multi-tenant Projects with Roles
+        - Knowledge Base with File Upload
+        - Email System (Resend)
+        - Human Support Escalation
+        - Blog System (Nuxt Content)
+        - Security Features
+        - Lifetime Updates
+        - CLAUDE.md AI Assistant Integration
+        - Discord Community
       button:
-        label: Get Pro Access
+        label: Get NuxtBeyond
         variant: solid
-        to: '/signup'
+        to: 'https://buy.stripe.com/bJe6oIeq0dJ72iu9dwdZ602?prefilled_promo_code=BOILERPLATE1'
       highlight: true
-      badge: Best Value
-    - title: Advanced
-      planName: advanced
-      description: For teams and agencies
-      price: $299
-      discount: $129
+      badge: Most Popular
+    - title: Boilerplate + Distribution Framework
+      planName: bundle
+      description: Everything + Claude Code Distribution Framework
+      price: $399
+      discount: $89
       billing_cycle: one-time
       features:
-        - Everything in Pro
-        - Custom integrations
-        - Dedicated support
-        - 2 support calls with founder
-        - Team onboarding
-        - Custom licensing
+        - Everything in NuxtBeyond Boilerplate
+        - Claude Code Distribution Framework
+        - Build and distribute custom AI agents
+        - Agent marketplace integration
+        - Monetization tools
+        - Priority Support
       button:
-        label: Get Advanced Access
-        variant: solid
-        to: '/signup'
+        label: Coming Soon
+        variant: outline
+        to: 'https://buy.stripe.com/bJe8wQchS34t4qC61kdZ601?prefilled_promo_code=BUNDLE1'
+        disabled: true
+      comingSoon: true
 testimonials:
   title: Built by [developers]{.text-primary}, for developers
   description: Join the growing community of developers shipping AI-powered products.
   items:
-    - quote: "NuxtBeyond saved me weeks of setup. The AI chat with RAG was working out of the box, and the Stripe integration just works."
+    - quote: "Your testimonial could be here"
       user:
-        name: Developer
-        description: Early Adopter
-        to: /signup
-    - quote: "[Your success story here]"
-      user:
-        name: You?
-        description: Future Builder
-        to: /signup
+        name: Rares
+        description: Creator of NuxtBeyond
+        to: '#'
 faqs:
   title: Frequently Asked Questions
   description: ''
@@ -179,8 +226,8 @@ cta:
   title: Stop rebuilding the same features. [Ship your AI product today.]{.text-primary}
   description: Authentication, payments, AI chat, RAG, embeddable widgets - all pre-built. Focus on what makes your product unique.
   links:
-    - label: Get Started Now
+    - label: Get NuxtBeyond Now
       variant: solid
       color: secondary
-      to: /signup
+      to: '#pricing'
       icon: i-lucide-arrow-right

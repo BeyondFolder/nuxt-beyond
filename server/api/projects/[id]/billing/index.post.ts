@@ -110,12 +110,6 @@ export default defineEventHandler(async (event) => {
     ];
   }
 
-  if (planName === 'pro' && !project.stripeCustomerId) {
-    sessionConfig.subscription_data = {
-      trial_period_days: 7,
-    };
-  }
-
   const stripeSession = await stripe.checkout.sessions.create(sessionConfig);
 
   return {

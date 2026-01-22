@@ -34,16 +34,12 @@ if (!projectId.value) {
   throw createError({ statusCode: 404, statusMessage: 'No project found', fatal: true });
 }
 
-const shouldPromoteProTrial = computed(() => {
-  return currentPlan.value === 'free' && !stripeSubscriptionId.value;
-});
-
 const isLoading = ref(false);
 const selectedPlanIndex = ref<number | null>(null);
 
 const getButtonLabel = (planName: PlanName) => {
-  if (shouldPromoteProTrial.value && planName === 'pro') {
-    return 'Start Free Trial';
+  if (planName === 'boilerplate' || planName === 'bundle') {
+    return 'Purchase Now';
   }
 
   if (planName === 'free' && currentPlan.value === 'free') {
@@ -65,7 +61,7 @@ const getButtonLabel = (planName: PlanName) => {
 };
 
 const getPlanHighlight = (planName: PlanName) => {
-  if (shouldPromoteProTrial.value && planName === 'pro') {
+  if (planName === 'boilerplate') {
     return true;
   }
 
@@ -73,10 +69,6 @@ const getPlanHighlight = (planName: PlanName) => {
 };
 
 const getPlanBadge = (plan: any) => {
-  if (shouldPromoteProTrial.value && plan.planName === 'pro') {
-    return '7-Day Free Trial';
-  }
-
   if (plan.planName === currentPlan.value) {
     return 'Current Plan';
   }
@@ -112,6 +104,11 @@ const handleManagePlan = async (planIndex: number) => {
   }
 };
 
+const mockPaymentLinks: Record<string, string> = {
+  boilerplate: 'https://buy.stripe.com/test_28EbJ2800dNnfMK6ab9ws00?prefilled_promo_code=BOILERPLATE1',
+  bundle: 'https://buy.stripe.com/test_00w7sM0xydNnfMKdCD9ws01?prefilled_promo_code=BUNDLE1',
+};
+
 const handleSubscribe = async (planName: PlanName, planIndex: number) => {
   if (!projectId.value) {
     return;
@@ -122,13 +119,19 @@ const handleSubscribe = async (planName: PlanName, planIndex: number) => {
     return;
   }
 
+  isLoading.value = true;
+  selectedPlanIndex.value = planIndex;
+
+  const paymentLink = mockPaymentLinks[planName];
+  if (paymentLink) {
+    window.location.href = paymentLink;
+    return;
+  }
+
   if (stripeCustomerId.value && (planName === currentPlan.value || stripeSubscriptionId.value)) {
     await handleManagePlan(planIndex);
     return;
   }
-
-  isLoading.value = true;
-  selectedPlanIndex.value = planIndex;
 
   try {
     const response = await $fetch(`/api/projects/${projectId.value}/billing`, {
@@ -176,16 +179,6 @@ useSeoMeta({
         <template #title>
           <MDC :value="page.pricing.title" />
         </template>
-
-        <UAlert
-          v-if="shouldPromoteProTrial"
-          class="w-auto mx-auto -mt-8"
-          color="primary"
-          variant="soft"
-          title="Start Your 7-Day Free Trial"
-          description="Try our Pro plan Free for 7 days when you add your credit card. Get access to support escalation and self-learning features."
-          icon="i-lucide-sparkles"
-        />
 
         <UAlert
           v-if="subscriptionStatus === 'canceling'"

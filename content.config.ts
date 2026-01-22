@@ -43,7 +43,23 @@ export const collections = {
         links: z.array(createLinkSchema()),
         headline: z.string().optional(),
       }),
-      liveDemo: createBaseSchema(),
+      problem: createBaseSchema().extend({
+        items: z.array(
+          z.object({
+            hours: z.string().nonempty(),
+            task: z.string().nonempty(),
+            description: z.string().nonempty(),
+          })
+        ),
+      }),
+      aiAgents: createBaseSchema().extend({
+        agents: z.array(
+          z.object({
+            name: z.string().nonempty(),
+            icon: z.string().editor({ input: 'icon' }),
+          })
+        ),
+      }),
       section: createBaseSchema().extend({
         headline: z.string().optional(),
         images: z.object({
@@ -66,18 +82,28 @@ export const collections = {
           })
         ),
       }),
+      techStack: createBaseSchema().extend({
+        technologies: z.array(
+          z.object({
+            name: z.string().nonempty(),
+            icon: z.string().editor({ input: 'icon' }),
+            color: z.string().nonempty(),
+          })
+        ),
+      }),
       pricing: createBaseSchema().extend({
         plans: z.array(
           createBaseSchema().extend({
-            planName: z.enum(planNames),
+            planName: z.string().nonempty(),
             price: z.string().nonempty(),
-            discount: z.string(),
+            discount: z.string().optional(),
             button: createLinkSchema(),
             features: z.array(z.string().nonempty()),
             highlight: z.boolean().optional(),
-            billing_period: z.string().nonempty(),
+            billing_period: z.string().optional(),
             billing_cycle: z.string().nonempty(),
             badge: z.string().optional(),
+            comingSoon: z.boolean().optional(),
           })
         ),
       }),
@@ -92,8 +118,8 @@ export const collections = {
               avatar: z.object({
                 src: z.string().editor({ input: 'media' }),
                 alt: z.string().optional(),
-              }),
-              target: targetEnum,
+              }).optional(),
+              target: targetEnum.optional(),
             }),
           })
         ),

@@ -4,8 +4,8 @@ const columns = [
     label: 'Free Tools',
     children: [
       {
-        label: 'Free AI Chatbot Generator',
-        to: '/resources/free-ai-chatbot-generator',
+        label: 'Nuxt Session Password Generator',
+        to: '/resources/nuxt-session-password-generator',
       },
     ],
   },

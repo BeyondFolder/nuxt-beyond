@@ -1,13 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "your-app-name",
+  "name": "nuxt-beyond",
   "main": "./.output/server/index.mjs",
   "compatibility_date": "2025-12-14",
   "workers_dev": false,
   "routes": [
     {
-      "pattern": "your-domain.com",
-      "zone_name": "your-domain.com",
+      "pattern": "nuxtbeyond.com",
+      "zone_name": "nuxtbeyond.com",
       "custom_domain": true
     }
   ],
@@ -58,7 +58,7 @@
         {
           "binding": "BLOB",
           "remote": true,
-          "bucket_name": "your-app-bucket" // Should be changed to your R2 bucket name
+          "bucket_name": "nuxtbeyond-bucket"
         }
       ],
       "browser": {
@@ -69,14 +69,14 @@
         {
           "binding": "DB",
           "remote": true,
-          "database_id": "e7e82908-1612-49fe-97b0-f3776bf04fe0" // Should be changed to your D1 database ID
+          "database_id": "e7e82908-1612-49fe-97b0-f3776bf04fe0"
         }
       ],
       "kv_namespaces": [
         {
           "binding": "KV",
           "remote": true,
-          "id": "b64c1a8d9e414f52a5f2264422af2cbb" // Should be changed to your KV id
+          "id": "40874126eada491194eeec31870facc9"
         }
       ]
     }

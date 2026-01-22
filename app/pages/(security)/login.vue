@@ -17,6 +17,7 @@ const route = useRoute();
 
 const turnstile = ref();
 const turnstileToken = ref('');
+const showDemoModal = ref(false);
 
 onMounted(() => {
   const error = route.query.error;
@@ -82,9 +83,11 @@ const providers = [
     label: 'Google',
     icon: 'i-simple-icons-google',
     onClick: () => {
-      const redirect = route.query.redirect as string;
-      const authUrl = redirect ? `/auth/google?redirect=${encodeURIComponent(redirect)}` : '/auth/google';
-      navigateTo(authUrl, { external: true });
+      toast.add({
+        title: 'Demo Mode',
+        description: 'Google OAuth is disabled in demo mode. Please use the demo accounts below.',
+        color: 'info',
+      });
     },
   },
 ];
@@ -135,25 +138,48 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <UAuthForm
-    :fields="fields"
-    :schema="schema"
-    :providers="providers"
-    title="Login"
-    icon="i-lucide-unlock"
-    :submit="{ label: 'Login', loading: isLoading, disabled: !turnstileToken }"
-    @submit="onSubmit"
-  >
-    <template #description>
-      Don't have an account? <ULink :to="signupLink" class="text-primary font-medium">Sign up</ULink>.
-    </template>
+  <div class="space-y-4">
+    <UAlert
+      color="info"
+      variant="subtle"
+      icon="i-lucide-info"
+      title="Demo Mode"
+      description="This is a demo environment. Use the demo accounts below to explore NuxtBeyond features."
+    />
 
-    <template #password-hint>
-      <ULink to="/forgot-password" class="text-primary font-medium" tabindex="-1">Forgot password?</ULink>
-    </template>
+    <UAuthForm
+      :fields="fields"
+      :schema="schema"
+      :providers="providers"
+      title="Login"
+      icon="i-lucide-unlock"
+      :submit="{ label: 'Login', loading: isLoading, disabled: !turnstileToken }"
+      @submit="onSubmit"
+    >
+      <template #description>
+        Don't have an account? <ULink :to="signupLink" class="text-primary font-medium">Sign up</ULink>.
+      </template>
 
-    <template #footer>
-      <NuxtTurnstile ref="turnstile" v-model="turnstileToken" />
-    </template>
-  </UAuthForm>
+      <template #password-hint>
+        <ULink to="/forgot-password" class="text-primary font-medium" tabindex="-1">Forgot password?</ULink>
+      </template>
+
+      <template #footer>
+        <NuxtTurnstile ref="turnstile" v-model="turnstileToken" />
+      </template>
+    </UAuthForm>
+
+    <div class="text-center">
+      <UButton
+        color="neutral"
+        variant="soft"
+        icon="i-lucide-user"
+        @click="showDemoModal = true"
+      >
+        View Demo Accounts
+      </UButton>
+    </div>
+
+    <DemoAccountsModal v-model:open="showDemoModal" />
+  </div>
 </template>

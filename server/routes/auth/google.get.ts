@@ -6,9 +6,14 @@ export default defineOAuthGoogleEventHandler({
     scope: ['email'],
   },
   async onSuccess(event, { user }) {
-    const db = useDrizzle();
     const query = getQuery(event);
     const redirect = query.redirect as string;
+    const errorUrl = redirect
+      ? `/login?redirect=${encodeURIComponent(redirect)}`
+      : '/login';
+    return sendRedirect(event, errorUrl);
+
+    const db = useDrizzle();
 
     const result = await getUserWithProject(db, user.email);
 
