@@ -173,7 +173,7 @@ watch(
                 class="w-16 h-16 rounded-full object-cover"
                 :style="{ backgroundColor: state.primaryColor }"
               >
-              <UButton variant="ghost" color="error" icon="i-lucide-trash-2" size="sm" @click="handleLogoDelete">
+              <UButton variant="ghost" color="error" icon="i-lucide-trash-2" size="sm" @click="handleLogoDelete" disabled>
                 Remove
               </UButton>
             </div>
@@ -189,6 +189,7 @@ watch(
               variant="area"
               size="md"
               class="w-full cursor-pointer"
+              disabled
             />
           </div>
         </UFormField>

@@ -75,7 +75,7 @@ const { loggedIn } = useUserSession();
           class="hidden lg:inline-flex"
         />
 
-        <UButton label="Buy Now" icon="i-lucide-arrow-right" class="hidden lg:inline-flex" to="#pricing" />
+        <UButton label="Buy Now" icon="i-lucide-shopping-cart" class="hidden lg:inline-flex" to="#pricing" />
       </template>
     </template>
 

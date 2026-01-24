@@ -1,7 +1,21 @@
 import { z } from 'zod';
 import OpenAI from 'openai';
+import { DEMO_CONFIG } from '#shared/demo';
+import { kv } from 'hub:kv'
 
 export default defineEventHandler(async (event) => {
+  const today = new Date().toDateString();
+  const demoVideosKey = `demo:videos:${today}`;
+
+  const videoCount = await kv.get<number>(demoVideosKey) || 0;
+
+  if (videoCount >= DEMO_CONFIG.maxVideosPerDay) {
+    throw createError({
+      statusCode: 429,
+      statusMessage: `Demo video generation limit reached (${DEMO_CONFIG.maxVideosPerDay} per day). This limit helps us manage demo costs. Get your own NuxtBeyond instance for unlimited videos!`,
+    });
+  }
+
   const { user } = await requireUserSession(event);
   const { id } = getRouterParams(event);
 
@@ -67,6 +81,10 @@ export default defineEventHandler(async (event) => {
       jobId: result.id,
       status: 'processing',
       previousVideoId: body.previousVideoId,
+    });
+
+    await kv.set(demoVideosKey, videoCount + 1, {
+      ttl: 60 * 60 * 24,
     });
 
     return {

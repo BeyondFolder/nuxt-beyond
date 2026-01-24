@@ -77,7 +77,13 @@ export default defineNuxtConfig({
     },
   },
 
-  ui: {},
+  ui: {
+    colorMode: true,
+  },
+
+  colorMode: {
+    preference: 'dark',
+  },
 
   runtimeConfig: {
     session: {

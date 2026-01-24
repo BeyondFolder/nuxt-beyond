@@ -2,7 +2,7 @@
 title: 'NuxtBeyond Initial Release: Ship AI-Powered SaaS in Days, Not Months'
 description: 'Introducing NuxtBeyond, the complete Nuxt 4 boilerplate for building AI-first SaaS products with authentication, payments, AI chat with RAG, and Cloudflare deployment - all pre-configured.'
 image:
-  src: /images/homepage/demo2.png
+  src: /images/homepage/demo.png
 authors:
   - name: Rares
     to: https://x.com/Raress96_

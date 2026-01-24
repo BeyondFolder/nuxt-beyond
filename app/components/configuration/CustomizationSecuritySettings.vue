@@ -50,6 +50,7 @@ watch(
         placeholder="example.com&#10;blog.example.com&#10;shop.example.com"
         :rows="4"
         class="w-full"
+        disabled
       />
     </UFormField>
   </UPageCard>

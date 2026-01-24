@@ -62,46 +62,32 @@ const isLoading = ref(false);
 const turnstileToken = ref('');
 
 function onSubmit(payload: FormSubmitEvent<Schema>) {
-  isLoading.value = true;
-
-  $fetch('/api/security/reset-password', {
-    method: 'POST',
-    body: {
-      token,
-      password: payload.data.password,
-      turnstileToken: turnstileToken.value,
-    },
-  })
-    .then(() => {
-      toast.add({
-        title: 'Password reset successful',
-        description: 'You can now login with your new password',
-        color: 'success',
-      });
-
-      router.push('/login');
-    })
-    .catch((e) => {
-      toast.add({
-        title: e.data.message,
-        color: 'error',
-      });
-    })
-    .finally(() => {
-      isLoading.value = false;
-    });
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Password reset is disabled in demo mode. Please use the demo accounts to explore.',
+    color: 'info',
+  });
 }
 </script>
 
 <template>
-  <UAuthForm
-    :fields="fields"
-    :schema="schema"
-    title="Reset Password"
-    icon="i-lucide-lock"
-    :submit="{ label: 'Reset Password', loading: isLoading, disabled: !turnstileToken }"
-    @submit="onSubmit"
-  >
+  <div class="space-y-4">
+    <UAlert
+      color="info"
+      variant="subtle"
+      icon="i-lucide-info"
+      title="Demo Mode"
+      description="Password reset is disabled in this demo. Use the demo accounts on the login page to explore NuxtBeyond."
+    />
+
+    <UAuthForm
+      :fields="fields"
+      :schema="schema"
+      title="Reset Password"
+      icon="i-lucide-lock"
+      :submit="{ label: 'Reset Password', loading: isLoading, disabled: !turnstileToken }"
+      @submit="onSubmit"
+    >
     <template #description>Enter your new password below.</template>
 
     <template #footer>
@@ -111,5 +97,6 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
 
       <NuxtTurnstile v-model="turnstileToken" class="mt-4" />
     </template>
-  </UAuthForm>
+    </UAuthForm>
+  </div>
 </template>

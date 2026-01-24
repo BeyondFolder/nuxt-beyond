@@ -69,36 +69,11 @@ type Schema = z.output<typeof schema>;
 const isLoading = ref(false);
 
 function onSubmit(payload: FormSubmitEvent<Schema>) {
-  isLoading.value = true;
-
-  $fetch('/api/security/change-password', {
-    method: 'POST',
-    body: {
-      currentPassword: payload.data.currentPassword,
-      newPassword: payload.data.newPassword,
-    },
-  })
-    .then(() => {
-      toast.add({
-        title: 'Password changed successfully',
-        description: 'Your password has been updated',
-        color: 'success',
-      });
-
-      // Reset form
-      payload.data.currentPassword = '';
-      payload.data.newPassword = '';
-      payload.data.confirmPassword = '';
-    })
-    .catch((e) => {
-      toast.add({
-        title: e.data.message || 'Something went wrong',
-        color: 'error',
-      });
-    })
-    .finally(() => {
-      isLoading.value = false;
-    });
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Changing passwords is disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 

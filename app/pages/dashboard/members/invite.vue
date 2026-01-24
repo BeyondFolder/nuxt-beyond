@@ -33,39 +33,11 @@ const inviteRole = ref<'admin' | 'member'>('member');
 const inviteLoading = ref(false);
 
 async function handleInvite() {
-  if (!projectId.value || !inviteEmail.value) {
-    return;
-  }
-
-  inviteLoading.value = true;
-
-  try {
-    await $fetch(`/api/projects/${projectId.value}/members/invite`, {
-      method: 'POST',
-      body: {
-        email: inviteEmail.value,
-        role: inviteRole.value,
-      },
-    });
-
-    toast.add({
-      title: 'Invitation sent',
-      description: `An invitation has been sent to ${inviteEmail.value}`,
-      color: 'success',
-    });
-
-    await refreshNuxtData(`api/projects/${projectId.value}/members`);
-
-    await router.push('/dashboard/members');
-  } catch (error: any) {
-    toast.add({
-      title: 'Failed to send invitation',
-      description: error.data?.message || 'An error occurred',
-      color: 'error',
-    });
-  } finally {
-    inviteLoading.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Team invitations are disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 

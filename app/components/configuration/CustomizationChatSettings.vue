@@ -64,15 +64,15 @@ watch(
 
         <!-- Example questions - Customize these placeholders for your specific business domain -->
         <UFormField name="initialQuestion1">
-          <UInput v-model="state.initialQuestion1" placeholder="How can I track my order?" class="w-full" />
+          <UInput v-model="state.initialQuestion1" placeholder="How can I track my order?" class="w-full" disabled />
         </UFormField>
 
         <UFormField name="initialQuestion2">
-          <UInput v-model="state.initialQuestion2" placeholder="What are your business hours?" class="w-full" />
+          <UInput v-model="state.initialQuestion2" placeholder="What are your business hours?" class="w-full" disabled />
         </UFormField>
 
         <UFormField name="initialQuestion3">
-          <UInput v-model="state.initialQuestion3" placeholder="How do I return a product?" class="w-full" />
+          <UInput v-model="state.initialQuestion3" placeholder="How do I return a product?" class="w-full" disabled />
         </UFormField>
       </div>
 
@@ -93,6 +93,7 @@ watch(
           placeholder="You are a helpful customer support chatbot. Be friendly and professional..."
           :rows="4"
           class="w-full"
+          disabled
         />
       </UFormField>
     </div>

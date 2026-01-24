@@ -50,29 +50,14 @@ watch(
   { immediate: true }
 );
 
+const toast = useToast();
+
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  try {
-    isLoading.value = true;
-
-    const isCreateModeValue = isCreateMode.value;
-
-    if (isCreateModeValue) {
-      await createProject(event.data);
-    } else {
-      await updateProject(currentProject.value.id, event.data);
-    }
-
-    await refreshNuxtData('api/dashboard');
-    await refreshNuxtData('api/projects');
-
-    if (isCreateModeValue) {
-      await navigateTo('/dashboard/billing');
-    } else {
-      await navigateTo('/configuration/knowledge');
-    }
-  } finally {
-    isLoading.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Project editing is disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 
@@ -113,6 +98,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                   placeholder="e.g., Your Business Customer Support Bot, Product Guide, FAQ Chatbot"
                   :maxlength="50"
                   class="w-full"
+                  disabled
                 />
                 <template #hint>
                   <span class="text-sm text-neutral">{{ state.name.length }}/50 characters</span>
@@ -136,6 +122,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                   :rows="5"
                   :maxlength="500"
                   class="w-full"
+                  disabled
                 />
                 <template #hint>
                   <span class="text-sm text-neutral">{{ (state.description || '').length }}/500 characters</span>
@@ -152,7 +139,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           <UButton
             type="submit"
             :loading="isLoading"
-            :disabled="!state.name.trim()"
+            disabled
             trailing-icon="i-lucide-arrow-right"
           >
             {{ isCreateMode ? 'Create Project & Continue' : 'Update Project' }}
@@ -162,10 +149,11 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UForm>
 
     <UAlert
-      color="primary"
+      color="info"
       variant="subtle"
-      title="💡 Pro Tip"
-      description="A good description helps the AI understand your project's purpose and provide better responses to your users."
+      icon="i-lucide-info"
+      title="Demo Mode"
+      description="Project editing is disabled in demo mode. This is a read-only view of the demo project configuration."
       class="mt-6"
     />
   </div>

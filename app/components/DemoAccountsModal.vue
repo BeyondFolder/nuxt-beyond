@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { DEMO_CONFIG } from '~~/shared/demo';
 
-const isOpen = defineModel<boolean>('open', { default: false });
+const modelValue = defineModel<boolean>();
+
+const emit = defineEmits<{
+  useAccount: [{ email: string; password: string }]
+}>();
 
 const copyToClipboard = async (text: string, label: string) => {
   try {
@@ -19,24 +23,21 @@ const copyToClipboard = async (text: string, label: string) => {
     });
   }
 };
+
+const useAccount = (email: string) => {
+  emit('useAccount', { email, password: DEMO_CONFIG.password });
+  modelValue.value = false;
+};
 </script>
 
 <template>
-  <UModal v-model="isOpen">
-    <UCard>
-      <template #header>
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold">
-            Demo Accounts
-          </h3>
-          <UButton
-            color="neutral"
-            variant="ghost"
-            icon="i-lucide-x"
-            @click="isOpen = false"
-          />
-        </div>
-      </template>
+  <UModal v-model:open="modelValue">
+    <template #header>
+      <h3 class="text-lg font-semibold">Demo Accounts</h3>
+      <UButton icon="i-lucide-x" variant="ghost" color="neutral" size="sm" @click="modelValue = false" />
+    </template>
+
+    <template #body>
 
       <div class="space-y-6">
         <UAlert
@@ -62,27 +63,38 @@ const copyToClipboard = async (text: string, label: string) => {
                 Admin
               </UBadge>
             </div>
-            <div class="space-y-2">
-              <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
-                <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.adminEmail }}</code>
-                <UButton
-                  size="xs"
-                  color="neutral"
-                  variant="ghost"
-                  icon="i-lucide-copy"
-                  @click="copyToClipboard(DEMO_CONFIG.adminEmail, 'Email')"
-                />
+            <div class="space-y-3">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
+                  <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.adminEmail }}</code>
+                  <UButton
+                    size="xs"
+                    color="neutral"
+                    variant="ghost"
+                    icon="i-lucide-copy"
+                    @click="copyToClipboard(DEMO_CONFIG.adminEmail, 'Email')"
+                  />
+                </div>
+                <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
+                  <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.password }}</code>
+                  <UButton
+                    size="xs"
+                    color="neutral"
+                    variant="ghost"
+                    icon="i-lucide-copy"
+                    @click="copyToClipboard(DEMO_CONFIG.password, 'Password')"
+                  />
+                </div>
               </div>
-              <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
-                <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.password }}</code>
-                <UButton
-                  size="xs"
-                  color="neutral"
-                  variant="ghost"
-                  icon="i-lucide-copy"
-                  @click="copyToClipboard(DEMO_CONFIG.password, 'Password')"
-                />
-              </div>
+              <UButton
+                block
+                color="primary"
+                variant="soft"
+                icon="i-lucide-log-in"
+                @click="useAccount(DEMO_CONFIG.adminEmail)"
+              >
+                Use This Account
+              </UButton>
             </div>
           </div>
 
@@ -100,49 +112,50 @@ const copyToClipboard = async (text: string, label: string) => {
                 Member
               </UBadge>
             </div>
-            <div class="space-y-2">
-              <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
-                <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.memberEmail }}</code>
-                <UButton
-                  size="xs"
-                  color="neutral"
-                  variant="ghost"
-                  icon="i-lucide-copy"
-                  @click="copyToClipboard(DEMO_CONFIG.memberEmail, 'Email')"
-                />
+            <div class="space-y-3">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
+                  <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.memberEmail }}</code>
+                  <UButton
+                    size="xs"
+                    color="neutral"
+                    variant="ghost"
+                    icon="i-lucide-copy"
+                    @click="copyToClipboard(DEMO_CONFIG.memberEmail, 'Email')"
+                  />
+                </div>
+                <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
+                  <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.password }}</code>
+                  <UButton
+                    size="xs"
+                    color="neutral"
+                    variant="ghost"
+                    icon="i-lucide-copy"
+                    @click="copyToClipboard(DEMO_CONFIG.password, 'Password')"
+                  />
+                </div>
               </div>
-              <div class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900 rounded">
-                <code class="text-sm text-neutral-700 dark:text-neutral-300">{{ DEMO_CONFIG.password }}</code>
-                <UButton
-                  size="xs"
-                  color="neutral"
-                  variant="ghost"
-                  icon="i-lucide-copy"
-                  @click="copyToClipboard(DEMO_CONFIG.password, 'Password')"
-                />
-              </div>
+              <UButton
+                block
+                color="primary"
+                variant="soft"
+                icon="i-lucide-log-in"
+                @click="useAccount(DEMO_CONFIG.memberEmail)"
+              >
+                Use This Account
+              </UButton>
             </div>
           </div>
         </div>
-
-        <UAlert
-          color="warning"
-          variant="subtle"
-          icon="i-lucide-alert-triangle"
-          description="Limited to 5 AI conversations per day to manage demo costs."
-        />
       </div>
+    </template>
 
-      <template #footer>
-        <div class="flex justify-end">
-          <UButton
-            color="primary"
-            @click="isOpen = false"
-          >
-            Got it
-          </UButton>
-        </div>
-      </template>
-    </UCard>
+    <template #footer>
+      <div class="flex justify-end">
+        <UButton color="primary" @click="modelValue = false">
+          Got it
+        </UButton>
+      </div>
+    </template>
   </UModal>
 </template>

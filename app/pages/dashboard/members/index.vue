@@ -57,59 +57,19 @@ const cancelInvitationModal = overlay.create(ConfirmModal, {
 });
 
 async function removeMember(memberId: string) {
-  const instance = removeMemberModal.open();
-  const result = await instance.result;
-  if (!result) {
-    return;
-  }
-
-  try {
-    await $fetch(`/api/projects/${projectId.value}/members/${memberId}`, {
-      method: 'DELETE',
-    });
-
-    toast.add({
-      title: 'Member removed',
-      description: 'The member has been removed from the project',
-      color: 'success',
-    });
-
-    refreshMembers();
-  } catch (error: any) {
-    toast.add({
-      title: 'Failed to remove member',
-      description: error.data?.message || 'An error occurred',
-      color: 'error',
-    });
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Removing members is disabled in demo mode.',
+    color: 'info',
+  });
 }
 
 async function cancelInvitation(invitationId: string) {
-  const instance = cancelInvitationModal.open();
-  const result = await instance.result;
-  if (!result) {
-    return;
-  }
-
-  try {
-    await $fetch(`/api/projects/${projectId.value}/invitations/${invitationId}`, {
-      method: 'DELETE',
-    });
-
-    toast.add({
-      title: 'Invitation cancelled',
-      description: 'The invitation has been cancelled',
-      color: 'success',
-    });
-
-    refreshMembers();
-  } catch (error: any) {
-    toast.add({
-      title: 'Failed to cancel invitation',
-      description: error.data?.message || 'An error occurred',
-      color: 'error',
-    });
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Cancelling invitations is disabled in demo mode.',
+    color: 'info',
+  });
 }
 
 function getRoleColor(role: string) {

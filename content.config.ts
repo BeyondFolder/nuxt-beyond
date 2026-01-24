@@ -42,6 +42,18 @@ export const collections = {
       hero: z.object({
         links: z.array(createLinkSchema()),
         headline: z.string().optional(),
+        badge: z.string().optional(),
+      }),
+      aiShowcase: z.object({
+        items: z.array(
+          z.object({
+            id: z.string().nonempty(),
+            title: z.string().nonempty(),
+            description: z.string().nonempty(),
+            icon: z.string().editor({ input: 'icon' }),
+            color: z.string().optional(),
+          })
+        ),
       }),
       problem: createBaseSchema().extend({
         items: z.array(
@@ -49,36 +61,30 @@ export const collections = {
             hours: z.string().nonempty(),
             task: z.string().nonempty(),
             description: z.string().nonempty(),
+            icon: z.string().optional().editor({ input: 'icon' }),
           })
         ),
       }),
+      aiFeatures: createBaseSchema().extend({
+        categories: z.array(
+          z.object({
+            title: z.string().nonempty(),
+            description: z.string().nonempty(),
+            icon: z.string().editor({ input: 'icon' }),
+            color: z.string().optional(),
+            features: z.array(z.string().nonempty()),
+          })
+        ),
+      }),
+      fullStackFeatures: createBaseSchema().extend({
+        features: z.array(createFeatureSchema()),
+      }),
       aiAgents: createBaseSchema().extend({
+        codeSnippet: z.string().optional(),
         agents: z.array(
           z.object({
             name: z.string().nonempty(),
             icon: z.string().editor({ input: 'icon' }),
-          })
-        ),
-      }),
-      section: createBaseSchema().extend({
-        headline: z.string().optional(),
-        images: z.object({
-          mobile: z.string().optional(),
-          desktop: z.string().optional(),
-        }),
-        features: z.array(
-          createBaseSchema().extend({
-            icon: z.string().editor({ input: 'icon' }),
-          })
-        ),
-      }),
-      features: createBaseSchema().extend({
-        features: z.array(createFeatureSchema()),
-      }),
-      steps: createBaseSchema().extend({
-        items: z.array(
-          createFeatureSchema().extend({
-            image: z.string().editor({ input: 'media' }).optional(),
           })
         ),
       }),
@@ -88,6 +94,16 @@ export const collections = {
             name: z.string().nonempty(),
             icon: z.string().editor({ input: 'icon' }),
             color: z.string().nonempty(),
+          })
+        ),
+      }),
+      steps: createBaseSchema().extend({
+        items: z.array(
+          z.object({
+            step: z.string().nonempty(),
+            title: z.string().nonempty(),
+            description: z.string().nonempty(),
+            code: z.string().optional(),
           })
         ),
       }),

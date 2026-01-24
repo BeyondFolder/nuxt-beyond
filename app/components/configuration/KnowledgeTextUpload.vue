@@ -16,7 +16,7 @@ const schemaKnowledgeText = z.object({
 
 type Schema = z.output<typeof schemaKnowledgeText>;
 
-const { handleError, showSuccess } = useErrorHandling();
+const toast = useToast();
 
 const stateKnowledgeText = ref<Schema>({
   knowledgeText: '',
@@ -25,30 +25,11 @@ const stateKnowledgeText = ref<Schema>({
 const isLoading = ref(false);
 
 async function uploadKnowledgeText() {
-  if (!stateKnowledgeText.value.knowledgeText.trim()) {
-    return;
-  }
-
-  try {
-    isLoading.value = true;
-
-    await $fetch(`/api/projects/${props.projectId}/knowledge/text`, {
-      method: 'PUT',
-      body: {
-        knowledgeText: stateKnowledgeText.value.knowledgeText.trim(),
-      },
-    });
-
-    stateKnowledgeText.value.knowledgeText = '';
-
-    await refreshNuxtData('api/dashboard');
-    await refreshNuxtData(`api/projects/${props.projectId}/knowledge`);
-    showSuccess('Text uploaded successfully');
-  } catch (error) {
-    handleError(error, 'Failed to upload text');
-  } finally {
-    isLoading.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Text uploads are disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 
@@ -80,6 +61,7 @@ async function uploadKnowledgeText() {
           :rows="12"
           :maxlength="maxTextLength"
           class="w-full"
+          disabled
         />
       </UFormField>
 

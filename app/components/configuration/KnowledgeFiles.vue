@@ -102,6 +102,8 @@ const treeData = computed(() => {
   return tree;
 });
 
+const toast = useToast();
+
 async function deleteSelectedFiles() {
   const filenames = selectedFiles.value.filter((item): item is TreeItem & { id: string } => !!item.id && !item.children).map((item) => item.id);
 
@@ -120,25 +122,11 @@ async function deleteSelectedFiles() {
     return;
   }
 
-  try {
-    isDeletingFiles.value = true;
-
-    for (const filename of filenames) {
-      await $fetch(`/api/projects/${props.projectId}/knowledge/${encodeURIComponent(filename)}`, {
-        method: 'DELETE',
-      });
-    }
-
-    await refreshNuxtData('api/dashboard');
-    await refreshNuxtData(`api/projects/${props.projectId}/knowledge`);
-    showSuccess(`${filenames.length} file(s) deleted successfully`);
-
-    selectedFiles.value = [];
-  } catch (error) {
-    handleError(error, 'Failed to delete files');
-  } finally {
-    isDeletingFiles.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Deleting files is disabled in demo mode.',
+    color: 'info',
+  });
 }
 
 function onSelect(item: TreeItem) {

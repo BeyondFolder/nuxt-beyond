@@ -151,12 +151,5 @@ async function requestProcessing() {
       </UPageCard>
     </div>
 
-    <UAlert
-      color="primary"
-      variant="subtle"
-      title="💡 Knowledge Base Tips"
-      description="The more relevant information you provide, the better your project can assist users. Include FAQs, documentation, policies, and any other information users commonly ask about."
-      class="mt-6"
-    />
   </div>
 </template>

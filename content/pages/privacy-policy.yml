@@ -1,49 +1,40 @@
 seo:
   title: Privacy Policy | NuxtBeyond
-  description: Learn how NuxtBeyond collects, uses, and protects your personal data. GDPR-compliant privacy policy for our AI chatbot platform.
+  description: Learn how NuxtBeyond collects, uses, and protects your personal data when you purchase our Nuxt 4 boilerplate.
 title: Privacy Policy
-lastUpdated: December 11, 2025
+lastUpdated: January 24, 2025
 sections:
   - title: Introduction
     content: |
-      CraftCodely SRL ("we," "us," or "our") operates NuxtBeyond, an AI-powered chatbot platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service at nuxtbeyond.com.
+      CraftCodely SRL ("we," "us," or "our") operates NuxtBeyond, an AI-first Nuxt 4 boilerplate for building SaaS products. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you purchase and use our boilerplate at nuxtbeyond.com.
 
-      We are committed to protecting your privacy and complying with the General Data Protection Regulation (GDPR) and other applicable data protection laws. By using NuxtBeyond, you agree to the collection and use of information in accordance with this policy.
+      We are committed to protecting your privacy and complying with the General Data Protection Regulation (GDPR) and other applicable data protection laws. By purchasing NuxtBeyond, you agree to the collection and use of information in accordance with this policy.
 
   - title: Information We Collect
     subsections:
       - subtitle: Personal Information
         content: |
-          When you register for an account, we collect:
+          When you purchase NuxtBeyond, we collect:
 
-          - **Email address** - Used for account authentication and communication
+          - **Email address** - Used for license delivery, updates, and communication
           - **Name** - Used for personalization and identification
-          - **Password** - Encrypted and stored securely for account access
+          - **Password** - Encrypted and stored securely for account access (if you create an account)
           - **Google OAuth data** - If you sign up via Google (name, email, profile picture)
-
-      - subtitle: Widget Data
-        content: |
-          When you create and configure AI chatbots, we collect:
-
-          - **Widget configuration** - Name, description, appearance settings, domain restrictions
-          - **Knowledge base content** - Documents and text you upload to train your chatbot
-          - **Chat conversations** - Messages between your customers and the AI chatbot
-          - **Support escalations** - Customer questions that require human assistance
 
       - subtitle: Payment Information
         content: |
           We use Stripe for payment processing. We store:
 
-          - **Stripe customer ID** - Links your widget to Stripe account
-          - **Subscription status** - Current plan and billing cycle information
+          - **Stripe customer ID** - Links your purchase to your Stripe account
+          - **Purchase history** - Products purchased and transaction dates
 
           We do not store credit card numbers or payment details. All payment information is handled securely by Stripe in accordance with PCI-DSS standards.
 
       - subtitle: Technical Information
         content: |
-          We automatically collect certain information when you use our service:
+          We automatically collect certain information when you visit our website:
 
-          - **Usage data** - Features accessed, pages viewed, time spent
+          - **Usage data** - Pages viewed, time spent on site
           - **Device information** - Browser type, operating system, IP address
           - **Cookies** - Session cookies for authentication and functionality
 
@@ -51,30 +42,31 @@ sections:
     content: |
       We use your information for the following purposes:
 
-      - **Service delivery** - To provide and maintain the NuxtBeyond platform
-      - **AI chatbot functionality** - To train and operate your custom AI chatbots
-      - **Account management** - To manage your account, subscriptions, and billing
-      - **Communication** - To send service updates, security alerts, and support responses
-      - **Improvement** - To analyze usage patterns and improve our service
-      - **Legal compliance** - To comply with legal obligations and enforce our Terms of Service
+      - **License delivery** - To provide access to the NuxtBeyond boilerplate after purchase
+      - **Updates and announcements** - To notify you of product updates and new features
+      - **Account management** - To manage your account and purchase history
+      - **Support** - To respond to your questions and provide assistance
+      - **Improvement** - To analyze usage patterns and improve our website and products
+      - **Legal compliance** - To comply with legal obligations
 
       We process your data based on the following legal grounds:
 
-      - **Contract performance** - Processing necessary to provide our services
-      - **Legitimate interests** - Improving our service and preventing fraud
+      - **Contract performance** - Processing necessary to deliver your purchased product
+      - **Legitimate interests** - Improving our products and preventing fraud
       - **Consent** - When you provide explicit consent for specific processing
       - **Legal obligation** - Complying with laws and regulations
 
   - title: Data Sharing and Third Parties
     content: |
-      We do not sell, trade, or rent your personal information to third parties. We share data only with trusted service providers who assist in operating our platform:
+      We do not sell, trade, or rent your personal information to third parties. We share data only with trusted service providers:
 
-      - **Cloudflare** - Hosting provider for infrastructure, databases (D1), file storage (R2), and AI processing (Workers AI)
-      - **Stripe** - Payment processing and subscription management
+      - **Cloudflare** - Website hosting and infrastructure
+      - **Stripe** - Payment processing
       - **Google OAuth** - Authentication service (only if you choose to sign in with Google)
       - **Resend** - Transactional email delivery
+      - **Discord** - Community platform (if you join our Discord community)
 
-      All third-party providers are bound by data protection agreements and process data only as instructed. They do not use your data for their own purposes.
+      All third-party providers are bound by data protection agreements and process data only as instructed.
 
   - title: Data Storage and Security
     content: |
@@ -85,19 +77,17 @@ sections:
       - Encrypted passwords using bcrypt hashing
       - HTTPS encryption for all data in transit
       - Secure authentication with session tokens
-      - Regular security audits and updates
       - Access controls and monitoring
 
       While we strive to protect your information, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.
 
   - title: Data Retention
     content: |
-      We retain your personal data for as long as your account is active or as needed to provide you services. Specific retention periods:
+      We retain your personal data for as long as necessary to provide you with product updates and support:
 
       - **Account data** - Retained until account deletion is requested
-      - **Chat conversations** - Retained for the lifetime of the widget or until deletion
-      - **Payment records** - Retained for 7 years to comply with tax and accounting regulations
-      - **Backup data** - May be retained for up to 30 days in secure backups
+      - **Purchase records** - Retained for 7 years to comply with tax and accounting regulations
+      - **Email communications** - Retained for support and update purposes
 
   - title: Your GDPR Rights
     content: |
@@ -105,7 +95,7 @@ sections:
 
       - **Right to access** - Request a copy of your personal data
       - **Right to rectification** - Correct inaccurate or incomplete data
-      - **Right to erasure** - Request deletion of your personal data (see Account Deletion below)
+      - **Right to erasure** - Request deletion of your personal data
       - **Right to restriction** - Request limitation of data processing
       - **Right to data portability** - Receive your data in a machine-readable format
       - **Right to object** - Object to certain types of data processing
@@ -118,11 +108,9 @@ sections:
       You can request account deletion at any time by emailing support@nuxtbeyond.com. Upon receiving your request, we will:
 
       1. Verify your identity to ensure security
-      2. Delete your account and associated personal data immediately
-      3. Remove all widgets, knowledge base content, and chat conversations
-      4. Cancel any active subscriptions (no refunds for partial billing periods)
+      2. Delete your account and associated personal data
 
-      Please note that some data may remain in secure backups for up to 30 days before permanent deletion. Payment records will be retained for 7 years to comply with legal obligations.
+      Please note that purchase records will be retained for 7 years to comply with legal obligations. Your license to use the boilerplate remains valid after account deletion.
 
   - title: Cookies and Tracking
     content: |
@@ -132,11 +120,11 @@ sections:
       - Remember your preferences
       - Analyze site usage and performance
 
-      You can control cookies through your browser settings. Disabling cookies may limit certain functionality of our service.
+      You can control cookies through your browser settings. Disabling cookies may limit certain functionality of our website.
 
   - title: Children's Privacy
     content: |
-      NuxtBeyond is a business tool intended for users aged 18 and older. We do not knowingly collect personal information from children under 18. If we discover that a child has provided us with personal data, we will delete it immediately.
+      NuxtBeyond is intended for professional developers aged 18 and older. We do not knowingly collect personal information from children under 18. If we discover that a child has provided us with personal data, we will delete it immediately.
 
   - title: International Data Transfers
     content: |
@@ -148,16 +136,16 @@ sections:
 
   - title: Changes to This Policy
     content: |
-      We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last Updated" date. Significant changes will be communicated via email. Continued use of our service after changes constitutes acceptance of the updated policy.
+      We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last Updated" date. Significant changes will be communicated via email. Continued use of our website after changes constitutes acceptance of the updated policy.
 
   - title: Contact Us
     content: |
       If you have questions about this Privacy Policy or our data practices, contact us at:
 
       **CraftCodely SRL**
-      
+
       Email: support@nuxtbeyond.com
-      
+
       Location: Romania
 
       For GDPR-related inquiries or to exercise your data rights, email support@nuxtbeyond.com with "GDPR Request" in the subject line.

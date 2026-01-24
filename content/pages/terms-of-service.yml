@@ -1,213 +1,169 @@
 seo:
   title: Terms of Service | NuxtBeyond
-  description: Terms and conditions for using NuxtBeyond's AI chatbot platform. Read about user responsibilities, subscriptions, and service usage.
+  description: Terms and conditions for purchasing and using the NuxtBeyond boilerplate. Read about licensing, usage rights, and support.
 title: Terms of Service
-lastUpdated: December 11, 2025
+lastUpdated: January 24, 2025
 sections:
   - title: Agreement to Terms
     content: |
-      These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and CraftCodely SRL ("NuxtBeyond," "we," "us," or "our") governing your use of the NuxtBeyond platform at nuxtbeyond.com.
+      These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and CraftCodely SRL ("NuxtBeyond," "we," "us," or "our") governing your purchase and use of the NuxtBeyond boilerplate at nuxtbeyond.com.
 
-      By creating an account or using our service, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, you may not access or use NuxtBeyond.
+      By purchasing NuxtBeyond, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, you may not purchase or use NuxtBeyond.
 
   - title: Eligibility
     content: |
-      You must be at least 18 years old to use NuxtBeyond. By using our service, you represent and warrant that:
+      You must be at least 18 years old to purchase NuxtBeyond. By making a purchase, you represent and warrant that:
 
       - You are at least 18 years of age
       - You have the legal capacity to enter into binding contracts
-      - You will provide accurate, current, and complete information during registration
-      - You will maintain the security of your account credentials
+      - You will provide accurate, current, and complete information during purchase
+      - You have the authority to use the payment method provided
 
-  - title: Account Registration
+  - title: Product Description
     content: |
-      To use NuxtBeyond, you must create an account. You agree to:
+      NuxtBeyond is a software boilerplate (starter template) for building AI-powered SaaS applications. Your purchase includes:
 
-      - Provide accurate and complete registration information
-      - Maintain and update your information to keep it accurate
-      - Keep your password secure and confidential
-      - Notify us immediately of any unauthorized account access
-      - Be responsible for all activities under your account
+      - **Source code** - Complete access to the NuxtBeyond codebase
+      - **Documentation** - Setup guides and CLAUDE.md for AI-assisted development
+      - **Lifetime updates** - Access to all future updates and improvements
+      - **Discord community** - Access to our developer community for support and discussions
 
-      We reserve the right to suspend or terminate accounts that violate these Terms or provide false information.
+      The boilerplate is designed to help developers build their own products faster. It is not a hosted service or SaaS platform.
 
-  - title: Service Description
-    content: |
-      NuxtBeyond is a Software-as-a-Service (SaaS) platform that enables users to create AI-powered chatbots for customer support and engagement. Our service includes:
-
-      - AI chatbot creation and customization
-      - Knowledge base management (document uploads and text content)
-      - Embeddable widget for websites
-      - Chat conversation management
-      - Human support escalation (on eligible plans)
-      - Analytics and insights (where available)
-
-      We reserve the right to modify, suspend, or discontinue any aspect of the service at any time with reasonable notice.
-
-  - title: Subscription Plans and Billing
+  - title: Pricing and Payment
     subsections:
-      - subtitle: Available Plans
+      - subtitle: Available Products
         content: |
-          NuxtBeyond offers the following subscription plans:
+          NuxtBeyond is available in the following packages:
 
-          - **Free Plan** - $0/month: 5 documents (max 0.1MB each), 200 AI replies/month
-          - **Starter Plan** - $24/month: 20 documents (max 1MB each), 2,000 AI replies/month, support escalation
-          - **Standard Plan** - $49/month: 50 documents (max 2MB each), 5,000 AI replies/month, support escalation, self-learning
-          - **Pro Plan** - $99/month: 100 documents (max 4MB each), 10,000 AI replies/month, support escalation, self-learning, website crawling (when available)
+          - **NuxtBeyond Boilerplate** - Complete Nuxt 4 boilerplate for AI-powered SaaS
+          - **Boilerplate + Distribution Framework** - Everything in the boilerplate plus Claude Code Distribution Framework (coming soon)
 
-          Pricing and features are subject to change with 30 days notice to existing subscribers.
+          Pricing is displayed on our website and may change at any time. Price changes do not affect existing purchases.
 
-      - subtitle: Billing and Payment
+      - subtitle: One-Time Purchase
         content: |
           - **Payment processing** - All payments are processed securely through Stripe
-          - **Billing cycle** - Subscriptions are billed monthly on a recurring basis
-          - **Free trial** - Standard plan includes a 7-day free trial for first-time subscribers
-          - **Auto-renewal** - Subscriptions automatically renew unless cancelled
-          - **Failed payments** - If payment fails, your service may be suspended until payment is resolved
+          - **One-time payment** - NuxtBeyond is a one-time purchase, not a subscription
+          - **Instant access** - You receive access to the boilerplate immediately after purchase
+          - **No recurring charges** - You will not be charged again for updates or continued access
 
-      - subtitle: Cancellation and Refunds
+      - subtitle: Refunds
         content: |
-          - **Cancellation** - You may cancel your subscription at any time through the Stripe Customer Portal
-          - **Cancellation effect** - Cancellations take effect at the end of the current billing period
-          - **Access retention** - You retain access to paid features until the end of your billing period
-          - **Downgrade to Free** - After cancellation, your account automatically downgrades to the Free plan
-          - **No refunds** - We do not provide refunds for partial billing periods or unused features
-          - **Trial cancellations** - You may cancel during your free trial without being charged
+          Due to the digital nature of the product and immediate access to source code:
 
-  - title: Usage Limits and Restrictions
+          - **No refunds** - All sales are final. We do not offer refunds after purchase.
+          - **Pre-purchase review** - We encourage you to review the product features, demo, and documentation before purchasing.
+          - **Technical issues** - If you experience technical issues accessing your purchase, contact support@nuxtbeyond.com for assistance.
+
+  - title: License Grant
     content: |
-      Your use of NuxtBeyond is subject to the limits of your subscription plan. You agree not to:
+      Upon purchase, we grant you a non-exclusive, non-transferable license to:
 
-      - Exceed your plan's document upload or AI reply limits
-      - Share your account credentials with unauthorized users
-      - Use the service for illegal, harmful, or fraudulent purposes
-      - Upload content that infringes intellectual property rights
-      - Distribute malware, spam, or malicious code through chatbots
-      - Attempt to reverse engineer, hack, or compromise our systems
-      - Scrape, crawl, or data-mine our platform without permission
-      - Use the service to harass, abuse, or harm others
-      - Impersonate any person or entity
-      - Create chatbots that violate third-party rights or laws
+      - **Use** - Use the NuxtBeyond boilerplate for your own projects
+      - **Modify** - Modify the source code to suit your needs
+      - **Deploy** - Deploy unlimited applications built with the boilerplate
+      - **Commercial use** - Use the boilerplate for commercial projects and client work
 
-      Violation of these restrictions may result in immediate account suspension or termination without refund.
+      This license is granted to you personally (or to your organization if purchased for business use) and may not be shared, resold, or redistributed.
+
+  - title: License Restrictions
+    content: |
+      You may NOT:
+
+      - **Redistribute** - Share, resell, or redistribute the boilerplate source code
+      - **Competing products** - Use the boilerplate to create a competing boilerplate or template product
+      - **Sub-license** - Grant licenses to third parties
+      - **Public repositories** - Publish the boilerplate code in public repositories (private repositories are allowed)
+      - **Remove attribution** - Remove or alter copyright notices or attribution in the source code
+
+      Violation of these restrictions may result in license termination without refund.
 
   - title: Intellectual Property Rights
     subsections:
-      - subtitle: Your Content
+      - subtitle: Our Property
         content: |
-          You retain all ownership rights to content you upload to NuxtBeyond, including:
+          NuxtBeyond and its source code, documentation, design, and branding are owned by CraftCodely SRL and protected by intellectual property laws. Your purchase grants you a license to use the code, not ownership of it.
 
-          - Knowledge base documents and text
-          - Widget configurations and branding
-          - Chat conversation data
-
-          By uploading content, you grant us a limited, non-exclusive license to:
-
-          - Store and process your content to provide the service
-          - Use your content to train and operate your custom AI chatbots
-          - Display your content within the NuxtBeyond platform
-          - Create backups for data protection purposes
-
-          This license terminates when you delete content or close your account (subject to backup retention periods).
-
-      - subtitle: Our Platform
+      - subtitle: Your Projects
         content: |
-          NuxtBeyond and its technology, including software, algorithms, design, and branding, are owned by CraftCodely SRL and protected by intellectual property laws. You may not:
+          You retain full ownership of any applications, products, or services you build using the NuxtBeyond boilerplate. We make no claim to your custom code, designs, or business.
 
-          - Copy, modify, or create derivative works of our platform
-          - Use our trademarks, logos, or branding without permission
-          - Remove or alter any copyright or proprietary notices
-          - Claim ownership of any part of our platform
+      - subtitle: Third-Party Components
+        content: |
+          NuxtBeyond includes open-source dependencies (Nuxt, Vue, Tailwind, etc.) that are subject to their own licenses. You must comply with all applicable open-source licenses when using the boilerplate.
 
-  - title: AI-Generated Content
+  - title: Updates and Support
     content: |
-      NuxtBeyond uses Cloudflare Workers AI and OpenAI's ChatGPT to generate chatbot responses. You acknowledge that:
+      - **Lifetime updates** - Your purchase includes access to all future updates to the boilerplate
+      - **Update delivery** - Updates are made available through the download portal or repository access
+      - **No guaranteed timeline** - We do not guarantee specific update schedules or features
+      - **Community support** - Support is provided through our Discord community
+      - **Email support** - You may contact support@nuxtbeyond.com for assistance
 
-      - **Accuracy** - AI responses may contain errors or inaccuracies. We do not guarantee the correctness of AI-generated content.
-      - **Your responsibility** - You are responsible for reviewing and validating AI responses before relying on them.
-      - **No liability** - We are not liable for decisions made based on AI-generated content.
-      - **Training data** - AI models are trained on your uploaded knowledge base content and may learn from human support interactions (on eligible plans).
-      - **Content moderation** - You are responsible for ensuring your chatbot's responses comply with laws and regulations.
-
-  - title: Data Privacy and Security
+  - title: Disclaimer of Warranties
     content: |
-      We are committed to protecting your data. Our data practices are governed by our Privacy Policy, which is incorporated into these Terms. Key points:
+      THE NUXTBEYOND BOILERPLATE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:
 
-      - We comply with GDPR and applicable data protection laws
-      - We do not sell or share your data with third parties (except trusted service providers)
-      - We implement industry-standard security measures
-      - You can request account deletion at any time by emailing support@nuxtbeyond.com
+      - Warranties of merchantability or fitness for a particular purpose
+      - Warranties that the boilerplate will meet your specific requirements
+      - Warranties that the boilerplate will be error-free or uninterrupted
+      - Warranties regarding third-party services (Cloudflare, Stripe, etc.)
 
-      For full details, review our Privacy Policy.
-
-  - title: Service Availability and Support
-    content: |
-      - **Uptime** - We strive for 99.9% uptime but do not guarantee uninterrupted service
-      - **Maintenance** - We may perform scheduled maintenance with advance notice when possible
-      - **Support** - Support is available via email at support@nuxtbeyond.com
-      - **Response times** - Paid plans receive priority support from the founder
-      - **Force majeure** - We are not liable for service interruptions caused by events beyond our control (natural disasters, cyber attacks, infrastructure failures, etc.)
+      You are responsible for evaluating the boilerplate's suitability for your needs before purchase.
 
   - title: Limitation of Liability
     content: |
       TO THE MAXIMUM EXTENT PERMITTED BY LAW:
 
-      - **Service provided "as is"** - NuxtBeyond is provided without warranties of any kind, express or implied
-      - **No guarantees** - We do not warrant that the service will be error-free, secure, or uninterrupted
-      - **Limited liability** - Our total liability for any claim arising from your use of NuxtBeyond is limited to the amount you paid us in the 12 months preceding the claim
+      - **Limited liability** - Our total liability for any claim arising from your use of NuxtBeyond is limited to the amount you paid for the boilerplate
       - **Excluded damages** - We are not liable for indirect, incidental, consequential, or punitive damages, including lost profits, data loss, or business interruption
-      - **User responsibility** - You are solely responsible for your use of the service and any consequences thereof
+      - **Third-party services** - We are not liable for issues caused by third-party services (hosting providers, payment processors, AI services, etc.)
+      - **Your responsibility** - You are solely responsible for the applications you build and deploy using the boilerplate
 
   - title: Indemnification
     content: |
       You agree to indemnify, defend, and hold harmless CraftCodely SRL, its officers, directors, employees, and agents from any claims, losses, damages, liabilities, and expenses (including legal fees) arising from:
 
       - Your use of NuxtBeyond
+      - Applications you build or deploy using the boilerplate
       - Your violation of these Terms
       - Your violation of any third-party rights
-      - Content you upload or chatbot responses generated from your content
-      - Your end users' use of your chatbots
 
   - title: Termination
     content: |
-      - **Your termination rights** - You may terminate your account at any time by requesting deletion via support@nuxtbeyond.com
-      - **Our termination rights** - We may suspend or terminate your account immediately if you violate these Terms, engage in fraudulent activity, or pose a security risk
-      - **Effect of termination** - Upon termination:
-        - Your access to the service will cease
-        - Your widgets will stop functioning
-        - Your data will be deleted in accordance with our Privacy Policy
-        - No refunds will be provided for prepaid subscription periods
+      - **License termination** - We may terminate your license if you violate these Terms, particularly the license restrictions
+      - **Effect of termination** - Upon termination, you must delete all copies of the boilerplate source code
+      - **No refund** - No refund will be provided upon termination for Terms violation
       - **Survival** - Sections regarding intellectual property, liability, indemnification, and dispute resolution survive termination
 
   - title: Dispute Resolution and Governing Law
     content: |
       - **Governing law** - These Terms are governed by the laws of Romania, without regard to conflict of law principles
       - **Jurisdiction** - Any disputes shall be resolved in the courts of Romania
-      - **Arbitration** - Before filing a lawsuit, you agree to attempt to resolve disputes through good-faith negotiation
-      - **Class action waiver** - You agree to resolve disputes individually and waive any right to participate in class actions
+      - **Good faith negotiation** - Before filing a lawsuit, you agree to attempt to resolve disputes through good-faith negotiation
 
   - title: Changes to Terms
     content: |
-      We may update these Terms from time to time. Changes will be posted on this page with an updated "Last Updated" date. Material changes will be communicated via email at least 30 days in advance.
+      We may update these Terms from time to time. Changes will be posted on this page with an updated "Last Updated" date. Continued use of NuxtBeyond after changes take effect constitutes acceptance of the updated Terms.
 
-      Continued use of NuxtBeyond after changes take effect constitutes acceptance of the updated Terms. If you do not agree to the changes, you must stop using the service and may cancel your subscription.
+      Material changes to license terms will not retroactively affect existing purchases.
 
   - title: General Provisions
     content: |
-      - **Entire agreement** - These Terms and our Privacy Policy constitute the entire agreement between you and NuxtBeyond
+      - **Entire agreement** - These Terms and our Privacy Policy constitute the entire agreement between you and NuxtBeyond regarding your purchase
       - **Severability** - If any provision is found unenforceable, the remaining provisions remain in effect
       - **No waiver** - Our failure to enforce any right or provision does not constitute a waiver
       - **Assignment** - You may not assign your rights under these Terms. We may assign our rights without restriction.
-      - **Force majeure** - We are not liable for failures caused by circumstances beyond our reasonable control
 
   - title: Contact Us
     content: |
       If you have questions about these Terms of Service, contact us at:
 
       **CraftCodely SRL**
-      
+
       Email: support@nuxtbeyond.com
-      
+
       Location: Romania
-      
+
       Website: nuxtbeyond.com

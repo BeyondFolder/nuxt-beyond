@@ -14,9 +14,9 @@ useHead({
 useSeoMeta({
   ogSiteName: 'NuxtBeyond',
   titleTemplate: '%s - NuxtBeyond',
-  ogImage: 'https://nuxtbeyond.com/images/preview5.png',
+  ogImage: 'https://nuxtbeyond.com/images/preview.png',
   twitterTitle: 'NuxtBeyond',
-  twitterImage: 'https://nuxtbeyond.com/images/preview5.png',
+  twitterImage: 'https://nuxtbeyond.com/images/preview.png',
   twitterCard: 'summary_large_image'
 })
 

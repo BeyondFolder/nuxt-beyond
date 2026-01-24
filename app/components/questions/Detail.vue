@@ -30,43 +30,14 @@ const replyText = ref('');
 const isSubmitting = ref(false);
 const isClosing = ref(false);
 const isDeleting = ref(false);
+const toast = useToast();
 
 async function submitAnswer() {
-  if (!replyText.value.trim()) {
-    return;
-  }
-
-  isSubmitting.value = true;
-
-  try {
-    await $fetch(`/api/projects/${props.projectId}/questions/${props.questionId}/answer`, {
-      method: 'POST',
-      body: {
-        answer: replyText.value,
-      },
-    });
-
-    const toast = useToast();
-    toast.add({
-      title: 'Answer sent successfully',
-      description: 'Answer has been sent to the customer',
-      color: 'success',
-    });
-
-    replyText.value = '';
-
-    await refreshQuestion();
-    emit('answered');
-  } catch (error: any) {
-    const toast = useToast();
-    toast.add({
-      title: 'Failed to send answer',
-      description: error.message || 'Please try again',
-      color: 'error',
-    });
-  } finally {
-    isSubmitting.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Question replies are disabled in demo mode.',
+    color: 'info',
+  });
 }
 
 const hasReplies = computed(() => {
@@ -82,85 +53,24 @@ const canDelete = computed(() => {
 });
 
 async function closeQuestion() {
-  if (!questionData.value) {
-    return;
-  }
-
-  isClosing.value = true;
-
-  try {
-    await $fetch(`/api/projects/${props.projectId}/questions/${props.questionId}/close`, {
-      method: 'POST',
-    });
-
-    const toast = useToast();
-    toast.add({
-      title: 'Question closed',
-      description: 'The question has been marked as closed',
-      color: 'success',
-    });
-
-    await refreshQuestion();
-    emit('answered');
-  } catch (error: any) {
-    const toast = useToast();
-    toast.add({
-      title: 'Failed to close question',
-      description: error.message || 'Please try again',
-      color: 'error',
-    });
-  } finally {
-    isClosing.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Closing questions is disabled in demo mode.',
+    color: 'info',
+  });
 }
 
 async function confirmDeleteQuestion() {
-  if (!questionData.value) {
-    return;
-  }
-
-  const instance = confirmDeleteModal.open({
-    title: 'Delete Question',
-    description: 'Are you sure you want to delete this question? This action cannot be undone.',
-    confirmButtonText: 'Delete Question',
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Deleting questions is disabled in demo mode.',
+    color: 'info',
   });
-
-  const confirmed = await instance.result;
-  if (!confirmed) {
-    return;
-  }
-
-  isDeleting.value = true;
-
-  try {
-    await $fetch(`/api/projects/${props.projectId}/questions/${props.questionId}`, {
-      method: 'DELETE',
-    });
-
-    const toast = useToast();
-    toast.add({
-      title: 'Question deleted',
-      description: 'The question has been permanently deleted',
-      color: 'success',
-    });
-
-    emit('answered');
-    emit('close');
-  } catch (error: any) {
-    const toast = useToast();
-    toast.add({
-      title: 'Failed to delete question',
-      description: error.message || 'Please try again',
-      color: 'error',
-    });
-  } finally {
-    isDeleting.value = false;
-  }
 }
 </script>
 
 <template>
-  <UDashboardPanel v-if="questionData.value" id="question-detail">
+  <UDashboardPanel v-if="questionData" id="question-detail">
     <template #header>
       <UDashboardNavbar :title="questionData.userName || questionData.userEmail">
         <template #leading>
@@ -280,7 +190,7 @@ async function confirmDeleteQuestion() {
               placeholder="Write your answer..."
               :rows="4"
               required
-              :disabled="isSubmitting"
+              disabled
               :ui="{ base: 'p-0 resize-none', root: 'w-full' }"
             />
           </UForm>

@@ -100,6 +100,7 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 const isLoading = ref(false);
+const authForm = useTemplateRef('authForm')
 
 const { fetch: refreshSession } = useUserSession();
 
@@ -107,6 +108,13 @@ const signupLink = computed(() => {
   const redirect = route.query.redirect as string;
   return redirect ? `/signup?redirect=${encodeURIComponent(redirect)}` : '/signup';
 });
+
+function handleUseAccount(credentials: { email: string; password: string }) {
+  console.log('credentials', credentials);
+
+  authForm.value.state.email = credentials.email;
+  authForm.value.state.password = credentials.password;
+}
 
 function onSubmit(payload: FormSubmitEvent<Schema>) {
   isLoading.value = true;
@@ -148,6 +156,7 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
     />
 
     <UAuthForm
+      ref="authForm"
       :fields="fields"
       :schema="schema"
       :providers="providers"
@@ -175,11 +184,12 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
         variant="soft"
         icon="i-lucide-user"
         @click="showDemoModal = true"
+        type="button"
       >
         View Demo Accounts
       </UButton>
     </div>
 
-    <DemoAccountsModal v-model:open="showDemoModal" />
+    <DemoAccountsModal v-model="showDemoModal" @use-account="handleUseAccount" />
   </div>
 </template>

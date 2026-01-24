@@ -12,35 +12,11 @@ async function submitFeedback() {
     return;
   }
 
-  loading.value = true;
-
-  try {
-    await $fetch('/api/feedback', {
-      method: 'POST',
-      body: {
-        message: message.value,
-        turnstileToken: turnstileToken.value,
-      },
-    });
-
-    toast.add({
-      title: 'Feedback sent',
-      description: 'Thank you for your feedback!',
-      color: 'success',
-    });
-
-    message.value = '';
-    turnstileToken.value = '';
-    modelValue.value = false;
-  } catch (error: any) {
-    toast.add({
-      title: 'Failed to send feedback',
-      description: error.message || 'Please try again',
-      color: 'error',
-    });
-  } finally {
-    loading.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Feedback disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 

@@ -51,30 +51,25 @@ const handleSwitchProject = async (projectId: string) => {
   await refreshNuxtData('api/dashboard');
 };
 
-const confirmDeleteProject = async () => {
-  if (!selectedProject.value) {
-    return;
-  }
-
-  const instance = confirmDeleteModal.open({
-    title: `Delete Project ${selectedProject.value.name}`,
-    description:
-      'All project data, conversations, and configurations will be permanently deleted, and the project will stop working in all sites where it is embedded.',
-    confirmButtonText: 'Delete Project',
+const confirmDeleteProject = () => {
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Project deletion is disabled in demo mode.',
+    color: 'info',
   });
-
-  const confirmed = await instance.result;
-  if (!confirmed) {
-    return;
-  }
-
-  await deleteProject(selectedProject.value.id);
-  await refreshNuxtData('api/projects');
-  await refreshNuxtData('api/dashboard');
 };
 
+const toast = useToast();
 const canCreateProject = computed(() => projects.value.length < 5);
 const hasSelectedProject = computed(() => Boolean(selectedProject.value));
+
+const handleCreateProject = () => {
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Project creation is disabled in demo mode.',
+    color: 'info',
+  });
+};
 
 const projectItems = computed(() =>
   projects.value.map((project) => ({
@@ -92,7 +87,9 @@ const actionItems = computed(() => [
         {
           label: 'Create project',
           icon: 'i-lucide-circle-plus',
-          to: '/configuration/basic?create=true',
+          onSelect() {
+            handleCreateProject();
+          },
         },
       ]
     : []),

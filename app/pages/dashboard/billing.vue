@@ -16,6 +16,7 @@ if (!page.value) {
 }
 
 const router = useRouter();
+const toast = useToast();
 const { data: dashboardData } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
 
 const isAdmin = computed(() => dashboardData.value?.currentProjectRole === 'admin');
@@ -105,6 +106,9 @@ const handleManagePlan = async (planIndex: number) => {
 };
 
 const mockPaymentLinks: Record<string, string> = {
+  free: '/dashboard',
+  pro: 'https://buy.stripe.com/test_pro',
+  advanced: 'https://buy.stripe.com/test_advanced',
   boilerplate: 'https://buy.stripe.com/test_28EbJ2800dNnfMK6ab9ws00?prefilled_promo_code=BOILERPLATE1',
   bundle: 'https://buy.stripe.com/test_00w7sM0xydNnfMKdCD9ws01?prefilled_promo_code=BUNDLE1',
 };
@@ -128,28 +132,8 @@ const handleSubscribe = async (planName: PlanName, planIndex: number) => {
     return;
   }
 
-  if (stripeCustomerId.value && (planName === currentPlan.value || stripeSubscriptionId.value)) {
-    await handleManagePlan(planIndex);
-    return;
-  }
-
-  try {
-    const response = await $fetch(`/api/projects/${projectId.value}/billing`, {
-      method: 'POST',
-      body: {
-        planName,
-      },
-    });
-
-    if (response.url) {
-      window.location.href = response.url;
-    }
-  } catch (error) {
-    console.error('Error creating checkout session:', error);
-  } finally {
-    isLoading.value = false;
-    selectedPlanIndex.value = null;
-  }
+  isLoading.value = false;
+  selectedPlanIndex.value = null;
 };
 
 useSeoMeta({

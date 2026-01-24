@@ -43,47 +43,14 @@ const state = ref<Schema>({
 const isLoading = ref(false);
 const fileUploadError = ref<FormErrorEvent | null>(null);
 
+const toast = useToast();
+
 async function uploadFiles(event: FormSubmitEvent<Schema>) {
-  fileUploadError.value = null;
-
-  if (event.data.files.length === 0) {
-    return;
-  }
-
-  try {
-    isLoading.value = true;
-
-    const processedFiles: File[] = [];
-    for (const file of event.data.files) {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      try {
-        await $fetch(`/api/projects/${props.projectId}/knowledge/file`, {
-          method: 'PUT',
-          body: formData,
-        });
-      } catch (error) {
-        handleError(error, `Failed to upload file ${file.name}`);
-        break;
-      }
-
-      processedFiles.push(file);
-    }
-
-    state.value.files = state.value.files.filter((file) => !processedFiles.includes(file));
-
-    await refreshNuxtData('api/dashboard');
-    await refreshNuxtData(`api/projects/${props.projectId}/knowledge`);
-
-    if (state.value.files.length === 0) {
-      showSuccess('Files uploaded successfully');
-    }
-  } catch (error) {
-    handleError(error, 'Failed to upload files');
-  } finally {
-    isLoading.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'File uploads are disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 
@@ -112,6 +79,7 @@ async function uploadFiles(event: FormSubmitEvent<Schema>) {
         layout="list"
         position="outside"
         class="w-full cursor-pointer"
+        disabled
         @change="fileUploadError = null"
       />
 

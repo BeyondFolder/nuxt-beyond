@@ -93,53 +93,14 @@ function formatDomains(domainsText: string): string[] {
     .filter((domain) => domain.length > 0);
 }
 
-async function saveConfiguration() {
-  if (!dashboardData.value?.currentProject?.id) {
-    return;
-  }
-
-  try {
-    isLoading.value = true;
-
-    const allowedDomains = formatDomains(state.value.allowedDomains);
-
-    state.value.allowedDomains = allowedDomains.join('\n');
-
-    const initialQuestions = [
-      state.value.initialQuestion1,
-      state.value.initialQuestion2,
-      state.value.initialQuestion3,
-    ].filter((q) => q && q.trim().length > 0);
-
-    await $fetch(`/api/projects/${dashboardData.value.currentProject.id}`, {
-      method: 'PATCH',
-      body: {
-        security: {
-          allowedDomains,
-        },
-        appearance: {
-          primaryColor: state.value.primaryColor,
-          position: state.value.position,
-          logo: state.value.logo,
-        },
-        chat: {
-          initialQuestions,
-          customPrompt: state.value.customPrompt,
-        },
-      },
-    });
-
-    await refreshDashboard();
-  } catch (error) {
-    handleError(error, 'Failed to save project configuration');
-  } finally {
-    isLoading.value = false;
-  }
-}
+const toast = useToast();
 
 async function onSubmit(_event: FormSubmitEvent<Schema>) {
-  await saveConfiguration();
-  showSuccess('Project configuration saved successfully');
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Editing project configuration is disabled',
+    color: 'info',
+  });
 }
 
 function handleAppearanceUpdate(data: any) {
@@ -314,7 +275,7 @@ async function copyIframeCode() {
       </div>
 
       <div class="space-y-6">
-        <ConfigurationCustomizationProjectPreview
+        <ConfigurationCustomizationWidgetPreview
           v-if="dashboardData.currentProject?.id"
           :project-id="dashboardData.currentProject.id"
           :primary-color="currentConfig.appearance?.primaryColor || ''"

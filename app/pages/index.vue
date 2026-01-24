@@ -20,226 +20,287 @@ useSeoMeta({
 
 <template>
   <div v-if="page" class="relative">
-    <UPageHero
-      :headline="page.hero.headline"
-      :description="page.description"
-      :links="page.hero.links"
-      :ui="{
-        container: 'pt-18 sm:pt-18 md:pt-18 lg:pt-24 pb-0 sm:pb-0 lg:pb-4 gap-y-6 sm:gap-y-6',
-        title: 'max-w-3xl mx-auto',
-        wrapper: '',
-        links: '',
-        footer: 'mt-6 sm:mt-6 lg:mt-6',
-      }"
-    >
-      <template #top>
-        <HeroBackground />
-      </template>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
+        <div class="absolute top-20 right-1/4 w-80 h-80 bg-info/15 rounded-full blur-[100px]" />
+      </div>
 
-      <template #title>
-        <MDC :value="page.title" unwrap="p" />
-      </template>
-    </UPageHero>
+      <UContainer class="pt-16 sm:pt-20 lg:pt-28 pb-12 sm:pb-16">
+        <div class="text-center max-w-4xl mx-auto mb-12">
+          <UBadge
+            v-if="page.hero.badge"
+            color="primary"
+            variant="subtle"
+            size="lg"
+            class="mb-6"
+          >
+            <UIcon name="i-lucide-sparkles" class="w-4 h-4 mr-1" />
+            {{ page.hero.badge }}
+          </UBadge>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <MDC :value="page.title" unwrap="p" />
+          </h1>
+
+          <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto">
+            {{ page.description }}
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <UButton
+              v-for="link in page.hero.links"
+              :key="link.label"
+              v-bind="link"
+            />
+          </div>
+        </div>
+
+        <LandingAiShowcase :items="page.aiShowcase.items" />
+      </UContainer>
+    </section>
+
+    <USeparator />
 
     <UPageSection
       id="problem"
-      :description="page.problem.description"
-      class="relative overflow-hidden"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
     >
       <template #title>
         <MDC :value="page.problem.title" />
       </template>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <template #description>
+        {{ page.problem.description }}
+      </template>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
         <div
           v-for="(item, index) in page.problem.items"
           :key="index"
-          class="p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
+          class="group relative p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-primary/50 transition-colors"
         >
-          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-            {{ item.hours }}
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-error/10 dark:bg-error/20 flex items-center justify-center shrink-0">
+              <UIcon
+                :name="item.icon || 'i-lucide-clock'"
+                class="w-5 h-5 text-error"
+              />
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-error mb-1">
+                {{ item.hours }} hrs
+              </div>
+              <h3 class="font-semibold mb-1">
+                {{ item.task }}
+              </h3>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                {{ item.description }}
+              </p>
+            </div>
           </div>
-          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
-            {{ item.task }}
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 dark:bg-primary/20 text-primary font-semibold">
+          <UIcon name="i-lucide-calculator" class="w-5 h-5" />
+          <span>= 215+ hours saved with NuxtBeyond</span>
+        </div>
+      </div>
+    </UPageSection>
+
+    <USeparator />
+
+    <UPageSection
+      id="ai-features"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
+    >
+      <template #title>
+        <MDC :value="page.aiFeatures.title" />
+      </template>
+
+      <template #description>
+        {{ page.aiFeatures.description }}
+      </template>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <LandingAiFeatureCard
+          v-for="category in page.aiFeatures.categories"
+          :key="category.title"
+          :category="category"
+        />
+      </div>
+    </UPageSection>
+
+    <USeparator />
+
+    <UPageSection
+      id="features"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
+    >
+      <template #title>
+        <MDC :value="page.fullStackFeatures.title" />
+      </template>
+
+      <template #description>
+        {{ page.fullStackFeatures.description }}
+      </template>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div
+          v-for="feature in page.fullStackFeatures.features"
+          :key="feature.title"
+          class="p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900"
+        >
+          <div class="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+            <UIcon :name="feature.icon" class="w-6 h-6 text-primary" />
+          </div>
+          <h3 class="text-lg font-semibold mb-2">
+            {{ feature.title }}
           </h3>
           <p class="text-sm text-neutral-600 dark:text-neutral-400">
-            {{ item.description }}
+            {{ feature.description }}
           </p>
         </div>
       </div>
     </UPageSection>
 
-    <USeparator :ui="{ border: 'border-primary/50' }" />
+    <USeparator />
 
     <UPageSection
       id="ai-agents"
-      :description="page.aiAgents.description"
-      class="relative overflow-hidden"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
     >
       <template #title>
         <MDC :value="page.aiAgents.title" />
       </template>
 
-      <div class="flex flex-wrap justify-center gap-8 mt-8">
-        <div
-          v-for="agent in page.aiAgents.agents"
-          :key="agent.name"
-          class="flex flex-col items-center gap-3 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 min-w-[140px]"
-        >
-          <UIcon
-            :name="agent.icon"
-            class="w-12 h-12 text-neutral-700 dark:text-neutral-300"
-          />
-          <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center">
-            {{ agent.name }}
-          </span>
+      <template #description>
+        {{ page.aiAgents.description }}
+      </template>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-950">
+            <div class="flex items-center gap-2 px-4 py-3 bg-neutral-900 border-b border-neutral-800">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-error/80" />
+                <div class="w-3 h-3 rounded-full bg-warning/80" />
+                <div class="w-3 h-3 rounded-full bg-success/80" />
+              </div>
+              <span class="text-xs text-neutral-500 ml-2">CLAUDE.md</span>
+            </div>
+            <div class="p-4 font-mono text-sm">
+              <pre class="text-neutral-300 whitespace-pre-wrap">{{ page.aiAgents.codeSnippet }}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              v-for="agent in page.aiAgents.agents"
+              :key="agent.name"
+              class="flex flex-col items-center gap-3 p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-primary/50 transition-colors"
+            >
+              <UIcon
+                :name="agent.icon"
+                class="w-10 h-10 text-neutral-700 dark:text-neutral-300"
+              />
+              <span class="text-sm font-medium text-center">
+                {{ agent.name }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </UPageSection>
 
-    <USeparator :ui="{ border: 'border-primary/50' }" />
-
-    <UPageSection
-      :description="page.section.description"
-      :features="page.section.features"
-      orientation="horizontal"
-      :ui="{
-        container: 'lg:px-0 2xl:px-20 mx-0 max-w-none md:mr-10',
-        features: 'gap-0',
-      }"
-      reverse
-    >
-      <template #title>
-        <MDC :value="page.section.title" class="sm:*:leading-11" />
-      </template>
-      <img
-        :src="page.section.images.desktop"
-        :alt="page.section.title"
-        class="hidden lg:block 2xl:hidden w-full max-w-4xl rounded-lg shadow-2xl"
-      >
-      <img
-        :src="page.section.images.mobile"
-        :alt="page.section.title"
-        class="block lg:hidden 2xl:block w-full 2xl:max-w-4xl rounded-lg shadow-xl"
-      >
-    </UPageSection>
-
-    <USeparator :ui="{ border: 'border-primary/50' }" />
-
-    <UPageSection
-      id="features"
-      :description="page.features.description"
-      :features="page.features.features"
-      :ui="{
-        title: 'text-left @container relative flex',
-        description: 'text-left',
-      }"
-      class="relative overflow-hidden"
-      :links="page.cta.links"
-      data-fast-scroll="scroll_to_features"
-    >
-      <div class="absolute rounded-full -left-10 top-10 size-[300px] z-10 bg-secondary opacity-30 blur-[200px]" />
-      <div class="absolute rounded-full -right-10 -bottom-10 size-[300px] z-10 bg-secondary opacity-30 blur-[200px]" />
-      <template #title>
-        <MDC :value="page.features.title" class="*:leading-9" />
-        <div class="hidden @min-[920px]:block">
-          <img
-            src="/images/homepage/line-2.svg"
-            alt="Line to the right"
-            class="absolute top-0 right-0 size-full transform scale-95 translate-x-[70%]"
-          >
-        </div>
-      </template>
-    </UPageSection>
-
-    <USeparator :ui="{ border: 'border-primary/30' }" />
-
-    <UPageSection
-      id="steps"
-      :description="page.steps.description"
-      class="relative overflow-hidden"
-      data-fast-scroll="scroll_to_steps"
-    >
-      <template #headline>
-        <img
-          src="/images/homepage/line-3.svg"
-          alt="Line center to the bottom"
-          class="absolute -top-10 sm:top-0 right-1/2 h-24"
-        >
-      </template>
-      <template #title>
-        <MDC :value="page.steps.title" />
-      </template>
-
-      <template #features>
-        <UPageCard
-          v-for="(step, index) in page.steps.items"
-          :key="index"
-          class="group"
-          :ui="{ container: 'p-4 sm:p-4', title: 'flex items-center gap-1' }"
-        >
-          <img v-if="step.image" :src="step.image" :alt="step.title" class="size-full">
-
-          <div class="flex flex-col gap-2">
-            <span class="text-lg font-semibold">
-              {{ step.title }}
-            </span>
-            <span class="text-sm text-muted">
-              {{ step.description }}
-            </span>
-          </div>
-        </UPageCard>
-      </template>
-    </UPageSection>
-
-    <USeparator :ui="{ border: 'border-primary/30' }" />
+    <USeparator />
 
     <UPageSection
       id="tech-stack"
-      :description="page.techStack.description"
-      class="relative overflow-hidden"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
     >
       <template #title>
         <MDC :value="page.techStack.title" />
       </template>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-8">
+      <template #description>
+        {{ page.techStack.description }}
+      </template>
+
+      <div class="flex flex-wrap justify-center gap-4 mt-10 max-w-4xl mx-auto">
         <div
           v-for="tech in page.techStack.technologies"
           :key="tech.name"
-          class="flex flex-col items-center gap-3 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
+          class="flex items-center gap-3 px-5 py-3 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-primary/50 transition-colors"
         >
           <UIcon
             :name="tech.icon"
-            class="w-12 h-12"
+            class="w-5 h-5"
             :class="tech.color"
           />
-          <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center">
+          <span class="text-sm font-medium">
             {{ tech.name }}
           </span>
         </div>
       </div>
     </UPageSection>
 
+    <USeparator />
+
+    <UPageSection
+      id="steps"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
+    >
+      <template #title>
+        <MDC :value="page.steps.title" />
+      </template>
+
+      <template #description>
+        {{ page.steps.description }}
+      </template>
+
+      <div class="space-y-8 mt-10">
+        <LandingStepCard
+          v-for="item in page.steps.items"
+          :key="item.step"
+          :step="item.step"
+          :title="item.title"
+          :description="item.description"
+          :code="item.code"
+        />
+      </div>
+    </UPageSection>
+
+    <USeparator />
+
     <UPageSection
       id="pricing"
-      class="overflow-hidden"
-      :title="page.pricing.title"
-      :description="page.pricing.description"
-      :plans="page.pricing.plans"
-      :ui="{ title: 'text-left @container relative', description: 'text-left', container: 'max-w-7xl' }"
-      data-fast-scroll="scroll_to_pricing"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
     >
       <template #title>
         <MDC :value="page.pricing.title" />
+      </template>
 
-        <div class="hidden @min-[1120px]:block">
-          <img
-            src="/images/homepage/line-4.svg"
-            alt="Line to the right"
-            class="absolute top-0 right-0 size-full transform translate-x-[60%]"
-          >
-        </div>
+      <template #description>
+        {{ page.pricing.description }}
       </template>
 
       <PricingProgress
@@ -248,9 +309,10 @@ useSeoMeta({
         :sales-count="0"
         :price-increment="10"
         :sales-per-increment="5"
+        class="mt-10"
       />
 
-      <UPricingPlans scale compact>
+      <UPricingPlans scale compact class="mt-8">
         <UPricingPlan
           v-for="(plan, index) in page.pricing.plans"
           :key="index"
@@ -276,20 +338,23 @@ useSeoMeta({
       </UPricingPlans>
     </UPageSection>
 
+    <USeparator />
+
     <UPageSection
       id="testimonials"
-      :title="page.testimonials.title"
-      :description="page.testimonials.description"
-      :items="page.testimonials.items"
+      :ui="{
+        container: 'py-16 sm:py-20',
+      }"
     >
-      <template #headline>
-        <img src="/images/homepage/line-5.svg" class="absolute -top-10 sm:top-0 right-1/2 h-24" alt="Small line center towards down">
-      </template>
       <template #title>
         <MDC :value="page.testimonials.title" />
       </template>
 
-      <UContainer>
+      <template #description>
+        {{ page.testimonials.description }}
+      </template>
+
+      <UContainer class="mt-10">
         <UPageColumns class="xl:columns-3">
           <UPageCard
             v-for="(testimonial, index) in page.testimonials.items"
@@ -299,31 +364,32 @@ useSeoMeta({
             :ui="{ description: 'before:content-[open-quote] after:content-[close-quote]' }"
           >
             <template #footer>
-              <UUser v-bind="testimonial.user" size="xl" />
+              <UUser v-bind="testimonial.user" size="lg" />
             </template>
           </UPageCard>
         </UPageColumns>
       </UContainer>
     </UPageSection>
+
     <USeparator />
 
     <UPageSection
       id="faqs"
-      :description="page.faqs.description"
       :ui="{
-        container: 'pt-8 sm:pt-8 md:pt-8 lg:pt-12 pb-12 sm:pb-12 lg:pb-20',
+        container: 'py-16 sm:py-20',
       }"
-      data-fast-scroll="scroll_to_faqs"
     >
       <template #title>
-        <MDC :value="page.faqs.title" class="sm:*:leading-11" />
+        {{ page.faqs.title }}
+      </template>
+
+      <template #description>
+        {{ page.faqs.description }}
       </template>
 
       <UAccordion
         :items="page.faqs.items"
-        :ui="{
-          item: '',
-        }"
+        class="mt-10 max-w-3xl mx-auto"
       >
         <template #body="{ item }">
           <MDC :value="item.content" unwrap="p" />
@@ -333,20 +399,29 @@ useSeoMeta({
 
     <USeparator />
 
-    <UPageCTA
-      v-bind="page.cta"
-      variant="naked"
-      class="overflow-hidden @container"
-      :ui="{
-        container: 'relative',
-      }"
-      data-fast-scroll="scroll_to_cta"
-    >
-      <template #title>
-        <MDC :value="page.cta.title" />
-      </template>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-primary/15 rounded-full blur-[128px]" />
+        <div class="absolute bottom-20 right-1/3 w-80 h-80 bg-info/10 rounded-full blur-[100px]" />
+      </div>
 
-      <HeroBackground />
-    </UPageCTA>
+      <UContainer class="py-20 sm:py-28 text-center">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto">
+          <MDC :value="page.cta.title" unwrap="p" />
+        </h2>
+
+        <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto">
+          {{ page.cta.description }}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <UButton
+            v-for="link in page.cta.links"
+            :key="link.label"
+            v-bind="link"
+          />
+        </div>
+      </UContainer>
+    </section>
   </div>
 </template>

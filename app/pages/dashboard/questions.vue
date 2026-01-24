@@ -159,51 +159,14 @@ const bulkActionType = computed(() => {
 });
 
 const isBulkActionLoading = ref(false);
+const toast = useToast();
 
 async function handleBulkAction() {
-  if (!bulkActionType.value || !projectId.value) {
-    return;
-  }
-
-  isBulkActionLoading.value = true;
-
-  try {
-    const addToRag = bulkActionType.value === 'add_to_kb';
-    const questionIds = Array.from(selectedQuestionIds.value);
-
-    await $fetch(`/api/projects/${projectId.value}/questions/rag`, {
-      method: 'PUT',
-      body: {
-        questionIds,
-        addToRag,
-      },
-    });
-
-    await $fetch(`/api/projects/${projectId.value}/knowledge/sync`, {
-      method: 'POST',
-    });
-
-    await refreshNuxtData('api/dashboard');
-
-    const toast = useToast();
-    toast.add({
-      title: addToRag ? 'Added to knowledge base' : 'Removed from knowledge base',
-      description: `${selectedQuestions.value.length} question${selectedQuestions.value.length > 1 ? 's' : ''} ${addToRag ? 'added to' : 'removed from'} knowledge base`,
-      color: 'success',
-    });
-
-    selectedQuestionIds.value.clear();
-    await refreshQuestions();
-  } catch (error: any) {
-    const toast = useToast();
-    toast.add({
-      title: 'Failed to update questions',
-      description: error.message || 'Please try again',
-      color: 'error',
-    });
-  } finally {
-    isBulkActionLoading.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'Questions management is disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 

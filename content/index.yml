@@ -1,43 +1,174 @@
 seo:
-  title: NuxtBeyond - The AI-First Nuxt 4 Boilerplate
-  description: Ship AI-powered SaaS products in days, not months. Full-stack Nuxt 4 boilerplate with AI chat, RAG, authentication, Stripe billing, and Cloudflare deployment.
-title: Ship AI-powered apps [in days]{.text-primary}, not months
-description: The complete Nuxt 4 boilerplate for building AI-first SaaS products. Authentication, payments, AI chat with RAG, embeddable widgets, and Cloudflare deployment - all pre-configured.
+  title: NuxtBeyond - AI-First Nuxt 4 Boilerplate for SaaS
+  description: Build AI-powered SaaS products in days. Full-stack Nuxt 4 boilerplate with RAG, Cloudflare AI Search, authentication, Stripe billing, and edge deployment.
+title: Build [AI-powered]{.text-primary} SaaS products in days
+description: The complete Nuxt 4 boilerplate with RAG, Cloudflare AI Search, streaming responses, image & video generation—plus auth, payments, and edge deployment. All pre-configured.
 hero:
+  badge: AI-First Architecture
+  headline: Stop rebuilding AI infrastructure from scratch
   links:
     - label: Get NuxtBeyond
       variant: solid
       color: primary
+      size: xl
       to: '#pricing'
-      icon: i-lucide-arrow-right
-    - label: Buy Now
+      icon: i-lucide-zap
+      trailing: true
+    - label: Try Demo
       variant: outline
       color: neutral
-      to: '#pricing'
-      icon: i-lucide-shopping-cart
-  headline: Save 200+ hours of setup
-problem:
-  title: Stop wasting [200+ hours]{.text-primary} on boilerplate
-  description: Building AI-powered SaaS shouldn't mean rebuilding the same features over and over
+      size: xl
+      to: '/login'
+      icon: i-lucide-arrow-right
+aiShowcase:
   items:
-    - hours: 40+
-      task: Authentication & Authorization
-      description: OAuth providers, email verification, password reset, session management
-    - hours: 60+
-      task: AI Integration & RAG
-      description: Vector databases, embeddings, streaming responses, knowledge base search
-    - hours: 50+
-      task: Payment Processing
-      description: Stripe setup, webhooks, subscription management, plan gating
-    - hours: 30+
-      task: Multi-tenancy & Widgets
-      description: Project isolation, embeddable widgets, domain validation
-    - hours: 20+
-      task: Deployment & Infrastructure
-      description: Database setup, storage, KV, environment config
+    - id: rag
+      title: RAG & AI Search
+      description: Semantic search over your knowledge base with Cloudflare AI Search (AutoRAG)
+      icon: i-lucide-brain
+      color: text-primary
+    - id: streaming
+      title: Streaming Responses
+      description: Real-time AI responses with Vercel AI SDK v6 and tool calling
+      icon: i-lucide-message-square-text
+      color: text-info
+    - id: images
+      title: Image Generation
+      description: Generate images from text prompts with OpenAI DALL-E 3
+      icon: i-lucide-image
+      color: text-warning
+    - id: video
+      title: Video Generation
+      description: Create videos from text and images with OpenAI Sora
+      icon: i-lucide-film
+      color: text-error
+    - id: widget
+      title: Embeddable Widget
+      description: One-line embed script to add AI chat to any website
+      icon: i-lucide-code
+      color: text-success
+problem:
+  title: Stop wasting [weeks]{.text-primary} on boilerplate
+  description: Building AI features from scratch means reinventing the wheel. Every. Single. Time.
+  items:
+    - hours: '60+'
+      task: AI & RAG Setup
+      description: Vector databases, embeddings, semantic search, streaming responses, prompt engineering
+      icon: i-lucide-brain
+    - hours: '40+'
+      task: Authentication
+      description: OAuth providers, email verification, password reset, session management, rate limiting
+      icon: i-lucide-lock
+    - hours: '50+'
+      task: Payment Integration
+      description: Stripe checkout, webhooks, subscription management, plan gating, customer portal
+      icon: i-lucide-credit-card
+    - hours: '30+'
+      task: Multi-tenancy
+      description: Project isolation, team management, role-based access, invitations
+      icon: i-lucide-users
+    - hours: '20+'
+      task: Infrastructure
+      description: Database setup, file storage, edge deployment, environment config
+      icon: i-lucide-server
+    - hours: '15+'
+      task: Email System
+      description: Transactional emails, templates, verification flows, notifications
+      icon: i-lucide-mail
+aiFeatures:
+  title: '[AI-First]{.text-primary} by Design'
+  description: Not just another CRUD boilerplate with AI slapped on. Built from the ground up for AI-powered applications.
+  categories:
+    - title: RAG & Knowledge Base
+      description: Semantic search over documents with Cloudflare AI Search
+      icon: i-lucide-database
+      color: primary
+      features:
+        - Upload PDF, Word, CSV, and text files
+        - Automatic document indexing with AutoRAG
+        - Semantic similarity search
+        - Website content import via Cloudflare Browser
+        - Plan-based storage limits
+    - title: Streaming AI Chat
+      description: Real-time responses with Vercel AI SDK v6
+      icon: i-lucide-message-square
+      color: info
+      features:
+        - OpenAI GPT via Cloudflare AI Gateway
+        - Server-sent events streaming
+        - Tool calling and function execution
+        - Custom system prompts per project
+        - Chat history persistence
+    - title: Image Generation
+      description: Text-to-image with DALL-E 3 integration
+      icon: i-lucide-image-plus
+      color: warning
+      features:
+        - Generate images from text prompts
+        - Multiple size and quality options
+        - Integrated into chat interface
+        - R2 storage for generated images
+    - title: Video Generation
+      description: Text-to-video with OpenAI Sora
+      icon: i-lucide-film
+      color: error
+      features:
+        - Generate videos from descriptions
+        - Image-to-video conversion
+        - Multiple resolution options
+        - Async generation with status tracking
+    - title: Embeddable Widget
+      description: Add AI chat to any website with one line of code
+      icon: i-lucide-code-2
+      color: success
+      features:
+        - Customizable colors and positioning
+        - Domain validation for security
+        - Custom logo support
+        - Initial suggested questions
+        - Human support escalation
+    - title: Security & Protection
+      description: Built-in safeguards against misuse
+      icon: i-lucide-shield
+      color: neutral
+      features:
+        - Prompt injection protection
+        - AI response sanitization
+        - Rate limiting per IP
+        - Cloudflare Turnstile CAPTCHA
+        - Domain allowlisting
+fullStackFeatures:
+  title: '[Full-Stack]{.text-primary} Features Included'
+  description: Everything you need beyond AI. Authentication, payments, multi-tenancy—production-ready.
+  features:
+    - title: Authentication
+      description: Google OAuth, email/password, verification, password reset, and session management with nuxt-auth-utils.
+      icon: i-lucide-fingerprint
+    - title: Stripe Billing
+      description: Subscriptions, checkout sessions, customer portal, webhooks, tax calculation, and plan-based feature gating.
+      icon: i-lucide-credit-card
+    - title: Multi-Tenancy
+      description: Project-based isolation, team invitations, role-based access control (admin/member), and member management.
+      icon: i-lucide-building-2
+    - title: Email System
+      description: Transactional emails via Resend—verification, password reset, invitations, support notifications.
+      icon: i-lucide-send
+    - title: Blog & Content
+      description: Nuxt Content integration with markdown support, SEO optimization, and landing page YAML configuration.
+      icon: i-lucide-file-text
+    - title: Support Escalation
+      description: Human handoff from AI chat, ticket management, email notifications, and threaded replies.
+      icon: i-lucide-headphones
 aiAgents:
   title: Built for [AI Coding Agents]{.text-primary}
-  description: Includes CLAUDE.md for seamless integration with your AI assistant
+  description: Includes CLAUDE.md with comprehensive project documentation. Your AI assistant understands the entire codebase.
+  codeSnippet: |
+    # CLAUDE.md included
+    - Project structure & architecture
+    - Database schema documentation
+    - API endpoint references
+    - Customization guides
+    - Tech stack details
   agents:
     - name: Claude Code
       icon: i-simple-icons-anthropic
@@ -47,110 +178,78 @@ aiAgents:
       icon: i-lucide-wind
     - name: GitHub Copilot
       icon: i-simple-icons-github
-section:
-  title: Everything you need to [ship fast]{.text-primary}
-  description: Stop rebuilding authentication, payments, and AI integrations from scratch.
-  images:
-    mobile: /images/homepage/demo2.png
-    desktop: /images/homepage/demo2.png
-  features:
-    - title: AI-First Architecture
-      description: Built-in AI chat with RAG using Cloudflare AutoRAG and Vercel AI SDK v6.
-      class: border-l border-primary pl-4
-    - title: Production-Ready Auth
-      description: Google OAuth and credentials auth with email verification, password reset, and session management.
-      class: border-l border-default pt-4 pl-4
-    - title: Stripe Subscriptions
-      description: Complete billing flow with webhooks, customer portal, and plan management.
-      class: border-l border-default pt-4 pl-4
-features:
-  title: '[Full-Stack]{.text-primary} Features'
-  description: Everything pre-configured so you can focus on your unique features.
-  features:
-    - title: AI Chat with RAG
-      description: Cloudflare AutoRAG for knowledge base search, Vercel AI SDK v6 for streaming responses, and tool calling support.
-      icon: i-lucide-message-circle
-      ui:
-        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
-    - title: Authentication
-      description: Google OAuth, email/password login, email verification, password reset, and session management with nuxt-auth-utils.
-      icon: i-lucide-lock
-      ui:
-        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
-    - title: Stripe Billing
-      description: Subscription management, checkout sessions, customer portal, webhooks, and plan-based feature gating.
-      icon: i-lucide-credit-card
-      ui:
-        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
-    - title: Embeddable Widget
-      description: Iframe-based chat widget with customizable colors, position, and branding. One-line embed script.
-      icon: i-lucide-code
-      ui:
-        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
-    - title: NuxtHub + Cloudflare
-      description: D1 database, R2 blob storage, KV store, and zero-config deployment to Cloudflare Workers.
-      icon: i-lucide-cloud
-      ui:
-        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
-    - title: Nuxt UI v4 + Dark Mode
-      description: Beautiful, accessible components with full dark mode support. Semantic color system and customizable theming.
-      icon: i-lucide-palette
-      ui:
-        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
 techStack:
   title: Modern [Tech Stack]{.text-primary}
-  description: Built with the best tools for performance and developer experience
+  description: Built with the best tools for performance, developer experience, and edge deployment.
   technologies:
     - name: Nuxt 4
       icon: i-simple-icons-nuxtdotjs
-      color: text-success-500
+      color: text-success
     - name: Vue 3
       icon: i-simple-icons-vuedotjs
-      color: text-success-500
+      color: text-success
     - name: TypeScript
       icon: i-simple-icons-typescript
-      color: text-info-500
+      color: text-info
+    - name: Nuxt UI v4
+      icon: i-simple-icons-nuxtdotjs
+      color: text-success
     - name: Tailwind CSS
       icon: i-simple-icons-tailwindcss
-      color: text-info-400
-    - name: Cloudflare
-      icon: i-simple-icons-cloudflare
-      color: text-warning-500
-    - name: Stripe
-      icon: i-simple-icons-stripe
-      color: text-primary-500
+      color: text-info
     - name: Drizzle ORM
       icon: i-lucide-database
-      color: text-success-600
+      color: text-warning
+    - name: Cloudflare
+      icon: i-simple-icons-cloudflare
+      color: text-warning
     - name: Vercel AI SDK
       icon: i-lucide-sparkles
-      color: text-neutral-700 dark:text-neutral-300
+      color: text-primary
+    - name: Stripe
+      icon: i-simple-icons-stripe
+      color: text-primary
+    - name: Resend
+      icon: i-lucide-mail
+      color: text-neutral
 steps:
   title: From Clone to [Production]{.text-primary} in Minutes
-  description: Skip months of boilerplate setup. Focus on what makes your product unique.
+  description: Three steps. That's it. No complex setup, no configuration hell.
   items:
-    - title: 1. Clone & Configure
-      description: Clone the repo, set up environment variables, and run your first deployment.
-      image: /images/homepage/knowledge.svg
-    - title: 2. Customize
-      description: Adjust branding, configure plans, and add your unique features on top.
-      image: /images/homepage/customize.svg
-    - title: 3. Ship
-      description: Deploy to Cloudflare with one command. Your AI-powered SaaS is live.
-      image: /images/homepage/live.svg
+    - step: '01'
+      title: Clone & Configure
+      description: Clone the repo, copy .env.example, add your API keys.
+      code: |
+        git clone <repo-url>
+        cp .env.example .env
+        npm install
+    - step: '02'
+      title: Customize
+      description: Adjust branding, configure plans, modify AI prompts for your use case.
+      code: |
+        # Edit shared/constants.ts for plans
+        # Edit content/index.yml for landing page
+        # Add your Stripe products
+    - step: '03'
+      title: Deploy
+      description: Push to GitHub, connect to NuxtHub, deploy to Cloudflare in one click.
+      code: |
+        npx nuxthub deploy
+        # That's it. You're live.
 pricing:
-  title: '[One-time]{.text-primary} purchase, lifetime access'
-  description: No subscriptions. Buy once, own forever. Build unlimited projects.
+  title: '[One-time]{.text-primary} purchase. Lifetime access.'
+  description: No subscriptions. No recurring fees. Pay once, build unlimited projects forever.
   plans:
     - title: NuxtBeyond Boilerplate
       planName: boilerplate
-      description: Complete Nuxt 4 boilerplate for AI-powered SaaS
+      description: Complete AI-first Nuxt 4 boilerplate
       price: $249
       discount: $59
       billing_cycle: one-time
       features:
         - Full source code access
         - AI Chat with RAG (Cloudflare AI Search)
+        - Image & Video Generation (DALL-E 3, Sora)
         - Authentication (Google OAuth + Credentials)
         - Stripe Billing with Subscriptions
         - Embeddable Widget System
@@ -159,19 +258,21 @@ pricing:
         - Email System (Resend)
         - Human Support Escalation
         - Blog System (Nuxt Content)
-        - Security Features
-        - Lifetime Updates
+        - Security Features (Turnstile, Rate Limiting)
         - CLAUDE.md AI Assistant Integration
-        - Discord Community
+        - Lifetime Updates
+        - Discord Community Access
       button:
         label: Get NuxtBeyond
         variant: solid
+        color: primary
+        size: xl
         to: 'https://buy.stripe.com/bJe6oIeq0dJ72iu9dwdZ602?prefilled_promo_code=BOILERPLATE1'
       highlight: true
-      badge: Most Popular
+      badge: Launch Price
     - title: Boilerplate + Distribution Framework
       planName: bundle
-      description: Everything + Claude Code Distribution Framework
+      description: Everything plus Claude Code Distribution Framework
       price: $399
       discount: $89
       billing_cycle: one-time
@@ -185,49 +286,56 @@ pricing:
       button:
         label: Coming Soon
         variant: outline
+        color: neutral
+        size: xl
         to: 'https://buy.stripe.com/bJe8wQchS34t4qC61kdZ601?prefilled_promo_code=BUNDLE1'
         disabled: true
       comingSoon: true
 testimonials:
   title: Built by [developers]{.text-primary}, for developers
-  description: Join the growing community of developers shipping AI-powered products.
+  description: Join the community of developers shipping AI-powered products faster.
   items:
-    - quote: "Your testimonial could be here"
+    - quote: Your testimonial could be here. Be the first to ship with NuxtBeyond!
       user:
-        name: Rares
-        description: Creator of NuxtBeyond
+        name: Your Name
+        description: Early Adopter
         to: '#'
 faqs:
   title: Frequently Asked Questions
-  description: ''
+  description: Everything you need to know about NuxtBeyond.
   items:
     - label: What's included in the boilerplate?
-      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, authentication (Google OAuth + credentials), Stripe subscriptions, embeddable widget, Nuxt UI v4, dark mode, and Cloudflare deployment.'
+      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, image generation (DALL-E 3), video generation (Sora), authentication (Google OAuth + credentials), Stripe subscriptions, embeddable widget, multi-tenancy, Nuxt UI v4, dark mode, and zero-config Cloudflare deployment.'
       icon: i-lucide-package
+    - label: What AI features are included?
+      content: 'RAG (Retrieval-Augmented Generation) with Cloudflare AI Search for semantic document search, streaming AI responses via Vercel AI SDK v6, tool calling, image generation with DALL-E 3, video generation with OpenAI Sora, custom system prompts, and prompt injection protection.'
+      icon: i-lucide-sparkles
     - label: What tech stack does it use?
-      content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK, Stripe, and nuxt-auth-utils.'
+      content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK v6, OpenAI (via Cloudflare AI Gateway), Stripe, Resend, and nuxt-auth-utils.'
       icon: i-lucide-layers
     - label: Can I use this for commercial projects?
-      content: 'Yes! The boilerplate includes a license that allows unlimited commercial projects. Build and sell as many products as you want.'
+      content: 'Yes! Your license allows unlimited commercial projects. Build and sell as many AI-powered products as you want.'
       icon: i-lucide-briefcase
-    - label: How is the AI integration set up?
-      content: 'Uses Vercel AI SDK v6 for streaming responses, Cloudflare AutoRAG for RAG/knowledge base search, and Workers AI for model inference. Supports tool calling and human handoff.'
-      icon: i-lucide-brain
-    - label: Does it include authentication?
-      content: 'Yes! Full authentication with Google OAuth, email/password, email verification, password reset, and session management using nuxt-auth-utils.'
-      icon: i-lucide-lock
     - label: How does deployment work?
-      content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack including database, storage, and KV.'
+      content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack—database (D1), file storage (R2), KV store, and Workers. Edge-native performance worldwide.'
       icon: i-lucide-rocket
     - label: What support is included?
-      content: 'Pro includes Discord community access and priority email support. Enterprise includes dedicated support and custom integrations.'
+      content: 'Discord community access for questions and discussions. The boilerplate includes comprehensive documentation in CLAUDE.md, designed for AI coding assistants to understand and help you customize.'
       icon: i-lucide-headphones
+    - label: Is there a refund policy?
+      content: 'Due to the digital nature of the product and immediate source code access, all sales are final. We encourage you to review the demo and documentation before purchasing.'
+      icon: i-lucide-receipt
+    - label: How do I receive updates?
+      content: 'Lifetime updates are included. You''ll receive access to the GitHub repository where all updates are pushed. Major updates are announced in the Discord community.'
+      icon: i-lucide-refresh-cw
 cta:
-  title: Stop rebuilding the same features. [Ship your AI product today.]{.text-primary}
-  description: Authentication, payments, AI chat, RAG, embeddable widgets - all pre-built. Focus on what makes your product unique.
+  title: Stop building boilerplate. [Start shipping products.]{.text-primary}
+  description: Authentication, payments, AI chat, RAG, embeddable widgets—all pre-built. Focus on what makes your product unique.
   links:
     - label: Get NuxtBeyond Now
       variant: solid
-      color: secondary
+      color: primary
+      size: xl
       to: '#pricing'
-      icon: i-lucide-arrow-right
+      icon: i-lucide-zap
+      trailing: true

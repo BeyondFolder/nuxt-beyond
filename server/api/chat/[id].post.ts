@@ -10,8 +10,22 @@ import {
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
 import { createWorkersAI } from 'workers-ai-provider';
+import { DEMO_CONFIG } from '#shared/demo';
+import { kv } from 'hub:kv'
 
 export default defineEventHandler(async (event) => {
+  const today = new Date().toDateString();
+  const demoUserChatsKey = `demo:user-chats:${today}`;
+
+  const chatCount = await kv.get<number>(demoUserChatsKey) || 0;
+
+  if (chatCount >= DEMO_CONFIG.maxUserChatsPerDay) {
+    throw createError({
+      statusCode: 429,
+      statusMessage: `Demo chat limit reached (${DEMO_CONFIG.maxUserChatsPerDay} per day). This limit helps us manage demo costs. Get your own NuxtBeyond instance for unlimited chats!`,
+    });
+  }
+
   const { user } = await requireUserSession(event);
   const { id } = getRouterParams(event);
 
@@ -112,6 +126,10 @@ export default defineEventHandler(async (event) => {
         }))
       );
     },
+  });
+
+  await kv.set(demoUserChatsKey, chatCount + 1, {
+    ttl: 60 * 60 * 24,
   });
 
   return createUIMessageStreamResponse({

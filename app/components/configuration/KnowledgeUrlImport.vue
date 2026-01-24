@@ -14,7 +14,7 @@ const schemaUrl = z.object({
 
 type Schema = z.output<typeof schemaUrl>;
 
-const { handleError, showSuccess } = useErrorHandling();
+const toast = useToast();
 
 const stateUrl = ref<Schema>({
   url: '',
@@ -23,30 +23,11 @@ const stateUrl = ref<Schema>({
 const isLoadingUrl = ref(false);
 
 async function uploadUrl(_event: FormSubmitEvent<Schema>) {
-  if (!stateUrl.value.url?.trim()) {
-    return;
-  }
-
-  try {
-    isLoadingUrl.value = true;
-
-    await $fetch(`/api/projects/${props.projectId}/knowledge/url`, {
-      method: 'PUT',
-      body: {
-        url: stateUrl.value.url.trim(),
-      },
-    });
-
-    stateUrl.value.url = '';
-
-    await refreshNuxtData('api/dashboard');
-    await refreshNuxtData(`api/projects/${props.projectId}/knowledge`);
-    showSuccess('Content imported successfully');
-  } catch (error: any) {
-    handleError(error, 'Failed to import content from URL');
-  } finally {
-    isLoadingUrl.value = false;
-  }
+  toast.add({
+    title: 'Demo Mode',
+    description: 'URL imports are disabled in demo mode.',
+    color: 'info',
+  });
 }
 </script>
 
@@ -65,7 +46,7 @@ async function uploadUrl(_event: FormSubmitEvent<Schema>) {
       <UFormField name="url">
         <template #label />
 
-        <UInput v-model="stateUrl.url" type="url" placeholder="https://example.com/help/faq" class="w-full" />
+        <UInput v-model="stateUrl.url" type="url" placeholder="https://example.com/help/faq" class="w-full" disabled />
       </UFormField>
 
       <div v-if="stateUrl.url && stateUrl.url.length > 0" class="flex justify-end">
