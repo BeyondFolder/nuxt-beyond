@@ -98,7 +98,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <div class="relative px-4 pb-6">
+      <div class="relative px-4 pb-16 max-w-2xl mx-auto">
         <div class="flex justify-center gap-2 flex-wrap">
           <button
             v-for="(item, index) in items"

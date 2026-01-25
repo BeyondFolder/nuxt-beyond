@@ -43,33 +43,33 @@ const columns = [
         <UFooterColumns :columns="columns" :ui="{ right: 'flex flex-col gap-1' }">
           <template #right>
             <div class="flex gap-1">
-              <a href="https://www.uneed.best/tool/nuxtbeyond-self-learning-customer-support-project">
-                <img src="https://www.uneed.best/EMBED3.png" alt="Uneed Embed Badge" width="120">
-              </a>
+<!--              <a href="https://www.uneed.best/tool/nuxtbeyond-self-learning-customer-support-project">-->
+<!--                <img src="https://www.uneed.best/EMBED3.png" alt="Uneed Embed Badge" width="120">-->
+<!--              </a>-->
             </div>
 
             <div class="flex gap-1">
-              <ULink href="https://startupfa.me/s/nuxtbeyond?utm_source=nuxtbeyond.com" target="_blank">
-                <img src="https://startupfa.me/badges/featured-badge.webp" alt="Featured on Startup Fame" width="140">
-              </ULink>
+<!--              <ULink href="https://startupfa.me/s/nuxtbeyond?utm_source=nuxtbeyond.com" target="_blank">-->
+<!--                <img src="https://startupfa.me/badges/featured-badge.webp" alt="Featured on Startup Fame" width="140">-->
+<!--              </ULink>-->
 
-              <ULink href="https://fazier.com/launches/nuxtbeyond.com" target="_blank">
-                <img
-                  src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&amp;theme=light"
-                  width="180"
-                  alt="Fazier badge"
-                >
-              </ULink>
+<!--              <ULink href="https://fazier.com/launches/nuxtbeyond.com" target="_blank">-->
+<!--                <img-->
+<!--                  src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&amp;theme=light"-->
+<!--                  width="180"-->
+<!--                  alt="Fazier badge"-->
+<!--                >-->
+<!--              </ULink>-->
 
-              <a
-href="https://postmake.io"
-target="_blank"
-rel="noopener"
-><img
-                  src="https://postmake.io/postmake_badge_colored.png"
-                  alt="Postmake feature full-color badge"
-                  width="140"
-              ></a>
+<!--              <a-->
+<!--href="https://postmake.io"-->
+<!--target="_blank"-->
+<!--rel="noopener"-->
+<!--&gt;<img-->
+<!--                  src="https://postmake.io/postmake_badge_colored.png"-->
+<!--                  alt="Postmake feature full-color badge"-->
+<!--                  width="140"-->
+<!--              ></a>-->
             </div>
           </template>
         </UFooterColumns>
@@ -83,18 +83,18 @@ rel="noopener"
     <template #right>
       <em class="text-xs text-ellipsis">Made By Raress96</em>
       <UButton
-        to="https://www.linkedin.com/in/raress96/"
-        target="_blank"
-        icon="i-simple-icons-linkedin"
-        aria-label="Raress96 on Linkedin"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
         to="https://x.com/Raress96_"
         target="_blank"
         icon="i-simple-icons-x"
         aria-label="Raress96_ on X"
+        color="neutral"
+        variant="ghost"
+      />
+      <UButton
+        to="https://www.linkedin.com/in/raress96/"
+        target="_blank"
+        icon="i-simple-icons-linkedin"
+        aria-label="Raress96 on Linkedin"
         color="neutral"
         variant="ghost"
       />

@@ -31,7 +31,7 @@ useScript({
   'src': 'https://datafa.st/js/script.js',
   'defer': true,
   'data-domain': 'nuxtbeyond.com',
-  'data-website-id': 'dfid_Mp32UpmxStC0VZWbC2X8f',
+  'data-website-id': 'dfid_9uv6pQPBqbSgthVlvGOUD',
 });
 </script>
 

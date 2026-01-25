@@ -4,7 +4,6 @@ seo:
 title: Build [AI-powered]{.text-primary} SaaS products in days
 description: The complete Nuxt 4 boilerplate with RAG, Cloudflare AI Search, streaming responses, image & video generation—plus auth, payments, and edge deployment. All pre-configured.
 hero:
-  badge: AI-First Architecture
   headline: Stop rebuilding AI infrastructure from scratch
   links:
     - label: Get NuxtBeyond
@@ -22,11 +21,6 @@ hero:
       icon: i-lucide-arrow-right
 aiShowcase:
   items:
-    - id: rag
-      title: RAG & AI Search
-      description: Semantic search over your knowledge base with Cloudflare AI Search (AutoRAG)
-      icon: i-lucide-brain
-      color: text-primary
     - id: streaming
       title: Streaming Responses
       description: Real-time AI responses with Vercel AI SDK v6 and tool calling
@@ -42,6 +36,11 @@ aiShowcase:
       description: Create videos from text and images with OpenAI Sora
       icon: i-lucide-film
       color: text-error
+    - id: rag
+      title: RAG & AI Search
+      description: Semantic search over your knowledge base with Cloudflare AI Search (AutoRAG)
+      icon: i-lucide-brain
+      color: text-primary
     - id: widget
       title: Embeddable Widget
       description: One-line embed script to add AI chat to any website
@@ -51,7 +50,7 @@ problem:
   title: Stop wasting [weeks]{.text-primary} on boilerplate
   description: Building AI features from scratch means reinventing the wheel. Every. Single. Time.
   items:
-    - hours: '60+'
+    - hours: '70+'
       task: AI & RAG Setup
       description: Vector databases, embeddings, semantic search, streaming responses, prompt engineering
       icon: i-lucide-brain
@@ -59,7 +58,7 @@ problem:
       task: Authentication
       description: OAuth providers, email verification, password reset, session management, rate limiting
       icon: i-lucide-lock
-    - hours: '50+'
+    - hours: '30+'
       task: Payment Integration
       description: Stripe checkout, webhooks, subscription management, plan gating, customer portal
       icon: i-lucide-credit-card
@@ -71,7 +70,7 @@ problem:
       task: Infrastructure
       description: Database setup, file storage, edge deployment, environment config
       icon: i-lucide-server
-    - hours: '15+'
+    - hours: '10+'
       task: Email System
       description: Transactional emails, templates, verification flows, notifications
       icon: i-lucide-mail
@@ -79,16 +78,6 @@ aiFeatures:
   title: '[AI-First]{.text-primary} by Design'
   description: Not just another CRUD boilerplate with AI slapped on. Built from the ground up for AI-powered applications.
   categories:
-    - title: RAG & Knowledge Base
-      description: Semantic search over documents with Cloudflare AI Search
-      icon: i-lucide-database
-      color: primary
-      features:
-        - Upload PDF, Word, CSV, and text files
-        - Automatic document indexing with AutoRAG
-        - Semantic similarity search
-        - Website content import via Cloudflare Browser
-        - Plan-based storage limits
     - title: Streaming AI Chat
       description: Real-time responses with Vercel AI SDK v6
       icon: i-lucide-message-square
@@ -117,6 +106,16 @@ aiFeatures:
         - Image-to-video conversion
         - Multiple resolution options
         - Async generation with status tracking
+    - title: RAG & Knowledge Base
+      description: Semantic search over documents with Cloudflare AI Search
+      icon: i-lucide-database
+      color: primary
+      features:
+        - Upload PDF, Word, CSV, and text files
+        - Automatic document indexing with AutoRAG
+        - Semantic similarity search
+        - Website content import via Cloudflare Browser
+        - Plan-based storage limits
     - title: Embeddable Widget
       description: Add AI chat to any website with one line of code
       icon: i-lucide-code-2
@@ -232,9 +231,9 @@ steps:
         # Add your Stripe products
     - step: '03'
       title: Deploy
-      description: Push to GitHub, connect to NuxtHub, deploy to Cloudflare in one click.
+      description: Set up your project in Cloudflare Workers dashboard, then build and deploy.
       code: |
-        npx nuxthub deploy
+        npm run build && npm run deploy
         # That's it. You're live.
 pricing:
   title: '[One-time]{.text-primary} purchase. Lifetime access.'
@@ -251,17 +250,13 @@ pricing:
         - AI Chat with RAG (Cloudflare AI Search)
         - Image & Video Generation (DALL-E 3, Sora)
         - Authentication (Google OAuth + Credentials)
-        - Stripe Billing with Subscriptions
-        - Embeddable Widget System
-        - Multi-tenant Projects with Roles
-        - Knowledge Base with File Upload
+        - Stripe Billing & Subscriptions
+        - Embeddable Chat Widget
+        - Multi-tenant Projects
         - Email System (Resend)
-        - Human Support Escalation
-        - Blog System (Nuxt Content)
-        - Security Features (Turnstile, Rate Limiting)
-        - CLAUDE.md AI Assistant Integration
+        - CLAUDE.md for AI Coding Agents
         - Lifetime Updates
-        - Discord Community Access
+        - Support from Founder
       button:
         label: Get NuxtBeyond
         variant: solid
