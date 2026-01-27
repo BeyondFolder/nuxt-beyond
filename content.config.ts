@@ -119,7 +119,7 @@ export const collections = {
             billing_period: z.string().optional(),
             billing_cycle: z.string().nonempty(),
             badge: z.string().optional(),
-            comingSoon: z.boolean().optional(),
+            distributionLink: z.string().optional(),
           })
         ),
       }),

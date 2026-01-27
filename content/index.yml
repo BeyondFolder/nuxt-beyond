@@ -263,9 +263,10 @@ pricing:
         color: primary
         size: xl
         to: 'https://buy.stripe.com/bJe6oIeq0dJ72iu9dwdZ602?prefilled_promo_code=BOILERPLATE1'
+        target: _blank
       highlight: true
       badge: Launch Price
-    - title: Boilerplate + Distribution Framework
+    - title: Bundle with Distribution Framework
       planName: bundle
       description: Everything plus Claude Code Distribution Framework
       price: $399
@@ -274,18 +275,20 @@ pricing:
       features:
         - Everything in NuxtBeyond Boilerplate
         - Claude Code Distribution Framework
-        - Build and distribute custom AI agents
-        - Agent marketplace integration
-        - Monetization tools
-        - Priority Support
+        - Everything you need to find customers
+        - ICP evaluation & lead sourcing agents
+        - Cold outreach templates (LinkedIn, Email, X)
+        - SEO strategy & content generation
+        - Build AND distribute your SaaS
       button:
-        label: Coming Soon
+        label: Get Bundle
         variant: outline
         color: neutral
         size: xl
         to: 'https://buy.stripe.com/bJe8wQchS34t4qC61kdZ601?prefilled_promo_code=BUNDLE1'
-        disabled: true
-      comingSoon: true
+        target: _blank
+      distributionLink: https://beyondfolder.com/distribution
+      badge: Best Value
 testimonials:
   title: Built by [developers]{.text-primary}, for developers
   description: Join the community of developers shipping AI-powered products faster.
@@ -314,14 +317,11 @@ faqs:
     - label: How does deployment work?
       content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack—database (D1), file storage (R2), KV store, and Workers. Edge-native performance worldwide.'
       icon: i-lucide-rocket
-    - label: What support is included?
-      content: 'Discord community access for questions and discussions. The boilerplate includes comprehensive documentation in CLAUDE.md, designed for AI coding assistants to understand and help you customize.'
-      icon: i-lucide-headphones
     - label: Is there a refund policy?
-      content: 'Due to the digital nature of the product and immediate source code access, all sales are final. We encourage you to review the demo and documentation before purchasing.'
+      content: 'Due to the digital nature of the product and immediate source code access, all sales are final. We encourage you to review the demo and documentation before purchasing. If you have questions, feel free to reach out to @Raress96_ on X.'
       icon: i-lucide-receipt
     - label: How do I receive updates?
-      content: 'Lifetime updates are included. You''ll receive access to the GitHub repository where all updates are pushed. Major updates are announced in the Discord community.'
+      content: 'Lifetime updates are included. You''ll receive access to the GitHub repository where all updates are pushed.'
       icon: i-lucide-refresh-cw
 cta:
   title: Stop building boilerplate. [Start shipping products.]{.text-primary}

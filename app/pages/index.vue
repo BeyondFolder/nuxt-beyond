@@ -264,7 +264,7 @@ useSeoMeta({
           </p>
         </div>
 
-        <div class="text-center mb-4">
+        <div class="text-center mb-8">
           <p class="text-md text-warning font-medium">
             Price increases by $10 every 5 sales · 0/5 sold at current price
           </p>
@@ -275,7 +275,6 @@ useSeoMeta({
             v-for="(plan, index) in page.pricing.plans"
             :key="index"
             :title="plan.title"
-            :description="plan.description"
             :price="plan.price"
             :discount="plan.discount"
             :billing-period="plan.billing_period"
@@ -284,10 +283,30 @@ useSeoMeta({
             variant="subtle"
             :features="plan.features"
             :button="plan.button"
-            :badge="plan.badge"
+            :ui="{
+              root: 'relative',
+            }"
           >
-            <template v-if="plan.comingSoon" #badge>
-              <UBadge color="neutral" variant="subtle" size="sm"> Coming Soon </UBadge>
+            <template v-if="plan.badge" #badge>
+              <UBadge
+                v-if="plan.badge"
+                :color="plan.highlight ? 'primary' : 'neutral'"
+                size="md"
+                class="absolute -top-3 left-6"
+              >
+                {{ plan.badge }}
+              </UBadge>
+            </template>
+            <template #description>
+              {{ plan.description }}
+
+              <NuxtLink
+                v-if="plan.distributionLink"
+                :to="plan.distributionLink"
+                target="_blank"
+                class="text-primary hover:underline"
+                >Learn more</NuxtLink
+              >
             </template>
           </UPricingPlan>
         </UPricingPlans>
