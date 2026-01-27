@@ -26,7 +26,8 @@
   "r2_buckets": [
     {
       "binding": "BLOB",
-      "remote": false
+      "remote": false,
+      "bucket_name": "your-app-bucket" // Should be changed to your R2 bucket name
     }
   ],
   "browser": {
@@ -36,13 +37,15 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "remote": false
+      "remote": false,
+      "database_id": "e7e82908-1612-49fe-97b0-f3776bf04fe0" // Should be changed to your D1 database ID
     }
   ],
   "kv_namespaces": [
     {
       "binding": "KV",
-      "remote": false
+      "remote": false,
+      "id": "b64c1a8d9e414f52a5f2264422af2cbb" // Should be changed to your KV id
     }
   ],
   // Environment for testing with remote Cloudflare resources
