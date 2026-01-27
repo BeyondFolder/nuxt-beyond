@@ -20,12 +20,6 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-// useScript({
-//   'src': 'https://cdn.tinystats.net/scripts/capi.js',
-//   'async': true,
-//   'data-storage': 'off'
-// });
-
 // Datafa.st analytics
 useScript({
   'src': 'https://datafa.st/js/script.js',
