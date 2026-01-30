@@ -60,6 +60,13 @@ npm run dev:remote
 
 > **Note:** To test AI Search (AutoRAG), you must use `npm run dev:remote` because AI Search requires real R2 buckets. Configure your resource IDs in `wrangler.jsonc` under the `env.remote` section.
 
+### AI-assisted development
+
+To make developing with Nuxt and Nuxt UI easier, you should add their MCP servers to your tool of choice (Claude Code, Cursor, Antigravity etc).
+Follow the links for instructions:
+- https://nuxt.com/docs/4.x/guide/ai/mcp
+- https://ui.nuxt.com/docs/getting-started/ai/mcp
+
 ## Initial Customization
 
 Before deploying, customize these files for your project:
