@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { getUserWithProject } from '~~/server/db/queries';
 import { loginUser } from '~~/server/utils/auth';
+import { verifyPasswordWorker } from '~~/server/utils/password';
 
 const invalidCredentialsError = createError({
   statusCode: 401,
@@ -48,7 +49,7 @@ export default defineEventHandler(async (event) => {
 
   const { user, project, role } = result[0];
 
-  if (!user.password || !(await verifyPassword(user.password, password))) {
+  if (!user.password || !(await verifyPasswordWorker(user.password, password))) {
     throw invalidCredentialsError;
   }
 
