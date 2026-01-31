@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 import { sendPasswordResetEmail } from '~~/server/utils/resend';
 
 const bodySchema = z.object({

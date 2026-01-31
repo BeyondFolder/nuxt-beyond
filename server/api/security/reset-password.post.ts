@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import crypto from 'crypto';
+import crypto from 'node:crypto';
+import { hashPasswordWorker } from '~~/server/utils/password';
 
 const bodySchema = z.object({
   token: z.string(),
@@ -38,7 +39,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPasswordWorker(password);
 
   await db
     .update(tables.users)

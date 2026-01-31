@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { hashPasswordWorker, verifyPasswordWorker } from '~~/server/utils/password';
 
 const bodySchema = z.object({
   currentPassword: z.string(),
@@ -35,7 +36,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const isValidPassword = await verifyPassword(user.password, currentPassword);
+  const isValidPassword = await verifyPasswordWorker(user.password, currentPassword);
 
   if (!isValidPassword) {
     throw createError({
@@ -44,7 +45,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const hashedNewPassword = await hashPassword(newPassword);
+  const hashedNewPassword = await hashPasswordWorker(newPassword);
 
   // Update password in db
   await db

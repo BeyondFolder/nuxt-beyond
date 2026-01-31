@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 import { eq } from 'drizzle-orm';
 import * as tables from '~~/server/db/schema';
 

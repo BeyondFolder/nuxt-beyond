@@ -1,6 +1,7 @@
 import { z } from 'zod';
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 import { sendVerificationEmail } from '~~/server/utils/resend';
+import { hashPasswordWorker } from '~~/server/utils/password';
 
 const bodySchema = z.object({
   email: z.string().email(),
@@ -38,7 +39,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPasswordWorker(password);
   const verificationToken = crypto.randomBytes(32).toString('hex');
   const verificationTokenHash = crypto.createHash('sha256').update(verificationToken).digest('hex');
   const verificationTokenExpiry = new Date(Date.now() + 1000 * 60 * 60 * 24); // 24 hours from now

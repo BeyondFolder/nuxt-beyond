@@ -31,6 +31,7 @@
     "@iconify-json/lucide": "^1.2.85",
     "@iconify-json/simple-icons": "^1.2.66",
     "@libsql/client": "^0.17.0",
+    "@noble/hashes": "^2.0.1",
     "@nuxt/content": "^3.11.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/scripts": "^0.12.2",

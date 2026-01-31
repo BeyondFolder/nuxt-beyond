@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 import { sendVerificationEmail } from '~~/server/utils/resend';
 
 export default defineEventHandler(async (event) => {
