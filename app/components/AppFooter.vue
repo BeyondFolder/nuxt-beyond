@@ -42,34 +42,31 @@ const columns = [
       <UContainer>
         <UFooterColumns :columns="columns" :ui="{ right: 'flex flex-col gap-1' }">
           <template #right>
-            <div class="flex gap-1">
-<!--              <a href="https://www.uneed.best/tool/nuxtbeyond-self-learning-customer-support-project">-->
-<!--                <img src="https://www.uneed.best/EMBED3.png" alt="Uneed Embed Badge" width="120">-->
-<!--              </a>-->
-            </div>
+            <div class="w-auto mx-auto mb-6 flex gap-5 justify-center">
+              <div class="flex">
+                <!--                <a href="https://www.uneed.best/tool/claude-code-distribution-framework" target="_blank">-->
+                <!--                  <img src="https://www.uneed.best/POTD2A.png" width="150" alt="Uneed POTD2 Badge" />-->
+                <!--                </a>-->
+              </div>
 
-            <div class="flex gap-1">
-<!--              <ULink href="https://startupfa.me/s/nuxtbeyond?utm_source=nuxtbeyond.com" target="_blank">-->
-<!--                <img src="https://startupfa.me/badges/featured-badge.webp" alt="Featured on Startup Fame" width="140">-->
-<!--              </ULink>-->
+              <div class="flex">
+                <a href="https://www.aidirectori.es" target="_blank"
+                  ><img
+                    src="https://cdn.aidirectori.es/ai-tools/badges/no-background.png"
+                    width="150"
+                    alt="Featured on AI Directories"
+                  />
+                </a>
+              </div>
 
-<!--              <ULink href="https://fazier.com/launches/nuxtbeyond.com" target="_blank">-->
-<!--                <img-->
-<!--                  src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&amp;theme=light"-->
-<!--                  width="180"-->
-<!--                  alt="Fazier badge"-->
-<!--                >-->
-<!--              </ULink>-->
-
-<!--              <a-->
-<!--href="https://postmake.io"-->
-<!--target="_blank"-->
-<!--rel="noopener"-->
-<!--&gt;<img-->
-<!--                  src="https://postmake.io/postmake_badge_colored.png"-->
-<!--                  alt="Postmake feature full-color badge"-->
-<!--                  width="140"-->
-<!--              ></a>-->
+              <div class="flex">
+                <a href="https://startupfa.me/s/nuxtbeyond?utm_source=nuxtbeyond.com" target="_blank"
+                  ><img
+                    src="https://startupfa.me/badges/featured-badge.webp"
+                    alt="NuxtBeyond - Featured on Startup Fame"
+                    width="100"
+                /></a>
+              </div>
             </div>
           </template>
         </UFooterColumns>
