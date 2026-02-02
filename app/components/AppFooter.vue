@@ -42,12 +42,12 @@ const columns = [
       <UContainer>
         <UFooterColumns :columns="columns" :ui="{ right: 'flex flex-col gap-1' }">
           <template #right>
-            <div class="w-auto mx-auto mb-6 flex gap-5 justify-center">
-              <div class="flex">
-                <!--                <a href="https://www.uneed.best/tool/claude-code-distribution-framework" target="_blank">-->
-                <!--                  <img src="https://www.uneed.best/POTD2A.png" width="150" alt="Uneed POTD2 Badge" />-->
-                <!--                </a>-->
-              </div>
+            <div class="w-auto mx-auto mb-6 flex gap-5 justify-center grid grid-cols-4">
+              <!--              <div class="flex">-->
+              <!--                <a href="https://www.uneed.best/tool/claude-code-distribution-framework" target="_blank">-->
+              <!--                  <img src="https://www.uneed.best/POTD2A.png" width="150" alt="Uneed POTD2 Badge" />-->
+              <!--                </a>-->
+              <!--              </div>-->
 
               <div class="flex">
                 <a href="https://www.aidirectori.es" target="_blank"
@@ -66,6 +66,46 @@ const columns = [
                     alt="NuxtBeyond - Featured on Startup Fame"
                     width="100"
                 /></a>
+              </div>
+
+              <div class="flex">
+                <a href="https://twelve.tools" target="_blank"
+                  ><img
+                    src="https://twelve.tools/badge0-dark.svg"
+                    alt="Featured on Twelve Tools"
+                    width="120"
+                    height="54"
+                /></a>
+              </div>
+
+              <div class="flex">
+                <a href="https://wired.business" target="_blank"
+                  ><img
+                    src="https://wired.business/badge0-dark.svg"
+                    alt="Featured on Wired Business"
+                    width="120"
+                    height="54"
+                /></a>
+              </div>
+
+              <div class="flex">
+                <a href="https://fazier.com" target="_blank"
+                  ><img
+                    src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=dark"
+                    width="120"
+                    alt="Fazier badge"
+                /></a>
+              </div>
+
+              <div class="flex">
+                <a href="https://open-launch.com/projects/nuxtbeyond" target="_blank" rel="noopener">
+                  <img
+                    src="https://open-launch.com/api/badge/a46dd585-3a6b-4448-a327-be7bd03afa0d/featured-dark.svg"
+                    alt="Featured on Open-Launch"
+                    width="120"
+                    height="50"
+                  />
+                </a>
               </div>
             </div>
           </template>
