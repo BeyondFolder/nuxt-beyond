@@ -266,7 +266,7 @@ useSeoMeta({
 
         <div class="text-center mb-8">
           <p class="text-md text-warning font-medium">
-            Price increases by $10 every 5 sales · 0/5 sold at current price
+            Price increases by $10 every 5 sales · 1/5 sold at current price
           </p>
         </div>
 
