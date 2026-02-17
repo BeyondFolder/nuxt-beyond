@@ -26,7 +26,7 @@ useSeoMeta({
         <div class="absolute top-20 right-1/4 w-80 h-80 bg-info/15 rounded-full blur-[100px]" />
       </div>
 
-      <UContainer class="pt-16 sm:pt-20 lg:pt-28 pb-12 sm:pb-16">
+      <UContainer class="pt-16 sm:pt-20 lg:pt-28">
         <div class="text-center max-w-4xl mx-auto mb-12">
           <UBadge v-if="page.hero.badge" color="primary" variant="subtle" size="lg" class="mb-6">
             <UIcon name="i-lucide-sparkles" class="w-4 h-4 mr-1" />

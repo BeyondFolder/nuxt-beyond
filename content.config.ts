@@ -43,6 +43,13 @@ export const collections = {
         links: z.array(createLinkSchema()),
         badge: z.string().optional(),
       }),
+      founder: z.object({
+        title: z.string().nonempty(),
+        name: z.string().nonempty(),
+        story: z.string().nonempty(),
+        x: z.string().nonempty(),
+        linkedin: z.string().nonempty(),
+      }).optional(),
       aiShowcase: z.object({
         items: z.array(
           z.object({
