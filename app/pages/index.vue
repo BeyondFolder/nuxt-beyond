@@ -50,6 +50,38 @@ useSeoMeta({
       </UContainer>
     </section>
 
+    <section v-if="page.founder" class="py-8 sm:py-12 lg:py-10">
+      <UContainer>
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-sm text-neutral-500 uppercase tracking-wider mb-3">{{ page.founder.title }}</p>
+          <blockquote class="text-md text-neutral-600 dark:text-neutral-300 italic mb-3 leading-relaxed">
+            "{{ page.founder.story }}"
+          </blockquote>
+          <div class="flex items-center justify-center gap-3">
+            <em class="font-semibold text-lg leading-none">&mdash; {{ page.founder.name }}</em>
+            <div class="flex items-center gap-3">
+              <NuxtLink
+                :to="page.founder.x"
+                target="_blank"
+                class="inline-flex items-center text-neutral-500 hover:text-primary transition-colors"
+                aria-label="X profile"
+              >
+                <UIcon name="i-simple-icons-x" class="w-4 h-4" />
+              </NuxtLink>
+              <NuxtLink
+                :to="page.founder.linkedin"
+                target="_blank"
+                class="inline-flex items-center text-neutral-500 hover:text-primary transition-colors"
+                aria-label="LinkedIn profile"
+              >
+                <UIcon name="i-simple-icons-linkedin" class="w-4 h-4" />
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </UContainer>
+    </section>
+
     <USeparator />
 
     <UPageSection
@@ -310,6 +342,21 @@ useSeoMeta({
             </template>
           </UPricingPlan>
         </UPricingPlans>
+
+        <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-neutral-500">
+          <div class="flex items-center gap-2">
+            <UIcon name="i-lucide-lock" class="w-4 h-4" />
+            <span>Secure payment via Stripe</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <UIcon name="i-simple-icons-github" class="w-4 h-4" />
+            <span>GitHub access within 24h</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <UIcon name="i-lucide-message-circle" class="w-4 h-4" />
+            <span>Questions? <NuxtLink to="https://x.com/raress96_" target="_blank" class="text-primary hover:underline">DM me</NuxtLink></span>
+          </div>
+        </div>
       </UContainer>
     </section>
 

@@ -2,9 +2,8 @@ seo:
   title: NuxtBeyond - AI-First Nuxt 4 Boilerplate for SaaS
   description: Build AI-powered SaaS products in days. Full-stack Nuxt 4 boilerplate with RAG, Cloudflare AI Search, authentication, Stripe billing, and edge deployment.
 title: Build [AI-powered]{.text-primary} SaaS products in days
-description: The complete Nuxt 4 boilerplate with RAG, Cloudflare AI Search, streaming responses, image & video generation—plus auth, payments, and edge deployment. All pre-configured.
+description: Stop rebuilding auth, payments, and AI infrastructure for every project. Full-stack Nuxt 4 boilerplate with RAG, streaming AI chat, image generation, Stripe billing, and edge deployment — all pre-configured.
 hero:
-  headline: Stop rebuilding AI infrastructure from scratch
   links:
     - label: Get NuxtBeyond
       variant: solid
@@ -19,6 +18,12 @@ hero:
       size: xl
       to: '/login'
       icon: i-lucide-arrow-right
+founder:
+  title: Built by a founder, for founders
+  name: Rares
+  story: "I built AI SaaS products with Nuxt for 6 months. Kept copy-pasting files between repos and tweaking the same auth, Stripe, and AI setup every time. So I extracted it properly into a boilerplate I use for every new project — and now you can use it too."
+  x: https://x.com/raress96_
+  linkedin: https://www.linkedin.com/in/raress96
 aiShowcase:
   items:
     - id: streaming
@@ -219,7 +224,7 @@ steps:
       title: Clone & Configure
       description: Clone the repo, copy .env.example, add your API keys.
       code: |
-        git clone <repo-url>
+        git clone git@github.com:BeyondFolder/nuxt-beyond.git
         cp .env.example .env
         npm install
     - step: '02'

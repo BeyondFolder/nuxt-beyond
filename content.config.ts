@@ -41,7 +41,6 @@ export const collections = {
     schema: z.object({
       hero: z.object({
         links: z.array(createLinkSchema()),
-        headline: z.string().optional(),
         badge: z.string().optional(),
       }),
       aiShowcase: z.object({
