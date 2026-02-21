@@ -350,7 +350,7 @@ useSeoMeta({
           </div>
           <div class="flex items-center gap-2">
             <UIcon name="i-simple-icons-github" class="w-4 h-4" />
-            <span>GitHub access within 24h</span>
+            <span>GitHub access after purchase</span>
           </div>
           <div class="flex items-center gap-2">
             <UIcon name="i-lucide-message-circle" class="w-4 h-4" />

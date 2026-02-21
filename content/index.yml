@@ -323,7 +323,7 @@ faqs:
       content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack—database (D1), file storage (R2), KV store, and Workers. Edge-native performance worldwide.'
       icon: i-lucide-rocket
     - label: Is there a refund policy?
-      content: 'Due to the digital nature of the product and immediate source code access, all sales are final. We encourage you to review the demo and documentation before purchasing. If you have questions, feel free to reach out to @Raress96_ on X.'
+      content: "Due to the digital nature and instant access, refunds aren't offered by default. But if something's genuinely not what you expected, DM me on [@Raress96_ on X](https://x.com/raress96_) and we'll figure it out."
       icon: i-lucide-receipt
     - label: How do I receive updates?
       content: 'Lifetime updates are included. You''ll receive access to the GitHub repository where all updates are pushed.'
