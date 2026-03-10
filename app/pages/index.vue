@@ -26,7 +26,7 @@ useSeoMeta({
         <div class="absolute top-20 right-1/4 w-80 h-80 bg-info/15 rounded-full blur-[100px]" />
       </div>
 
-      <UContainer class="pt-16 sm:pt-20 lg:pt-28">
+      <UContainer class="pt-16 sm:pt-20 lg:pt-28 pb-12">
         <div class="text-center max-w-4xl mx-auto mb-12">
           <UBadge v-if="page.hero.badge" color="primary" variant="subtle" size="lg" class="mb-6">
             <UIcon name="i-lucide-sparkles" class="w-4 h-4 mr-1" />
@@ -46,43 +46,19 @@ useSeoMeta({
           </div>
         </div>
 
-        <LandingAiShowcase :items="page.aiShowcase.items" />
-      </UContainer>
-    </section>
-
-    <section v-if="page.founder" class="py-8 sm:py-12 lg:py-10">
-      <UContainer>
-        <div class="max-w-2xl mx-auto text-center">
-          <p class="text-sm text-neutral-500 uppercase tracking-wider mb-3">{{ page.founder.title }}</p>
-          <blockquote class="text-md text-neutral-600 dark:text-neutral-300 italic mb-3 leading-relaxed">
-            "{{ page.founder.story }}"
-          </blockquote>
-          <div class="flex items-center justify-center gap-3">
-            <em class="font-semibold text-lg leading-none">&mdash; {{ page.founder.name }}</em>
-            <div class="flex items-center gap-3">
-              <NuxtLink
-                :to="page.founder.x"
-                target="_blank"
-                class="inline-flex items-center text-neutral-500 hover:text-primary transition-colors"
-                aria-label="X profile"
-              >
-                <UIcon name="i-simple-icons-x" class="w-4 h-4" />
-              </NuxtLink>
-              <NuxtLink
-                :to="page.founder.linkedin"
-                target="_blank"
-                class="inline-flex items-center text-neutral-500 hover:text-primary transition-colors"
-                aria-label="LinkedIn profile"
-              >
-                <UIcon name="i-simple-icons-linkedin" class="w-4 h-4" />
-              </NuxtLink>
-            </div>
+        <div class="max-w-5xl mx-auto mb-12">
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden shadow-2xl shadow-primary/10">
+            <img
+              src="/images/homepage/demo2.png"
+              alt="NuxtBeyond dashboard with AI chat, image generation, and project management"
+              class="w-full h-auto"
+              loading="eager"
+            />
           </div>
         </div>
+
       </UContainer>
     </section>
-
-    <USeparator />
 
     <UPageSection
       id="problem"
@@ -121,7 +97,7 @@ useSeoMeta({
         </div>
       </div>
 
-      <div class="text-center mb-6">
+      <div class="text-center">
         <div
           class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 dark:bg-primary/20 text-primary font-semibold"
         >
@@ -130,6 +106,38 @@ useSeoMeta({
         </div>
       </div>
     </UPageSection>
+
+    <section v-if="page.founder" class="pb-8 sm:pb-10 lg:pb-12">
+      <UContainer>
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-sm text-neutral-500 uppercase tracking-wider mb-3">{{ page.founder.title }}</p>
+          <blockquote class="text-md text-neutral-600 dark:text-neutral-300 italic mb-3 leading-relaxed">
+            "{{ page.founder.story }}"
+          </blockquote>
+          <div class="flex items-center justify-center gap-3">
+            <em class="font-semibold text-lg leading-none">&mdash; {{ page.founder.name }}</em>
+            <div class="flex items-center gap-3">
+              <NuxtLink
+                :to="page.founder.x"
+                target="_blank"
+                class="inline-flex items-center text-neutral-500 hover:text-primary transition-colors"
+                aria-label="X profile"
+              >
+                <UIcon name="i-simple-icons-x" class="w-4 h-4" />
+              </NuxtLink>
+              <NuxtLink
+                :to="page.founder.linkedin"
+                target="_blank"
+                class="inline-flex items-center text-neutral-500 hover:text-primary transition-colors"
+                aria-label="LinkedIn profile"
+              >
+                <UIcon name="i-simple-icons-linkedin" class="w-4 h-4" />
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </UContainer>
+    </section>
 
     <USeparator />
 
@@ -147,7 +155,9 @@ useSeoMeta({
         {{ page.aiFeatures.description }}
       </template>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <LandingAiShowcase :items="page.aiShowcase.items" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <LandingAiFeatureCard
           v-for="category in page.aiFeatures.categories"
           :key="category.title"
@@ -157,7 +167,7 @@ useSeoMeta({
 
       <div class="mb-8 text-center">
         <p class="text-neutral-600 dark:text-neutral-400 mb-4 text-xl">Ready to ship your AI product?</p>
-        <UButton label="Get NuxtBeyond" icon="i-lucide-zap" trailing size="xl" to="#pricing" />
+        <UButton label="Get Instant Access" icon="i-lucide-zap" trailing size="xl" to="#pricing" />
       </div>
     </UPageSection>
 

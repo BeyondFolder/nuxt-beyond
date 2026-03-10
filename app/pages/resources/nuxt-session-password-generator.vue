@@ -48,7 +48,7 @@ onMounted(() => {
             Nuxt Session Password Generator
           </h1>
           <p class="text-lg text-neutral-600 dark:text-neutral-400">
-            Generate secure <code class="text-primary-600 dark:text-primary-400">NUXT_SESSION_PASSWORD</code> values for nuxt-auth-utils
+            Generate secure <code class="text-primary-600 dark:text-primary-400">NUXT_SESSION_PASSWORD</code> values for nuxt-auth-utils directly in your browser
           </p>
         </div>
 

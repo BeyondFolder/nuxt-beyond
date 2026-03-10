@@ -1,11 +1,12 @@
 seo:
   title: NuxtBeyond - AI-First Nuxt 4 Boilerplate for SaaS
   description: Build AI-powered SaaS products in days. Full-stack Nuxt 4 boilerplate with RAG, Cloudflare AI Search, authentication, Stripe billing, and edge deployment.
-title: Build [AI-powered]{.text-primary} SaaS products in days
-description: Stop rebuilding auth, payments, and AI infrastructure for every project. Full-stack Nuxt 4 boilerplate with RAG, streaming AI chat, image generation, Stripe billing, and edge deployment — all pre-configured.
+title: Ship your AI SaaS this [weekend]{.text-primary}, not in months
+description: Stop wiring up auth, Stripe, and RAG pipelines from scratch. Clone a production-ready Nuxt 4 codebase with AI chat, image generation, multi-tenancy, and Cloudflare edge deployment — ready to ship.
 hero:
+  badge: Launch Price — $59 (increases every 5 sales)
   links:
-    - label: Get NuxtBeyond
+    - label: Get Instant Access
       variant: solid
       color: primary
       size: xl
@@ -143,7 +144,7 @@ aiFeatures:
         - Domain allowlisting
 fullStackFeatures:
   title: '[Full-Stack]{.text-primary} Features Included'
-  description: Everything you need beyond AI. Authentication, payments, multi-tenancy—production-ready.
+  description: Everything you need beyond AI. Authentication, payments, multi-tenancy—production-ready. All running on Cloudflare's edge network.
   features:
     - title: Authentication
       description: Google OAuth, email/password, verification, password reset, and session management with nuxt-auth-utils.
@@ -160,9 +161,9 @@ fullStackFeatures:
     - title: Blog & Content
       description: Nuxt Content integration with markdown support, SEO optimization, and landing page YAML configuration.
       icon: i-lucide-file-text
-    - title: Support Escalation
-      description: Human handoff from AI chat, ticket management, email notifications, and threaded replies.
-      icon: i-lucide-headphones
+    - title: Cloudflare Edge Stack
+      description: D1 database, R2 storage, KV caching, Workers runtime — all pre-configured. One-command deploy via NuxtHub, with support for Vercel, Netlify, and other providers.
+      icon: i-simple-icons-cloudflare
 aiAgents:
   title: Built for [AI Coding Agents]{.text-primary}
   description: Includes CLAUDE.md with comprehensive project documentation. Your AI assistant understands the entire codebase.
@@ -263,7 +264,7 @@ pricing:
         - Lifetime Updates
         - Support from Founder
       button:
-        label: Get NuxtBeyond
+        label: Get Instant Access
         variant: solid
         color: primary
         size: xl
@@ -273,17 +274,17 @@ pricing:
       badge: Launch Price
     - title: Bundle with Distribution Framework
       planName: bundle
-      description: Everything plus Claude Code Distribution Framework
+      description: Build your AI SaaS and actually get customers
       price: $399
       discount: $89
       billing_cycle: one-time
       features:
         - Everything in NuxtBeyond Boilerplate
-        - Claude Code Distribution Framework
-        - Everything you need to find customers
-        - ICP evaluation & lead sourcing agents
-        - Cold outreach templates (LinkedIn, Email, X)
-        - SEO strategy & content generation
+        - 8 AI agents (ICP scoring, lead sourcing, competitor analysis, SEO)
+        - 6 content skills (cold emails, LinkedIn DMs, X DMs, SEO articles)
+        - Cold outreach templates that hit 27% reply rate
+        - ICP evaluation framework (14 weighted criteria)
+        - Lead sourcing workflows (Apollo, Outscraper, Reddit, LinkedIn)
         - Build AND distribute your SaaS
       button:
         label: Get Bundle
@@ -332,7 +333,7 @@ cta:
   title: Stop building boilerplate. [Start shipping products.]{.text-primary}
   description: Authentication, payments, AI chat, RAG, embeddable widgets—all pre-built. Focus on what makes your product unique.
   links:
-    - label: Get NuxtBeyond Now
+    - label: Get Instant Access Now
       variant: solid
       color: primary
       size: xl

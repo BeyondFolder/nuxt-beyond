@@ -54,26 +54,6 @@ watch(session, async () => {
   await refreshNuxtData('api/dashboard/stats');
 });
 
-// This redirects the user to the next step in the configuration flow, depending on the current state of the project configuration.
-const checkRedirect = async (data: typeof dashboardData.value) => {
-  if (data && !data.currentProject) {
-    await navigateTo('/configuration/basic');
-  } else if (data && data.currentProject) {
-    const config = data.currentProject?.configuration as ProjectConfiguration;
-    const hasFiles = (config?.fileCount || 0) > 0 && !!config?.requestProcessingAt;
-    const wasCustomized = !!config?.finishedProcessingAt && !!config?.appearance;
-
-    if (!hasFiles) {
-      // Allow to go to billing page as 2nd step
-      if (route.path !== '/dashboard/billing') {
-        await navigateTo('/configuration/knowledge');
-      }
-    } else if (!wasCustomized) {
-      await navigateTo('/configuration/customization');
-    }
-  }
-};
-
 onMounted(() => {
   const billingSuccess = route.query.billing_success;
   if (billingSuccess === 'true') {
@@ -82,12 +62,6 @@ onMounted(() => {
       color: 'success',
     });
   }
-
-  checkRedirect(dashboardData.value);
-});
-
-watch(dashboardData, (data) => {
-  checkRedirect(data);
 });
 
 const stats = computed(() => {
@@ -200,8 +174,8 @@ const stats = computed(() => {
                 size="lg"
                 class="capitalize"
               >
-                {{ dashboardData.currentProject.planName }} Plan
-</UBadge>. Your AI chatbot will stop responding to new messages until you upgrade your plan or wait until next
+                {{ dashboardData.currentProject.planName }} Plan </UBadge
+              >. Your AI chatbot will stop responding to new messages until you upgrade your plan or wait until next
               month.
             </p>
           </template>
@@ -220,13 +194,13 @@ const stats = computed(() => {
           <template #description>
             <p class="mb-3">
               You have
-              <strong>{{ statsData?.totalQuestionsThisMonth || 0 }} total question{{
+              <strong
+                >{{ statsData?.totalQuestionsThisMonth || 0 }} total question{{
                   (statsData?.totalQuestionsThisMonth || 0) === 1 ? '' : 's'
-                }}</strong>
+                }}</strong
+              >
               this month. Upgrade to the
-              <UBadge :color="getPlanColor('pro')" variant="subtle" size="lg" class="capitalize">
-                Pro Plan
-              </UBadge>
+              <UBadge :color="getPlanColor('pro')" variant="subtle" size="lg" class="capitalize"> Pro Plan </UBadge>
               or higher to respond to customer questions and improve your AI agent.
             </p>
           </template>
@@ -289,7 +263,7 @@ const stats = computed(() => {
             <h2 class="text-lg font-semibold">Quick Actions</h2>
           </template>
 
-          <div class="grid gap-4 grid-cols-2">
+          <div class="grid gap-4 grid-cols-3">
             <UButton
               v-if="supportsEscalation"
               to="/dashboard/questions"
@@ -316,13 +290,13 @@ const stats = computed(() => {
             </UButton>
 
             <UButton
-to="/dashboard/members"
-color="secondary"
-variant="soft"
-size="xl"
-class="h-24 flex-col gap-2"
-block
->
+              to="/dashboard/members"
+              color="secondary"
+              variant="soft"
+              size="xl"
+              class="h-24 flex-col gap-2"
+              block
+            >
               <UIcon name="i-lucide-users" class="text-2xl" />
               <span>Manage Members</span>
             </UButton>
