@@ -1,0 +1,84 @@
+seo:
+  title: 'Free AI SaaS Ideas Generator | NuxtBeyond'
+  description: 'Generate personalized SaaS product ideas with AI. Tailored to your background, interests, and available time. Free, no signup required.'
+  ogTitle: 'Free AI SaaS Ideas Generator | NuxtBeyond'
+  ogDescription: 'Get AI-powered SaaS product ideas personalized to you. 12 categories, multiple complexity levels. Free, no signup.'
+title: SaaS Ideas Generator
+description: Get AI-powered SaaS product ideas personalized to your background and interests. Free, no signup required.
+stats:
+  - label: AI-Powered
+    icon: i-lucide-cpu
+  - label: 12 Categories
+    icon: i-lucide-layers
+  - label: No Signup Required
+    icon: i-lucide-lock-open
+categoryOptions:
+  - label: AI/ML Tools
+    value: AI/ML Tools
+  - label: Developer Tools
+    value: Developer Tools
+  - label: Productivity
+    value: Productivity
+  - label: Marketing/Sales
+    value: Marketing/Sales
+  - label: Education
+    value: Education
+  - label: Healthcare
+    value: Healthcare
+  - label: Finance
+    value: Finance
+  - label: E-commerce
+    value: E-commerce
+  - label: Content/Media
+    value: Content/Media
+  - label: HR/Recruiting
+    value: HR/Recruiting
+  - label: Real Estate
+    value: Real Estate
+  - label: Legal/Compliance
+    value: Legal/Compliance
+complexityOptions:
+  - label: Weekend project (1-2 days)
+    value: Weekend project (1-2 days)
+  - label: Side project (1-2 weeks)
+    value: Side project (1-2 weeks)
+  - label: Full product (1-3 months)
+    value: Full product (1-3 months)
+seoSections:
+  - title: How to Find Your Next SaaS Idea
+    content: |
+      The best SaaS ideas come from problems you've personally experienced. If you've ever said "there should be a tool for this" or built an internal script to solve a workflow problem, that's a signal worth exploring. Your own frustrations are a direct window into what the market needs.
+
+      Talk to potential customers before building anything. Post in niche communities — Slack groups, subreddits, Indie Hackers — and describe the problem you're thinking about solving. If people respond with "I have this exact problem," ask them how they're solving it today and what they'd pay to solve it better.
+
+      Look at existing tools with poor UX or bad reviews. G2, Capterra, and App Store reviews are goldmines. When users repeatedly complain about the same missing feature or clunky workflow, that's a validated problem waiting for a cleaner solution.
+
+      Focus on B2B over B2C early on. Businesses pay predictably, have larger budgets, and are easier to reach through cold outreach. A tool that saves a team 2 hours per week is worth $50/month to them — that math works. A consumer app needs thousands of users to hit the same revenue.
+
+      Once you have an idea worth pursuing, speed is your advantage as a solo founder. Use a starter like [NuxtBeyond](/) to skip months of setup and ship your first version in days instead of weeks.
+  - title: What Makes a Good Micro SaaS Idea?
+    content: |
+      A micro SaaS idea is good when it solves a specific problem for a specific person who is already paying for something adjacent. The narrower your target audience, the easier it is to find them, talk to them, and build exactly what they need.
+
+      Look for ideas where the buyer is also the user. Enterprise tools often have a gap between who decides to buy and who uses the product day-to-day. Micro SaaS works best when the person experiencing the pain is the one with the credit card.
+
+      Avoid ideas that compete directly with well-funded companies on their core product. Instead, look for the gaps they leave — integrations they don't build, edge cases they don't support, niches too small for a VC-backed startup to care about but large enough for a solo founder to build a $5K–$20K MRR business.
+faqs:
+  - label: What is a SaaS idea generator?
+    content: A SaaS idea generator is a tool that helps developers and entrepreneurs discover potential software-as-a-service business ideas. This AI-powered generator takes your background and interests as input and produces personalized, actionable ideas tailored to your skills and available time.
+  - label: How do I validate a SaaS idea?
+    content: Start by talking to potential customers before writing a single line of code. Post in communities like Indie Hackers or Reddit to gauge interest. Look for people already paying for similar solutions — willingness to pay is the strongest signal. Build a landing page and see if people sign up before you build anything.
+  - label: What are the best micro SaaS ideas for developers?
+    content: The best micro SaaS ideas for developers solve specific pain points you personally experience. Developer tools (linters, CI/CD helpers, API monitors), niche integrations between popular platforms, and AI-powered workflow automation tend to work well because developers understand the problem deeply and can ship fast.
+  - label: How much does it cost to build a SaaS?
+    content: A micro SaaS can be built for under $50/month in infrastructure costs using modern edge platforms like Cloudflare Workers. The real cost is your time. With a boilerplate like NuxtBeyond, you can skip months of setup (auth, payments, AI chat, deployment) and focus entirely on your unique value proposition.
+  - label: Can I build a SaaS as a solo developer?
+    content: Absolutely. Most successful micro SaaS products are built by solo developers. The key is scoping tightly — solve one specific problem extremely well. Use boilerplates and managed services to move fast. Many solo founders hit $5K–$10K MRR before hiring anyone.
+  - label: What tech stack should I use for a SaaS in 2026?
+    content: For a new SaaS in 2026, the winning stack is edge-first. Nuxt 4 for the full-stack framework, Cloudflare Workers for global deployment, D1 for SQLite database, R2 for storage, and Stripe for payments. This combination is fast, cheap to run, and scales automatically without managing servers.
+cta:
+  title: Ready to build your SaaS idea?
+  description: NuxtBeyond gives you AI chat, auth, payments, and deployment out of the box. Ship your idea this weekend.
+  button:
+    label: 'Get NuxtBeyond — $59'
+    to: '/#pricing'

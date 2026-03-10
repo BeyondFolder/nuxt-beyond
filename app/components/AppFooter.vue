@@ -7,6 +7,10 @@ const columns = [
         label: 'Nuxt Session Password Generator',
         to: '/resources/nuxt-session-password-generator',
       },
+      {
+        label: 'SaaS Ideas Generator',
+        to: '/resources/saas-ideas-generator',
+      },
     ],
   },
   {

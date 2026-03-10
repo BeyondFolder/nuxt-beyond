@@ -35,7 +35,7 @@
     "@nuxt/content": "^3.11.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/scripts": "^0.12.2",
-    "@nuxt/ui": "^4.3.0",
+    "@nuxt/ui": "^4.5.1",
     "@nuxthub/core": "^0.10.5",
     "@nuxtjs/mdc": "^0.20.0",
     "@nuxtjs/seo": "^3.3.0",

@@ -164,6 +164,58 @@ export const collections = {
     source: 'pages/**/*.yml',
     type: 'page',
   }),
+  resources: defineCollection({
+    source: 'resources/**/*.yml',
+    type: 'page',
+    schema: z.object({
+      seo: z.object({
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
+        ogTitle: z.string().optional(),
+        ogDescription: z.string().optional(),
+      }),
+      title: z.string().nonempty(),
+      description: z.string().nonempty(),
+      stats: z.array(
+        z.object({
+          label: z.string().nonempty(),
+          icon: z.string().editor({ input: 'icon' }),
+        })
+      ).optional(),
+      categoryOptions: z.array(
+        z.object({
+          label: z.string().nonempty(),
+          value: z.string(),
+        })
+      ).optional(),
+      complexityOptions: z.array(
+        z.object({
+          label: z.string().nonempty(),
+          value: z.string(),
+        })
+      ).optional(),
+      seoSections: z.array(
+        z.object({
+          title: z.string().nonempty(),
+          content: z.string().nonempty(),
+        })
+      ).optional(),
+      faqs: z.array(
+        z.object({
+          label: z.string().nonempty(),
+          content: z.string().nonempty(),
+        })
+      ).optional(),
+      cta: z.object({
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
+        button: z.object({
+          label: z.string().nonempty(),
+          to: z.string().nonempty(),
+        }),
+      }).optional(),
+    }),
+  }),
   blog: defineCollection({
     source: 'blog.yml',
     type: 'page',

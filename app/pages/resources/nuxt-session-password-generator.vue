@@ -3,9 +3,21 @@ definePageMeta({
   layout: 'default',
 });
 
+const route = useRoute();
+
+const { data: page } = await useAsyncData(route.path, () =>
+  queryCollection('resources').path(route.path).first()
+);
+
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true });
+}
+
 useSeoMeta({
-  title: 'Nuxt Session Password Generator | Free Tool | NuxtBeyond',
-  description: 'Generate secure NUXT_SESSION_PASSWORD values for nuxt-auth-utils. Free online tool for Nuxt.js developers.',
+  title: page.value.seo.title,
+  ogTitle: page.value.seo.title,
+  description: page.value.seo.description,
+  ogDescription: page.value.seo.description,
 });
 
 const password = ref('');
@@ -45,10 +57,10 @@ onMounted(() => {
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
           <h1 class="text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
-            Nuxt Session Password Generator
+            {{ page!.title }}
           </h1>
           <p class="text-lg text-neutral-600 dark:text-neutral-400">
-            Generate secure <code class="text-primary-600 dark:text-primary-400">NUXT_SESSION_PASSWORD</code> values for nuxt-auth-utils directly in your browser
+            {{ page!.description }}
           </p>
         </div>
 
