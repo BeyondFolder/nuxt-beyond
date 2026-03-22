@@ -1,10 +1,10 @@
 seo:
-  title: 'Free AI SaaS Ideas Generator | NuxtBeyond'
-  description: 'Generate personalized SaaS product ideas with AI. Tailored to your background, interests, and available time. Free, no signup required.'
-  ogTitle: 'Free AI SaaS Ideas Generator | NuxtBeyond'
+  title: 'AI SaaS Ideas Generator — Free Micro SaaS Idea Tool'
+  description: 'Generate AI SaaS ideas tailored to your skills and available time. Get personalized micro SaaS ideas across 12 categories — free, no signup required.'
+  ogTitle: 'AI SaaS Ideas Generator — Free, No Signup | NuxtBeyond'
   ogDescription: 'Get AI-powered SaaS product ideas personalized to you. 12 categories, multiple complexity levels. Free, no signup.'
-title: SaaS Ideas Generator
-description: Get AI-powered SaaS product ideas personalized to your background and interests. Free, no signup required.
+title: AI SaaS Ideas Generator
+description: Generate personalized SaaS and micro SaaS ideas based on your background, skills, and available time. Free, no signup required.
 stats:
   - label: AI-Powered
     icon: i-lucide-cpu
@@ -63,7 +63,18 @@ seoSections:
       Look for ideas where the buyer is also the user. Enterprise tools often have a gap between who decides to buy and who uses the product day-to-day. Micro SaaS works best when the person experiencing the pain is the one with the credit card.
 
       Avoid ideas that compete directly with well-funded companies on their core product. Instead, look for the gaps they leave — integrations they don't build, edge cases they don't support, niches too small for a VC-backed startup to care about but large enough for a solo founder to build a $5K–$20K MRR business.
+  - title: AI SaaS Ideas Worth Building in 2026
+    content: |
+      AI is reshaping every software category, and the best AI SaaS ideas in 2026 sit at the intersection of a real workflow and a model that can improve it. The opportunity is not building another chatbot wrapper — it's embedding AI into a specific job someone already pays to get done.
+
+      Strong AI SaaS ideas right now include document processing for niche industries (legal briefs, insurance claims, medical records), AI-assisted code review tools for specific frameworks, and automated reporting that pulls from multiple data sources. These work because the AI handles the tedious part of an existing paid workflow.
+
+      The key filter: would this product be useful even if the AI was only 80% accurate? If yes, you have a real product. If the entire value disappears when the AI makes a mistake, the idea is too fragile. The best AI SaaS products use AI to save time on tasks humans already do, not to replace human judgment entirely.
+
+      For solo developers, the fastest path is combining an open-source model or API with a tight UI around a single use case. Skip the "platform" ambition. One workflow, done well, with AI that actually saves time — that's the formula.
 faqs:
+  - label: What are good AI SaaS ideas for solo developers?
+    content: The best AI SaaS ideas for solo developers focus on a narrow workflow in a specific industry. Examples include AI-powered proposal generators for freelancers, automated competitor monitoring for e-commerce sellers, AI meeting notes summarizers for sales teams, and document extraction tools for accountants. Pick a niche where people already pay for software and add AI to eliminate the most tedious step.
   - label: What is a SaaS idea generator?
     content: A SaaS idea generator is a tool that helps developers and entrepreneurs discover potential software-as-a-service business ideas. This AI-powered generator takes your background and interests as input and produces personalized, actionable ideas tailored to your skills and available time.
   - label: How do I validate a SaaS idea?

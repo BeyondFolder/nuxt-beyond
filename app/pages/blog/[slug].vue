@@ -18,6 +18,7 @@ const title = post.value.seo?.title || post.value.title
 const description = post.value.seo?.description || post.value.description
 
 useSeoMeta({
+  titleTemplate: '',
   title,
   ogTitle: title,
   description,

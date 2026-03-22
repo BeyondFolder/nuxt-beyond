@@ -14,10 +14,31 @@ if (!page.value) {
 }
 
 useSeoMeta({
+  titleTemplate: '',
   title: page.value.seo.title,
   ogTitle: page.value.seo.ogTitle || page.value.seo.title,
   description: page.value.seo.description,
   ogDescription: page.value.seo.ogDescription || page.value.seo.description,
+});
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': page.value.faqs.map((faq: { label: string; content: string }) => ({
+          '@type': 'Question',
+          'name': faq.label,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': faq.content,
+          },
+        })),
+      }),
+    },
+  ],
 });
 
 interface SaasIdea {

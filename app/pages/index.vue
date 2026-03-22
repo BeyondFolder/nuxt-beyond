@@ -16,6 +16,43 @@ useSeoMeta({
   twitterTitle: title,
   twitterDescription: description,
 });
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        'name': 'NuxtBeyond',
+        'applicationCategory': 'DeveloperApplication',
+        'operatingSystem': 'Web',
+        'description': description,
+        'offers': {
+          '@type': 'Offer',
+          'price': '59',
+          'priceCurrency': 'USD',
+          'availability': 'https://schema.org/InStock',
+        },
+      }),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': page.value?.faqs?.items?.map((faq: { label: string; content: string }) => ({
+          '@type': 'Question',
+          'name': faq.label,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': faq.content,
+          },
+        })),
+      }),
+    },
+  ],
+});
 </script>
 
 <template>
