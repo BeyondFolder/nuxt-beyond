@@ -55,6 +55,8 @@ I'm also including **ShipFast** ($199-249) since it comes up in every boilerplat
 
 ### Supastarter — Best for Teams and Agencies
 
+> For a detailed head-to-head, see [Supastarter vs NuxtBeyond](/blog/supastarter-vs-nuxtbeyond).
+
 **Price:** $349 solo / $799 startup / $1,499 agency
 
 Supastarter is the most mature Nuxt SaaS boilerplate. They recently rewrote their Nuxt version from scratch for v2 (March 2026), and it shows — the documentation is thorough, the codebase is well-organized, and they support both Nuxt and Next.js.
@@ -188,7 +190,7 @@ Including ShipFast because it dominates boilerplate conversations. Marc Lou buil
 It depends on what you're building:
 
 **Building an AI product (chatbots, RAG, knowledge bases)?**
-NuxtBeyond ($59) is the only Nuxt boilerplate with production RAG and embeddable widgets. Nothing else comes close on AI depth.
+NuxtBeyond ($59) is the only Nuxt boilerplate with production RAG and embeddable widgets. Nothing else comes close on AI depth. [See pricing](/#pricing).
 
 **Building a traditional SaaS with enterprise requirements?**
 Supastarter ($349) has the most complete feature set — multi-provider payments, advanced auth, i18n. Worth the price for teams.
