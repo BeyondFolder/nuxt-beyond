@@ -136,7 +136,6 @@ export default defineNuxtConfig({
       // We could set these rules on all routes for better security IF we don't need the widget functionality embedded in 3rd party sites
       '/': {
         headers: {
-          'X-Frame-Options': 'SAMEORIGIN',
           'X-Content-Type-Options': 'nosniff',
           'Content-Security-Policy': [
             "default-src 'self'",
