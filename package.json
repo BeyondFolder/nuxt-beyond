@@ -51,7 +51,7 @@
     "drizzle-orm": "^0.45.1",
     "nuxt": "^4.4.2",
     "nuxt-auth-utils": "^0.5.29",
-    "nuxt-og-image": "^5.1.13",
+    "nuxt-og-image": "^6.0.0",
     "nuxt-seo-utils": "^7.0.19",
     "openai": "^6.37.0",
     "resend": "^6.12.3",
