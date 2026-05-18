@@ -3,7 +3,7 @@ import { getAudienceId, getResend } from '~~/server/utils/resend';
 import { H3Error } from 'h3';
 
 const subscribeSchema = z.object({
-  email: z.string().email('Invalid email address'),
+  email: z.email('Invalid email address'),
   turnstileToken: z.string(),
 });
 
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
     if (error instanceof z.ZodError) {
       throw createError({
         statusCode: 400,
-        statusMessage: error.errors[0]?.message || 'Invalid input',
+        statusMessage: error.issues[0]?.message || 'Invalid input',
       });
     }
 

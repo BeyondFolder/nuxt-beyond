@@ -9,7 +9,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const schemaUrl = z.object({
-  url: z.string().url('Please enter a valid URL.').optional(),
+  url: z.url('Please enter a valid URL.').optional(),
 });
 
 type Schema = z.output<typeof schemaUrl>;

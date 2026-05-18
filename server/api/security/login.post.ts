@@ -9,7 +9,7 @@ const invalidCredentialsError = createError({
 });
 
 const bodySchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(8),
   turnstileToken: z.string(),
 });

@@ -6,7 +6,7 @@ import { blob } from 'hub:blob'
 import { hubBrowser } from '~~/server/utils/browser';
 
 const bodySchema = z.object({
-  url: z.string().url('Please enter a valid URL'),
+  url: z.url('Please enter a valid URL'),
 });
 
 export default defineEventHandler(async (event) => {

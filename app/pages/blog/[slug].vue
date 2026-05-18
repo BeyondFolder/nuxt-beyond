@@ -29,7 +29,7 @@ if (post.value.image?.src) {
     url: post.value.image.src
   })
 } else {
-  defineOgImageComponent('NuxtSeo', {
+  defineOgImage('NuxtSeo', {
     theme: THEME_PRIMARY_COLOR,
     headline: 'NuxtBeyond Blog'
   });

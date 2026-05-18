@@ -3,7 +3,7 @@ import crypto from 'node:crypto';
 import { sendPasswordResetEmail } from '~~/server/utils/resend';
 
 const bodySchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   turnstileToken: z.string(),
 });
 

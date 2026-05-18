@@ -2,6 +2,8 @@
 
 Future improvements and enhancements for the NuxtBeyond boilerplate.
 
+- remove `nuxt-stripe` package and implement Stripe integration directly
+
 - [ ] **Pagination for support questions** - Add pagination to prevent performance issues
   - `server/api/projects/[id]/questions/index.get.ts:34` - TODO comment in code
 

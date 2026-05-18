@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const body = await readValidatedBody(
     event,
     z.object({
-      id: z.string().uuid().optional(),
+      id: z.uuid().optional(),
       message: z.object({
         role: z.literal('user'),
         parts: z.array(z.any()),

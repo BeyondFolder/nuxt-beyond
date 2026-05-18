@@ -16,7 +16,7 @@ useSeoMeta({
   ogDescription: description
 })
 
-defineOgImageComponent('NuxtSeo', {
+defineOgImage('NuxtSeo', {
   theme: THEME_PRIMARY_COLOR,
 });
 </script>

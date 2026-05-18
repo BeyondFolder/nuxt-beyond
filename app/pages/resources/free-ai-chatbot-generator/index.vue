@@ -11,7 +11,7 @@ const { data: page } = await useAsyncData(route.path, () =>
 const title = page.value?.seo?.title || page.value?.title;
 const description = page.value?.seo?.description || page.value?.description;
 
-defineOgImageComponent('NuxtSeo', {
+defineOgImage('NuxtSeo', {
   theme: THEME_PRIMARY_COLOR,
 });
 
@@ -55,7 +55,7 @@ useSchemaOrg([
 const { handleError, showSuccess } = useErrorHandling();
 
 const schema = z.object({
-  url: z.string().url('Please enter a valid URL'),
+  url: z.url('Please enter a valid URL'),
 });
 
 type Schema = z.output<typeof schema>;

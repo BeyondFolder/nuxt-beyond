@@ -4,7 +4,7 @@ import { sendVerificationEmail } from '~~/server/utils/resend';
 import { hashPasswordWorker } from '~~/server/utils/password';
 
 const bodySchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(8),
   turnstileToken: z.string(),
   acceptTerms: z.boolean().refine((val) => val === true, {
