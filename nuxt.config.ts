@@ -154,6 +154,18 @@ export default defineNuxtConfig({
     server: {
       allowedHosts: true,
     },
+    optimizeDeps: {
+      include: [
+        '@ai-sdk/vue',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'ai',
+        'date-fns',
+        'shiki',
+        'shiki-stream/vue',
+        'shiki/engine-javascript.mjs',
+      ],
+    },
   },
 
   eslint: {
