@@ -26,7 +26,6 @@
     "@ai-sdk/anthropic": "^3.0.78",
     "@ai-sdk/openai": "^3.0.64",
     "@ai-sdk/vue": "^3.0.184",
-    "@cloudflare/puppeteer": "^1.1.0",
     "@cloudflare/workers-types": "^4.20260518.1",
     "@iconify-json/lucide": "^1.2.108",
     "@iconify-json/simple-icons": "^1.2.82",
@@ -60,6 +59,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@cloudflare/puppeteer": "^1.1.0",
     "@nuxt/eslint": "^1.15.2",
     "drizzle-kit": "^0.31.10",
     "eslint": "^10.4.0",
