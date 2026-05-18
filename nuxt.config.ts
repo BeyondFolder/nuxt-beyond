@@ -15,24 +15,6 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
   ],
 
-  $development: {
-    hub: {
-      blob: {
-        driver: 'fs',
-        binding: 'BLOB',
-        dir: '.data/blob',
-      },
-    },
-  },
-
-  $env: {
-    remote: {
-      blob: {
-        driver: 'cloudflare-r2',
-      },
-    },
-  },
-
   devtools: {
     enabled: true,
   },
@@ -151,14 +133,33 @@ export default defineNuxtConfig({
   },
 
   hub: {
-    db: 'sqlite',
-    blob: true,
-    kv: true,
+    db: {
+      dialect: 'sqlite',
+      driver: 'd1',
+    },
+    blob: {
+      driver: 'cloudflare-r2',
+    },
+    kv: {
+      driver: 'cloudflare-kv-binding',
+    },
   },
 
   vite: {
     server: {
       allowedHosts: true,
+    },
+    optimizeDeps: {
+      include: [
+        '@ai-sdk/vue',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'ai',
+        'date-fns',
+        'shiki',
+        'shiki-stream/vue',
+        'shiki/engine-javascript.mjs',
+      ],
     },
   },
 
