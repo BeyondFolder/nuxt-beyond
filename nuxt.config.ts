@@ -180,19 +180,4 @@ export default defineNuxtConfig({
   ogImage: {
     zeroRuntime: true,
   },
-
-  vite: {
-    optimizeDeps: {
-      include: [
-        '@ai-sdk/vue',
-        '@vue/devtools-core',
-        '@vue/devtools-kit',
-        'ai',
-        'date-fns',
-        'shiki',
-        'shiki-stream/vue',
-        'shiki/engine-javascript.mjs',
-      ],
-    },
-  },
 });
