@@ -53,8 +53,8 @@ const providers = [
 ];
 
 const schema = z.object({
-  email: z.string().email('Invalid email'),
-  password: z.string().min(8, 'Must be at least 8 characters'),
+  email: z.email('Invalid email'),
+  password: z.string('Invalid password').min(8, 'Must be at least 8 characters'),
   acceptTerms: z.boolean().refine((val) => val === true, {
     message: 'You must accept the Terms of Service and Privacy Policy',
   }),
