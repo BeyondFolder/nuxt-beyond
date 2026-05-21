@@ -25,9 +25,7 @@ useSeoMeta({
 })
 
 if (post.value.image?.src) {
-  defineOgImage({
-    url: post.value.image.src
-  })
+  useSeoMeta({ ogImage: post.value.image.src })
 } else {
   defineOgImage('NuxtSeo', {
     theme: THEME_PRIMARY_COLOR,

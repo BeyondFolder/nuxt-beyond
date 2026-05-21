@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
     '@unlok-co/nuxt-stripe',
     '@nuxtjs/seo',
+    '@nuxt/fonts',
   ],
 
   devtools: {
@@ -139,6 +140,7 @@ export default defineNuxtConfig({
     },
     blob: {
       driver: 'cloudflare-r2',
+      binding: 'BLOB',
     },
     kv: {
       driver: 'cloudflare-kv-binding',
@@ -174,6 +176,7 @@ export default defineNuxtConfig({
 
   ogImage: {
     zeroRuntime: true,
+    runtimeCacheStorage: false,
   },
 
   sitemap: {
