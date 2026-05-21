@@ -3,6 +3,7 @@ import { z } from 'zod';
 import type { FormSubmitEvent } from '@nuxt/ui';
 import type { ProjectConfiguration } from '#shared/types';
 import { THEME_PRIMARY_COLOR } from '#shared/constants';
+import { generateIframeCode, generateLoaderCode } from '~/utils/embedCode';
 
 defineRouteRules({
   prerender: false,
@@ -131,61 +132,12 @@ const loaderCode = computed(() => {
     return '';
   }
 
-  const config = {
+  return generateLoaderCode({
     projectId: dashboardData.value.currentProject.id,
     primaryColor: currentConfig.value?.appearance?.primaryColor,
     position: currentConfig.value?.appearance?.position,
     logo: logoUrl.value,
-  };
-
-  const loaderCode = `(function () {
-  if (!window.nuxtbeyond || !window.__nuxtbeyond_loaded) {
-    window.nuxtbeyond = (...arguments) => {
-      if (!window.nuxtbeyond.q) {
-        window.nuxtbeyond.q = [];
-      }
-      window.nuxtbeyond.q.push(arguments);
-    };
-
-    window.nuxtbeyond = new Proxy(window.nuxtbeyond, {
-      get(target, prop) {
-        if (prop === 'q') {
-          return target.q;
-        }
-        return (...args) => target(prop, ...args);
-      },
-    });
-  }
-
-  const config = ${JSON.stringify(config)};
-
-  const onLoad = function () {
-    window.__nuxtbeyond_config = config;
-
-    const embedScript = document.createElement('script');
-    embedScript.src = 'https://nuxtbeyond.com/embed.js';
-
-    embedScript.onerror = () => {
-      console.error('NuxtBeyond: Failed to load embed script');
-    };
-
-    document.body.appendChild(embedScript);
-  };
-
-  if (document.readyState === 'complete') {
-    onLoad();
-  } else {
-    window.addEventListener('load', onLoad);
-  }
-})();`;
-
-  const minified = loaderCode
-    .replace(/\s+/g, ' ')
-    .replace(/\s*([{};,():])\s*/g, '$1')
-    .replace(/\s*=\s*/g, '=')
-    .trim();
-
-  return `<script>${minified}<` + `/script>`;
+  });
 });
 
 const iframeCode = computed(() => {
@@ -193,12 +145,7 @@ const iframeCode = computed(() => {
     return '';
   }
 
-  return `<iframe
-  src="https://nuxtbeyond.com/embed?projectId=${dashboardData.value.currentProject.id}"
-  width="100%"
-  style="height: 100%; min-height: 700px"
-  frameborder="0"
-></iframe>`;
+  return generateIframeCode(dashboardData.value.currentProject.id);
 });
 
 async function copyLoaderCode() {
@@ -293,14 +240,16 @@ async function copyIframeCode() {
               { label: 'Script', slot: 'script', icon: 'i-lucide-code' },
               { label: 'iFrame (Advanced)', slot: 'iframe', icon: 'i-lucide-frame' },
             ]"
-            :ui="{
-              list: {
-                base: 'bg-transparent',
-                marker: {
-                  base: 'bg-primary',
+            :ui="
+              {
+                list: {
+                  base: 'bg-transparent',
+                  marker: {
+                    base: 'bg-primary',
+                  },
                 },
-              },
-            } as any"
+              } as any
+            "
           >
             <template #script>
               <div class="space-y-3 pt-4">
