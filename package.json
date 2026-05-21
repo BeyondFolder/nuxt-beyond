@@ -25,10 +25,10 @@
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.78",
     "@ai-sdk/openai": "^3.0.64",
-    "@ai-sdk/vue": "^3.0.184",
-    "@cloudflare/workers-types": "^4.20260518.1",
+    "@ai-sdk/vue": "^3.0.185",
+    "@cloudflare/workers-types": "^4.20260519.1",
     "@iconify-json/lucide": "^1.2.108",
-    "@iconify-json/simple-icons": "^1.2.82",
+    "@iconify-json/simple-icons": "^1.2.83",
     "@libsql/client": "^0.17.3",
     "@noble/hashes": "^2.2.0",
     "@nuxt/content": "^3.14.0",
@@ -41,16 +41,18 @@
     "@nuxtjs/turnstile": "^1.1.3",
     "@react-email/render": "^2.0.8",
     "@standard-schema/spec": "^1.1.0",
+    "@takumi-rs/core": "^1.3.0",
+    "@takumi-rs/wasm": "^1.3.0",
     "@unlok-co/nuxt-stripe": "^6.0.2",
     "@vueuse/nuxt": "^14.3.0",
-    "ai": "^6.0.184",
+    "ai": "^6.0.185",
     "ai-gateway-provider": "^3.1.3",
     "better-sqlite3": "^12.10.0",
     "date-fns": "^4.2.1",
     "drizzle-orm": "^0.45.2",
     "nuxt": "^4.4.6",
     "nuxt-auth-utils": "^0.5.29",
-    "nuxt-og-image": "^6.5.0",
+    "nuxt-og-image": "^6.5.1",
     "nuxt-seo-utils": "^8.1.11",
     "openai": "^6.38.0",
     "resend": "^6.12.3",
@@ -67,6 +69,6 @@
     "prettier": "^3.8.3",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.0",
-    "wrangler": "^4.92.0"
+    "wrangler": "^4.93.0"
   }
 }
