@@ -1,5 +1,5 @@
-import { useServerStripe } from '#stripe/server';
 import { getUserProjectWithRole } from '~~/server/db/queries';
+import { getPaymentProvider } from '~~/server/utils/billing/provider';
 
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
@@ -11,7 +11,9 @@ export default defineEventHandler(async (event) => {
   }
 
   const userProject = await getUserProjectWithRole(db, session.user.id, projectId);
-  if (!userProject) throw createError({ statusCode: 404, statusMessage: "Project not found" });
+  if (!userProject) {
+    throw createError({ statusCode: 404, statusMessage: 'Project not found' });
+  }
   const { role, project } = userProject;
   if (!role) {
     throw createError({ statusCode: 403, statusMessage: 'You do not have access to this project' });
@@ -21,22 +23,10 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 403, statusMessage: 'Only project admins can manage billing' });
   }
 
-  if (!project.stripeCustomerId) {
-    throw createError({
-      statusCode: 400,
-      message: 'No Stripe customer found for this project',
-    });
-  }
+  const provider = getPaymentProvider(event);
 
-  const stripe = await useServerStripe(event);
-  const config = useRuntimeConfig(event);
-
-  const portalSession = await stripe.billingPortal.sessions.create({
-    customer: project.stripeCustomerId,
-    return_url: `${config.public.siteUrl}/dashboard/billing`,
+  return provider.createPortalSession({
+    event,
+    project,
   });
-
-  return {
-    url: portalSession.url,
-  };
 });

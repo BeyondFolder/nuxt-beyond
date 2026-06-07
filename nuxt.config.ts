@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@unlok-co/nuxt-stripe',
     '@nuxtjs/seo',
     '@nuxt/fonts',
+    '@polar-sh/nuxt',
   ],
 
   devtools: {
@@ -73,8 +74,14 @@ export default defineNuxtConfig({
     stripe: {
       key: '', // overriden by NUXT_STRIPE_KEY
     },
+    polar: {
+      mode: process.env.POLAR_MODE,
+      accessToken: process.env.POLAR_ACCESS_TOKEN,
+      webhookSecret: process.env.POLAR_WEBHOOK_SECRET,
+    },
     public: {
       siteUrl: '', // overriden by NUXT_PUBLIC_SITE_URL
+      paymentProvider: process.env.PAYMENT_PROVIDER || 'stripe', // 'stripe' | 'polar'
       stripe: {
         key: '', // overriden by NUXT_PUBLIC_STRIPE_KEY
         manualClientLoad: true,

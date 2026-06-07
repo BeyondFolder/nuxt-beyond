@@ -24,18 +24,28 @@ if (!isAdmin.value) {
   navigateTo('/dashboard');
 }
 
+const paymentProvider = useRuntimeConfig().public.paymentProvider;
+
 const projectId = computed(() => dashboardData.value?.currentProject?.id);
 const currentPlan = computed<PlanName>(() => dashboardData.value?.currentProject?.planName || 'free');
 const subscriptionStatus = computed(() => dashboardData.value?.currentProject?.subscriptionStatus || 'inactive');
-const stripeCustomerId = computed(() => dashboardData.value?.currentProject?.stripeCustomerId);
-const stripeSubscriptionId = computed(() => dashboardData.value?.currentProject?.stripeSubscriptionId);
+const billingCustomerId = computed(() =>
+  paymentProvider === 'polar'
+    ? dashboardData.value?.currentProject?.polarCustomerId
+    : dashboardData.value?.currentProject?.stripeCustomerId
+);
+const billingSubscriptionId = computed(() =>
+  paymentProvider === 'polar'
+    ? dashboardData.value?.currentProject?.polarSubscriptionId
+    : dashboardData.value?.currentProject?.stripeSubscriptionId
+);
 
 if (!projectId.value) {
   throw createError({ statusCode: 404, statusMessage: 'No project found', fatal: true });
 }
 
 const shouldPromoteProTrial = computed(() => {
-  return currentPlan.value === 'free' && !stripeSubscriptionId.value;
+  return currentPlan.value === 'free' && !billingSubscriptionId.value;
 });
 
 const isLoading = ref(false);
@@ -122,7 +132,7 @@ const handleSubscribe = async (planName: PlanName, planIndex: number) => {
     return;
   }
 
-  if (stripeCustomerId.value && (planName === currentPlan.value || stripeSubscriptionId.value)) {
+  if (billingCustomerId.value && (planName === currentPlan.value || billingSubscriptionId.value)) {
     await handleManagePlan(planIndex);
     return;
   }
@@ -204,7 +214,7 @@ useSeoMeta({
             :title="plan.title"
             :description="plan.description"
             :price="plan.price"
-            :discount="!stripeSubscriptionId ? plan.discount : undefined"
+            :discount="!billingSubscriptionId ? plan.discount : undefined"
             :billing-period="plan.billing_period"
             :billing-cycle="plan.billing_cycle"
             :highlight="getPlanHighlight(plan.planName)"
