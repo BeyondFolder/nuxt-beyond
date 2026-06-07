@@ -97,7 +97,8 @@
   // - NUXT_SITE_URL: Your site URL (e.g., https://yourdomain.com) - used by Nuxt SEO
   // - NUXT_SITE_ENV: Environment type (production, staging, etc.) - optional
   // - NUXT_PUBLIC_SITE_URL: Your site URL - used in runtime config
-  // - NUXT_PUBLIC_STRIPE_KEY: Stripe publishable key
+  // - PAYMENT_PROVIDER: Active payment provider: 'stripe' (default) or 'polar'
+  // - NUXT_PUBLIC_STRIPE_KEY: Stripe publishable key (only if PAYMENT_PROVIDER=stripe)
   // - NUXT_PUBLIC_TURNSTILE_SITE_KEY: Cloudflare Turnstile site key
   //
   // RUNTIME VARIABLES (Settings > Variables and Secrets):
@@ -107,13 +108,16 @@
   // - CLOUDFLARE_AUTO_RAG_ID: AI Search (AutoRAG) ID for knowledge base
   // - NUXT_OAUTH_GOOGLE_CLIENT_ID: Google OAuth client ID
   // - RESEND_AUDIENCE_ID: Resend audience ID for email lists
-  // - STRIPE_PROMO_CODE: Stripe promo code ID (optional)
+  // - STRIPE_PROMO_CODE: Stripe promo code ID (optional, only if PAYMENT_PROVIDER=stripe)
+  // - POLAR_MODE: Polar environment 'sandbox' or 'production' (only if PAYMENT_PROVIDER=polar)
   //
   // RUNTIME SECRETS (Settings > Variables and Secrets > Add > Type: Secret):
   // - NUXT_SESSION_PASSWORD: Session encryption password (32+ characters)
   // - NUXT_OAUTH_GOOGLE_CLIENT_SECRET: Google OAuth client secret
-  // - NUXT_STRIPE_KEY: Stripe secret key
-  // - STRIPE_WEBHOOK_SECRET: Stripe webhook signing secret
+  // - NUXT_STRIPE_KEY: Stripe secret key (only if PAYMENT_PROVIDER=stripe)
+  // - STRIPE_WEBHOOK_SECRET: Stripe webhook signing secret (only if PAYMENT_PROVIDER=stripe)
+  // - POLAR_ACCESS_TOKEN: Polar org access token (only if PAYMENT_PROVIDER=polar)
+  // - POLAR_WEBHOOK_SECRET: Polar webhook signing secret (only if PAYMENT_PROVIDER=polar)
   // - RESEND_API_KEY: Resend API key
   // - CLOUDFLARE_AUTO_RAG_API_TOKEN: AutoRAG API token
   // - NUXT_TURNSTILE_SECRET_KEY: Turnstile secret key

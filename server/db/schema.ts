@@ -98,6 +98,9 @@ export const projects = sqliteTable(
     stripeCustomerId: text(),
     stripeSubscriptionId: text(),
     stripeCurrentPeriodEnd: integer({ mode: 'timestamp' }),
+    polarCustomerId: text(),
+    polarSubscriptionId: text(),
+    polarCurrentPeriodEnd: integer({ mode: 'timestamp' }),
     createdAt: integer({ mode: 'timestamp' })
       .notNull()
       .default(sql`(unixepoch())`),
@@ -109,6 +112,7 @@ export const projects = sqliteTable(
     index('projectPlanIdx').on(t.planName),
     index('projectSubscriptionIdx').on(t.subscriptionStatus),
     index('projectStripeSubscriptionIdx').on(t.stripeSubscriptionId),
+    index('projectPolarSubscriptionIdx').on(t.polarSubscriptionId),
   ]
 );
 

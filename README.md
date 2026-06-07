@@ -21,10 +21,13 @@ The AI-first Nuxt 4 boilerplate for building SaaS products. Ship in days, not mo
 - **Password Reset** - Forgot password flow with email
 
 ### 💳 Payments
-- **Stripe Subscriptions** - Recurring billing with webhooks
+- **Stripe or Polar** - Pick your provider with the `PAYMENT_PROVIDER` env var (Stripe is the default)
+- **Subscriptions** - Recurring billing with webhooks
 - **Customer Portal** - Self-service billing management
 - **Plan Gating** - Feature access based on subscription tier
 - **Free Trials** - Configurable trial periods
+
+> Plans map to provider products by `planName` (from `shared/constants.ts`). **Monthly billing only by default** — Stripe via price lookup key `${planName}_monthly`, Polar via product metadata `planName`. See the [Billing](#-billing-stripe-or-polar) section.
 
 ### ☁️ Infrastructure
 - **NuxtHub** - Zero-config Cloudflare deployment
@@ -128,7 +131,8 @@ Set in **Settings > Builds and deployments > Environment variables** (required f
 | `NUXT_SITE_URL` | ✅ | ✅ | Variable | Your site URL (e.g., https://yourdomain.com) - used by Nuxt SEO |
 | `NUXT_SITE_ENV` | ✅ | ✅ | Variable | Environment type (production, staging, etc.) - optional |
 | `NUXT_PUBLIC_SITE_URL` | ✅ | ✅ | Variable | Your site URL - used in runtime config |
-| `NUXT_PUBLIC_STRIPE_KEY` | ✅ | ✅ | Variable | Stripe publishable key |
+| `PAYMENT_PROVIDER` | ✅ | ✅ | Variable | Active payment provider: `stripe` (default) or `polar` |
+| `NUXT_PUBLIC_STRIPE_KEY` | ✅ | ✅ | Variable | Stripe publishable key (only if `PAYMENT_PROVIDER=stripe`) |
 | `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | ✅ | ✅ | Variable | Cloudflare Turnstile site key |
 | `NO_REPLY_EMAIL` | ✅ | ✅ | Variable | Your no-reply email address for system emails |
 | `SUPPORT_EMAIL` | ✅ | ✅ | Variable | Your support email address for feedback |
@@ -146,8 +150,11 @@ Set in **Settings > Variables and Secrets**:
 | `STRIPE_PROMO_CODE` | - | ✅ | Variable | Stripe promo code ID (optional) |
 | `NUXT_SESSION_PASSWORD` | - | ✅ | Secret | Session encryption key (32+ chars) |
 | `NUXT_OAUTH_GOOGLE_CLIENT_SECRET` | - | ✅ | Secret | Google OAuth secret |
-| `NUXT_STRIPE_KEY` | - | ✅ | Secret | Stripe secret key |
-| `STRIPE_WEBHOOK_SECRET` | - | ✅ | Secret | Stripe webhook signing secret |
+| `NUXT_STRIPE_KEY` | - | ✅ | Secret | Stripe secret key (only if `PAYMENT_PROVIDER=stripe`) |
+| `STRIPE_WEBHOOK_SECRET` | - | ✅ | Secret | Stripe webhook signing secret (only if `PAYMENT_PROVIDER=stripe`) |
+| `POLAR_MODE` | - | ✅ | Variable | Polar environment: `sandbox` or `production` (only if `PAYMENT_PROVIDER=polar`) |
+| `POLAR_ACCESS_TOKEN` | - | ✅ | Secret | Polar org access token (only if `PAYMENT_PROVIDER=polar`) |
+| `POLAR_WEBHOOK_SECRET` | - | ✅ | Secret | Polar webhook signing secret (only if `PAYMENT_PROVIDER=polar`) |
 | `RESEND_API_KEY` | - | ✅ | Secret | Resend email API key |
 | `CLOUDFLARE_AUTO_RAG_API_TOKEN` | - | ✅ | Secret | AutoRAG API token |
 | `NUXT_TURNSTILE_SECRET_KEY` | - | ✅ | Secret | Turnstile secret key |
@@ -188,6 +195,58 @@ Before deploying, customize `wrangler.jsonc` for your Cloudflare account:
 
 Get your database and KV IDs from the Cloudflare dashboard under **Workers & Pages > D1** and **Workers & Pages > KV** respectively.
 
+## 💳 Billing (Stripe or Polar)
+
+NuxtBeyond ships with per-project subscription billing and supports **two payment providers**. Choose the active one with the `PAYMENT_PROVIDER` env var — `stripe` (default) or `polar`. Only the selected provider needs its keys configured.
+
+```bash
+PAYMENT_PROVIDER=stripe   # or: polar
+```
+
+Under the hood, `server/utils/billing/provider.ts` returns the active provider behind a common interface, so the checkout/portal endpoints (`POST /api/projects/[id]/billing` and `.../billing/portal`) are provider-neutral. Only the webhook path is provider-specific.
+
+### Plan → product mapping
+
+Plans are defined in `shared/constants.ts` (`planNames`, `PLANS_CONSTANTS`). Each plan maps to a provider product/price by its `planName`. **Only monthly billing is supported by default.**
+
+| Provider | How a plan resolves to a product | What you create |
+|----------|----------------------------------|-----------------|
+| **Stripe** | Price **lookup key** `${planName}_monthly` (e.g. `pro_monthly`) | A Stripe price per paid plan with that lookup key |
+| **Polar**  | Product **metadata** `planName` (e.g. `{ planName: "pro" }`) | A Polar product per paid plan with that metadata field |
+
+> Also make sure each plan in `content/index.yml` has a matching `planName` field (the billing page reads it).
+>
+> **Adding yearly billing:** extend the key/metadata to carry the period (`${planName}_yearly` for Stripe, a `planFrequency` metadata field for Polar) and pass the chosen period through the checkout call. See the `TODO: Add support for yearly prices` markers in `server/utils/billing/`.
+
+### Stripe setup
+
+1. Create a **product + monthly price** for each paid plan, setting the price's **lookup key** to `${planName}_monthly`.
+2. Set `NUXT_STRIPE_KEY` (secret), `NUXT_PUBLIC_STRIPE_KEY` (publishable), and optionally `STRIPE_PROMO_CODE`.
+3. Add a **webhook endpoint** at `https://<your-domain>/api/webhooks/stripe` subscribed to:
+   - `checkout.session.completed` — Initial subscription
+   - `customer.subscription.updated` — Plan changes, cancellation/reactivation
+   - `customer.subscription.deleted` — Subscription ended
+   - `customer.subscription.trial_will_end` — Trial ending notification
+4. Copy the endpoint's signing secret into `STRIPE_WEBHOOK_SECRET`.
+5. Local testing: `stripe listen --forward-to localhost:3000/api/webhooks/stripe`.
+
+### Polar setup
+
+1. Create a **product** for each paid plan (one-time or recurring; subscriptions by default) and add a `planName` **metadata** field matching the plan name (`pro`, `advanced`).
+2. Create an **Organization Access Token** (Polar Dashboard → Settings → API) with these scopes:
+   - `products:read` — resolve plan → product at checkout
+   - `checkouts:write` — create checkout sessions
+   - `customer_sessions:write` — create the customer portal session
+3. Set `POLAR_ACCESS_TOKEN` (secret), `POLAR_MODE` (`sandbox` or `production`).
+4. Add a **webhook endpoint** at `https://<your-domain>/api/webhooks/polar` subscribed to:
+   - `subscription.created` — Initial subscription
+   - `subscription.updated` — Plan changes, cancellation/reactivation, status changes
+   - `subscription.revoked` — Subscription ended
+5. Copy the endpoint's signing secret into `POLAR_WEBHOOK_SECRET`.
+6. Local testing: tunnel localhost (cloudflared/ngrok) and register the public URL as the endpoint.
+
+> Polar is merchant-of-record and handles tax automatically — no tax config in code. Trials are configured on the Polar product in the dashboard.
+
 ## Project Structure
 
 ```
@@ -203,7 +262,7 @@ Get your database and KV IDs from the Cloudflare dashboard under **Workers & Pag
 │   │   ├── projects/   # Project management
 │   │   ├── embed/      # Embeddable widget
 │   │   ├── security/   # Auth endpoints
-│   │   └── webhooks/   # Stripe webhooks
+│   │   └── webhooks/   # Stripe + Polar webhooks
 │   ├── db/             # Database schema & queries
 │   ├── middleware/     # Server middleware
 │   ├── routes/         # Server routes (OAuth, files)
@@ -586,7 +645,7 @@ Remote resource IDs are set in `wrangler.jsonc` under the `env.remote` section:
 - **Database:** Cloudflare D1, Drizzle ORM
 - **AI:** Vercel AI SDK v6, OpenAI GPT via Cloudflare AI Gateway, Cloudflare AI Search
 - **Auth:** nuxt-auth-utils, Google OAuth
-- **Payments:** Stripe
+- **Payments:** Stripe or Polar (selectable via `PAYMENT_PROVIDER`)
 - **Email:** Resend
 - **Deployment:** NuxtHub, Cloudflare Workers
 

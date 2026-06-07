@@ -7,7 +7,7 @@ This file provides guidance to Claude Code when working with the NuxtBeyond boil
 NuxtBeyond is an AI-first Nuxt 4 boilerplate for building SaaS products. It includes:
 - AI chat with RAG (Cloudflare AI Search + Vercel AI SDK v6)
 - Authentication (Google OAuth + credentials)
-- Stripe billing with subscriptions
+- Billing with subscriptions (Stripe or Polar, selectable via `PAYMENT_PROVIDER`)
 - Embeddable widget system
 - Multi-tenant projects
 
@@ -19,7 +19,7 @@ NuxtBeyond is an AI-first Nuxt 4 boilerplate for building SaaS products. It incl
 - **Storage:** Cloudflare R2 via NuxtHub
 - **AI:** Vercel AI SDK v6, OpenAI GPT via Cloudflare AI Gateway, Cloudflare AI Search
 - **Auth:** nuxt-auth-utils (Google OAuth + credentials)
-- **Payments:** Stripe (subscriptions, webhooks)
+- **Payments:** Stripe or Polar (subscriptions, webhooks) — selectable via `PAYMENT_PROVIDER`
 - **Email:** Resend
 - **Deployment:** NuxtHub → Cloudflare Workers
 
@@ -288,19 +288,70 @@ The boilerplate includes basic protection against prompt injection attacks in `s
 
 **Important:** These protections catch 95%+ of casual jailbreak attempts but **are not foolproof**. Perfect prompt injection protection is impossible - even major AI companies struggle with this. The current implementation provides reasonable baseline protection that can be extended based on security requirements. See README.md for detailed limitations and recommendations.
 
-## Stripe Billing
+## Billing (Stripe or Polar)
 
-Per-project subscriptions with webhooks:
+Per-project subscriptions with webhooks. Two payment providers are supported and the active one is selected with the `PAYMENT_PROVIDER` env var (`stripe` is the default).
 
-**API endpoints:**
+### Provider switch
+
+- `PAYMENT_PROVIDER=stripe | polar` → surfaced as `runtimeConfig.public.paymentProvider` (so both server and `billing.vue` read it).
+- `server/utils/billing/provider.ts` exposes `getPaymentProvider(event)` which returns the active provider behind a common `PaymentProvider` interface (`createCheckout`, `createPortalSession`).
+- Implementations: `server/utils/billing/stripe.ts` and `server/utils/billing/polar.ts` (Polar SDK client in `server/utils/polar.ts`).
+- The HTTP endpoints are provider-neutral; only the webhook path differs per provider (signatures differ).
+
+**API endpoints (provider-neutral):**
 - `POST /api/projects/[id]/billing` - Create checkout session
 - `POST /api/projects/[id]/billing/portal` - Customer portal session
 
-**Webhook events handled** (`/api/webhooks/stripe`):
+### Webhooks
+
+The webhook path is provider-specific because each provider signs payloads differently. Only the active provider's webhook needs to be configured.
+
+**Stripe** (`/api/webhooks/stripe`) — events handled:
 - `checkout.session.completed` - Initial subscription
 - `customer.subscription.updated` - Plan changes, cancellation
 - `customer.subscription.deleted` - Subscription ended
 - `customer.subscription.trial_will_end` - Trial ending notification
+
+To make it work:
+1. In the Stripe Dashboard → Developers → Webhooks, add an endpoint `https://<your-domain>/api/webhooks/stripe`.
+2. Subscribe to the four events above.
+3. Copy the endpoint's **signing secret** into `STRIPE_WEBHOOK_SECRET`.
+4. For local testing, use the Stripe CLI: `stripe listen --forward-to localhost:3000/api/webhooks/stripe` (use the secret it prints).
+
+**Polar** (`/api/webhooks/polar`) — events handled (signature verified via the auto-imported `Webhooks()` helper from `@polar-sh/nuxt`):
+- `subscription.created` - Initial subscription
+- `subscription.updated` - Plan changes, cancellation/reactivation, status changes
+- `subscription.revoked` - Subscription ended
+
+To make it work:
+1. In the Polar Dashboard → Settings → Webhooks, add an endpoint `https://<your-domain>/api/webhooks/polar`.
+2. Subscribe to `subscription.created`, `subscription.updated`, `subscription.revoked`.
+3. Copy the endpoint's **signing secret** into `POLAR_WEBHOOK_SECRET`.
+4. For local testing, tunnel localhost (cloudflared/ngrok) and register the public URL as the endpoint.
+
+### Polar access token permissions
+
+Create an **Organization Access Token** (Polar Dashboard → Settings → API) with the scopes the code actually calls:
+- `products:read` - resolve plan → product at checkout (`polar.products.list`)
+- `checkouts:write` - create checkout sessions (`polar.checkouts.create`)
+- `customer_sessions:write` - create the customer portal session (`polar.customerSessions.create`)
+
+Set the token as `POLAR_ACCESS_TOKEN`, and `POLAR_MODE=sandbox | production` to match where the token/products live.
+
+### Plan → product mapping
+
+Both providers map a plan to its product/price using the plan's `planName` (from `planNames` in `shared/constants.ts`). **Only monthly prices are supported by default.**
+
+- **Stripe:** resolved by **price lookup key** `${planName}_monthly` (e.g. `pro_monthly`). Create each Stripe price with that lookup key. The webhook reverse-maps via the price's `lookup_key` (`planName = lookup_key.split('_')[0]`).
+- **Polar:** resolved by **product metadata** `planName` (e.g. a product with metadata `{ planName: "pro" }`). Looked up at checkout via `polar.products.list({ isArchived: false, metadata: { planName } })`; the webhook reverse-maps via `subscription.product.metadata.planName`.
+
+> To add yearly billing, extend the lookup key / metadata to carry the period (e.g. `${planName}_yearly` for Stripe, a `planFrequency` metadata field for Polar) and pass the chosen period through the checkout call. See the `TODO: Add support for yearly prices` markers in `server/utils/billing/`.
+
+### DB columns (`projects` table)
+
+- Stripe: `stripeCustomerId`, `stripeSubscriptionId`, `stripeCurrentPeriodEnd`
+- Polar: `polarCustomerId`, `polarSubscriptionId`, `polarCurrentPeriodEnd`
 
 **Plan configuration** in `shared/constants.ts`:
 ```typescript
@@ -373,8 +424,10 @@ Plan configurations are defined in:
 
 ### Modify plans
 - Edit `shared/constants.ts` (PLANS_CONSTANTS)
-- Update `content/index.yml` pricing section
-- Create Stripe products with matching lookup keys (`{planName}_monthly`)
+- Update `content/index.yml` pricing section (each plan needs a `planName` field matching `planNames`)
+- Map the plan to a provider product (monthly only by default):
+  - **Stripe:** create a price with lookup key `{planName}_monthly`
+  - **Polar:** create a product with metadata `{ planName }`
 
 ### Add new API endpoints
 - Create file in `server/api/` following Nuxt convention
@@ -401,17 +454,20 @@ Required for SSR, prerendering, sitemap generation, and SEO:
 - `NUXT_SITE_URL` - Site URL for Nuxt SEO
 - `NUXT_SITE_ENV` - Environment type (optional)
 - `NUXT_PUBLIC_SITE_URL` - Public site URL
-- `NUXT_PUBLIC_STRIPE_KEY` - Stripe publishable key
+- `PAYMENT_PROVIDER` - Active payment provider: `stripe` (default) or `polar`
+- `NUXT_PUBLIC_STRIPE_KEY` - Stripe publishable key (only if `PAYMENT_PROVIDER=stripe`)
 - `NUXT_PUBLIC_TURNSTILE_SITE_KEY` - Turnstile site key
 
 **Runtime Variables** (Settings > Variables and Secrets):
 All build-time variables plus:
 - `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_AI_GATEWAY_ID`, `CLOUDFLARE_AUTO_RAG_ID`
-- `NUXT_OAUTH_GOOGLE_CLIENT_ID`, `RESEND_AUDIENCE_ID`, `STRIPE_PROMO_CODE`
+- `NUXT_OAUTH_GOOGLE_CLIENT_ID`, `RESEND_AUDIENCE_ID`
+- `STRIPE_PROMO_CODE` (Stripe only), `POLAR_MODE` (Polar only: `sandbox` | `production`)
 
 **Runtime Secrets** (Settings > Variables and Secrets > Type: Secret):
 - `NUXT_SESSION_PASSWORD`, `NUXT_OAUTH_GOOGLE_CLIENT_SECRET`
-- `NUXT_STRIPE_KEY`, `STRIPE_WEBHOOK_SECRET`
+- `NUXT_STRIPE_KEY`, `STRIPE_WEBHOOK_SECRET` (Stripe only)
+- `POLAR_ACCESS_TOKEN`, `POLAR_WEBHOOK_SECRET` (Polar only)
 - `RESEND_API_KEY`, `CLOUDFLARE_AUTO_RAG_API_TOKEN`, `NUXT_TURNSTILE_SECRET_KEY`
 
 > **Important:** Use `NUXT_` prefix for automatic runtime config injection. The `wrangler.jsonc` has `keep_vars: true` to preserve dashboard variables during deployment.

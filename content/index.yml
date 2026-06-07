@@ -1,6 +1,6 @@
 seo:
   title: NuxtBeyond - AI-First Nuxt 4 Boilerplate for SaaS
-  description: Build AI-powered SaaS products in days. Full-stack Nuxt 4 boilerplate with RAG, Cloudflare AI Search, authentication, Stripe billing, and edge deployment.
+  description: Build AI-powered SaaS products in days. Full-stack Nuxt 4 boilerplate with RAG, Cloudflare AI Search, authentication, Stripe or Polar billing, and edge deployment.
 title: Ship your AI SaaS this [weekend]{.text-primary}, not in months
 description: Stop wiring up auth, Stripe, and RAG pipelines from scratch. Clone a production-ready Nuxt 4 codebase with AI chat, image generation, multi-tenancy, and Cloudflare edge deployment — ready to ship.
 hero:
@@ -22,7 +22,7 @@ hero:
 founder:
   title: Built by a founder, for founders
   name: Rares
-  story: "I built AI SaaS products with Nuxt for 6 months. Kept copy-pasting files between repos and tweaking the same auth, Stripe, and AI setup every time. So I extracted it properly into a boilerplate I use for every new project — and now you can use it too."
+  story: "I built AI SaaS products with Nuxt for 6 months. Kept copy-pasting files between repos and tweaking the same auth, Stripe, and AI setup every time. So I extracted it properly into a boilerplate I use for every new project. And now you can use it too."
   x: https://x.com/raress96_
   linkedin: https://www.linkedin.com/in/raress96
 aiShowcase:
@@ -149,8 +149,8 @@ fullStackFeatures:
     - title: Authentication
       description: Google OAuth, email/password, verification, password reset, and session management with nuxt-auth-utils.
       icon: i-lucide-fingerprint
-    - title: Stripe Billing
-      description: Subscriptions, checkout sessions, customer portal, webhooks, tax calculation, and plan-based feature gating.
+    - title: Stripe & Polar Billing
+      description: Switch between Stripe and Polar (merchant of record) with one env var. Subscriptions, checkout, customer portal, webhooks, and plan-based feature gating.
       icon: i-lucide-credit-card
     - title: Multi-Tenancy
       description: Project-based isolation, team invitations, role-based access control (admin/member), and member management.
@@ -214,6 +214,9 @@ techStack:
     - name: Stripe
       icon: i-simple-icons-stripe
       color: text-primary
+    - name: Polar
+      icon: i-lucide-wallet
+      color: text-primary
     - name: Resend
       icon: i-lucide-mail
       color: text-neutral
@@ -234,7 +237,7 @@ steps:
       code: |
         # Edit shared/constants.ts for plans
         # Edit content/index.yml for landing page
-        # Add your Stripe products
+        # Add your Stripe or Polar products
     - step: '03'
       title: Deploy
       description: Set up your project in Cloudflare Workers dashboard, then build and deploy.
@@ -256,7 +259,7 @@ pricing:
         - AI Chat with RAG (Cloudflare AI Search)
         - Image & Video Generation (DALL-E 3, Sora)
         - Authentication (Google OAuth + Credentials)
-        - Stripe Billing & Subscriptions
+        - Billing & Subscriptions (Stripe or Polar)
         - Embeddable Chat Widget
         - Multi-tenant Projects
         - Email System (Resend)
@@ -309,13 +312,13 @@ faqs:
   description: Everything you need to know about NuxtBeyond.
   items:
     - label: What's included in the boilerplate?
-      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, image generation (DALL-E 3), video generation (Sora), authentication (Google OAuth + credentials), Stripe subscriptions, embeddable widget, multi-tenancy, Nuxt UI v4, dark mode, and zero-config Cloudflare deployment.'
+      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, image generation (DALL-E 3), video generation (Sora), authentication (Google OAuth + credentials), subscriptions with Stripe or Polar, embeddable widget, multi-tenancy, Nuxt UI v4, dark mode, and zero-config Cloudflare deployment.'
       icon: i-lucide-package
     - label: What AI features are included?
       content: 'RAG (Retrieval-Augmented Generation) with Cloudflare AI Search for semantic document search, streaming AI responses via Vercel AI SDK v6, tool calling, image generation with DALL-E 3, video generation with OpenAI Sora, custom system prompts, and prompt injection protection.'
       icon: i-lucide-sparkles
     - label: What tech stack does it use?
-      content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK v6, OpenAI (via Cloudflare AI Gateway), Stripe, Resend, and nuxt-auth-utils.'
+      content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK v6, OpenAI (via Cloudflare AI Gateway), Stripe or Polar, Resend, and nuxt-auth-utils.'
       icon: i-lucide-layers
     - label: Can I use this for commercial projects?
       content: 'Yes! Your license allows unlimited commercial projects. Build and sell as many AI-powered products as you want.'

@@ -34,7 +34,7 @@ If you're building a traditional SaaS (CRM, project management, analytics dashbo
 |---------|-------------------|-----------------|
 | **Framework** | Nuxt 4.3 + Next.js | Nuxt 4 |
 | **Auth** | better-auth (2FA, passkeys, RBAC, magic links) | Google OAuth + email/password |
-| **Payments** | 5 providers (Stripe, Lemon Squeezy, Polar, Creem, Dodo) | Stripe only |
+| **Payments** | 5 providers (Stripe, Lemon Squeezy, Polar, Creem, Dodo) | Stripe + Polar |
 | **AI Chat** | Vercel AI SDK (GPT-4o-mini, Claude, streaming) | Vercel AI SDK v6 (streaming, tool calling) |
 | **RAG / Semantic Search** | No | Cloudflare AutoRAG |
 | **Embeddable Widget** | No | Yes (one-line script) |
@@ -64,9 +64,9 @@ If your product needs role-based access control or your users expect 2FA, Supast
 
 ### Payment Flexibility
 
-Five payment providers vs one. If you're selling outside the US and need Lemon Squeezy or Polar for tax handling, or your audience prefers a specific payment method, Supastarter gives you options. NuxtBeyond is Stripe-only.
+Five payment providers vs two. NuxtBeyond now ships with both Stripe and Polar (a merchant of record that handles global tax for you), switchable with one env var — so the tax-handling use case is covered. (If you're weighing those two, I wrote a full [Stripe vs Polar breakdown](/blog/stripe-vs-polar-which-to-choose).) But Supastarter still offers more options on top of those: Lemon Squeezy, Creem, and Dodo. If your audience prefers a specific provider, it gives you more room.
 
-For most indie projects, Stripe is enough. But "enough" and "ideal" are different things.
+For most indie projects, Stripe or Polar is enough. But "enough" and "ideal" are different things.
 
 ### Internationalization
 

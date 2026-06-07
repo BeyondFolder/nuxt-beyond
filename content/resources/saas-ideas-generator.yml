@@ -86,7 +86,7 @@ faqs:
   - label: Can I build a SaaS as a solo developer?
     content: Absolutely. Most successful micro SaaS products are built by solo developers. The key is scoping tightly — solve one specific problem extremely well. Use boilerplates and managed services to move fast. Many solo founders hit $5K–$10K MRR before hiring anyone.
   - label: What tech stack should I use for a SaaS in 2026?
-    content: For a new SaaS in 2026, the winning stack is edge-first. Nuxt 4 for the full-stack framework, Cloudflare Workers for global deployment, D1 for SQLite database, R2 for storage, and Stripe for payments. This combination is fast, cheap to run, and scales automatically without managing servers.
+    content: For a new SaaS in 2026, the winning stack is edge-first. Nuxt 4 for the full-stack framework, Cloudflare Workers for global deployment, D1 for SQLite database, R2 for storage, and Stripe (or Polar for merchant-of-record tax handling) for payments. This combination is fast, cheap to run, and scales automatically without managing servers.
 cta:
   title: Ready to build your SaaS idea?
   description: NuxtBeyond gives you AI chat, auth, payments, and deployment out of the box. Ship your idea this weekend.

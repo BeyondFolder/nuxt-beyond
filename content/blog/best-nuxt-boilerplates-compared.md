@@ -45,7 +45,7 @@ I'm also including **ShipFast** ($199-249) since it comes up in every boilerplat
 | **Embeddable Widget** | Yes | No | No | No | No |
 | **Multi-Tenancy** | Yes | Yes | Yes | No | Pro only |
 | **Auth** | OAuth + credentials | 2FA, passkeys, RBAC | Passkeys, 30+ providers | OAuth, magic links | Better Auth |
-| **Payments** | Stripe | 5 providers | Stripe (others WIP) | Stripe + 2 others | None |
+| **Payments** | Stripe + Polar | 5 providers | Stripe (others WIP) | Stripe + 2 others | None |
 | **Database** | Cloudflare D1 | Any SQL (Prisma/Drizzle) | D1, Postgres, Turso | PostgreSQL | Cloudflare D1 |
 | **Edge Deploy** | Cloudflare Workers | Vercel/Docker | Multiple | Vercel/Cloudflare | Cloudflare |
 | **i18n** | No | Yes | No | Yes | No |
@@ -158,12 +158,12 @@ Full disclosure: this is my product. I built it because I kept rebuilding the sa
 
 **Where it falls short (I'll be honest):**
 - Auth is basic compared to Supastarter — Google OAuth + email/password, no 2FA, no passkeys, no RBAC
-- Stripe only — no Lemon Squeezy, Polar, or other providers
+- Stripe + Polar only — no Lemon Squeezy, Creem, or other providers ([Stripe vs Polar: which to pick](/blog/stripe-vs-polar-which-to-choose))
 - No i18n
 - Smallest community — launched January 2026, so less battle-tested than Supastarter or ShipFast
 - Documentation is newer and less comprehensive than Supastarter's
 
-**Pick NuxtBeyond if:** You're building an AI product — RAG chatbots, knowledge bases, AI-powered customer support, embeddable AI widgets — and want the deepest AI integration at the lowest price. Not the right choice if you need enterprise auth or multi-provider payments.
+**Pick NuxtBeyond if:** You're building an AI product — RAG chatbots, knowledge bases, AI-powered customer support, embeddable AI widgets — and want the deepest AI integration at the lowest price. Not the right choice if you need enterprise auth or more payment providers than Stripe and Polar.
 
 ### ShipFast — Best Community (But It's Next.js)
 
