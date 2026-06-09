@@ -51,7 +51,7 @@
     "better-sqlite3": "^12.10.0",
     "date-fns": "^4.4.0",
     "drizzle-orm": "^0.45.2",
-    "nuxt": "^4.4.6",
+    "nuxt": "^4.4.8",
     "nuxt-auth-utils": "^0.5.29",
     "nuxt-og-image": "^6.5.2",
     "nuxt-seo-utils": "^8.1.11",
