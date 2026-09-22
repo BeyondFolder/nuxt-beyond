@@ -26,7 +26,7 @@
     "@ai-sdk/anthropic": "^3.0.85",
     "@ai-sdk/openai": "^3.0.74",
     "@ai-sdk/vue": "^3.0.208",
-    "@cloudflare/workers-types": "^4.20260621.1",
+    "@cloudflare/workers-types": "^5.20260921.1",
     "@iconify-json/lucide": "^1.2.114",
     "@iconify-json/simple-icons": "^1.2.87",
     "@libsql/client": "^0.17.4",
