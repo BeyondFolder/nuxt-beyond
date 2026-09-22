@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
       if (parts.length !== 2) {
         throw createError({ statusCode: 400, statusMessage: 'Invalid image data format' });
       }
-      const [metadata, base64Data] = parts;
+      const [metadata = '', base64Data = ''] = parts;
       const mimeType = metadata.match(/:(.*?);/)?.[1] || 'image/jpeg';
       const extension = mimeType.split('/')[1] || 'jpg';
       const imageBuffer = Buffer.from(base64Data, 'base64');

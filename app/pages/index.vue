@@ -45,8 +45,6 @@ useHead({
 });
 
 function openProject() {
-  console.log('works', window.nuxtbeyond.open());
-
   if (window.nuxtbeyond && typeof window.nuxtbeyond.open === 'function') {
     window.nuxtbeyond.open();
   }

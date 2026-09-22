@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   const db = useDrizzle();
 
   const chat = await db.query.videoChats.findFirst({
-    where: (chat, { eq, and }) => and(eq(chat.id, id), eq(chat.userId, user.id)),
+    where: (chat, { eq, and }) => and(eq(chat.id, id!), eq(chat.userId, user.id)),
     with: {
       messages: {
         where: (messages, { eq }) => eq(messages.status, 'processing'),
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
     apiKey: process.env.OPENAI_API_KEY,
   });
 
-  const updates = [];
+  const updates: { id: string; status: string; videoUrl?: string }[] = [];
 
   for (const message of processingMessages) {
     try {

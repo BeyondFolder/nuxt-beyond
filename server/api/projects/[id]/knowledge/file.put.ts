@@ -1,7 +1,7 @@
 import { ALLOWED_FILE_TYPES, PLANS_CONSTANTS } from '#shared/constants';
 import { getUserProjectWithRole, updateProjectFileCount } from '~~/server/db/queries';
 import { validateFileUploadLimit } from '~~/server/utils/billing';
-import type { BlobSize } from '@nuxthub/core';
+import type { BlobSize } from '@nuxthub/core/blob';
 import type { MimeType } from '@uploadthing/mime-types';
 import { blob } from 'hub:blob'
 

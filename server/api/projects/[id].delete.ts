@@ -28,8 +28,8 @@ export default defineEventHandler(async (event) => {
   // Update session with new project or null
   await replaceUserSession(event, {
     ...session,
-    projectId: userProjects.length > 0 ? userProjects[0].project.id : null,
-    projectRole: userProjects.length > 0 ? userProjects[0].role : null,
+    projectId: userProjects[0]?.project.id,
+    projectRole: userProjects[0]?.role ?? undefined,
   });
 
   return setResponseStatus(event, 204); // No Content status code

@@ -58,7 +58,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
     if (isCreateModeValue) {
       await createProject(event.data);
-    } else {
+    } else if (currentProject.value) {
       await updateProject(currentProject.value.id, event.data);
     }
 

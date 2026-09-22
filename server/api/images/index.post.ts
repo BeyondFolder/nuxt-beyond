@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
-import { generateImage } from 'ai';
+import { generateImage, type ImageModel } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { blob } from 'hub:blob';
 import { createAiGateway } from 'ai-gateway-provider';
@@ -47,13 +47,14 @@ export default defineEventHandler(async (event) => {
   const openai = createOpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
   });
-  const modelOpenAI = aiGateway([openai.image('gpt-image-1.5')]);
+  const modelOpenAI = aiGateway([openai.image('gpt-image-1.5')] as unknown as Parameters<typeof aiGateway>[0]);
 
   try {
     console.log('Generating image for prompt:', body.prompt, '...');
 
     const result = await generateImage({
-      model: modelOpenAI,
+      // ai-gateway-provider is typed for language models only; the wrapped image model is passed through as-is
+      model: modelOpenAI as unknown as ImageModel,
       prompt: body.prompt,
       size: '1024x1024',
     });

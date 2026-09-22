@@ -43,11 +43,13 @@ export default defineEventHandler(async (event) => {
 
   const result = await getUserWithProject(db, email);
 
-  if (!result || result.length === 0 || result[0].user.provider !== 'credentials') {
+  const first = result?.[0];
+
+  if (!first || first.user.provider !== 'credentials') {
     throw invalidCredentialsError;
   }
 
-  const { user, project, role } = result[0];
+  const { user, project, role } = first;
 
   if (!user.password || !(await verifyPasswordWorker(user.password, password))) {
     throw invalidCredentialsError;

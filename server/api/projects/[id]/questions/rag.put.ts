@@ -182,7 +182,7 @@ async function updateKnowledgeBase(projectId: string, questions: QuestionWithRep
       }
     }
   } catch (_) {
-    fileExists = false;
+    // No existing CSV yet, start from an empty one
   }
 
   const lines = csvContent.split('\n').filter((line) => line.trim());
@@ -194,8 +194,8 @@ async function updateKnowledgeBase(projectId: string, questions: QuestionWithRep
   for (const row of dataRows) {
     const match = row.match(/^"?([^"]*)"?,"?([^"]*)"?$/);
     if (match) {
-      const question = match[1].replace(/""/g, '"').trim();
-      const answer = match[2].replace(/""/g, '"').trim();
+      const question = (match[1] ?? '').replace(/""/g, '"').trim();
+      const answer = (match[2] ?? '').replace(/""/g, '"').trim();
       csvMap.set(question, answer);
     }
   }
@@ -255,8 +255,8 @@ async function removeFromKnowledgeBase(projectId: string, questions: QuestionWit
   for (const row of dataRows) {
     const match = row.match(/^"?([^"]*)"?,"?([^"]*)"?$/);
     if (match) {
-      const question = match[1].replace(/""/g, '"').trim();
-      const answer = match[2].replace(/""/g, '"').trim();
+      const question = (match[1] ?? '').replace(/""/g, '"').trim();
+      const answer = (match[2] ?? '').replace(/""/g, '"').trim();
       csvMap.set(question, answer);
     }
   }

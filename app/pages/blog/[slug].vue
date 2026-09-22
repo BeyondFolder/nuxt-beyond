@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { THEME_PRIMARY_COLOR } from '#shared/constants';
-
 const route = useRoute()
 
 const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
@@ -27,10 +25,7 @@ useSeoMeta({
 if (post.value.image?.src) {
   useSeoMeta({ ogImage: post.value.image.src })
 } else {
-  defineOgImage('NuxtSeo', {
-    theme: THEME_PRIMARY_COLOR,
-    headline: 'NuxtBeyond Blog'
-  });
+  defineOgImage('NuxtSeo.takumi');
 }
 </script>
 

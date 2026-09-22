@@ -35,7 +35,7 @@ const loading = ref(false);
 
 const lastAssistantImage = computed(() => {
   const assistantMessages = data.value?.messages.filter((m) => m.role === 'assistant' && m.imageUrl) || [];
-  return assistantMessages.length > 0 ? assistantMessages[assistantMessages.length - 1].imageUrl : null;
+  return assistantMessages.at(-1)?.imageUrl ?? null;
 });
 
 async function generateImage() {

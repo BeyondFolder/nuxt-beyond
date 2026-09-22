@@ -50,7 +50,7 @@ onMounted(async () => {
 
 async function checkContentStatus() {
   try {
-    const response = await $fetch(`/api/resources/free-ai-chatbot-generator/${encodeURIComponent(filename)}`);
+    const response = await $fetch<{ isProcessed: boolean; appName?: string; appIcon?: string }>(`/api/resources/free-ai-chatbot-generator/${encodeURIComponent(filename)}`);
 
     if (response.isProcessed) {
       isLoading.value = false;
@@ -122,7 +122,7 @@ async function handleChatSubmit(e: Event) {
   input.value = '';
 
   try {
-    const response = await $fetch(`/api/resources/free-ai-chatbot-generator/${encodeURIComponent(filename)}`, {
+    const response = await $fetch<{ response: string }>(`/api/resources/free-ai-chatbot-generator/${encodeURIComponent(filename)}`, {
       method: 'POST',
       body: {
         query: currentQuery,

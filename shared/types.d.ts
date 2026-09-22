@@ -28,6 +28,9 @@ export interface EmbedSession {
 
 export type User = typeof users.$inferSelect;
 export type Project = typeof projects.$inferSelect;
+
+// Project as received by the client over JSON (dates serialized), only the fields the embed UI needs
+export type EmbedProject = Pick<Project, 'id' | 'name'> & { configuration: unknown };
 export type Chat = typeof chats.$inferSelect;
 export type Message = typeof messages.$inferSelect;
 export type ChatWithMessages = Chat & { messages: Message[] };
