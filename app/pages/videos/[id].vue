@@ -39,7 +39,7 @@ let pollInterval: NodeJS.Timeout | null = null;
 
 const lastAssistantVideo = computed(() => {
   const assistantMessages = data.value?.messages.filter((m) => m.role === 'assistant' && m.jobId) || [];
-  return assistantMessages.length > 0 ? assistantMessages[assistantMessages.length - 1].jobId : null;
+  return assistantMessages.at(-1)?.jobId ?? null;
 });
 
 const hasProcessingVideos = computed(() => {
@@ -56,7 +56,7 @@ async function pollVideoStatus() {
   try {
     const result = await $fetch(`/api/videos/${route.params.id}/poll`);
 
-    if (result.updates && result.updates.length > 0) {
+    if ('updates' in result && result.updates.length > 0) {
       await refresh();
     }
 

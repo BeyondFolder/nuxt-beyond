@@ -4,7 +4,7 @@ import { computed, type DefineComponent, onMounted, ref } from 'vue';
 import { DefaultChatTransport, type UIMessage } from 'ai';
 import { getTextFromMessage } from '#ui/utils/ai';
 import { createProjectAvatar } from '~/utils/avatar';
-import type { ProjectConfiguration, Chat as DbChat } from '#shared/types';
+import type { EmbedProject, ProjectConfiguration, Chat as DbChat } from '#shared/types';
 import ProseStreamPre from '../../components/prose/PreStream.vue';
 import { THEME_PRIMARY_COLOR } from '#shared/constants';
 
@@ -16,7 +16,7 @@ const props = defineProps<{
   chat: DbChat & { messages: UIMessage[] };
   projectName?: string;
   projectId: string;
-  project: Project;
+  project: EmbedProject;
 }>();
 
 const { chat, projectId } = props;

@@ -7,9 +7,11 @@ defineRouteRules({
 });
 
 const { data: dashboardData } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
+const projectId = computed(() => dashboardData.value?.currentProject?.id);
+// Don't fetch until the current project is known, otherwise this would hit /api/projects/undefined/knowledge
 const { data: knowledgeFiles, refresh: refreshKnowledgeFiles } = await useFetch(
-  () => `/api/projects/${dashboardData.value.currentProject.id}/knowledge`,
-  { key: `api/projects/${dashboardData.value.currentProject.id}/knowledge` }
+  () => `/api/projects/${projectId.value}/knowledge`,
+  { key: `api/projects/${projectId.value}/knowledge`, immediate: !!projectId.value }
 );
 
 const { handleError, showSuccess } = useErrorHandling();
@@ -19,9 +21,9 @@ const maxFileSize = computed(() => PLANS_CONSTANTS[(dashboardData.value?.current
 const maxNbOfFiles = computed(() => PLANS_CONSTANTS[(dashboardData.value?.currentProject?.planName as keyof typeof PLANS_CONSTANTS) || 'free'].MAX_NB_OF_FILES);
 
 const canRequestProcessing = computed(() => {
-  const configuration = (dashboardData.value.currentProject?.configuration as ProjectConfiguration) || {};
+  const configuration = (dashboardData.value?.currentProject?.configuration as ProjectConfiguration) || {};
 
-  return (
+  return Boolean(
     configuration?.filesUpdatedAt &&
     (!configuration?.finishedProcessingAt ||
       new Date(configuration?.finishedProcessingAt) <= new Date(configuration?.filesUpdatedAt)) &&
@@ -49,7 +51,7 @@ async function requestProcessing() {
   try {
     isLoadingProcessing.value = true;
 
-    await $fetch(`/api/projects/${dashboardData.value.currentProject.id}/knowledge/sync`, {
+    await $fetch(`/api/projects/${dashboardData.value?.currentProject?.id}/knowledge/sync`, {
       method: 'POST',
     });
 
@@ -90,10 +92,10 @@ async function requestProcessing() {
       </div>
 
       <ConfigurationKnowledgeFiles
-        v-if="(knowledgeFiles?.files?.length || 0) > 0"
+        v-if="projectId && knowledgeFiles && knowledgeFiles.files.length > 0"
         :knowledge-files="knowledgeFiles"
         :max-nb-of-files="maxNbOfFiles"
-        :project-id="dashboardData.currentProject.id"
+        :project-id="projectId"
         :can-request-processing="canRequestProcessing"
         :is-loading-processing="isLoadingProcessing"
         @request-processing="requestProcessing"
@@ -106,8 +108,8 @@ async function requestProcessing() {
           files.
         </template>
       </UAlert>
-      <template v-else>
-        <ConfigurationKnowledgeUrlImport :project-id="dashboardData.currentProject.id" />
+      <template v-else-if="projectId">
+        <ConfigurationKnowledgeUrlImport :project-id="projectId" />
 
         <div class="relative">
           <USeparator />
@@ -117,7 +119,7 @@ async function requestProcessing() {
         </div>
 
         <ConfigurationKnowledgeFileUpload
-          :project-id="dashboardData.currentProject.id"
+          :project-id="projectId"
           :max-file-size="maxFileSize"
           :max-nb-of-files="maxNbOfFiles"
         />
@@ -129,7 +131,7 @@ async function requestProcessing() {
           </div>
         </div>
 
-        <ConfigurationKnowledgeTextUpload :project-id="dashboardData.currentProject.id" :max-text-length="maxTextLength" />
+        <ConfigurationKnowledgeTextUpload :project-id="projectId" :max-text-length="maxTextLength" />
       </template>
 
       <UPageCard variant="naked">

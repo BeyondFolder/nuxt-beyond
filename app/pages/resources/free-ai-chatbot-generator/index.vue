@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { z } from 'zod';
 import type { FormSubmitEvent } from '@nuxt/ui';
-import { THEME_PRIMARY_COLOR } from '#shared/constants';
 
 const route = useRoute();
 const { data: page } = await useAsyncData(route.path, () =>
@@ -11,9 +10,7 @@ const { data: page } = await useAsyncData(route.path, () =>
 const title = page.value?.seo?.title || page.value?.title;
 const description = page.value?.seo?.description || page.value?.description;
 
-defineOgImage('NuxtSeo', {
-  theme: THEME_PRIMARY_COLOR,
-});
+defineOgImage('NuxtSeo.takumi');
 
 useSeoMeta({
   titleTemplate: '',

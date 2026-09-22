@@ -14,7 +14,7 @@ const route = useRoute();
 
 const projectId = computed(() => (route.query.projectId as string) || '');
 
-const { data: project, error, pending } = await useFetch(`/api/embed/${projectId.value}`);
+const { data: project, error, pending } = await useFetch(`/api/embed/${projectId.value}` as '/api/embed/:id');
 
 const config = computed(() => (project.value?.configuration as ProjectConfiguration) || {});
 

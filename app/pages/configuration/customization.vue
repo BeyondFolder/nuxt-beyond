@@ -36,7 +36,7 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>;
 
-const currentConfig = computed(() => (dashboardData.value.currentProject?.configuration as ProjectConfiguration) || {});
+const currentConfig = computed(() => (dashboardData.value?.currentProject?.configuration as ProjectConfiguration) || {});
 
 const state = ref<Schema>({
   allowedDomains: currentConfig.value.security?.allowedDomains?.join('\n') || '',
@@ -50,7 +50,7 @@ const state = ref<Schema>({
 });
 
 const logoUrl = ref<string | null>(
-  currentConfig.value.appearance?.logo ? `/projects/${dashboardData.value.currentProject?.id}/logo` : null
+  currentConfig.value.appearance?.logo ? `/projects/${dashboardData.value?.currentProject?.id}/logo` : null
 );
 
 const isLoading = ref(false);
@@ -64,7 +64,7 @@ watch(currentConfig, (newConfig) => {
   state.value.initialQuestion2 = newConfig.chat?.initialQuestions?.[1] || '';
   state.value.initialQuestion3 = newConfig.chat?.initialQuestions?.[2] || '';
   state.value.customPrompt = newConfig.chat?.customPrompt || '';
-  logoUrl.value = newConfig.appearance?.logo ? `/projects/${dashboardData.value.currentProject?.id}/logo` : null;
+  logoUrl.value = newConfig.appearance?.logo ? `/projects/${dashboardData.value?.currentProject?.id}/logo` : null;
 });
 
 watch(
@@ -112,7 +112,7 @@ async function saveConfiguration() {
       state.value.initialQuestion3,
     ].filter((q) => q && q.trim().length > 0);
 
-    await $fetch(`/api/projects/${dashboardData.value.currentProject.id}`, {
+    await $fetch(`/api/projects/${dashboardData.value?.currentProject?.id}`, {
       method: 'PATCH',
       body: {
         security: {
@@ -172,7 +172,7 @@ const loaderCode = computed(() => {
   }
 
   return generateLoaderCode({
-    projectId: dashboardData.value.currentProject.id,
+    projectId: dashboardData.value?.currentProject?.id,
     primaryColor: currentConfig.value?.appearance?.primaryColor,
     position: currentConfig.value?.appearance?.position,
     logo: logoUrl.value,
@@ -184,7 +184,7 @@ const iframeCode = computed(() => {
     return '';
   }
 
-  return generateIframeCode(dashboardData.value.currentProject.id);
+  return generateIframeCode(dashboardData.value?.currentProject?.id);
 });
 
 async function copyLoaderCode() {
@@ -262,8 +262,8 @@ async function copyIframeCode() {
 
       <div class="space-y-6">
         <ConfigurationCustomizationProjectPreview
-          v-if="dashboardData.currentProject?.id"
-          :project-id="dashboardData.currentProject.id"
+          v-if="dashboardData?.currentProject?.id"
+          :project-id="dashboardData?.currentProject?.id"
           :primary-color="currentConfig.appearance?.primaryColor || ''"
           :position="currentConfig.appearance?.position"
           :logo="logoUrl"

@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import { z } from 'zod';
 import { H3Error } from 'h3';
 import type { Page } from '@cloudflare/puppeteer';
@@ -23,7 +24,7 @@ async function getAppName(page: Page) {
     }
 
     if (name && name.includes(' - ')) {
-      name = name.split(' - ')[0].trim();
+      name = name.split(' - ')[0]?.trim();
     }
 
     return name;
@@ -146,8 +147,8 @@ export default defineEventHandler(async (event) => {
       customMetadata: {
         originalUrl: url,
         resourceType: 'free-ai-chatbot-generator',
-        appName,
-        appIcon,
+        appName: appName ?? '',
+        appIcon: appIcon ?? '',
       },
     });
 
@@ -166,8 +167,8 @@ export default defineEventHandler(async (event) => {
         customMetadata: {
           originalUrl: url,
           resourceType: 'free-ai-chatbot-generator',
-          appName,
-          appIcon,
+          appName: appName ?? '',
+          appIcon: appIcon ?? '',
           jobId,
         },
       });

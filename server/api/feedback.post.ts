@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const userEmail = session.user.email;
-  const userName = session.user.name || userEmail;
+  const userName = userEmail;
 
   await sendFeedbackEmail({
     userEmail,

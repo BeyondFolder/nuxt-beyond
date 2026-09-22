@@ -184,7 +184,7 @@ useSeoMeta({
         }"
       >
         <template #title>
-          <MDC :value="page.pricing.title" />
+          <MDC :value="page?.pricing.title ?? ''" />
         </template>
 
         <UAlert
@@ -209,7 +209,7 @@ useSeoMeta({
 
         <UPricingPlans scale compact>
           <UPricingPlan
-            v-for="(plan, index) in page.pricing.plans"
+            v-for="(plan, index) in page?.pricing.plans"
             :key="index"
             :title="plan.title"
             :description="plan.description"

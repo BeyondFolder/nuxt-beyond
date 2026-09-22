@@ -4,7 +4,7 @@ import { ConfirmModal } from '#components';
 
 interface Props {
   knowledgeFiles: {
-    files: Array<{ key: string; size: number }>;
+    files: Array<{ key: string; size?: number }>;
     totalCount: number;
   } | null;
   maxNbOfFiles: number;
@@ -24,7 +24,7 @@ const { handleError, showSuccess } = useErrorHandling();
 const overlay = useOverlay();
 const confirmDeleteModal = overlay.create(ConfirmModal);
 
-const selectedFiles = ref<TreeItem[]>([]);
+const selectedFiles = shallowRef<TreeItem[]>([]);
 const isDeletingFiles = ref(false);
 
 const treeData = computed(() => {
@@ -35,7 +35,7 @@ const treeData = computed(() => {
   props.knowledgeFiles?.files.forEach((file) => {
     const fileNode: TreeItem = {
       id: file.key,
-      badge: `${(file.size / 1024).toFixed(1)}KB`,
+      badge: `${((file.size ?? 0) / 1024).toFixed(1)}KB`,
       onSelect() {
         window.open(`/projects/${props.projectId}/knowledge/${encodeURIComponent(file.key)}`, '_blank');
       },

@@ -134,6 +134,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     ...project,
-    role,
+    role: userProject.role,
   };
 });

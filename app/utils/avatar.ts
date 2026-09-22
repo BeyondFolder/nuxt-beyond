@@ -1,4 +1,4 @@
-import type { ProjectConfiguration } from '#shared/types';
+import type { EmbedProject, ProjectConfiguration } from '#shared/types';
 
 export const generateAvatarUrl = (
   name: string,
@@ -12,7 +12,7 @@ export const generateAvatarUrl = (
   return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=${background}&color=${color}&size=${size}`;
 };
 
-export const createProjectAvatar = (project: Project | undefined, siteUrl: string) => {
+export const createProjectAvatar = (project: EmbedProject | undefined, siteUrl: string) => {
   return {
     src: (project?.configuration as ProjectConfiguration)?.appearance?.logo && project?.id
       ? `${siteUrl}/projects/${project.id}/logo`

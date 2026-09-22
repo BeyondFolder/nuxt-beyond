@@ -15,7 +15,7 @@ export default defineOAuthGoogleEventHandler({
     if (
       result &&
       result.length !== 0 &&
-      (result[0].user.provider !== 'google' || result[0].user.providerId !== user.sub)
+      (result[0]?.user.provider !== 'google' || result[0]?.user.providerId !== user.sub)
     ) {
       const errorUrl = redirect
         ? `/login?error=different_provider&redirect=${encodeURIComponent(redirect)}`

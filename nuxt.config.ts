@@ -172,6 +172,17 @@ export default defineNuxtConfig({
     },
   },
 
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        paths: {
+          // App-side typed $fetch routes pull in server files; @unlok-co/nuxt-stripe only maps this alias for the server tsconfig
+          '#stripe/server': ['../node_modules/@unlok-co/nuxt-stripe/dist/runtime/server/services'],
+        },
+      },
+    },
+  },
+
   eslint: {
     config: {
       stylistic: {
