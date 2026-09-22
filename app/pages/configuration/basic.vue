@@ -58,7 +58,11 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
     if (isCreateModeValue) {
       await createProject(event.data);
-    } else if (currentProject.value) {
+    } else {
+      // No project to update: bail out instead of navigating as if the save succeeded
+      if (!currentProject.value) {
+        return;
+      }
       await updateProject(currentProject.value.id, event.data);
     }
 

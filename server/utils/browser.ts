@@ -2,7 +2,6 @@ import cfPuppeteer from '@cloudflare/puppeteer';
 import type { Browser, Page, BrowserWorker, ActiveSession, PuppeteerWorkers } from '@cloudflare/puppeteer';
 import { createError } from 'h3';
 import type { H3Event } from 'h3';
-import { useNitroApp } from 'nitropack/runtime';
 
 function getBrowserBinding(name: string = 'BROWSER'): BrowserWorker | undefined {
   // @ts-expect-error globalThis.__env__ is not typed

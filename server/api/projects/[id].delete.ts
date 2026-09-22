@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
 
   const userProjects = await getUserProjects(db, session.user.email);
 
-  // Update session with new project or null
+  // Update session with the next project, or clear it when none are left
   await replaceUserSession(event, {
     ...session,
     projectId: userProjects[0]?.project.id,

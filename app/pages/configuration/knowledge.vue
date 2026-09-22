@@ -7,10 +7,11 @@ defineRouteRules({
 });
 
 const { data: dashboardData } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
-const projectId = computed(() => dashboardData.value?.currentProject?.id ?? '');
+const projectId = computed(() => dashboardData.value?.currentProject?.id);
+// Don't fetch until the current project is known, otherwise this would hit /api/projects/undefined/knowledge
 const { data: knowledgeFiles, refresh: refreshKnowledgeFiles } = await useFetch(
-  () => `/api/projects/${dashboardData.value?.currentProject?.id}/knowledge`,
-  { key: `api/projects/${dashboardData.value?.currentProject?.id}/knowledge` }
+  () => `/api/projects/${projectId.value}/knowledge`,
+  { key: `api/projects/${projectId.value}/knowledge`, immediate: !!projectId.value }
 );
 
 const { handleError, showSuccess } = useErrorHandling();
@@ -91,7 +92,7 @@ async function requestProcessing() {
       </div>
 
       <ConfigurationKnowledgeFiles
-        v-if="knowledgeFiles && knowledgeFiles.files.length > 0"
+        v-if="projectId && knowledgeFiles && knowledgeFiles.files.length > 0"
         :knowledge-files="knowledgeFiles"
         :max-nb-of-files="maxNbOfFiles"
         :project-id="projectId"
@@ -107,7 +108,7 @@ async function requestProcessing() {
           files.
         </template>
       </UAlert>
-      <template v-else>
+      <template v-else-if="projectId">
         <ConfigurationKnowledgeUrlImport :project-id="projectId" />
 
         <div class="relative">
