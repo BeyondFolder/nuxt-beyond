@@ -7,6 +7,9 @@ definePageMeta({
   middleware: ['not-authenticated'],
 });
 
+// App/auth page, not content: noindex (sitemap exclusion lives in nuxt.config.ts).
+useRobotsRule(false);
+
 useSeoMeta({
   title: 'Forgot Password',
   description: 'Reset your password',

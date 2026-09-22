@@ -6,6 +6,9 @@ definePageMeta({
   layout: false,
 });
 
+// Embedded chat widget (iframe), not content: noindex (sitemap exclusion lives in nuxt.config.ts).
+useRobotsRule(false);
+
 defineRouteRules({
   prerender: false,
 });
