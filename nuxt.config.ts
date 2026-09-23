@@ -199,7 +199,8 @@ export default defineNuxtConfig({
 
   sitemap: {
     zeroRuntime: true,
-    // App, auth and embed pages stay out of the sitemap; they also set useRobotsRule(false).
-    exclude: ['/dashboard/**', '/user/**', '/configuration/**', '/chat/**', '/images/**', '/videos/**', '/embed', '/login', '/forgot-password', '/reset-password'],
+    // Logged-in pages, the embed widget and the password-reset flow stay out of the sitemap and set
+    // useRobotsRule(false). /login and /signup stay indexable for branded searches.
+    exclude: ['/dashboard/**', '/user/**', '/configuration/**', '/chat/**', '/images/**', '/videos/**', '/embed', '/forgot-password', '/reset-password'],
   },
 });
