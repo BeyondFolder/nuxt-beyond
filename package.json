@@ -43,7 +43,7 @@
     "@polar-sh/nuxt": "^0.5.7",
     "@react-email/render": "^2.0.9",
     "@standard-schema/spec": "^1.1.0",
-    "@takumi-rs/wasm": "^1.8.7",
+    "@takumi-rs/wasm": "^2.14.0",
     "@unlok-co/nuxt-stripe": "^6.0.2",
     "@vueuse/nuxt": "^14.3.0",
     "ai": "^6.0.208",
