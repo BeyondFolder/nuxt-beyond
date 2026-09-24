@@ -64,7 +64,7 @@
   "devDependencies": {
     "@cloudflare/puppeteer": "^1.1.0",
     "@nuxt/eslint": "^1.16.0",
-    "@takumi-rs/core": "^1.8.7",
+    "@takumi-rs/core": "^2.14.0",
     "drizzle-kit": "^0.31.10",
     "eslint": "^10.5.0",
     "prettier": "^3.8.4",
