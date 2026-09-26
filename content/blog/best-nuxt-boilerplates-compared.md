@@ -119,7 +119,7 @@ ShipAhead is the closest competitor to NuxtBeyond in terms of AI features. They 
 - PostgreSQL (Supabase/Neon), not edge-native
 - Price increased to $149
 
-**Pick ShipAhead if:** You want AI features with PostgreSQL and don't need RAG or embeddable widgets. Good middle ground between basic boilerplates and AI-first architecture.
+**Pick ShipAhead if:** You want AI features with PostgreSQL and don't need RAG or embeddable widgets. Good middle ground between basic boilerplates and AI-first architecture. Full head-to-head: [ShipAhead vs Nuxt Beyond](/blog/shipahead-vs-nuxtbeyond).
 
 ### NuxtBase — Best Free Cloudflare Starter
 
