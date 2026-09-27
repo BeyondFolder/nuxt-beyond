@@ -14,7 +14,6 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 const route = useRoute();
-const { createProject, updateProject } = useProjectOperations();
 
 const state = ref({
   name: '',
@@ -52,7 +51,7 @@ watch(
 
 const toast = useToast();
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
+async function onSubmit(_event: FormSubmitEvent<Schema>) {
   toast.add({
     title: 'Demo Mode',
     description: 'Project editing is disabled in demo mode.',

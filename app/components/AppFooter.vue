@@ -47,11 +47,11 @@ const columns = [
         <UFooterColumns :columns="columns" :ui="{ right: 'flex flex-col gap-1' }">
           <template #right>
             <div class="w-auto mx-auto mb-6 flex gap-5 justify-center grid grid-cols-4">
-              <!--              <div class="flex">-->
-              <!--                <a href="https://www.uneed.best/tool/claude-code-distribution-framework" target="_blank">-->
-              <!--                  <img src="https://www.uneed.best/POTD2A.png" width="150" alt="Uneed POTD2 Badge" />-->
-              <!--                </a>-->
-              <!--              </div>-->
+              <!--              <div class="flex"> -->
+              <!--                <a href="https://www.uneed.best/tool/claude-code-distribution-framework" target="_blank"> -->
+              <!--                  <img src="https://www.uneed.best/POTD2A.png" width="150" alt="Uneed POTD2 Badge" /> -->
+              <!--                </a> -->
+              <!--              </div> -->
 
               <div class="flex">
                 <a href="https://www.aidirectori.es" target="_blank"

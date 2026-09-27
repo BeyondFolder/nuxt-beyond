@@ -93,8 +93,7 @@ useHead({
             />
           </div>
         </div>
-
-      </UContainer>
+</UContainer>
     </section>
 
     <UPageSection

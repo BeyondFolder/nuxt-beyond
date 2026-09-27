@@ -4,21 +4,16 @@ on: push
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [22]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install node
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node }}
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install dependencies
@@ -26,6 +21,6 @@ jobs:
 
       - name: Lint
         run: npm run lint:ci
-#        TODO: Re-enable after fixing type errors
-#      - name: Typecheck
-#        run: npm run typecheck
+
+      - name: Typecheck
+        run: npm run typecheck

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { THEME_PRIMARY_COLOR } from '#shared/constants';
-
 const route = useRoute()
 
 const { data: page } = await useAsyncData('blog', () => queryCollection('blog').first())
@@ -16,9 +14,7 @@ useSeoMeta({
   ogDescription: description
 })
 
-defineOgImage('NuxtSeo', {
-  theme: THEME_PRIMARY_COLOR,
-});
+defineOgImage('NuxtSeo.takumi');
 </script>
 
 <template>

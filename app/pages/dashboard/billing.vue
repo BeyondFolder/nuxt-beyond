@@ -16,7 +16,6 @@ if (!page.value) {
 }
 
 const router = useRouter();
-const toast = useToast();
 const { data: dashboardData } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
 
 const isAdmin = computed(() => dashboardData.value?.currentProjectRole === 'admin');
@@ -30,11 +29,6 @@ const paymentProvider = useRuntimeConfig().public.paymentProvider;
 const projectId = computed(() => dashboardData.value?.currentProject?.id);
 const currentPlan = computed<PlanName>(() => dashboardData.value?.currentProject?.planName || 'free');
 const subscriptionStatus = computed(() => dashboardData.value?.currentProject?.subscriptionStatus || 'inactive');
-const billingCustomerId = computed(() =>
-  paymentProvider === 'polar'
-    ? dashboardData.value?.currentProject?.polarCustomerId
-    : dashboardData.value?.currentProject?.stripeCustomerId
-);
 const billingSubscriptionId = computed(() =>
   paymentProvider === 'polar'
     ? dashboardData.value?.currentProject?.polarSubscriptionId
@@ -89,30 +83,6 @@ const getPlanBadge = (plan: any) => {
   }
 
   return undefined;
-};
-
-const handleManagePlan = async (planIndex: number) => {
-  if (!projectId.value) {
-    return;
-  }
-
-  isLoading.value = true;
-  selectedPlanIndex.value = planIndex;
-
-  try {
-    const response = await $fetch(`/api/projects/${projectId.value}/billing/portal`, {
-      method: 'POST',
-    });
-
-    if (response.url) {
-      window.location.href = response.url;
-    }
-  } catch (error) {
-    console.error('Error creating portal session:', error);
-  } finally {
-    isLoading.value = false;
-    selectedPlanIndex.value = null;
-  }
 };
 
 const mockPaymentLinks: Record<string, string> = {
@@ -171,7 +141,7 @@ useSeoMeta({
         }"
       >
         <template #title>
-          <MDC :value="page.pricing.title" />
+          <MDC :value="page?.pricing.title ?? ''" />
         </template>
 
         <UAlert
@@ -186,7 +156,7 @@ useSeoMeta({
 
         <UPricingPlans scale compact>
           <UPricingPlan
-            v-for="(plan, index) in page.pricing.plans"
+            v-for="(plan, index) in page?.pricing.plans"
             :key="index"
             :title="plan.title"
             :description="plan.description"

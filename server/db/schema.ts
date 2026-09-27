@@ -1,5 +1,6 @@
 import { sql, relations } from 'drizzle-orm';
 import { sqliteTable, text, integer, index, unique } from 'drizzle-orm/sqlite-core';
+import type { ProjectConfiguration } from '../../shared/types';
 import { planNames } from '../../shared/constants';
 
 export const users = sqliteTable(
@@ -92,7 +93,7 @@ export const projects = sqliteTable(
       .$defaultFn(() => crypto.randomUUID()),
     name: text().notNull(),
     description: text(),
-    configuration: text({ mode: 'json' }),
+    configuration: text({ mode: 'json' }).$type<ProjectConfiguration>(),
     planName: text({ enum: planNames }).notNull(),
     subscriptionStatus: text().notNull().default('active'),
     stripeCustomerId: text(),

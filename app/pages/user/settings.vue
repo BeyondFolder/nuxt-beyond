@@ -68,7 +68,7 @@ type Schema = z.output<typeof schema>;
 
 const isLoading = ref(false);
 
-function onSubmit(payload: FormSubmitEvent<Schema>) {
+function onSubmit(_payload: FormSubmitEvent<Schema>) {
   toast.add({
     title: 'Demo Mode',
     description: 'Changing passwords is disabled in demo mode.',

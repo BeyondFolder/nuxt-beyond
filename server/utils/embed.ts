@@ -41,7 +41,7 @@ export function validateReferer(event: H3Event) {
   return { referer, refererDomain };
 }
 
-export function validateDomain(project: { configuration: ProjectConfiguration }, refererDomain: string) {
+export function validateDomain(project: { configuration: ProjectConfiguration | null }, refererDomain: string) {
   try {
     const config = project.configuration;
     const allowedDomains = config?.security?.allowedDomains || [];

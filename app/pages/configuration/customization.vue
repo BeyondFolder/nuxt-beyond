@@ -9,7 +9,7 @@ defineRouteRules({
   prerender: false,
 });
 
-const { data: dashboardData, refresh: refreshDashboard } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
+const { data: dashboardData } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
 
 const isAdmin = computed(() => dashboardData.value?.currentProjectRole === 'admin');
 
@@ -36,7 +36,7 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>;
 
-const currentConfig = computed(() => (dashboardData.value.currentProject?.configuration as ProjectConfiguration) || {});
+const currentConfig = computed(() => (dashboardData.value?.currentProject?.configuration as ProjectConfiguration) || {});
 
 const state = ref<Schema>({
   allowedDomains: currentConfig.value.security?.allowedDomains?.join('\n') || '',
@@ -50,11 +50,10 @@ const state = ref<Schema>({
 });
 
 const logoUrl = ref<string | null>(
-  currentConfig.value.appearance?.logo ? `/projects/${dashboardData.value.currentProject?.id}/logo` : null
+  currentConfig.value.appearance?.logo ? `/projects/${dashboardData.value?.currentProject?.id}/logo` : null
 );
 
 const isLoading = ref(false);
-const saveTimeout = ref<NodeJS.Timeout | null>(null);
 
 watch(currentConfig, (newConfig) => {
   state.value.allowedDomains = newConfig.security?.allowedDomains?.join('\n') || '';
@@ -64,35 +63,8 @@ watch(currentConfig, (newConfig) => {
   state.value.initialQuestion2 = newConfig.chat?.initialQuestions?.[1] || '';
   state.value.initialQuestion3 = newConfig.chat?.initialQuestions?.[2] || '';
   state.value.customPrompt = newConfig.chat?.customPrompt || '';
-  logoUrl.value = newConfig.appearance?.logo ? `/projects/${dashboardData.value.currentProject?.id}/logo` : null;
+  logoUrl.value = newConfig.appearance?.logo ? `/projects/${dashboardData.value?.currentProject?.id}/logo` : null;
 });
-
-watch(
-  state,
-  () => {
-    if (saveTimeout.value) {
-      clearTimeout(saveTimeout.value);
-    }
-    saveTimeout.value = setTimeout(() => {
-      saveConfiguration();
-    }, 1_000);
-  },
-  { deep: true }
-);
-
-function formatDomains(domainsText: string): string[] {
-  return domainsText
-    .split('\n')
-    .map((domain) => domain.trim())
-    .filter((domain) => domain.length > 0)
-    .map((domain) => {
-      domain = domain.replace(/^https?:\/\//, '');
-      domain = domain.replace(/^www\./, '');
-      domain = domain.replace(/\/.*$/, '');
-      return domain;
-    })
-    .filter((domain) => domain.length > 0);
-}
 
 const toast = useToast();
 
@@ -133,7 +105,7 @@ const loaderCode = computed(() => {
   }
 
   return generateLoaderCode({
-    projectId: dashboardData.value.currentProject.id,
+    projectId: dashboardData.value?.currentProject?.id,
     primaryColor: currentConfig.value?.appearance?.primaryColor,
     position: currentConfig.value?.appearance?.position,
     logo: logoUrl.value,
@@ -145,7 +117,7 @@ const iframeCode = computed(() => {
     return '';
   }
 
-  return generateIframeCode(dashboardData.value.currentProject.id);
+  return generateIframeCode(dashboardData.value?.currentProject?.id);
 });
 
 async function copyLoaderCode() {
@@ -223,7 +195,7 @@ async function copyIframeCode() {
 
       <div class="space-y-6">
         <ConfigurationCustomizationWidgetPreview
-          v-if="dashboardData.currentProject?.id"
+          v-if="dashboardData?.currentProject?.id"
           :project-id="dashboardData.currentProject.id"
           :primary-color="currentConfig.appearance?.primaryColor || ''"
           :position="currentConfig.appearance?.position"

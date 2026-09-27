@@ -92,7 +92,7 @@ Requirements:
     const { output } = await generateText({
       model: workersai('@cf/meta/llama-3.3-70b-instruct-fp8-fast'),
       prompt,
-      maxTokens: 2000,
+      maxOutputTokens: 2000,
       output: Output.object({ schema: ideaSchema }),
     });
 

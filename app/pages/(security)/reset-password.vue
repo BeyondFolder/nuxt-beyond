@@ -7,6 +7,9 @@ definePageMeta({
   middleware: ['not-authenticated'],
 });
 
+// App/auth page, not content: noindex (sitemap exclusion lives in nuxt.config.ts).
+useRobotsRule(false);
+
 useSeoMeta({
   title: 'Reset Password',
   description: 'Set your new password',
@@ -18,7 +21,6 @@ defineRouteRules({
 
 const toast = useToast();
 const route = useRoute();
-const router = useRouter();
 
 const token = route.query.token as string;
 
@@ -61,7 +63,7 @@ type Schema = z.output<typeof schema>;
 const isLoading = ref(false);
 const turnstileToken = ref('');
 
-function onSubmit(payload: FormSubmitEvent<Schema>) {
+function onSubmit(_payload: FormSubmitEvent<Schema>) {
   toast.add({
     title: 'Demo Mode',
     description: 'Password reset is disabled in demo mode. Please use the demo accounts to explore.',

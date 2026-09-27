@@ -15,7 +15,7 @@ const copyToClipboard = async (text: string, label: string) => {
       description: `${label} copied to clipboard`,
       color: 'success',
     });
-  } catch (error) {
+  } catch {
     useToast().add({
       title: 'Failed to copy',
       description: 'Please copy manually',
@@ -38,7 +38,6 @@ const useAccount = (email: string) => {
     </template>
 
     <template #body>
-
       <div class="space-y-6">
         <UAlert
           color="info"

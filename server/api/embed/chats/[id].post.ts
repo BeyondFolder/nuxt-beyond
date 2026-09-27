@@ -154,7 +154,7 @@ export default defineEventHandler(async (event) => {
       },
     });
 
-    return searchResult.data.map((item) => {
+    return searchResult.data.map((item: { filename: string; content: { text: string }[]; score: number; attributes?: { file?: { originalurl?: string } } }) => {
       const type = item.filename.includes('/pages/')
         ? 'url'
         : item.filename.includes('/text/')

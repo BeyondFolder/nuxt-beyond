@@ -40,6 +40,10 @@ export default defineNuxtConfig({
     name: 'NuxtBeyond - The AI-First Nuxt 4 Boilerplate',
   },
 
+  colorMode: {
+    preference: 'dark',
+  },
+
   content: {
     preview: {
       api: 'https://api.nuxt.studio',
@@ -63,10 +67,6 @@ export default defineNuxtConfig({
 
   ui: {
     colorMode: true,
-  },
-
-  colorMode: {
-    preference: 'dark',
   },
 
   runtimeConfig: {
@@ -177,6 +177,17 @@ export default defineNuxtConfig({
     },
   },
 
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        paths: {
+          // App-side typed $fetch routes pull in server files; @unlok-co/nuxt-stripe only maps this alias for the server tsconfig
+          '#stripe/server': ['../node_modules/@unlok-co/nuxt-stripe/dist/runtime/server/services'],
+        },
+      },
+    },
+  },
+
   eslint: {
     config: {
       stylistic: {
@@ -193,5 +204,8 @@ export default defineNuxtConfig({
 
   sitemap: {
     zeroRuntime: true,
+    // Logged-in pages, the embed widget and the password-reset flow stay out of the sitemap and set
+    // useRobotsRule(false). /login and /signup stay indexable for branded searches.
+    exclude: ['/dashboard/**', '/user/**', '/configuration/**', '/chat/**', '/images/**', '/videos/**', '/embed', '/forgot-password', '/reset-password'],
   },
 });

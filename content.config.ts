@@ -116,7 +116,7 @@ export const collections = {
       pricing: createBaseSchema().extend({
         plans: z.array(
           createBaseSchema().extend({
-            planName: z.string().nonempty(),
+            planName: z.enum(planNames),
             price: z.string().nonempty(),
             discount: z.string().optional(),
             button: createLinkSchema(),

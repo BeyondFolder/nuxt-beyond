@@ -5,6 +5,9 @@ import { PLANS_CONSTANTS } from '#shared/constants';
 import ProjectsMenu from '~/components/ProjectsMenu.vue';
 import { ConfirmModal } from '#components';
 
+// App/auth page, not content: noindex (sitemap exclusion lives in nuxt.config.ts).
+useRobotsRule(false);
+
 useSeoMeta({
   title: 'Dashboard',
   description: 'User dashboard',

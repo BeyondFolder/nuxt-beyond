@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ConfirmModal } from '#components';
-
 definePageMeta({
   layout: 'dashboard',
   middleware: ['authenticated'],
@@ -11,12 +9,11 @@ defineRouteRules({
 });
 
 const toast = useToast();
-const overlay = useOverlay();
 
 const { data: dashboardData } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
 const projectId = computed(() => dashboardData.value?.currentProject?.id);
 
-const { data: membersData, refresh: refreshMembers } = await useFetch(
+const { data: membersData } = await useFetch(
   () => `/api/projects/${projectId.value}/members`,
   {
     key: `api/projects/${projectId.value}/members`,
@@ -40,23 +37,7 @@ function canDeleteMember(member: any) {
   return true;
 }
 
-const removeMemberModal = overlay.create(ConfirmModal, {
-  props: {
-    title: 'Remove member',
-    description: 'Are you sure you want to remove this member from the project?',
-    confirmButtonText: 'Remove',
-  },
-});
-
-const cancelInvitationModal = overlay.create(ConfirmModal, {
-  props: {
-    title: 'Cancel invitation',
-    description: 'Are you sure you want to cancel this invitation?',
-    confirmButtonText: 'Cancel Invitation',
-  },
-});
-
-async function removeMember(memberId: string) {
+async function removeMember(_memberId: string) {
   toast.add({
     title: 'Demo Mode',
     description: 'Removing members is disabled in demo mode.',
@@ -64,7 +45,7 @@ async function removeMember(memberId: string) {
   });
 }
 
-async function cancelInvitation(invitationId: string) {
+async function cancelInvitation(_invitationId: string) {
   toast.add({
     title: 'Demo Mode',
     description: 'Cancelling invitations is disabled in demo mode.',

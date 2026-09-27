@@ -45,7 +45,7 @@ const colorClasses: Record<string, { bg: string; border: string; icon: string }>
 }
 
 function getColorClasses(color?: string) {
-  return colorClasses[color || 'primary'] || colorClasses.primary
+  return colorClasses[color || 'primary'] ?? colorClasses.primary!
 }
 </script>
 

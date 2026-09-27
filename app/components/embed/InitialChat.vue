@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { createProjectAvatar } from '~/utils/avatar';
-import type { ProjectConfiguration } from '#shared/types';
+import type { EmbedProject, ProjectConfiguration } from '#shared/types';
 import ProseStreamPre from '~/components/prose/PreStream.vue';
 import type { DefineComponent } from 'vue';
 import { THEME_PRIMARY_COLOR } from '#shared/constants';
@@ -13,7 +13,7 @@ const props = defineProps<{
   initialQuestions?: string[];
   projectName?: string;
   projectId: string;
-  project: Project;
+  project: EmbedProject;
 }>();
 
 const input = ref('');

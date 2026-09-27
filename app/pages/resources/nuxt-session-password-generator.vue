@@ -37,7 +37,7 @@ async function copyToClipboard() {
       description: 'Password copied to clipboard',
       color: 'success',
     });
-  } catch (error) {
+  } catch {
     toast.add({
       title: 'Failed to copy',
       description: 'Please copy manually',

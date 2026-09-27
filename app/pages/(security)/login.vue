@@ -110,7 +110,9 @@ const signupLink = computed(() => {
 });
 
 function handleUseAccount(credentials: { email: string; password: string }) {
-  console.log('credentials', credentials);
+  if (!authForm.value) {
+    return;
+  }
 
   authForm.value.state.email = credentials.email;
   authForm.value.state.password = credentials.password;

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { THEME_PRIMARY_COLOR } from '#shared/constants';
-
 const route = useRoute();
 
 const { data: page } = await useAsyncData(route.path, () =>
@@ -10,6 +8,14 @@ const { data: page } = await useAsyncData(route.path, () =>
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true });
 }
+
+interface LegalSection {
+  title: string;
+  content?: string;
+  subsections?: { subtitle: string; content: string }[];
+}
+
+const sections = computed(() => (page.value?.meta?.sections ?? []) as LegalSection[]);
 
 const title = page.value?.seo?.title || page.value?.title;
 const description = page.value?.seo?.description || page.value?.description;
@@ -21,9 +27,7 @@ useSeoMeta({
   ogDescription: description,
 });
 
-defineOgImage('NuxtSeo', {
-  theme: THEME_PRIMARY_COLOR,
-});
+defineOgImage('NuxtSeo.takumi');
 </script>
 
 <template>
@@ -41,7 +45,7 @@ defineOgImage('NuxtSeo', {
 
         <div class="prose prose-neutral dark:prose-invert max-w-none">
           <div
-            v-for="(section, index) in page?.meta?.sections || []"
+            v-for="(section, index) in sections"
             :key="index"
             class="mb-12"
           >
@@ -72,7 +76,7 @@ defineOgImage('NuxtSeo', {
             </div>
 
             <USeparator
-              v-if="index < (page?.meta?.sections?.length ?? 0) - 1"
+              v-if="index < sections.length - 1"
               class="my-10"
             />
           </div>

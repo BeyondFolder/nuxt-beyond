@@ -70,7 +70,7 @@ const loginLink = computed(() => {
   return redirect ? `/login?redirect=${encodeURIComponent(redirect)}` : '/login';
 });
 
-function onSubmit(payload: FormSubmitEvent<Schema>) {
+function onSubmit(_payload: FormSubmitEvent<Schema>) {
   toast.add({
     title: 'Demo Mode',
     description: 'Registration is disabled in demo mode. Please use the demo accounts to explore.',

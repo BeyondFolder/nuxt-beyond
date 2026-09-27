@@ -28,7 +28,7 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        'mainEntity': page.value.faqs.map((faq: { label: string; content: string }) => ({
+        'mainEntity': (page.value.faqs ?? []).map((faq: { label: string; content: string }) => ({
           '@type': 'Question',
           'name': faq.label,
           'acceptedAnswer': {

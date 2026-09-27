@@ -6,7 +6,7 @@ interface Props {
   projectId: string;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 const schemaUrl = z.object({
   url: z.url('Please enter a valid URL.').optional(),

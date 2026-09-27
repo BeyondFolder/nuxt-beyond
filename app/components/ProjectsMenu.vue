@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui';
-import { ConfirmModal } from '#components';
 import { createProjectAvatar } from '~/utils/avatar';
 import type { ProjectConfiguration } from '#shared/types';
 
@@ -8,11 +7,9 @@ const props = defineProps<{
   collapsed?: boolean;
 }>();
 
-const overlay = useOverlay();
 const { session } = useUserSession();
-const { switchProject, deleteProject } = useProjectOperations();
+const { switchProject } = useProjectOperations();
 
-const confirmDeleteModal = overlay.create(ConfirmModal);
 const { data: projectsResponse, pending, error, refresh } = await useFetch('/api/projects', { key: 'api/projects' });
 
 const { public: { siteUrl } } = useRuntimeConfig();

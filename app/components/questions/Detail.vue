@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { capitalize } from '#shared/utils';
-import { ConfirmModal } from '#components';
 
 const props = defineProps<{
   questionId: string;
@@ -13,10 +12,7 @@ const emit = defineEmits<{
   close: [];
 }>();
 
-const overlay = useOverlay();
-const confirmDeleteModal = overlay.create(ConfirmModal);
-
-const { data: questionDataRaw, refresh: refreshQuestion } = await useFetch(
+const { data: questionDataRaw } = await useFetch(
   () => `/api/projects/${props.projectId}/questions/${props.questionId}`,
   {
     key: `question-detail-${props.projectId}-${props.questionId}`,
@@ -256,7 +252,7 @@ async function confirmDeleteQuestion() {
           <template #description>
             <p class="mb-3">
               Add customer questions and answers to your knowledge base automatically to continuously improve your AI agent. Upgrade to
-              <UBadge :color="getPlanColor('pro')" variant="subtle" size="lg" class="capitalize">
+              <UBadge :color="getPlanColor('boilerplate')" variant="subtle" size="lg" class="capitalize">
                 Pro Plan
               </UBadge>
               or higher to enable self-learning.

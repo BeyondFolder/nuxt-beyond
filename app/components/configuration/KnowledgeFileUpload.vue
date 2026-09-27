@@ -34,8 +34,6 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>;
 
-const { handleError, showSuccess } = useErrorHandling();
-
 const state = ref<Schema>({
   files: [],
 });
@@ -45,7 +43,7 @@ const fileUploadError = ref<FormErrorEvent | null>(null);
 
 const toast = useToast();
 
-async function uploadFiles(event: FormSubmitEvent<Schema>) {
+async function uploadFiles(_event: FormSubmitEvent<Schema>) {
   toast.add({
     title: 'Demo Mode',
     description: 'File uploads are disabled in demo mode.',

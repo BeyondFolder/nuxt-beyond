@@ -11,8 +11,8 @@ export const formatDate = (date: string) => {
 export const getPlanColor = (plan: PlanName): 'secondary' | 'primary' | 'success' | 'info' | 'warning' => {
   const colors: Record<PlanName, 'secondary' | 'primary' | 'success' | 'info' | 'warning'> = {
     free: 'secondary',
-    pro: 'success',
-    advanced: 'info',
+    boilerplate: 'success',
+    bundle: 'info',
   };
   return colors[plan] || 'warning';
 };

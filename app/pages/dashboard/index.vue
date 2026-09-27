@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ProjectConfiguration } from '#shared/types';
 import { type PlanName, PLANS_CONSTANTS } from '#shared/constants';
 
 definePageMeta({
@@ -174,7 +173,8 @@ const stats = computed(() => {
                 size="lg"
                 class="capitalize"
               >
-                {{ dashboardData.currentProject.planName }} Plan </UBadge
+                {{ dashboardData.currentProject.planName }} Plan
+</UBadge
               >. Your AI chatbot will stop responding to new messages until you upgrade your plan or wait until next
               month.
             </p>
@@ -200,7 +200,7 @@ const stats = computed(() => {
                 }}</strong
               >
               this month. Upgrade to the
-              <UBadge :color="getPlanColor('pro')" variant="subtle" size="lg" class="capitalize"> Pro Plan </UBadge>
+              <UBadge :color="getPlanColor('boilerplate')" variant="subtle" size="lg" class="capitalize"> Pro Plan </UBadge>
               or higher to respond to customer questions and improve your AI agent.
             </p>
           </template>
