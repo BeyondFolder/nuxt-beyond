@@ -18,37 +18,39 @@ badge:
 
 I built Nuxt Beyond, so this is not a neutral review. I will still tell you when ShipFast is the better buy, because for a lot of people it is.
 
-ShipFast comes up in almost every boilerplate conversation. Marc Lou shipped it, 8,100+ people bought it, and the Discord is huge. If you search "SaaS boilerplate" you will hit it. Nuxt Beyond is a Nuxt 4 starter I built for AI products: RAG chat, an embeddable widget, Stripe, and Cloudflare at the edge, for $59.
+ShipFast comes up in almost every boilerplate conversation. Marc Lou shipped it, 8,429 people bought it, and the Discord is huge. If you search "SaaS boilerplate" you will hit it. Nuxt Beyond is a Nuxt 4 starter I built for AI products: RAG chat, an embeddable widget, Stripe, and Cloudflare at the edge, for $59.
 
-If you want the wider Nuxt field (Supastarter, Supersaas, ShipAhead, NuxtBase), I already wrote a [full Nuxt 4 boilerplate comparison](/blog/best-nuxt-boilerplates-compared). This post is the head-to-head people actually search: ShipFast vs Nuxt Beyond.
+If you want the wider Nuxt field (Supastarter, SuperSaas, ShipAhead, NuxtBase, Nuxflare Pro), I already wrote a [full Nuxt 4 boilerplate comparison](/blog/best-nuxt-boilerplates-compared). This post is the head-to-head people actually search: ShipFast vs Nuxt Beyond.
+
+Prices below were checked on 2026-10-03 on [shipfa.st](https://shipfa.st/) and [nuxtbeyond.com](https://nuxtbeyond.com/).
 
 ## The short version
 
-**ShipFast** is a Next.js SaaS kit with auth, Stripe, a blog, emails, and a giant community. It is $199-249 one-time. It does not ship AI. It does not ship multi-tenancy. The default database is MongoDB.
+**ShipFast** is a Next.js SaaS kit with auth, Stripe, a blog, emails, and a giant community. It is $199 Starter / $249 All-in one-time ($299 with CodeFast). It does not ship AI. It does not ship multi-tenancy. The default database is MongoDB.
 
-**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AutoRAG, streaming chat, an embeddable widget, DALL-E 3 and Sora, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is $59 one-time. The community is small. Auth is basic.
+**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is $59 one-time. The community is small. Auth is basic. Do not buy it for DALL-E or Sora. Those OpenAI APIs are retired.
 
 Pick ShipFast if you are a React developer who wants the most popular kit and you are not building an AI product. Pick Nuxt Beyond if you want Vue/Nuxt, RAG, or a chatbot you can embed on customer sites.
 
 ## Feature comparison
 
-| Feature | ShipFast ($199-249) | Nuxt Beyond ($59) |
+| Feature | ShipFast ($199 / $249) | Nuxt Beyond ($59) |
 |---------|---------------------|-------------------|
 | **Framework** | Next.js (React) | Nuxt 4 (Vue 3) |
 | **AI chat** | No | Vercel AI SDK v6, streaming, tool calling |
-| **RAG / semantic search** | No | Cloudflare AutoRAG |
+| **RAG / semantic search** | No | Cloudflare AI Search (formerly AutoRAG) |
 | **Embeddable widget** | No | One-line script, domain validation |
-| **Image / video gen** | No | DALL-E 3 + OpenAI Sora |
+| **Image / video gen** | No | Present in the repo around retired OpenAI APIs; do not buy it for that |
 | **Prompt injection protection** | No | Yes |
 | **Auth** | NextAuth (Google, magic links) | Google OAuth + email/password |
 | **Payments** | Stripe, Lemon Squeezy | Stripe + Polar |
 | **Multi-tenancy** | No | Project-based workspaces |
 | **Database** | MongoDB or Supabase | Cloudflare D1 (SQLite at the edge) + Drizzle |
-| **Deployment** | Vercel | Cloudflare Workers (NuxtHub) |
+| **Deployment** | Vercel | Cloudflare Workers (`wrangler` / Workers CI) |
 | **Blog** | Yes | Yes (Nuxt Content) |
 | **Email** | Yes | Resend |
 | **i18n** | No | No |
-| **Community** | 8,100+ users, 5,000+ Discord | Small (launched January 2026) |
+| **Community** | 8,429 makers, 5,000+ Discord | Small (launched January 2026, 2 sales) |
 
 ## Where ShipFast wins
 
@@ -56,7 +58,7 @@ I am not going to pretend community does not matter. For a boilerplate, it often
 
 ### Community and social proof
 
-8,100+ buyers and a 5,000+ Discord is a different category from a kit that launched in January 2026. If you get stuck, someone has already hit that error. Templates, launch posts, and "I shipped with this" screenshots exist in volume. That is real leverage, especially if you are shipping your first product and you want a crowd to stand next to.
+8,429 buyers and a 5,000+ Discord is a different category from a kit that launched in January 2026. If you get stuck, someone has already hit that error. Templates, launch posts, and "I shipped with this" screenshots exist in volume. That is real leverage, especially if you are shipping your first product and you want a crowd to stand next to.
 
 Nuxt Beyond does not have that. I will not dress it up.
 
@@ -80,7 +82,7 @@ Thousands of production apps have gone through ShipFast's auth, Stripe webhooks,
 
 This is not a religious Vue vs React post. It is the part that changes how you write the app.
 
-ShipFast is Next.js. App Router, React Server Components, `app/api` routes, Vercel as the default home. Nuxt Beyond is Nuxt 4: file-based pages, server routes under `server/api`, Vue 3 `<script setup>`, and Cloudflare Workers via NuxtHub.
+ShipFast is Next.js. App Router, React Server Components, `app/api` routes, Vercel as the default home. Nuxt Beyond is Nuxt 4: file-based pages, server routes under `server/api`, Vue 3 `<script setup>`, and Cloudflare Workers via `wrangler` or Workers CI.
 
 A Stripe checkout session in Nuxt 4 looks like a Nitro handler, not a Next.js route:
 
@@ -160,7 +162,7 @@ The generation side is Vercel AI SDK v6 `streamText` with a `getInformation` too
 
 With ShipFast you start from a working SaaS shell and *then* design ingestion, chunking, embeddings, retrieval filters, streaming, and evals. That is the right call if AI is a "maybe later" checkbox. It is the wrong call if the product *is* the chatbot.
 
-Image and video generation is the same split. Nuxt Beyond has DALL-E 3 and Sora wired. ShipFast does not. If your product is "type a prompt, get an image," you are not buying ShipFast for that.
+Image and video generation used to be a split. Nuxt Beyond still has image/video routes in the repo, but they sat on OpenAI APIs that OpenAI retired. ShipFast does not ship image gen either. If your product is "type a prompt, get an image," neither kit is the reason to buy.
 
 ## Database and hosting, without the tribal war
 
@@ -218,7 +220,7 @@ $59 vs $199 is $140. $59 vs $249 is $190. Both are one-time.
 
 ShipFast’s price is the tax on community and brand. Some people on Reddit call it overpriced because free Next.js starters exist. That is true and incomplete. You are paying for a known path and a Discord, not for a unique architecture.
 
-Nuxt Beyond is cheaper because it is newer and narrower. You are paying for the AI and Cloudflare work, not for 8,100 people who can unblock you on Saturday night.
+Nuxt Beyond is cheaper because it is newer and narrower. You are paying for the AI and Cloudflare work, not for 8,429 people who can unblock you on Saturday night.
 
 See [current pricing](/#pricing).
 
@@ -242,7 +244,6 @@ Pick Nuxt Beyond if:
 - You want Nuxt 4 / Vue 3, not Next.js
 - The product needs RAG, document Q&A, or a knowledge-base chatbot
 - You want to sell an embeddable widget, not only a logged-in app
-- You want DALL-E / Sora without wiring a second product
 - You want Cloudflare D1 + R2 + Workers as the default, not an afterthought
 - $59 is the budget and you still need payments, auth, and multi-tenancy
 
@@ -260,4 +261,4 @@ If you are still deciding among Nuxt kits only, start with the [best Nuxt boiler
 
 ---
 
-*I am the founder of Nuxt Beyond. Features and prices are as of September 2026. If ShipFast has shipped AI or changed pricing, [tell me on X](https://x.com/Raress96_) and I will update this.*
+*I am the founder of Nuxt Beyond. Features and prices checked 2026-10-03 on [shipfa.st](https://shipfa.st/) and [nuxtbeyond.com](https://nuxtbeyond.com/). If ShipFast has shipped AI or changed pricing, [tell me on X](https://x.com/Raress96_) and I will update this.*
