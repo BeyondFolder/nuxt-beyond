@@ -221,7 +221,7 @@ onMounted(generateSecret);
               </h2>
               <p class="text-sm text-neutral-600 dark:text-neutral-400">
                 On nuxt-auth-utils v0.5.x (latest is v0.5.31), set <code>NUXT_SESSION_PASSWORD</code>.
-                On Nuxt 4.6+, also set <code>NUXT_APP_SECRET</code> in production: modules derive their secrets from it, and dev generates one for you but builds never do.
+                On Nuxt 4.6+, set <code>NUXT_APP_SECRET</code> in production if a module or server feature uses it, such as <code>useSession</code> from <code>nuxt/server</code>: dev generates one for you, but builds never do.
                 Heads-up: an open nuxt-auth-utils pull request,
                 <ULink
                   to="https://github.com/atinux/nuxt-auth-utils/pull/546"
@@ -235,7 +235,7 @@ onMounted(generateSecret);
               <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                 Frequently asked questions
               </h2>
-              <UAccordion :items="page!.faqs" />
+              <UAccordion :items="page!.faqs" :unmount-on-hide="false" />
             </div>
 
             <div class="space-y-3 pt-4 border-t border-neutral-200 dark:border-neutral-800">
@@ -283,7 +283,7 @@ onMounted(generateSecret);
                     to="/"
                     class="text-primary-600 dark:text-primary-400 hover:underline"
                   >
-                    Get NuxtBeyond - Complete Nuxt 4 Boilerplate with Auth
+                    Get NuxtBeyond, the complete Nuxt 4 boilerplate with auth
                   </ULink>
                 </li>
               </ul>
@@ -293,8 +293,8 @@ onMounted(generateSecret);
 
         <div class="text-center mt-8 space-y-2">
           <p class="text-sm text-neutral-600 dark:text-neutral-400">
-            Nuxt Beyond ships auth (nuxt-auth-utils), Stripe and Cloudflare deploy wired up,
-            <ULink to="/#pricing" class="text-primary-600 dark:text-primary-400 hover:underline">$59 one-time</ULink>.
+            Nuxt Beyond ships auth (nuxt-auth-utils), Stripe and Cloudflare deploy wired up, for a
+            <ULink to="/#pricing" class="text-primary-600 dark:text-primary-400 hover:underline">one-time price</ULink>.
           </p>
           <p class="text-sm text-neutral-500 dark:text-neutral-400">
             Free tool by <ULink to="/" class="text-primary-600 dark:text-primary-400 hover:underline">NuxtBeyond</ULink>
