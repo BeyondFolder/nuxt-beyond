@@ -302,7 +302,7 @@ Here's what actually bites you.
 
 **Build-time and runtime variables are two different lists.** Anything used during prerendering, sitemap generation, or SSR at build time has to be set in the build environment variables, not just in the Worker's runtime secrets. `NUXT_PUBLIC_SITE_URL` is the classic one: your local build is fine, production ships with canonical URLs pointing at nothing.
 
-**`keep_vars: true` stops deploys from wiping dashboard variables.** Without it, deploying can clear secrets you set through the Cloudflare UI, and you find out when Stripe webhooks start failing signature verification.
+**`keep_vars: true` stops deploys from wiping dashboard variables.** Without it, deploying can clear secrets you set through the Cloudflare UI, and you find out when Stripe webhooks start failing signature verification. Your session secret is one of those dashboard secrets, so if you still need a value, you can [generate a NUXT_SESSION_PASSWORD or NUXT_APP_SECRET](/resources/nuxt-session-password-generator) in your browser.
 
 **No filesystem, no long-lived process.** Anything that writes to `/tmp`, caches in a module-level `Map` and expects it to survive, or spawns a child process will not work. Node compat covers a lot, but it doesn't give you a server. In-memory caches are per-isolate and can vanish between two consecutive requests.
 
