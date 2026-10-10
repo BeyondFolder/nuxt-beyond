@@ -13,10 +13,10 @@ export const polarProvider: PaymentProvider = {
     const polar = getPolarClient();
 
     const products = await polar.products.list({
-      isArchived: false,
+      is_archived: false,
       metadata: { planName }, // TODO: Add support for yearly prices
     });
-    const productId = products.result.items?.[0]?.id;
+    const productId = products.items[0]?.id;
 
     if (!productId) {
       throw createError({
@@ -32,9 +32,9 @@ export const polarProvider: PaymentProvider = {
 
     const checkout = await polar.checkouts.create({
       products: [productId],
-      externalCustomerId: project.id,
-      customerEmail: project.polarCustomerId ? undefined : userEmail,
-      successUrl: `${config.public.siteUrl}/dashboard?billing_success=true`,
+      external_customer_id: project.id,
+      customer_email: project.polarCustomerId ? undefined : userEmail,
+      success_url: `${config.public.siteUrl}/dashboard?billing_success=true`,
       metadata: {
         userId,
         projectId: project.id,
@@ -60,12 +60,11 @@ export const polarProvider: PaymentProvider = {
     const polar = getPolarClient();
 
     const customerSession = await polar.customerSessions.create({
-      externalCustomerId: project.id,
-      customerId: project.polarCustomerId,
+      customer_id: project.polarCustomerId,
     });
 
     return {
-      url: customerSession.customerPortalUrl,
+      url: customerSession.customer_portal_url,
     };
   },
 };
