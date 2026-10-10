@@ -49,7 +49,7 @@ onMounted(() => {
       <div class="text-center">
         <UIcon name="i-lucide-shield-alert" class="w-12 h-12 text-error mx-auto mb-4" />
         <h2 class="text-lg font-semibold mb-2">Access Denied</h2>
-        <p class="text-sm text-neutral">{{ error.data?.statusMessage || error.message || 'Failed to load project' }}</p>
+        <p class="text-sm text-neutral">{{ (error.data as { statusMessage?: string } | undefined)?.statusMessage || error.message || 'Failed to load project' }}</p>
       </div>
     </div>
     <template v-else-if="!pending">
