@@ -23,7 +23,7 @@
     "deploy": "NODE_OPTIONS=--max-old-space-size=8192 wrangler deploy"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^3.0.127",
+    "@ai-sdk/anthropic": "^4.0.78",
     "@ai-sdk/openai": "^3.0.124",
     "@ai-sdk/vue": "^3.0.300",
     "@cloudflare/workers-types": "^5.20261004.1",
