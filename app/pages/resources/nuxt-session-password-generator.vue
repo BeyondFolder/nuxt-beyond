@@ -16,9 +16,9 @@ if (!page.value) {
 useSeoMeta({
   titleTemplate: '',
   title: page.value.seo.title,
-  ogTitle: page.value.seo.title,
+  ogTitle: page.value.seo.ogTitle || page.value.seo.title,
   description: page.value.seo.description,
-  ogDescription: page.value.seo.description,
+  ogDescription: page.value.seo.ogDescription || page.value.seo.description,
 });
 
 useHead({
@@ -86,7 +86,9 @@ function generateSecret() {
 
 function selectSecret(name: string | number) {
   selected.value = name as SecretName;
-  generateSecret();
+  if (!secrets[selected.value]) {
+    generateSecret();
+  }
 }
 
 async function copyToClipboard() {
@@ -148,7 +150,8 @@ onMounted(generateSecret);
                       :model-value="secrets[item.value]"
                       readonly
                       :rows="3"
-                      class="font-mono text-sm w-full"
+                      :ui="{ base: 'font-mono' }"
+                      class="w-full"
                     />
                   </div>
 
