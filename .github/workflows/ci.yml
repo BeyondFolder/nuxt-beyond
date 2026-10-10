@@ -24,3 +24,8 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+        env:
+          NUXT_SITE_URL: https://nuxtbeyond.com
