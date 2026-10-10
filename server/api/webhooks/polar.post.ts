@@ -1,12 +1,14 @@
 import { eq } from 'drizzle-orm';
-import type { Subscription } from '@polar-sh/sdk/models/components/subscription';
+import type { models } from '@polar-sh/sdk/2026-10';
 import { projects } from '~~/server/db/schema';
 import { planNames, type PlanName } from '#shared/constants';
+
+type Subscription = models.Subscription;
 
 const TERMINAL_STATUSES = ['canceled', 'unpaid', 'incomplete', 'incomplete_expired'];
 
 const resolveProjectId = (subscription: Subscription) => {
-  return subscription.customer?.externalId || (subscription.metadata?.projectId as string | undefined);
+  return subscription.customer?.external_id || (subscription.metadata?.projectId as string | undefined);
 };
 
 const resolvePlanName = (subscription: Subscription): PlanName | undefined => {
@@ -18,7 +20,7 @@ const resolvePlanName = (subscription: Subscription): PlanName | undefined => {
 };
 
 const resolveStatus = (subscription: Subscription) => {
-  if (subscription.status === 'active' && subscription.cancelAtPeriodEnd) {
+  if (subscription.status === 'active' && subscription.cancel_at_period_end) {
     return 'canceling';
   }
 
@@ -53,9 +55,9 @@ const syncSubscription = async (subscription: Subscription) => {
     .set({
       ...(planName ? { planName } : {}),
       subscriptionStatus: resolveStatus(subscription),
-      polarCustomerId: subscription.customerId,
+      polarCustomerId: subscription.customer_id,
       polarSubscriptionId: subscription.id,
-      polarCurrentPeriodEnd: subscription.currentPeriodEnd ?? null,
+      polarCurrentPeriodEnd: subscription.current_period_end ? new Date(subscription.current_period_end) : null,
     })
     .where(eq(projects.id, projectId));
 

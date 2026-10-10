@@ -1,4 +1,4 @@
-import { Polar } from '@polar-sh/sdk';
+import { createPolar, type Environment } from '@polar-sh/sdk/2026-10';
 
 export const getPolarClient = () => {
   const config = useRuntimeConfig();
@@ -6,8 +6,8 @@ export const getPolarClient = () => {
   if (!accessToken) {
     throw new Error('Missing POLAR_ACCESS_TOKEN');
   }
-  return new Polar({
+  return createPolar({
     accessToken,
-    server: config.polar.mode as 'production' | 'sandbox' | undefined,
+    environment: (config.polar.mode || undefined) as Environment | undefined,
   });
 };
