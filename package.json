@@ -46,7 +46,7 @@
     "@takumi-rs/wasm": "^2.14.0",
     "@unlok-co/nuxt-stripe": "^6.0.2",
     "@vueuse/nuxt": "^14.4.0",
-    "ai": "^6.0.300",
+    "ai": "^7.0.136",
     "ai-gateway-provider": "^3.2.0",
     "better-sqlite3": "^13.0.3",
     "date-fns": "^4.4.0",
