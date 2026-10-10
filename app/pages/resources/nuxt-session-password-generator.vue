@@ -142,11 +142,15 @@ onMounted(generateSecret);
                     >
                       Your {{ item.value }}
                     </label>
-                    <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-2">
+                    <p
+                      :id="`${item.value}-hint`"
+                      class="text-xs text-neutral-500 dark:text-neutral-400 mb-2"
+                    >
                       {{ secretTypes[item.value].hint }}. Generated in your browser, never sent to a server.
                     </p>
                     <UTextarea
                       :id="item.value"
+                      :aria-describedby="`${item.value}-hint`"
                       :model-value="secrets[item.value]"
                       readonly
                       :rows="3"
