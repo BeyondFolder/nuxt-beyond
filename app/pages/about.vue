@@ -23,16 +23,12 @@ useSchemaOrg([
   defineWebPage({ '@type': 'AboutPage' }),
   defineOrganization({
     name: 'NuxtBeyond',
+    description: page.value.description,
     address: {
       addressLocality: 'Cluj-Napoca',
       addressCountry: 'RO',
     },
-    founder: {
-      '@type': 'Person',
-      'name': 'Rareș Serban',
-      'url': 'https://www.linkedin.com/in/raress96/',
-      'sameAs': ['https://x.com/Raress96_', 'https://www.linkedin.com/in/raress96/'],
-    },
+    founder: defineSiteAuthor(),
   }),
 ]);
 </script>

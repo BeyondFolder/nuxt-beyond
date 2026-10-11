@@ -1,5 +1,5 @@
 seo:
-  title: About NuxtBeyond
+  title: 'About NuxtBeyond: the AI-first Nuxt 4 boilerplate'
   description: NuxtBeyond is an AI-first Nuxt 4 boilerplate for SaaS products, with auth, Stripe or Polar billing, AI chat with RAG and Cloudflare deploys. Built by Rareș Serban.
 title: About NuxtBeyond
 description: NuxtBeyond is an AI-first Nuxt 4 boilerplate for building SaaS products. You buy the source code once and start your product with login, billing, AI chat and deployment already working.

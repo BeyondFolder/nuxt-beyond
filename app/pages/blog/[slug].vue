@@ -40,7 +40,7 @@ useSchemaOrg([
     'image': post.value.image?.src || '/images/preview.png',
     'datePublished': post.value.date,
     'dateModified': post.value.updatedAt ?? post.value.date,
-    'author': post.value.authors.map(author => definePerson({ name: author.name, url: author.to }))
+    'author': post.value.authors.map(definePostAuthor)
   }),
   defineBreadcrumb({
     itemListElement: [
@@ -83,7 +83,6 @@ useSchemaOrg([
           :to="author.to"
           color="neutral"
           variant="subtle"
-          target="_blank"
           size="sm"
         >
           <UAvatar
