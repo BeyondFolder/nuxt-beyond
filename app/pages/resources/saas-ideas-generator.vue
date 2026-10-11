@@ -328,7 +328,7 @@ async function generateIdeas() {
             <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
               Frequently Asked Questions
             </h2>
-            <UAccordion :items="page!.faqs" />
+            <UAccordion :items="page!.faqs" :unmount-on-hide="false" />
           </div>
         </div>
 

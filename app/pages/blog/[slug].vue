@@ -1,7 +1,14 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
+const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first(), {
+  transform: (post) => {
+    if (post?.body.value[0]?.[0] !== 'h1') {
+      return post
+    }
+    return { ...post, body: { ...post.body, value: post.body.value.slice(1) } }
+  }
+})
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
 }
@@ -28,6 +35,36 @@ if (post.value.image?.src) {
 } else {
   defineOgImage('NuxtSeo.takumi');
 }
+
+const formatDate = (date: string | Date) => new Date(date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })
+const toIsoDate = (date: string | Date) => new Date(date).toISOString().slice(0, 10)
+
+const updatedAt = post.value.updatedAt ?? post.value.date
+const faqs = post.value.faqs ?? []
+
+const faqSchema = faqs.length
+  ? [defineWebPage({ '@type': 'FAQPage' }), ...faqs.map(faq => defineQuestion({ name: faq.label, acceptedAnswer: faq.content }))]
+  : []
+
+useSchemaOrg([
+  defineArticle({
+    '@type': 'BlogPosting',
+    'headline': post.value.title,
+    description,
+    'image': post.value.image?.src || '/images/preview.png',
+    'datePublished': post.value.date,
+    'dateModified': updatedAt,
+    'author': post.value.authors.map(author => definePerson({ name: author.name, url: author.to }))
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Blog', item: '/blog' },
+      { name: post.value.title, item: route.path }
+    ]
+  }),
+  ...faqSchema
+])
 </script>
 
 <template>
@@ -42,7 +79,14 @@ if (post.value.image?.src) {
           variant="subtle"
         />
         <span class="text-muted">&middot;</span>
-        <time class="text-muted">{{ new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) }}</time>
+        <time
+          :datetime="toIsoDate(post.date)"
+          class="text-muted"
+        >
+          {{ formatDate(post.date) }}
+        </time>
+        <span class="text-muted">&middot;</span>
+        <span class="text-muted">Last updated <time :datetime="toIsoDate(updatedAt)">{{ formatDate(updatedAt) }}</time></span>
       </template>
 
       <div class="flex flex-wrap items-center gap-3 mt-4">
@@ -72,6 +116,19 @@ if (post.value.image?.src) {
           v-if="post"
           :value="post"
         />
+
+        <section
+          v-if="faqs.length"
+          class="mt-12"
+        >
+          <h2 class="text-2xl font-bold text-highlighted mb-4">
+            Frequently asked questions
+          </h2>
+          <UAccordion
+            :items="faqs"
+            :unmount-on-hide="false"
+          />
+        </section>
 
         <div class="mt-12 text-center">
           <UPageCard>

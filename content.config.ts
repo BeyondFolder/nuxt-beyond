@@ -233,7 +233,46 @@ export const collections = {
         })
       ),
       date: z.date(),
+      updatedAt: z.date().optional(),
       badge: z.object({ label: z.string().nonempty() }),
+      faqs: z.array(
+        z.object({
+          label: z.string().nonempty(),
+          content: z.string().nonempty(),
+        })
+      ).optional(),
+    }),
+  }),
+  about: defineCollection({
+    source: 'about.yml',
+    type: 'page',
+    schema: z.object({
+      seo: z.object({
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
+      }),
+      title: z.string().nonempty(),
+      description: z.string().nonempty(),
+      sections: z.array(
+        z.object({
+          title: z.string().nonempty(),
+          paragraphs: z.array(z.string().nonempty()),
+          items: z.array(z.string().nonempty()).optional(),
+        })
+      ),
+      facts: z.object({
+        title: z.string().nonempty(),
+        rows: z.array(
+          z.object({
+            label: z.string().nonempty(),
+            value: z.string().nonempty(),
+          })
+        ),
+      }),
+      cta: z.object({
+        label: z.string().nonempty(),
+        to: z.string().nonempty(),
+      }),
     }),
   }),
 };

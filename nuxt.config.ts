@@ -202,6 +202,14 @@ export default defineNuxtConfig({
     runtimeCacheStorage: false,
   },
 
+  schemaOrg: {
+    identity: {
+      type: 'Organization',
+      name: 'NuxtBeyond',
+      logo: '/images/logo.png',
+    },
+  },
+
   sitemap: {
     zeroRuntime: true,
     // Logged-in pages, the embed widget and the password-reset flow stay out of the sitemap and set
