@@ -20,6 +20,10 @@ const columns = [
         label: 'Blog',
         to: '/blog',
       },
+      {
+        label: 'About',
+        to: '/about',
+      },
     ],
   },
   {
@@ -118,7 +122,13 @@ const columns = [
     </template>
 
     <template #left>
-      <p class="text-sm text-muted">Copyright © {{ new Date().getFullYear() }} NuxtBeyond. All rights reserved.</p>
+      <div class="flex flex-col gap-1">
+        <p class="text-sm text-muted">Copyright © {{ new Date().getFullYear() }} NuxtBeyond. All rights reserved.</p>
+        <p class="text-sm text-muted">
+          Also by Rareș:
+          <ULink to="https://mailyond.com" target="_blank" rel="noopener" class="text-primary">Mailyond</ULink>
+        </p>
+      </div>
     </template>
 
     <template #right>

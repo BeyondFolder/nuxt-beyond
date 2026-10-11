@@ -28,6 +28,28 @@ if (post.value.image?.src) {
 } else {
   defineOgImage('NuxtSeo.takumi');
 }
+
+const formatDate = (date: string | Date) => new Date(date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })
+const toIsoDate = (date: string | Date) => new Date(date).toISOString().slice(0, 10)
+
+useSchemaOrg([
+  defineArticle({
+    '@type': 'BlogPosting',
+    'headline': post.value.title,
+    description,
+    'image': post.value.image?.src || '/images/preview.png',
+    'datePublished': post.value.date,
+    'dateModified': post.value.updatedAt ?? post.value.date,
+    'author': post.value.authors.map(definePostAuthor)
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Blog', item: '/blog' },
+      { name: post.value.title, item: route.path }
+    ]
+  })
+])
 </script>
 
 <template>
@@ -42,7 +64,16 @@ if (post.value.image?.src) {
           variant="subtle"
         />
         <span class="text-muted">&middot;</span>
-        <time class="text-muted">{{ new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) }}</time>
+        <time
+          :datetime="toIsoDate(post.date)"
+          class="text-muted"
+        >
+          {{ formatDate(post.date) }}
+        </time>
+        <template v-if="post.updatedAt">
+          <span class="text-muted">&middot;</span>
+          <span class="text-muted">Last updated <time :datetime="toIsoDate(post.updatedAt)">{{ formatDate(post.updatedAt) }}</time></span>
+        </template>
       </template>
 
       <div class="flex flex-wrap items-center gap-3 mt-4">
@@ -52,7 +83,6 @@ if (post.value.image?.src) {
           :to="author.to"
           color="neutral"
           variant="subtle"
-          target="_blank"
           size="sm"
         >
           <UAvatar

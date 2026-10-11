@@ -439,6 +439,7 @@ useHead({
       <UAccordion
         :items="page.faqs.items"
         class="mt-6 max-w-3xl mx-auto"
+        :unmount-on-hide="false"
         :ui="{
           item: 'text-base',
           trigger: 'text-lg font-semibold py-4',

@@ -4,10 +4,10 @@ description: 'Introducing NuxtBeyond, the complete Nuxt 4 boilerplate for buildi
 image:
   src: /images/homepage/demo.png
 authors:
-  - name: Rares
-    to: https://x.com/Raress96_
+  - name: Rares Serban
+    to: /about
     avatar:
-      src: /images/avatar.png
+      src: /images/rares-serban.jpg
 date: 2026-01-22
 badge:
   label: Release
