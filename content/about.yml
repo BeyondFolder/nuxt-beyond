@@ -34,7 +34,7 @@ facts:
     - label: Based in
       value: Cluj-Napoca, Romania
     - label: Launched
-      value: January 22, 2026
+      value: January 2026
     - label: Pricing
       value: A one-time payment, and the launch price goes up every 5 sales (see the [current price](/#pricing)).
     - label: License
