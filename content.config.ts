@@ -235,12 +235,6 @@ export const collections = {
       date: z.date(),
       updatedAt: z.date().optional(),
       badge: z.object({ label: z.string().nonempty() }),
-      faqs: z.array(
-        z.object({
-          label: z.string().nonempty(),
-          content: z.string().nonempty(),
-        })
-      ).optional(),
     }),
   }),
   about: defineCollection({

@@ -127,8 +127,6 @@ const columns = [
         <p class="text-sm text-muted">
           Also by Rareș:
           <ULink to="https://mailyond.com" target="_blank" rel="noopener" class="text-primary">Mailyond</ULink>
-          &middot;
-          <ULink to="https://omniyond.com" target="_blank" rel="noopener" class="text-primary">Omniyond</ULink>
         </p>
       </div>
     </template>
