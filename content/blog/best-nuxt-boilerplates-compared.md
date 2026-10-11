@@ -7,11 +7,12 @@ seo:
 image:
   src: /images/homepage/demo2.png
 authors:
-  - name: Rares
-    to: https://x.com/Raress96_
+  - name: Rares Serban
+    to: /about
     avatar:
-      src: /images/avatar.png
-date: 2026-10-03
+      src: /images/rares-serban.jpg
+date: 2026-03-22
+updatedAt: 2026-10-03
 badge:
   label: Comparison
 ---
