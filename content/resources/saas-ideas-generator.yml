@@ -91,5 +91,5 @@ cta:
   title: Ready to build your SaaS idea?
   description: NuxtBeyond gives you AI chat, auth, payments, and deployment out of the box. Ship your idea this weekend.
   button:
-    label: 'Get NuxtBeyond — $59'
+    label: 'Get NuxtBeyond'
     to: '/#pricing'

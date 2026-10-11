@@ -12,6 +12,7 @@ authors:
     avatar:
       src: /images/rares-serban.jpg
 date: 2026-10-05
+updatedAt: 2026-10-11
 badge:
   label: Comparison
 ---
@@ -22,9 +23,9 @@ The short answer: if you already write React, use Next.js. If you already write 
 
 Neither framework stops you from building a SaaS. This post is about which one gets a solo founder to a first checkout faster, and what a boilerplate changes.
 
-For context on my bias: Nuxt Beyond is an AI-first Nuxt 4 SaaS boilerplate — RAG chat, knowledge base, and an embeddable widget on Cloudflare — $59 one-time. That shapes which criteria I care about, so I'll flag it when it kicks in.
+For context on my bias: Nuxt Beyond is an AI-first Nuxt 4 SaaS boilerplate with RAG chat, a knowledge base and an embeddable widget on Cloudflare, for :launch-price one-time. That shapes which criteria I care about, so I'll flag it when it kicks in.
 
-Prices below were checked on 2026-10-05 on each vendor's own page: [shipfa.st](https://shipfa.st/), [supastarter.dev](https://supastarter.dev/), [supersaas.dev](https://supersaas.dev/), [shipahe.ad](https://shipahe.ad/), [nuxtbase.com](https://nuxtbase.com/), [saas-boilerplate.dev](https://saas-boilerplate.dev/) and nuxtbeyond.com.
+Prices below were checked on 2026-10-05 on each vendor's own page (Supastarter rechecked on 2026-10-11): [shipfa.st](https://shipfa.st/), [supastarter.dev](https://supastarter.dev/), [supersaas.dev](https://supersaas.dev/), [shipahe.ad](https://shipahe.ad/), [nuxtbase.com](https://nuxtbase.com/), [saas-boilerplate.dev](https://saas-boilerplate.dev/) and nuxtbeyond.com.
 
 ## Nuxt vs Next.js for SaaS: the short answer
 
@@ -103,7 +104,7 @@ Pick Next.js if:
 
 The obvious Next.js kit is ShipFast: $199 Starter / $249 All-in one-time (checked 2026-10-05), thousands of buyers and a big Discord. When I compared it with mine, it had no built-in AI, RAG or multi-tenancy. None of that matters if you're building a classic SaaS and want a crowd to stand next to. Full head-to-head: [ShipFast vs Nuxt Beyond](/blog/shipfast-vs-nuxtbeyond).
 
-If you can't decide on a framework at all, Supastarter sells one kit for Nuxt, Next.js and TanStack Start, from $299 Solo. That's a reasonable hedge if you're an agency or a team that might change direction.
+If you can't decide on a framework at all, Supastarter sells one kit for Nuxt, Next.js and TanStack Start, from $349 Solo. That's a reasonable hedge if you're an agency or a team that might change direction.
 
 ## When Nuxt 4 is the rational pick
 
@@ -143,19 +144,19 @@ And one thing not to buy Nuxt Beyond for: image and video generation. Those rout
 
 ## Boilerplate economics (dated prices)
 
-All one-time prices, checked on 2026-10-05 on each vendor's page.
+All one-time prices, checked on 2026-10-05 on each vendor's page (Supastarter rechecked on 2026-10-11).
 
 | Kit | Framework | Price |
 |---|---|---|
 | [ShipFast](https://shipfa.st/) | Next.js | $199 Starter / $249 All-in |
-| [Supastarter](https://supastarter.dev/) | Nuxt, Next.js, TanStack Start | $299 Solo / $799 Startup / $1,499 Agency |
+| [Supastarter](https://supastarter.dev/) | Nuxt, Next.js, TanStack Start | $349 Solo / $799 Startup / $1,499 Agency |
 | [SuperSaas](https://supersaas.dev/) | Nuxt 4 | $149 Essentials |
 | [ShipAhead](https://shipahe.ad/) | Nuxt 4 | $99 promo / $199 list ("$100 off for the first 100", 4 left) |
 | [NuxtBase](https://nuxtbase.com/) | Nuxt 4 | $299 Solo / $599 Team |
 | [Nuxflare Pro](https://saas-boilerplate.dev/) | Nuxt | $99 early bird / $149 listed |
-| Nuxt Beyond | Nuxt 4 | $59 (rises $10 every 5 sales, 2/5 sold at this price) |
+| Nuxt Beyond | Nuxt 4 | :launch-price, rising $10 every 5 sales |
 
-The price gap between kits is smaller than it looks. $59 vs $199 is $140. If a kit saves you a week of Stripe webhooks and auth flows, every row in that table pays for itself.
+The price gap between kits is smaller than it looks. Every single-developer licence in this table costs $349 or less, one-time. If a kit saves you a week of Stripe webhooks and auth flows, every row in that table pays for itself.
 
 The expensive mistake is buying the wrong shape. A React kit when you'll write Vue. A classic SaaS kit when the product is document chat, so you spend a month bolting on retrieval. An AI kit when you needed passkeys and five languages. The rewrite costs more than any of these licences.
 
@@ -212,7 +213,7 @@ The framework is enough if you enjoy wiring auth, webhooks and plan limits, or y
 
 ### How is Nuxt Beyond different from ShipFast if both claim "ship a SaaS"?
 
-ShipFast is a Next.js kit for classic SaaS with a huge community, $199 or $249. Nuxt Beyond is a Nuxt 4 kit for AI document chat and embeddable widgets on Cloudflare, $59, with a small community and basic auth. They overlap less than the search query suggests.
+ShipFast is a Next.js kit for classic SaaS with a huge community, $199 or $249. Nuxt Beyond is a Nuxt 4 kit for AI document chat and embeddable widgets on Cloudflare, :launch-price, with a small community and basic auth. They overlap less than the search query suggests.
 
 ## Framework follows team, boilerplate follows product
 
@@ -222,4 +223,4 @@ If it's the last one and you're on Vue, the details and the current price are on
 
 ---
 
-*I'm the founder of Nuxt Beyond. Prices checked 2026-10-05 on each vendor's homepage. If something moved, [tell me on X](https://x.com/Raress96_) and I'll update it.*
+*I'm the founder of Nuxt Beyond. Prices checked 2026-10-05 on each vendor's homepage (Supastarter 2026-10-11). If something moved, [tell me on X](https://x.com/Raress96_) and I'll update it.*

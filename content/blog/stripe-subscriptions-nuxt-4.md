@@ -476,6 +476,6 @@ The pattern that makes subscriptions manageable: metadata carries your database 
 
 Get those five right and the rest is dashboard configuration.
 
-If you'd rather not build it, [NuxtBeyond](/#pricing) ships with all of it working: Stripe and Polar behind one provider interface, the webhook handlers above, the customer portal, per-project subscriptions with roles, and plan limits wired into the AI and upload endpoints. $59 one-time, lifetime updates, unlimited projects.
+If you'd rather not build it, [NuxtBeyond](/#pricing) ships with all of it working: Stripe and Polar behind one provider interface, the webhook handlers above, the customer portal, per-project subscriptions with roles, and plan limits wired into the AI and upload endpoints. It's :launch-price one-time, with lifetime updates and unlimited projects.
 
 Related reading: the [multi-tenant SaaS guide](/blog/multi-tenant-saas-cloudflare-workers-nuxt-4) for the tenant modeling this billing sits on top of, the [embeddable widget tutorial](/blog/embeddable-chat-widget-nuxt-4) for shipping a paid feature onto customer sites, and [best Nuxt boilerplates compared](/blog/best-nuxt-boilerplates-compared) if you're still evaluating options.

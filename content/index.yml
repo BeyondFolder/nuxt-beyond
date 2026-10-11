@@ -4,7 +4,7 @@ seo:
 title: Ship your AI SaaS this [weekend]{.text-primary}, not in months
 description: Stop wiring up auth, Stripe, and RAG pipelines from scratch. Clone a production-ready Nuxt 4 codebase with AI chat, image generation, multi-tenancy, and Cloudflare edge deployment — ready to ship.
 hero:
-  badge: Launch Price — $59 (increases every 5 sales)
+  badge: 'Launch Price: {price} (increases every 5 sales)'
   links:
     - label: Get Instant Access
       variant: solid

@@ -1,9 +1,9 @@
 ---
 title: 'ShipAhead vs Nuxt Beyond: Which AI SaaS Boilerplate?'
-description: 'An honest comparison of ShipAhead ($99 Nuxt 4 kit with OpenRouter AI) and Nuxt Beyond ($59, RAG chat and an embeddable widget on Cloudflare). Features, stack, price, and when to pick each.'
+description: 'An honest comparison of ShipAhead ($99 Nuxt 4 kit with OpenRouter AI) and Nuxt Beyond (RAG chat and an embeddable widget on Cloudflare). Features, stack, price, and when to pick each.'
 seo:
   title: 'ShipAhead vs Nuxt Beyond: AI SaaS Boilerplate Comparison (2026)'
-  description: 'ShipAhead vs Nuxt Beyond in 2026. Both are Nuxt 4 AI kits. OpenRouter chat and Postgres vs Cloudflare RAG and an embeddable widget. $99 vs $59, and which one fits the product you are building.'
+  description: 'ShipAhead vs Nuxt Beyond in 2026. Both are Nuxt 4 AI kits: OpenRouter chat and Postgres vs Cloudflare RAG and an embeddable widget. Prices and which one fits.'
 image:
   src: /images/homepage/demo2.png
 authors:
@@ -28,13 +28,13 @@ Prices and feature lists below were checked on each product's own site on 2026-0
 
 **ShipAhead** is a Nuxt 4 SaaS kit: auth (including magic links), Stripe / Polar / Dodo, Postgres (Supabase or Neon) with Drizzle, i18n, PWA, cron, an admin panel, a blog, and AI chat plus text and image generation through OpenRouter. It is $99 right now ($199 list, $100 off for the first 100 customers, 4 left on 2026-09-26). It does not list RAG or an embeddable chat widget.
 
-**Nuxt Beyond** is a Nuxt 4 kit built around AI products: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, Stripe or Polar, and project-based workspaces on Cloudflare Workers + D1. It is $59 one-time. Auth is basic. There is no i18n, no PWA, no cron UI. Two people have bought it.
+**Nuxt Beyond** is a Nuxt 4 kit built around AI products: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, Stripe or Polar, and project-based workspaces on Cloudflare Workers + D1. It is :launch-price one-time. Auth is basic. There is no i18n, no PWA, no cron UI. Two people have bought it.
 
 Pick ShipAhead if you want a classic Nuxt SaaS shell, Postgres, i18n, and model-switchable chat/image gen. Pick Nuxt Beyond if the product is document Q&A or a chatbot you paste onto someone else's site.
 
 ## Feature comparison
 
-| Feature | ShipAhead ($99 promo / $199 list) | Nuxt Beyond ($59) |
+| Feature | ShipAhead ($99 promo / $199 list) | Nuxt Beyond (:launch-price) |
 |---------|-----------------------------------|-------------------|
 | **Framework** | Nuxt 4 (Vue 3) | Nuxt 4 (Vue 3) |
 | **AI chat** | Yes (OpenRouter, switch GPT model) | Vercel AI SDK v6, streaming, tool calling |
@@ -58,7 +58,7 @@ ShipAhead source: [shipahe.ad](https://shipahe.ad/) (checked 2026-09-26). Nuxt B
 
 ## Where ShipAhead wins
 
-I am not going to pretend a $59 kit with 2 sales beats a $99 kit with 95+ buyers on "feels safe to purchase."
+I am not going to pretend a newer kit with 2 sales beats a $99 kit with 95+ buyers on "feels safe to purchase."
 
 ### It is a fuller SaaS shell
 
@@ -185,7 +185,7 @@ Between these two: ShipAhead has the longer auth list (magic links, admin). Nuxt
 
 | | ShipAhead | Nuxt Beyond |
 |---|-----------|-------------|
-| **Entry** | $99 promo ($199 list). $100 off for the first 100 customers, 4 left on 2026-09-26. | $59 boilerplate (list $249). 2/5 sold at the current price; it goes up $10 every 5 sales. |
+| **Entry** | $99 promo ($199 list). $100 off for the first 100 customers, 4 left on 2026-09-26. | :launch-price boilerplate (list $249). It goes up $10 every 5 sales. |
 | **Bundle** | Not listed as a second SKU | $89 with the distribution framework |
 | **Updates** | Lifetime | Lifetime |
 | **Projects** | Unlimited | Unlimited |
@@ -193,7 +193,7 @@ Between these two: ShipAhead has the longer auth list (magic links, admin). Nuxt
 
 Sources: [ShipAhead pricing](https://shipahe.ad/) and [Nuxt Beyond pricing](/#pricing), both checked 2026-09-26.
 
-$59 vs $99 is $40. $59 vs $199 is $140 if the promo is gone. Both are one-time.
+Both are one-time.
 
 ShipAhead's $99 is a first-100 discount. If you like the kit, the promo ending is a reason to buy it, not a reason to skip the comparison.
 
@@ -219,7 +219,7 @@ Pick Nuxt Beyond if:
 - The product needs RAG, document Q&A, or a knowledge-base chatbot
 - You want to sell an embeddable widget, not only a logged-in app
 - You want Cloudflare D1 + R2 + Workers + AI Search as the default
-- $59 is the budget and you still need auth, Stripe or Polar, and project workspaces
+- The budget is tight and you still need auth, Stripe or Polar, and project workspaces
 - You already write Vue/Nuxt and you do not need i18n on day one
 
 Do not pick Nuxt Beyond if you need magic links, 2FA, passkeys, i18n, a PWA, a cron UI, or a busy Discord. Those gaps are real. Also do not pick it for image or video generation in 2026. That path is broken until I migrate it.

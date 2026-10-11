@@ -108,67 +108,67 @@ useSchemaOrg([
             <div class="space-y-6 py-8">
               <div>
                 <h3 class="text-3xl font-bold mb-3">
-                  Ready to Transform Your Customer Support?
+                  Build your AI SaaS on NuxtBeyond
                 </h3>
                 <p class="text-lg text-neutral max-w-2xl mx-auto">
-                  Join businesses already using NuxtBeyond to reduce costs, improve satisfaction, and deliver 24/7 AI-powered support. Get started in minutes.
+                  NuxtBeyond is a Nuxt 4 boilerplate with login, Stripe or Polar billing, AI chat with RAG and Cloudflare deploys already wired. You buy the source code once and use it on unlimited projects.
                 </p>
               </div>
 
               <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <UButton
-                  to="/signup"
-                  size="xl"
-                  icon="i-lucide-rocket"
-                  color="primary"
-                >
-                  Start Free Trial
-                </UButton>
-                <UButton
                   to="/#pricing"
                   size="xl"
-                  variant="outline"
-                  icon="i-lucide-eye"
+                  icon="i-lucide-zap"
+                  color="primary"
                 >
-                  View All Plans
+                  See the price
+                </UButton>
+                <UButton
+                  to="/login"
+                  size="xl"
+                  variant="outline"
+                  icon="i-lucide-arrow-right"
+                >
+                  Try the demo
                 </UButton>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                 <div class="text-center">
                   <UIcon
-                    name="i-lucide-zap"
+                    name="i-lucide-code"
                     class="text-primary text-3xl mb-2 mx-auto"
                   />
                   <div class="font-semibold mb-1">
-                    5-Minute Setup
+                    Source code you own
                   </div>
                   <div class="text-sm text-neutral">
-                    No coding required
+                    Clone it and change anything
                   </div>
                 </div>
                 <div class="text-center">
                   <UIcon
-                    name="i-lucide-shield-check"
+                    name="i-lucide-receipt"
                     class="text-primary text-3xl mb-2 mx-auto"
                   />
                   <div class="font-semibold mb-1">
-                    7-Day Free Trial
+                    One-time price
                   </div>
                   <div class="text-sm text-neutral">
-                    Cancel anytime, no credit card
+                    Lifetime updates through GitHub
                   </div>
                 </div>
                 <div class="text-center">
                   <UIcon
-                    name="i-lucide-trending-up"
+                    name="i-lucide-briefcase"
                     class="text-primary text-3xl mb-2 mx-auto"
                   />
                   <div class="font-semibold mb-1">
-                    Up to 67% Cost Reduction
+                    Unlimited projects
                   </div>
                   <div class="text-sm text-neutral">
-                    Typical customer savings
+                    Client work included
                   </div>
                 </div>
               </div>
