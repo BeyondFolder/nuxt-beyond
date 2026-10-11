@@ -81,7 +81,7 @@ NuxtBeyond is available as a **one-time purchase** with lifetime access. No subs
 
 ### Current Pricing (Limited Time)
 
-**NuxtBeyond Boilerplate** - ~~$249~~ **$59**
+**NuxtBeyond Boilerplate** - ~~$249~~ **[launch price](/#pricing)**
 - Full source code access
 - All features included
 - Lifetime updates

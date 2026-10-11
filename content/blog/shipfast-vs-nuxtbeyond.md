@@ -1,9 +1,9 @@
 ---
 title: 'ShipFast vs Nuxt Beyond: Which SaaS Boilerplate Should You Pick?'
-description: 'An honest comparison of ShipFast (Next.js, $199-249) and Nuxt Beyond (Nuxt 4, $59). Features, AI, pricing, community, and when each boilerplate is the right call.'
+description: 'An honest comparison of ShipFast (Next.js, $199-249) and Nuxt Beyond (Nuxt 4). Features, AI, pricing, community, and when each boilerplate is the right call.'
 seo:
   title: 'ShipFast vs Nuxt Beyond: SaaS Boilerplate Comparison (2026)'
-  description: 'ShipFast vs Nuxt Beyond in 2026. Next.js vs Nuxt 4, AI and RAG, Cloudflare vs Vercel, $199 vs $59, and which SaaS boilerplate fits the product you are actually building.'
+  description: 'ShipFast vs Nuxt Beyond in 2026. Next.js vs Nuxt 4, AI and RAG, Cloudflare vs Vercel, price, and which SaaS boilerplate fits the product you are actually building.'
 image:
   src: /images/homepage/demo2.png
 authors:
@@ -18,7 +18,7 @@ badge:
 
 I built Nuxt Beyond, so this is not a neutral review. I will still tell you when ShipFast is the better buy, because for a lot of people it is.
 
-ShipFast comes up in almost every boilerplate conversation. Marc Lou shipped it, 8,429 people bought it, and the Discord is huge. If you search "SaaS boilerplate" you will hit it. Nuxt Beyond is a Nuxt 4 starter I built for AI products: RAG chat, an embeddable widget, Stripe, and Cloudflare at the edge, for $59.
+ShipFast comes up in almost every boilerplate conversation. Marc Lou shipped it, 8,429 people bought it, and the Discord is huge. If you search "SaaS boilerplate" you will hit it. Nuxt Beyond is a Nuxt 4 starter I built for AI products: RAG chat, an embeddable widget, Stripe, and Cloudflare at the edge, for a one-time price.
 
 If you want the wider Nuxt field (Supastarter, SuperSaas, ShipAhead, NuxtBase, Nuxflare Pro), I already wrote a [full Nuxt 4 boilerplate comparison](/blog/best-nuxt-boilerplates-compared). This post is the head-to-head people actually search: ShipFast vs Nuxt Beyond.
 
@@ -28,13 +28,13 @@ Prices below were checked on 2026-10-03 on [shipfa.st](https://shipfa.st/) and [
 
 **ShipFast** is a Next.js SaaS kit with auth, Stripe, a blog, emails, and a giant community. It is $199 Starter / $249 All-in one-time ($299 with CodeFast). It does not ship AI. It does not ship multi-tenancy. The default database is MongoDB.
 
-**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is $59 one-time. The community is small. Auth is basic. Do not buy it for DALL-E or Sora. Those OpenAI APIs are retired.
+**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is a one-time purchase. The community is small. Auth is basic. Do not buy it for DALL-E or Sora. Those OpenAI APIs are retired.
 
 Pick ShipFast if you are a React developer who wants the most popular kit and you are not building an AI product. Pick Nuxt Beyond if you want Vue/Nuxt, RAG, or a chatbot you can embed on customer sites.
 
 ## Feature comparison
 
-| Feature | ShipFast ($199 / $249) | Nuxt Beyond ($59) |
+| Feature | ShipFast ($199 / $249) | Nuxt Beyond |
 |---------|---------------------|-------------------|
 | **Framework** | Next.js (React) | Nuxt 4 (Vue 3) |
 | **AI chat** | No | Vercel AI SDK v6, streaming, tool calling |
@@ -211,12 +211,12 @@ If you specifically need Lemon Squeezy, ShipFast has it. If you specifically nee
 
 | | ShipFast | Nuxt Beyond |
 |---|----------|-------------|
-| **Entry** | $199 Starter | $59 boilerplate |
+| **Entry** | $199 Starter | Boilerplate at the [launch price](/#pricing) |
 | **Top kit** | $249 All-in / $299 with CodeFast | $89 bundle (boilerplate + distribution framework) |
 | **Updates** | Lifetime | Lifetime |
 | **Projects** | Unlimited | Unlimited |
 
-$59 vs $199 is $140. $59 vs $249 is $190. Both are one-time.
+Both are one-time.
 
 ShipFast’s price is the tax on community and brand. Some people on Reddit call it overpriced because free Next.js starters exist. That is true and incomplete. You are paying for a known path and a Discord, not for a unique architecture.
 
@@ -245,7 +245,7 @@ Pick Nuxt Beyond if:
 - The product needs RAG, document Q&A, or a knowledge-base chatbot
 - You want to sell an embeddable widget, not only a logged-in app
 - You want Cloudflare D1 + R2 + Workers as the default, not an afterthought
-- $59 is the budget and you still need payments, auth, and multi-tenancy
+- The budget is tight and you still need payments, auth, and multi-tenancy
 
 Do not pick Nuxt Beyond if you need 2FA, passkeys, i18n on day one, or a giant Discord. Those gaps are real. Also do not pick it if your team only hires React.
 

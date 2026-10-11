@@ -17,6 +17,25 @@ useSeoMeta({
   twitterDescription: description,
 });
 
+const { plans } = page.value.pricing;
+const launchPrice = plans.find((plan) => plan.highlight)?.discount;
+const heroBadge = launchPrice && page.value.hero.badge?.replace('{price}', launchPrice);
+
+const offers = plans.flatMap((plan) => {
+  const price = Number((plan.discount ?? plan.price).replace(/[^\d.]/g, ''));
+  if (!price) {
+    return [];
+  }
+
+  return [{
+    '@type': 'Offer',
+    'name': plan.title,
+    'price': String(price),
+    'priceCurrency': 'USD',
+    'availability': 'https://schema.org/InStock',
+  }];
+});
+
 useHead({
   script: [
     {
@@ -28,12 +47,7 @@ useHead({
         'applicationCategory': 'DeveloperApplication',
         'operatingSystem': 'Web',
         'description': description,
-        'offers': {
-          '@type': 'Offer',
-          'price': '59',
-          'priceCurrency': 'USD',
-          'availability': 'https://schema.org/InStock',
-        },
+        'offers': offers,
       }),
     },
     {
@@ -65,9 +79,9 @@ useHead({
 
       <UContainer class="pt-16 sm:pt-20 lg:pt-28 pb-12">
         <div class="text-center max-w-4xl mx-auto mb-12">
-          <UBadge v-if="page.hero.badge" color="primary" variant="subtle" size="lg" class="mb-6">
+          <UBadge v-if="heroBadge" color="primary" variant="subtle" size="lg" class="mb-6">
             <UIcon name="i-lucide-sparkles" class="w-4 h-4 mr-1" />
-            {{ page.hero.badge }}
+            {{ heroBadge }}
           </UBadge>
 
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">

@@ -465,7 +465,7 @@ if (repliesThisMonth >= maxReplies) {
 
 Add up the pieces: loader script, iframe lifecycle, responsive sizing, per-tenant theming, domain whitelisting, header-based sessions, KV rate limiting, plan quotas, plus a dashboard where customers configure all of it. That's a couple of weeks of work before you've written a single line of your actual product.
 
-[NuxtBeyond](/#pricing) ships all of it. The embeddable widget, multi-tenant projects, RAG-powered chat on Cloudflare AI Search, auth, and billing on [Stripe or Polar](/blog/stripe-vs-polar-which-to-choose). It's $59 one-time with lifetime updates, and as far as I know it's still the only Nuxt boilerplate with an embeddable widget in the box (I checked all of them for the [boilerplate comparison](/blog/best-nuxt-boilerplates-compared), and the closest alternative is [Supastarter at $349](/blog/supastarter-vs-nuxtbeyond) without one).
+[NuxtBeyond](/#pricing) ships all of it. The embeddable widget, multi-tenant projects, RAG-powered chat on Cloudflare AI Search, auth, and billing on [Stripe or Polar](/blog/stripe-vs-polar-which-to-choose). It's a one-time purchase with lifetime updates, and as far as I know it's still the only Nuxt boilerplate with an embeddable widget in the box (I checked all of them for the [boilerplate comparison](/blog/best-nuxt-boilerplates-compared), and the closest alternative is [Supastarter at $349](/blog/supastarter-vs-nuxtbeyond) without one).
 
 Either way, build the widget. The distribution model is worth it: your customers put your product on their sites, and every visitor who opens that bubble is someone who found you through them.
 

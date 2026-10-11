@@ -31,7 +31,7 @@ Every paid Nuxt SaaS kit I could find that still has a live site:
 - **[ShipAhead](https://shipahe.ad/)** ($99 promo / $199 list) - Nuxt 4 with OpenRouter chat and image gen
 - **[NuxtBase](https://nuxtbase.com/)** ($299 Solo / $599 Team) - Nuxt 4, Stripe, Better Auth, AI chat credits
 - **[Nuxflare Pro](https://saas-boilerplate.dev/)** ($99 early bird / $149 listed) - Nuxt on Cloudflare, including a RAG chatbot demo
-- **Nuxt Beyond** ($59) - AI-first: Cloudflare AI Search, embeddable widget. That's mine.
+- **Nuxt Beyond** (one-time [launch price](/#pricing)) - AI-first: Cloudflare AI Search, embeddable widget. That's mine.
 
 I'm also including **[ShipFast](https://shipfa.st/)** ($199 Starter / $249 All-in) because it shows up in every boilerplate search, even though it is Next.js.
 
@@ -43,7 +43,7 @@ NuxifySaaS did not resolve last time I checked it. Nuxt Starter AI's own site wa
 
 | Feature | Nuxt Beyond | Supastarter | SuperSaas | ShipAhead | NuxtBase | Nuxflare Pro |
 |---------|-------------|-------------|-----------|-----------|----------|--------------|
-| **Price (one-time)** | $59 | $299 / $799 / $1,499 | $149 ($199 all-access) | $99 promo / $199 list | $299 / $599 | $99 early bird / $149 |
+| **Price (one-time)** | [Launch price](/#pricing) | $299 / $799 / $1,499 | $149 ($199 all-access) | $99 promo / $199 list | $299 / $599 | $99 early bird / $149 |
 | **Framework** | Nuxt 4 | Nuxt 4, Next.js, TanStack Start | Nuxt 4 | Nuxt 4 | Nuxt 4 | Nuxt |
 | **AI chat** | Vercel AI SDK v6, streaming | AI workflows / chatbot examples | Demo app | OpenRouter chat, text, image | Streaming chat + org credits | RAG chatbot demo, image gen demo |
 | **RAG / document search** | Cloudflare AI Search (formerly AutoRAG), per-project knowledge | Not listed as product RAG | Not listed | Not listed | Not listed | Listed as an AI demo on Vectorize |
@@ -71,7 +71,7 @@ Ignore brand for a second. Ask what the first paid product is.
 
 **You want Durable Objects, Queues, Vectorize, teams and RBAC on Cloudflare.** [Nuxflare Pro](https://saas-boilerplate.dev/). They list a RAG chatbot as a demo. If your architecture is "Cloudflare everything, including queues," they are closer than I am.
 
-**The product is RAG over customer documents, or a chatbot you paste onto someone else's site.** That is the job Nuxt Beyond is built for. $59. [Pricing](/#pricing).
+**The product is RAG over customer documents, or a chatbot you paste onto someone else's site.** That is the job Nuxt Beyond is built for. [Pricing](/#pricing).
 
 **You write React and you want a crowd.** [ShipFast](https://shipfa.st/). Not Nuxt. Full writeup: [ShipFast vs Nuxt Beyond](/blog/shipfast-vs-nuxtbeyond).
 
@@ -87,7 +87,7 @@ Supastarter is still the grown-up kit. Nuxt, Next.js, and TanStack Start from on
 
 **Where it wins:** auth depth, payment-provider count, docs, i18n, "my agency will not get fired for this."
 
-**Where it falls short:** $299 is five times Nuxt Beyond. AI is workflows and chatbot examples, not a multi-tenant knowledge base with an embed script. If you are buying it for RAG, you are buying the wrong row.
+**Where it falls short:** $299 is several times Nuxt Beyond's launch price. AI is workflows and chatbot examples, not a multi-tenant knowledge base with an embed script. If you are buying it for RAG, you are buying the wrong row.
 
 **Pick Supastarter if** you are a team or an agency and the checklist is compliance-shaped. Do not pick it to save money. You will not.
 
@@ -141,7 +141,7 @@ This is the kit that killed my "only RAG" line. They list Cloudflare D1, R2, KV,
 
 ### Nuxt Beyond - best when the product is RAG or a widget
 
-**Price:** $59 one-time, lifetime updates. Bundle with the distribution framework is $89. Price rises $10 every 5 sales; the site showed 2/5 at $59 on 2026-10-03 ([nuxtbeyond.com](https://nuxtbeyond.com/)).
+**Price:** one-time [launch price](/#pricing), lifetime updates. Bundle with the distribution framework is $89. Price rises $10 every 5 sales ([nuxtbeyond.com](https://nuxtbeyond.com/)).
 
 I built this because I kept rewiring auth, Stripe, and retrieval for AI chat products. The core is Cloudflare AI Search (formerly AutoRAG) over per-project files, streaming chat, and a one-line embed with domain validation. Stripe or Polar via an env var. Google OAuth and email/password. D1, R2, KV, Workers.
 
@@ -151,7 +151,7 @@ How the RAG path is wired: [How to build an AI chatbot with RAG in Nuxt 4](/blog
 - Retrieval is in the product, scoped per project, not a todo-app demo
 - Embeddable widget you can sell as chatbot-as-a-service
 - Prompt-injection protection is listed; I have not seen that on the other homepages
-- $59, lowest paid price in this table
+- Lowest paid price in this table at launch pricing
 
 **Where it falls short (I'll be blunt):**
 - Auth is basic. No 2FA, no passkeys, no RBAC. SuperSaas, Supastarter, and NuxtBase all beat me here.
@@ -191,7 +191,7 @@ If you bookmarked the March version, throw the prices out.
 
 ## Which one should you pick?
 
-**Building RAG chat, knowledge bases, or an embeddable AI widget?** Nuxt Beyond at $59 is the kit I would use for that job, because that is the job I built it for. Nuxflare is the other Cloudflare+RAG name to open in a second tab. [See pricing](/#pricing).
+**Building RAG chat, knowledge bases, or an embeddable AI widget?** Nuxt Beyond is the kit I would use for that job, because that is the job I built it for. Nuxflare is the other Cloudflare+RAG name to open in a second tab. [See pricing](/#pricing).
 
 **Building a traditional SaaS with enterprise-shaped auth?** Supastarter at $299.
 
