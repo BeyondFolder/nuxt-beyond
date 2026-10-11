@@ -24,13 +24,13 @@ If you're comparing Nuxt boilerplates and trying to decide between these two, he
 
 **Supastarter** is the most mature Nuxt SaaS boilerplate. Enterprise-grade auth, five payment providers, i18n, excellent docs. It's $349 for a reason — you get a lot.
 
-**NuxtBeyond** is built specifically for AI products. Production RAG, embeddable chat widgets, image and video generation, Cloudflare edge deployment. It's a one-time [launch price](/#pricing).
+**NuxtBeyond** is built specifically for AI products. Production RAG, embeddable chat widgets, image and video generation, Cloudflare edge deployment. It's :launch-price one-time.
 
 If you're building a traditional SaaS (CRM, project management, analytics dashboard), Supastarter is probably the right call. If you're building an AI product (chatbots, knowledge bases, AI-powered search), NuxtBeyond was designed for that.
 
 ## Feature Comparison
 
-| Feature | Supastarter ($349) | NuxtBeyond |
+| Feature | Supastarter ($349) | NuxtBeyond (:launch-price) |
 |---------|-------------------|-----------------|
 | **Framework** | Nuxt 4.3 + Next.js | Nuxt 4 |
 | **Auth** | better-auth (2FA, passkeys, RBAC, magic links) | Google OAuth + email/password |
@@ -116,13 +116,13 @@ NuxtBeyond includes prompt injection protection and response sanitization for AI
 
 ### Price
 
-Both are one-time payments with lifetime updates. But if you're a solo founder testing an idea, NuxtBeyond's launch price is easier to justify than $349, especially when it has deeper AI features. See the [full pricing details](/#pricing).
+Both are one-time payments with lifetime updates. But if you're a solo founder testing an idea, NuxtBeyond's :launch-price is easier to justify than $349, especially when it has deeper AI features. See the [full pricing details](/#pricing).
 
 ## Pricing Breakdown
 
 | Plan | Supastarter | NuxtBeyond |
 |------|------------|------------|
-| **Solo / Boilerplate** | $349 | [Launch price](/#pricing) |
+| **Solo / Boilerplate** | $349 | :launch-price |
 | **Team** | $799 (5 seats) | N/A |
 | **Agency** | $1,499 (10 seats) | N/A (unlimited projects on the boilerplate license) |
 | **Updates** | Lifetime | Lifetime |
@@ -149,7 +149,7 @@ Pick NuxtBeyond if:
 - **You're building an AI product** — chatbots, knowledge bases, AI search, document Q&A, or anything that needs RAG
 - **You want to sell embeddable AI widgets** — the widget system lets you build chatbot-as-a-service from day one
 - **You're deploying on Cloudflare** — native D1, R2, KV, Workers integration with generous free tiers
-- **You're a solo founder on a budget**: the deepest AI features in any Nuxt boilerplate, at a lower one-time price
+- **You're a solo founder on a budget**: the deepest AI features in any Nuxt boilerplate, for :launch-price one-time
 - **You need image and video generation** — DALL-E 3 + Sora built in
 - **Security for AI outputs matters** — prompt injection protection included
 
