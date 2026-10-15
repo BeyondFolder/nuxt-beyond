@@ -169,7 +169,7 @@ async function handleChatSubmit(e: Event) {
 
           <div class="flex gap-2">
             <UButton
-              :to="`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Just tested an AI chatbot for ${appName || 'my business'} using NuxtBeyond by @Raress96_`)}`"
+              :to="`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Just tested an AI chatbot for ${appName || 'my business'} using NuxtBeyond by @raress96`)}`"
               target="_blank"
               variant="ghost"
               color="neutral"
