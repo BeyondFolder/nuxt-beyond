@@ -91,10 +91,10 @@ rel="noopener"
         variant="ghost"
       />
       <UButton
-        to="https://x.com/Raress96_"
+        to="https://x.com/raress96"
         target="_blank"
         icon="i-simple-icons-x"
-        aria-label="Raress96_ on X"
+        aria-label="raress96 on X"
         color="neutral"
         variant="ghost"
       />
