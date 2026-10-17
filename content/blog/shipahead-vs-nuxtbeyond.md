@@ -134,7 +134,7 @@ const findRelevantContent = async (question: string, projectId: string) => {
 
 `rewrite_query` turns "how much is it" into a search for pricing. `score_threshold` drops junk chunks. The folder range is tenant isolation without a vector database per customer.
 
-ShipAhead's public page does not list RAG, embeddings, or document search. If they have shipped it since 2026-09-26, [tell me on X](https://x.com/Raress96_) and I will update this.
+ShipAhead's public page does not list RAG, embeddings, or document search. If they have shipped it since 2026-09-26, [tell me on X](https://x.com/raress96) and I will update this.
 
 Nuxflare Pro does list a RAG chatbot demo on Cloudflare Vectorize. So "Nuxt Beyond is the only Nuxt kit with RAG" is false. What I will say is: RAG is the product in this repo, not a demo app next to notes and a URL shortener. Full walkthrough: [How to build an AI chatbot with RAG in Nuxt 4](/blog/how-to-build-ai-chatbot-with-rag-nuxt-4).
 
@@ -240,4 +240,4 @@ Current Nuxt Beyond price is on the [pricing section](/#pricing).
 
 ---
 
-*I am the founder of Nuxt Beyond. Features and prices checked 2026-09-26 against [shipahe.ad](https://shipahe.ad/) and [nuxtbeyond.com](https://nuxtbeyond.com/). If ShipAhead has shipped RAG, a third-party embed, or new pricing, [tell me on X](https://x.com/Raress96_) and I will update this.*
+*I am the founder of Nuxt Beyond. Features and prices checked 2026-09-26 against [shipahe.ad](https://shipahe.ad/) and [nuxtbeyond.com](https://nuxtbeyond.com/). If ShipAhead has shipped RAG, a third-party embed, or new pricing, [tell me on X](https://x.com/raress96) and I will update this.*

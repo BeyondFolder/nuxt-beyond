@@ -40,7 +40,7 @@ facts:
     - label: License
       value: Unlimited commercial projects, with lifetime updates through the GitHub repository
     - label: Contact
-      value: "[@Raress96_ on X](https://x.com/Raress96_) or [LinkedIn](https://www.linkedin.com/in/raress96/)"
+      value: "[@raress96 on X](https://x.com/raress96) or [LinkedIn](https://www.linkedin.com/in/raress96/)"
 cta:
   label: See the current price
   to: /#pricing

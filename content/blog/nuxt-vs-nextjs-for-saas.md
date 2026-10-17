@@ -223,4 +223,4 @@ If it's the last one and you're on Vue, the details and the current price are on
 
 ---
 
-*I'm the founder of Nuxt Beyond. Prices checked 2026-10-05 on each vendor's homepage (Supastarter 2026-10-11). If something moved, [tell me on X](https://x.com/Raress96_) and I'll update it.*
+*I'm the founder of Nuxt Beyond. Prices checked 2026-10-05 on each vendor's homepage (Supastarter 2026-10-11). If something moved, [tell me on X](https://x.com/raress96) and I'll update it.*

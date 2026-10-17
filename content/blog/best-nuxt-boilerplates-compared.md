@@ -210,4 +210,4 @@ There is no "best Nuxt 4 boilerplate." There is a best one for the product you a
 
 ---
 
-*Last updated 2026-10-03. Prices and feature lists taken from each vendor's homepage that day. If something moved, [DM me on X](https://x.com/Raress96_) and I will fix it.*
+*Last updated 2026-10-03. Prices and feature lists taken from each vendor's homepage that day. If something moved, [DM me on X](https://x.com/raress96) and I will fix it.*

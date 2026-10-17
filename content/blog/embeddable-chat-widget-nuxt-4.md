@@ -471,4 +471,4 @@ Either way, build the widget. The distribution model is worth it: your customers
 
 ---
 
-*Questions or a correction? [Find me on X](https://x.com/Raress96_).*
+*Questions or a correction? [Find me on X](https://x.com/raress96).*
