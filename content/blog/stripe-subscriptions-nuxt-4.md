@@ -466,7 +466,7 @@ Card `4000 0000 0000 0341` succeeds at checkout and then fails on the next charg
 
 Being fair about it: Stripe makes you the merchant of record, which means sales tax and VAT are your problem. `automatic_tax` calculates the right amount, but you still register, file, and remit in every jurisdiction where you have customers. For a solo founder selling to the EU, that's a real ongoing cost in money and attention.
 
-Merchant-of-record providers like Polar, Paddle, or Lemon Squeezy take a bigger cut and handle all of it. The [Stripe vs Polar comparison](/blog/stripe-vs-polar-which-to-choose) has the full breakdown, including the actual fee math.
+Merchant-of-record providers like Polar, Paddle, or Lemon Squeezy, or Stripe's own Managed Payments, take a bigger cut and handle all of it. The [Stripe vs Polar comparison](/blog/stripe-vs-polar-which-to-choose) has the full breakdown, including the actual fee math.
 
 The good news is that the architecture above barely changes. Put `createCheckout` and `createPortalSession` behind an interface, pick the implementation from an env var, and the only provider-specific code left is the webhook handler, because each provider signs payloads differently.
 
