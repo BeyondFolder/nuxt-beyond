@@ -25,7 +25,7 @@ Here's the honest breakdown for a solo founder or small team.
 
 ## The Short Version
 
-Pick **Stripe** if you're US-only or small, or you need advanced billing like usage-based pricing or marketplaces: it's the cheapest per sale, but you're the merchant and tax is your job. Pick **Polar** if you sell digital products globally and want a simple merchant of record (MoR) that handles VAT for you and, on a US card, costs less per sale than Stripe's version. Pick **Stripe Managed Payments** if you want an MoR but need to stay inside Stripe, and your product fits its rules (Checkout or Payment Links, digital products, no Connect). I'd start on plain Stripe and move once VAT becomes a real problem.
+Pick **Stripe** if you're US-only or small, or you need advanced billing like usage-based pricing or marketplaces: it's the cheapest per sale, but you're the merchant and tax is your job. Pick **Polar** if you sell digital products globally and want a simple merchant of record (MoR) that handles VAT for you and, on a typical $50 US-card sale, costs less than Stripe's version. Pick **Stripe Managed Payments** if you want an MoR but need to stay inside Stripe, and your product fits its rules (Checkout or Payment Links, digital products, no Connect). I'd start on plain Stripe and move once VAT becomes a real problem.
 
 ## What "Merchant of Record" Actually Means
 
@@ -91,7 +91,7 @@ Every tool integrates with Stripe. Every Stack Overflow answer exists. Every AI 
 
 ### You stop thinking about tax
 
-This is the reason most indie founders move to an MoR. Selling to the EU as a US solo founder means VAT obligations from your first euro of revenue. Polar absorbs that entirely. Managed Payments does too now, but on a US card Polar costs less per sale. For a one-person company, that peace of mind is worth a lot more than the couple of points of revenue it costs.
+This is the reason most indie founders move to an MoR. Selling to the EU as a US solo founder means VAT obligations from your first euro of revenue. Polar absorbs that entirely. Managed Payments does too now, but on a $50 US-card sale Polar costs less. For a one-person company, that peace of mind is worth a lot more than the couple of points of revenue it costs.
 
 ### Developer experience
 
@@ -119,7 +119,7 @@ Non-US cards change the picture. Polar adds 1.5% on international cards, another
 
 Sources: [Stripe pricing](https://stripe.com/pricing), [Polar fees](https://polar.sh/docs/merchant-of-record/fees), [Creem pricing](https://www.creem.io/pricing), all checked 2026-10-17.
 
-So Stripe's MoR is real now, but on these rates it's the most expensive MoR option for a simple SaaS sale. Its pull is that you stay inside Stripe: same account, same dashboard, same API.
+So Stripe's MoR is real now, but at $50 it's the most expensive MoR option in this table. Its pull is that you stay inside Stripe: same account, same dashboard, same API.
 
 Plain Stripe is still the cheapest per sale, but that $2.00 doesn't include the time or the accountant it takes to register and file. For a US-only hobby project at low volume, Stripe is cheaper, full stop. For anyone selling globally who'd otherwise need tax registrations, an MoR's premium is often *cheaper than the alternative once you count compliance*. And at volume, a paid Polar plan narrows the gap further (Polar puts the Pro breakeven at about $1,379/mo in sales).
 
@@ -174,11 +174,11 @@ It replaces Stripe in your code and uses Stripe for your payouts. You integrate 
 
 ### Is Stripe Managed Payments cheaper than Polar?
 
-Not on these rates, for a US card. Managed Payments adds 3.5% on top of Stripe's 2.9% + 30¢, so a $50 sale costs $3.50, vs $3.00 on Polar Starter and $2.30 on Polar Pro. On non-US cards both go up: Polar adds 1.5%, and Stripe adds its own international surcharge. The extra you pay Stripe buys you staying inside Stripe.
+Not on a $50 US-card sale. Managed Payments adds 3.5% on top of Stripe's 2.9% + 30¢, so a $50 sale costs $3.50, vs $3.00 on Polar Starter and $2.30 on Polar Pro. On small tickets it flips against Polar Starter: below about $14 a sale, Stripe's 30¢ fixed fee beats Polar's 50¢, so Managed Payments comes out a little cheaper (Polar Pro stays cheaper above about $4). On non-US cards both go up: Polar adds 1.5%, and Stripe adds its own international surcharge. The extra you pay Stripe buys you staying inside Stripe.
 
 ### Creem vs Polar: what's the difference?
 
-Both are merchants of record. Creem charges a flat 3.9% + 40¢ with no monthly fee and lists no international card fee. Polar Starter is 5% + 50¢ plus 1.5% on non-US cards, and its paid plans go down to 3.4% + 30¢ for a monthly fee. For most small sellers Creem is the cheaper one: on a $50 US sale Polar's paid plans only save 5¢ to 35¢ over Creem, so the monthly fee pays off only at hundreds of mostly US sales a month (about 400 on Pro). Below that, pick Polar for its open-source, developer-first tooling, not for the fees. Paddle and Lemon Squeezy are the other MoRs worth a look.
+Both are merchants of record. Creem charges a flat 3.9% + 40¢ with no monthly fee and lists no international card fee. Polar Starter is 5% + 50¢ plus 1.5% on non-US cards, and its paid plans go down to 3.4% + 30¢ for a monthly fee. For most small sellers Creem is the cheaper one: on a $50 US sale Polar's paid plans only save 5¢ to 35¢ over Creem, so the monthly fee pays off only at hundreds of sales a month, almost all on US cards (about 400 on Pro, and Polar's 1.5% non-US fee wipes out Pro's 5¢ edge once roughly 1 sale in 15 is international). Below that, pick Polar for its open-source, developer-first tooling, not for the fees. Paddle and Lemon Squeezy are the other MoRs worth a look.
 
 ### Do I still need Stripe Tax with Polar?
 
