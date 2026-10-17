@@ -261,4 +261,4 @@ If you are still deciding among Nuxt kits only, start with the [best Nuxt boiler
 
 ---
 
-*I am the founder of Nuxt Beyond. Features and prices checked 2026-10-03 on [shipfa.st](https://shipfa.st/) and [nuxtbeyond.com](https://nuxtbeyond.com/). If ShipFast has shipped AI or changed pricing, [tell me on X](https://x.com/Raress96_) and I will update this.*
+*I am the founder of Nuxt Beyond. Features and prices checked 2026-10-03 on [shipfa.st](https://shipfa.st/) and [nuxtbeyond.com](https://nuxtbeyond.com/). If ShipFast has shipped AI or changed pricing, [tell me on X](https://x.com/raress96) and I will update this.*

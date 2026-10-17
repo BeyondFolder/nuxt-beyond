@@ -2,7 +2,7 @@ export const SITE_AUTHOR = {
   name: 'Rares Serban',
   url: '/about',
   image: '/images/rares-serban.jpg',
-  sameAs: ['https://x.com/raress96_', 'https://www.linkedin.com/in/raress96'],
+  sameAs: ['https://x.com/raress96', 'https://www.linkedin.com/in/raress96'],
 } as const;
 
 export const defineSiteAuthor = (extra?: { jobTitle?: string }) => definePerson({

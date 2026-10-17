@@ -163,4 +163,4 @@ The honest answer is they serve different markets. Supastarter is a Swiss army k
 
 ---
 
-*I'm the founder of NuxtBeyond. I've done my best to keep this comparison accurate as of April 2026. If anything about Supastarter has changed, [let me know on X](https://x.com/Raress96_) and I'll update it.*
+*I'm the founder of NuxtBeyond. I've done my best to keep this comparison accurate as of April 2026. If anything about Supastarter has changed, [let me know on X](https://x.com/raress96) and I'll update it.*

@@ -135,7 +135,7 @@ We're actively working on:
 - **Enhanced Security** - Advanced prompt injection protection and security features
 - **Video Tutorials** - Step-by-step guides for common customizations
 
-Have questions? Join our [Discord community](#) or reach out on [X](https://x.com/Raress96_).
+Have questions? Join our [Discord community](#) or reach out on [X](https://x.com/raress96).
 
 ---
 

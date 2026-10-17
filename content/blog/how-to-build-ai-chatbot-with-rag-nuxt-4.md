@@ -367,4 +367,4 @@ Either way, build the thing. RAG on Cloudflare is genuinely less work than the t
 
 ---
 
-*Questions or a correction? [Find me on X](https://x.com/Raress96_).*
+*Questions or a correction? [Find me on X](https://x.com/raress96).*

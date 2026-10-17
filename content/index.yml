@@ -23,7 +23,7 @@ founder:
   title: Built by a founder, for founders
   name: Rares
   story: "I built AI SaaS products with Nuxt for 6 months. Kept copy-pasting files between repos and tweaking the same auth, Stripe, and AI setup every time. So I extracted it properly into a boilerplate I use for every new project. And now you can use it too."
-  x: https://x.com/raress96_
+  x: https://x.com/raress96
   linkedin: https://www.linkedin.com/in/raress96
 aiShowcase:
   items:
@@ -327,7 +327,7 @@ faqs:
       content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack—database (D1), file storage (R2), KV store, and Workers. Edge-native performance worldwide.'
       icon: i-lucide-rocket
     - label: Is there a refund policy?
-      content: "Due to the digital nature and instant access, refunds aren't offered by default. But if something's genuinely not what you expected, DM me on [@Raress96_ on X](https://x.com/raress96_) and we'll figure it out."
+      content: "Due to the digital nature and instant access, refunds aren't offered by default. But if something's genuinely not what you expected, DM me on [@raress96 on X](https://x.com/raress96) and we'll figure it out."
       icon: i-lucide-receipt
     - label: How do I receive updates?
       content: 'Lifetime updates are included. You''ll receive access to the GitHub repository where all updates are pushed.'

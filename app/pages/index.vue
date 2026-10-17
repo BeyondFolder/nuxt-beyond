@@ -414,7 +414,7 @@ useHead({
           </div>
           <div class="flex items-center gap-2">
             <UIcon name="i-lucide-message-circle" class="w-4 h-4" />
-            <span>Questions? <NuxtLink to="https://x.com/raress96_" target="_blank" class="text-primary hover:underline">DM me</NuxtLink></span>
+            <span>Questions? <NuxtLink to="https://x.com/raress96" target="_blank" class="text-primary hover:underline">DM me</NuxtLink></span>
           </div>
         </div>
       </UContainer>
