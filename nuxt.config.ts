@@ -214,6 +214,6 @@ export default defineNuxtConfig({
     zeroRuntime: true,
     // Logged-in pages, the embed widget and the password-reset flow stay out of the sitemap and set
     // useRobotsRule(false). /login and /signup stay indexable for branded searches.
-    exclude: ['/dashboard/**', '/user/**', '/configuration/**', '/chat/**', '/images/**', '/videos/**', '/embed', '/forgot-password', '/reset-password'],
+    exclude: ['/dashboard/**', '/user/**', '/configuration/**', '/chat/**', '/images/**', '/videos/**', '/embed', '/forgot-password', '/reset-password', '/resources/free-ai-chatbot-generator/*'],
   },
 });

@@ -1,0 +1,20 @@
+seo:
+  title: 'Free AI Chatbot Generator for Your Business | No Signup Required'
+  description: 'Generate AI chatbots for free trained on your business content. Instant setup, no coding, no signup. Test intelligent conversations powered by AI. Perfect for customer support & sales automation.'
+title: Free AI Chatbot Generator
+description: Instantly create a powerful, intelligent chatbot for your business, no sign-up, no code.
+faqs:
+  - label: Is the AI chatbot generator really free?
+    content: "Yes! This tool is completely free to use. Simply enter your business URL, and we'll create an AI chatbot trained on that webpage's content. No credit card or sign-up required to test it."
+  - label: How does the free AI chatbot generator work?
+    content: Enter a webpage URL, and our AI instantly extracts and analyzes the content. You can then chat with an AI assistant trained specifically on that page. Perfect for testing how an AI chatbot would work with your business content.
+  - label: Can I embed this chatbot on my website?
+    content: 'The free tool is for testing only. To put an AI chatbot like this on your own website, build it with NuxtBeyond: the boilerplate includes the same embeddable chat widget and AI Search knowledge base.'
+  - label: What can I use the chatbot for?
+    content: Use it to test customer support automation, answer product questions, provide documentation assistance, or any use case where AI can help answer questions based on your website content.
+cta:
+  title: Want to embed a chatbot like this on your website?
+  description: NuxtBeyond gives you the embeddable chat widget, AI Search knowledge base, auth and payments out of the box.
+  button:
+    label: 'Get NuxtBeyond'
+    to: '/#pricing'

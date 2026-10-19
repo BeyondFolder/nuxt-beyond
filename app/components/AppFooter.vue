@@ -11,6 +11,10 @@ const columns = [
         label: 'SaaS Ideas Generator',
         to: '/resources/saas-ideas-generator',
       },
+      {
+        label: 'Free AI Chatbot Generator',
+        to: '/resources/free-ai-chatbot-generator',
+      },
     ],
   },
   {
