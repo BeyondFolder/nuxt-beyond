@@ -3,7 +3,7 @@ import { getTextFromMessage } from '@nuxt/ui/utils/ai';
 import { useClipboard } from '@vueuse/core';
 import { THEME_PRIMARY_COLOR } from '#shared/constants';
 
-const clipboard = useClipboard();
+const { copy } = useClipboard();
 const route = useRoute();
 const filename = route.params.filename as string;
 
@@ -185,9 +185,7 @@ async function handleChatSubmit(e: Event) {
               icon="i-lucide-copy"
               size="sm"
               @click="
-                clipboard.copy(
-                  `https://nuxtbeyond.com/resources/free-ai-chatbot-generator/${encodeURIComponent(filename)}`
-                )
+                copy(`https://nuxtbeyond.com/resources/free-ai-chatbot-generator/${encodeURIComponent(filename)}`)
               "
             >
               Copy Link
