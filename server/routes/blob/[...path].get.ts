@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  if (path.startsWith('images/')) {
+  if (path.startsWith('images/') || path.startsWith('videos/')) {
     const parts = path.split('/');
     const userId = parts[1];
 

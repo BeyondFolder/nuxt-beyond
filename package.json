@@ -56,7 +56,6 @@
     "nuxt-auth-utils": "^0.5.32",
     "nuxt-og-image": "^6.10.4",
     "nuxt-seo-utils": "^8.6.1",
-    "openai": "^6.49.0",
     "resend": "^6.37.0",
     "shiki-stream": "^0.1.5",
     "workers-ai-provider": "^3.3.1",

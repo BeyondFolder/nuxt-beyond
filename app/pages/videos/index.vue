@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { VIDEO_GENERATION } from '#shared/constants';
+import { formatBytesToMB } from '#shared/utils';
+
 definePageMeta({
   layout: 'dashboard',
   middleware: 'authenticated',
@@ -14,24 +17,9 @@ const loading = ref(false);
 const toast = useToast();
 const imageFiles = ref<File | null>(null);
 
-async function validateImageDimensions(file: File): Promise<boolean> {
-  return new Promise((resolve) => {
-    const img = new Image();
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      img.src = e.target?.result as string;
-    };
-
-    img.onload = () => {
-      resolve(img.width === 720 && img.height === 1280);
-    };
-
-    img.onerror = () => resolve(false);
-    reader.onerror = () => resolve(false);
-    reader.readAsDataURL(file);
-  });
-}
+const { data: videoConfig } = await useFetch('/api/video-config', { key: 'video-config' });
+const configured = computed(() => videoConfig.value?.configured !== false);
+const disabled = computed(() => loading.value || !configured.value);
 
 async function convertImageToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -46,7 +34,7 @@ async function convertImageToBase64(file: File): Promise<string> {
 }
 
 async function generateVideo() {
-  if (!input.value.trim()) {
+  if (!input.value.trim() || !configured.value) {
     return;
   }
 
@@ -58,21 +46,20 @@ async function generateVideo() {
     if (imageFiles.value) {
       const file = imageFiles.value;
 
-      if (!file.type.startsWith('image/')) {
+      if (!(VIDEO_GENERATION.REFERENCE_IMAGE_TYPES as readonly string[]).includes(file.type)) {
         toast.add({
           title: 'Invalid file type',
-          description: 'Please upload an image file',
+          description: 'Please upload a PNG, JPEG, WebP, HEIC or HEIF image',
           color: 'error',
         });
         loading.value = false;
         return;
       }
 
-      const isValidDimensions = await validateImageDimensions(file);
-      if (!isValidDimensions) {
+      if (file.size > VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE) {
         toast.add({
-          title: 'Invalid image dimensions',
-          description: 'Image must be exactly 720x1280 pixels',
+          title: 'Image too large',
+          description: `The reference image must be smaller than ${formatBytesToMB(VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE)}`,
           color: 'error',
         });
         loading.value = false;
@@ -148,11 +135,13 @@ const quickPrompts = [
           What video would you like to create?
         </h1>
 
+        <VideoSetupNotice v-if="!configured" />
+
         <div class="flex gap-2">
           <UTextarea
             v-model="input"
             :rows="3"
-            :disabled="loading"
+            :disabled="disabled"
             placeholder="Describe the video you want to generate..."
             class="flex-1"
             @keydown.meta.enter="generateVideo"
@@ -162,10 +151,10 @@ const quickPrompts = [
 
         <UFileUpload
           v-model="imageFiles"
-          accept="image/*"
-          :disabled="loading"
+          :accept="VIDEO_GENERATION.REFERENCE_IMAGE_TYPES.join(',')"
+          :disabled="disabled"
           label="Click or drag and drop to upload reference image"
-          description="Optional: Upload an image to guide video generation (must be 720x1280 pixels)"
+          :description="`Optional: an image to guide the video (PNG, JPEG, WebP, HEIC or HEIF, up to ${formatBytesToMB(VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE)})`"
           icon="i-lucide-image"
           color="primary"
           highlight
@@ -179,7 +168,7 @@ const quickPrompts = [
         <div class="flex justify-end">
           <UButton
             :loading="loading"
-            :disabled="!input.trim()"
+            :disabled="!input.trim() || !configured"
             icon="i-lucide-video"
             label="Generate"
             @click="generateVideo"
@@ -192,7 +181,7 @@ const quickPrompts = [
             :key="prompt.label"
             :icon="prompt.icon"
             :label="prompt.label"
-            :disabled="loading"
+            :disabled="disabled"
             size="sm"
             color="neutral"
             variant="outline"

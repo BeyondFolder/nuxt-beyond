@@ -32,15 +32,20 @@ useSeoMeta({
   title: data.value.title || 'AI Video Generation',
 });
 
+const { data: videoConfig } = await useFetch('/api/video-config', { key: 'video-config' });
+const configured = computed(() => videoConfig.value?.configured !== false);
+
 const input = ref('');
 const loading = ref(false);
 const polling = ref(false);
 let pollInterval: NodeJS.Timeout | null = null;
 
-const lastAssistantVideo = computed(() => {
-  const assistantMessages = data.value?.messages.filter((m) => m.role === 'assistant' && m.jobId) || [];
-  return assistantMessages.at(-1)?.jobId ?? null;
-});
+function stopPolling() {
+  if (pollInterval) {
+    clearInterval(pollInterval);
+    pollInterval = null;
+  }
+}
 
 const hasProcessingVideos = computed(() => {
   return data.value?.messages.some((m) => m.status === 'processing') || false;
@@ -56,23 +61,37 @@ async function pollVideoStatus() {
   try {
     const result = await $fetch(`/api/videos/${route.params.id}/poll`);
 
-    if ('updates' in result && result.updates.length > 0) {
+    for (const update of result.updates) {
+      if (update.status === 'failed') {
+        toast.add({
+          title: 'Video generation failed',
+          description: update.error,
+          color: 'error',
+        });
+      }
+    }
+
+    if (result.updates.length > 0) {
       await refresh();
     }
 
-    if (!result.hasProcessing && pollInterval) {
-      clearInterval(pollInterval);
-      pollInterval = null;
+    if (!result.hasProcessing) {
+      stopPolling();
     }
   } catch (err: any) {
     console.error('Polling error:', err);
+    // 503: video generation isn't configured, so polling can't make progress
+    if (err.statusCode === 503) {
+      stopPolling();
+    }
   } finally {
     polling.value = false;
   }
 }
 
+// Edits the latest video in this chat (the server picks it), or starts a new one if there is none yet
 async function generateVideo() {
-  if (!input.value.trim()) {
+  if (!input.value.trim() || !configured.value) {
     return;
   }
 
@@ -83,7 +102,6 @@ async function generateVideo() {
       method: 'POST',
       body: {
         prompt: input.value,
-        previousVideoId: lastAssistantVideo.value,
       },
     });
 
@@ -113,16 +131,12 @@ function downloadVideo(videoUrl: string) {
 }
 
 onMounted(() => {
-  if (hasProcessingVideos.value) {
+  if (hasProcessingVideos.value && configured.value) {
     pollInterval = setInterval(pollVideoStatus, 5000);
   }
 });
 
-onUnmounted(() => {
-  if (pollInterval) {
-    clearInterval(pollInterval);
-  }
-});
+onUnmounted(stopPolling);
 </script>
 
 <template>
@@ -185,11 +199,13 @@ onUnmounted(() => {
         </div>
 
         <div class="sticky bottom-0 bg-default pt-4 border-t border-default">
+          <VideoSetupNotice v-if="!configured" class="mb-4" />
+
           <div class="flex gap-2">
             <UTextarea
               v-model="input"
               :rows="2"
-              :disabled="loading || hasProcessingVideos"
+              :disabled="loading || hasProcessingVideos || !configured"
               placeholder="Describe the changes you want..."
               class="flex-1"
               @keydown.meta.enter="generateVideo"
@@ -200,7 +216,7 @@ onUnmounted(() => {
           <div class="flex justify-end mt-2">
             <UButton
               :loading="loading"
-              :disabled="!input.trim() || hasProcessingVideos"
+              :disabled="!input.trim() || hasProcessingVideos || !configured"
               icon="i-lucide-video"
               label="Edit Video"
               @click="generateVideo"

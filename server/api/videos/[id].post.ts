@@ -1,6 +1,8 @@
 import { z } from 'zod';
-import OpenAI from 'openai';
+import { eq } from 'drizzle-orm';
 
+// Follow-up prompt in a video chat. It edits the latest finished video through Omni's
+// previous_interaction_id, or generates a new video when the chat has none yet.
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
   const { id } = getRouterParams(event);
@@ -9,11 +11,12 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Video chat ID is required' });
   }
 
+  const apiKey = requireGeminiApiKey();
+
   const body = await readValidatedBody(
     event,
     z.object({
       prompt: z.string().min(1).max(1000),
-      previousVideoId: z.string().optional(),
     }).parse
   );
 
@@ -21,66 +24,65 @@ export default defineEventHandler(async (event) => {
 
   const chat = await db.query.videoChats.findFirst({
     where: (chat, { eq, and }) => and(eq(chat.id, id), eq(chat.userId, user.id)),
+    with: {
+      messages: {
+        orderBy: (messages, { asc }) => [asc(messages.createdAt)],
+      },
+    },
   });
 
   if (!chat) {
     throw createError({ statusCode: 404, statusMessage: 'Video chat not found' });
   }
 
-  await db.insert(tables.videoChatMessages).values({
-    chatId: chat.id,
-    role: 'user',
-    prompt: body.prompt,
-    previousVideoId: body.previousVideoId,
-  });
+  // Omni rejects a turn chained to an interaction that is still running
+  if (chat.messages.some((m) => m.status === 'processing')) {
+    throw createError({ statusCode: 409, statusMessage: 'A video is still generating. Wait for it to finish first.' });
+  }
 
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
+  // Taken from this chat on the server, so a user can only build on their own videos
+  const previousVideoId =
+    chat.messages.filter((m) => m.role === 'assistant' && m.status === 'completed' && m.jobId).at(-1)?.jobId ?? null;
+
+  const [userMessage] = await db
+    .insert(tables.videoChatMessages)
+    .values({
+      chatId: chat.id,
+      role: 'user',
+      prompt: body.prompt,
+      previousVideoId,
+    })
+    .returning();
 
   try {
-    let result;
+    const interaction = await startVideoInteraction(apiKey, {
+      prompt: body.prompt,
+      previousInteractionId: previousVideoId,
+    });
 
-    if (body.previousVideoId) {
-      console.log('Remixing video:', body.previousVideoId, 'with prompt:', body.prompt, '...');
-
-      result = await openai.videos.remix(body.previousVideoId, {
-        prompt: body.prompt,
-      });
-
-      console.log('Video remix started successfully. Job ID:', result.id, 'for prompt:', body.prompt);
-    } else {
-      console.log('Starting video generation for prompt:', body.prompt, '...');
-
-      result = await openai.videos.create({
-        model: 'sora-2',
-        prompt: body.prompt,
-      });
-
-      console.log('Video generation started successfully. Job ID:', result.id, 'for prompt:', body.prompt);
-    }
+    console.log('Video generation started. Interaction ID:', interaction.id, 'previous:', previousVideoId);
 
     await db.insert(tables.videoChatMessages).values({
       chatId: chat.id,
       role: 'assistant',
       prompt: body.prompt,
-      jobId: result.id,
+      jobId: interaction.id,
       status: 'processing',
-      previousVideoId: body.previousVideoId,
+      previousVideoId,
     });
 
     return {
       role: 'assistant',
       prompt: body.prompt,
-      jobId: result.id,
+      jobId: interaction.id,
       status: 'processing',
-      previousVideoId: body.previousVideoId,
+      previousVideoId,
     };
-  } catch (error: any) {
-    console.error('Video generation/remix error for prompt:', body.prompt, 'Error:', error);
-    throw createError({
-      statusCode: 500,
-      statusMessage: error.message || 'Failed to generate video',
-    });
+  } catch (error) {
+    console.error('Video generation error for chat:', chat.id, 'Error:', error);
+    if (userMessage) {
+      await db.delete(tables.videoChatMessages).where(eq(tables.videoChatMessages.id, userMessage.id));
+    }
+    throw toVideoHttpError(error);
   }
 });

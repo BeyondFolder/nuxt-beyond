@@ -271,6 +271,15 @@ The `getInformation` tool uses Cloudflare AI Search (AutoRAG) which requires R2 
 - Local file storage (default dev mode) is not accessible to AI Search
 - R2 bucket must be linked to your AI Search instance in Cloudflare dashboard
 
+### Video Generation
+
+The `/videos` demo uses Google Gemini Omni Flash through the Interactions API with plain `fetch` (`server/utils/gemini.ts`). Model and defaults (aspect ratio, resolution, duration) live in `VIDEO_GENERATION` in `shared/constants.ts`.
+
+- `POST /api/videos` and `POST /api/videos/[id]` start a background interaction (`background: true`) and store its id in `videoChatMessages.jobId` with status `processing`
+- `GET /api/videos/[id]/poll` checks the interaction and saves the finished MP4 to blob storage
+- Follow-up prompts edit the chat's latest finished video via `previous_interaction_id`
+- Without `GEMINI_API_KEY`, the generation endpoints return 503 and the pages show a notice (`GET /api/video-config`)
+
 ### Prompt Injection Protection
 
 The boilerplate includes basic protection against prompt injection attacks in `server/utils/ai.ts`:
@@ -469,6 +478,7 @@ All build-time variables plus:
 - `NUXT_STRIPE_KEY`, `STRIPE_WEBHOOK_SECRET` (Stripe only)
 - `POLAR_ACCESS_TOKEN`, `POLAR_WEBHOOK_SECRET` (Polar only)
 - `RESEND_API_KEY`, `CLOUDFLARE_AUTO_RAG_API_TOKEN`, `NUXT_TURNSTILE_SECRET_KEY`
+- `GEMINI_API_KEY` (optional, video generation)
 
 > **Important:** Use `NUXT_` prefix for automatic runtime config injection. The `wrangler.jsonc` has `keep_vars: true` to preserve dashboard variables during deployment.
 

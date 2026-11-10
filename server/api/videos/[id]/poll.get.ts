@@ -1,10 +1,14 @@
-import OpenAI from 'openai';
 import { blob } from 'hub:blob';
 import { eq } from 'drizzle-orm';
+
+// A job still running after this long is marked failed, so a lost interaction can't leave the chat stuck
+const MAX_PROCESSING_MS = 30 * 60 * 1000;
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
   const { id } = getRouterParams(event);
+
+  const apiKey = requireGeminiApiKey();
 
   const db = useDrizzle();
 
@@ -24,78 +28,78 @@ export default defineEventHandler(async (event) => {
 
   const processingMessages = chat.messages.filter((m) => m.status === 'processing' && m.jobId);
 
-  if (processingMessages.length === 0) {
-    return { hasProcessing: false };
+  const updates: { id: string; status: 'completed' | 'failed'; videoUrl?: string; error?: string }[] = [];
+
+  async function markFailed(messageId: string, error: string) {
+    console.error('Video generation failed for message:', messageId, 'Error:', error);
+    await db.update(tables.videoChatMessages).set({ status: 'failed' }).where(eq(tables.videoChatMessages.id, messageId));
+    updates.push({ id: messageId, status: 'failed', error });
   }
 
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
-  const updates: { id: string; status: string; videoUrl?: string }[] = [];
-
   for (const message of processingMessages) {
+    const timedOut = Date.now() - message.createdAt.getTime() > MAX_PROCESSING_MS;
+
     try {
-      console.log('Polling video status for job ID:', message.jobId);
+      const interaction = await getInteraction(apiKey, message.jobId!);
 
-      const result = await openai.videos.retrieve(message.jobId!);
+      if (interaction.status === 'in_progress') {
+        if (timedOut) {
+          await markFailed(message.id, 'Video generation timed out');
+        }
+        continue;
+      }
 
-      console.log('Video status for job ID:', message.jobId, 'Status:', result.status);
+      const video =
+        interaction.status === 'completed' || interaction.status === 'incomplete' ? findVideoOutput(interaction) : undefined;
 
-      if (result.status === 'completed') {
-        console.log('Video completed for job ID:', message.jobId, 'Downloading video...');
+      if (!video) {
+        await markFailed(message.id, getInteractionError(interaction));
+        continue;
+      }
 
-        const videoResponse = await openai.videos.downloadContent(message.jobId!, {
-          variant: 'video',
-        });
+      const videoBytes = await downloadVideo(apiKey, video);
 
-        const videoBuffer = Buffer.from(await videoResponse.arrayBuffer());
+      if (!videoBytes) {
+        continue; // URI-delivered file still processing, try again on the next poll
+      }
 
-        const filename = `videos/${user.id}/${chat.id}/${crypto.randomUUID()}.mp4`;
+      const filename = `videos/${user.id}/${chat.id}/${crypto.randomUUID()}.mp4`;
 
-        await blob.put(filename, videoBuffer, {
-          contentType: 'video/mp4',
-        });
+      await blob.put(filename, videoBytes, {
+        contentType: video.mime_type || 'video/mp4',
+      });
 
-        console.log('Video downloaded and saved to blob storage:', filename, 'for job ID:', message.jobId);
+      console.log('Video saved to blob storage:', filename, 'for interaction:', message.jobId);
 
-        const videoUrl = `/blob/${filename}`;
+      const videoUrl = `/blob/${filename}`;
 
-        await db
-          .update(tables.videoChatMessages)
-          .set({
-            videoUrl,
-            status: 'completed',
-          })
-          .where(eq(tables.videoChatMessages.id, message.id));
-
-        updates.push({
-          id: message.id,
+      await db
+        .update(tables.videoChatMessages)
+        .set({
           videoUrl,
           status: 'completed',
-        });
-      } else if (result.status === 'failed') {
-        console.error('Video generation failed for job ID:', message.jobId, 'Error:', result.error);
+        })
+        .where(eq(tables.videoChatMessages.id, message.id));
 
-        await db
-          .update(tables.videoChatMessages)
-          .set({
-            status: 'failed',
-          })
-          .where(eq(tables.videoChatMessages.id, message.id));
-
-        updates.push({
-          id: message.id,
-          status: 'failed',
-        });
+      updates.push({
+        id: message.id,
+        videoUrl,
+        status: 'completed',
+      });
+    } catch (error) {
+      if (error instanceof GeminiApiError && error.status === 404) {
+        await markFailed(message.id, 'The video job no longer exists on Google');
+      } else if (timedOut) {
+        await markFailed(message.id, 'Video generation timed out');
+      } else {
+        // Network or provider hiccup: keep the job and retry on the next poll
+        console.error('Video polling error for interaction:', message.jobId, 'Error:', error);
       }
-    } catch (error: any) {
-      console.error('Video polling error for job ID:', message.jobId, 'Error:', error);
     }
   }
 
   return {
-    hasProcessing: processingMessages.some((m) => !updates.find((u) => u.id === m.id)),
+    hasProcessing: processingMessages.length > updates.length,
     updates,
   };
 });

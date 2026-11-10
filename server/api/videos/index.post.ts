@@ -1,10 +1,10 @@
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
-import OpenAI from 'openai';
-import type { VideoCreateParams } from 'openai/resources/videos';
+import { VIDEO_GENERATION } from '#shared/constants';
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
+  const apiKey = requireGeminiApiKey();
 
   const body = await readValidatedBody(
     event,
@@ -13,6 +13,25 @@ export default defineEventHandler(async (event) => {
       imageBase64: z.string().nullish(),
     }).parse
   );
+
+  // Optional reference image, sent by the page as a data URL (data:image/png;base64,...)
+  let image: { data: string; mimeType: string } | undefined;
+
+  if (body.imageBase64) {
+    const commaIndex = body.imageBase64.indexOf(',');
+    const mimeType = body.imageBase64.slice(0, commaIndex).match(/^data:(.+);base64$/)?.[1];
+    const data = body.imageBase64.slice(commaIndex + 1);
+
+    if (commaIndex === -1 || !mimeType || !(VIDEO_GENERATION.REFERENCE_IMAGE_TYPES as readonly string[]).includes(mimeType)) {
+      throw createError({ statusCode: 400, statusMessage: 'The reference image must be a PNG, JPEG, WebP, HEIC or HEIF file' });
+    }
+
+    if ((data.length * 3) / 4 > VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE) {
+      throw createError({ statusCode: 400, statusMessage: 'The reference image is too large' });
+    }
+
+    image = { data, mimeType };
+  }
 
   const db = useDrizzle();
 
@@ -36,51 +55,16 @@ export default defineEventHandler(async (event) => {
     prompt: body.prompt,
   });
 
-  if (!process.env.OPENAI_API_KEY) {
-    throw createError({ statusCode: 500, statusMessage: 'OpenAI API key not configured' });
-  }
-
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
   try {
-    const createParams: VideoCreateParams = {
-      model: 'sora-2',
-      prompt: body.prompt,
-    };
+    const interaction = await startVideoInteraction(apiKey, { prompt: body.prompt, image });
 
-    if (body.imageBase64) {
-      const parts = body.imageBase64.split(',');
-      if (parts.length !== 2) {
-        throw createError({ statusCode: 400, statusMessage: 'Invalid image data format' });
-      }
-      const [metadata = '', base64Data = ''] = parts;
-      const mimeType = metadata.match(/:(.*?);/)?.[1] || 'image/jpeg';
-      const extension = mimeType.split('/')[1] || 'jpg';
-      const imageBuffer = Buffer.from(base64Data, 'base64');
-      const imageFile = new File([imageBuffer as any], `reference.${extension}`, { type: mimeType });
-      createParams.input_reference = imageFile;
-      console.log(
-        'Starting video generation with image reference (type:',
-        mimeType,
-        ') for prompt:',
-        body.prompt,
-        '...'
-      );
-    } else {
-      console.log('Starting video generation for prompt:', body.prompt, '...');
-    }
-
-    const result = await openai.videos.create(createParams);
-
-    console.log('Video generation started successfully. Job ID:', result.id, 'for prompt:', body.prompt);
+    console.log('Video generation started. Interaction ID:', interaction.id, 'status:', interaction.status);
 
     await db.insert(tables.videoChatMessages).values({
       chatId: chat.id,
       role: 'assistant',
       prompt: body.prompt,
-      jobId: result.id,
+      jobId: interaction.id,
       status: 'processing',
     });
 
@@ -88,15 +72,12 @@ export default defineEventHandler(async (event) => {
       ...chat,
       messages: [
         { role: 'user', prompt: body.prompt },
-        { role: 'assistant', prompt: body.prompt, jobId: result.id, status: 'processing' },
+        { role: 'assistant', prompt: body.prompt, jobId: interaction.id, status: 'processing' },
       ],
     };
-  } catch (error: any) {
-    console.error('Video generation error for prompt:', body.prompt, 'Error:', error);
+  } catch (error) {
+    console.error('Video generation error:', error);
     await db.delete(tables.videoChats).where(eq(tables.videoChats.id, chat.id));
-    throw createError({
-      statusCode: 500,
-      statusMessage: error.message || error.toString() || 'Failed to generate video',
-    });
+    throw toVideoHttpError(error);
   }
 });
