@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   if (imageCount >= DEMO_CONFIG.maxImagesPerDay) {
     throw createError({
       statusCode: 429,
-      statusMessage: `Demo image generation limit reached (${DEMO_CONFIG.maxImagesPerDay} per day). This limit helps us manage demo costs. Get your own NuxtBeyond instance for unlimited images!`,
+      statusMessage: `Demo image generation limit reached (${DEMO_CONFIG.maxImagesPerDay} per day). This limit helps us manage demo costs. Clone NuxtBeyond from GitHub to run your own instance.`,
     });
   }
 

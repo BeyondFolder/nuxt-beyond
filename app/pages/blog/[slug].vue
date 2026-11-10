@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { GITHUB_REPO_URL } from '#shared/constants'
+
 const route = useRoute()
 
 const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
@@ -111,18 +113,19 @@ useSchemaOrg([
                   Build your AI SaaS on NuxtBeyond
                 </h3>
                 <p class="text-lg text-neutral max-w-2xl mx-auto">
-                  NuxtBeyond is a Nuxt 4 boilerplate with login, Stripe or Polar billing, AI chat with RAG and Cloudflare deploys already wired. You buy the source code once and use it on unlimited projects.
+                  NuxtBeyond is a Nuxt 4 boilerplate with login, Stripe or Polar billing, AI chat with RAG and Cloudflare deploys already wired. It's free and open source under the MIT License.
                 </p>
               </div>
 
               <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <UButton
-                  to="/#pricing"
+                  :to="GITHUB_REPO_URL"
+                  target="_blank"
                   size="xl"
-                  icon="i-lucide-zap"
+                  icon="i-simple-icons-github"
                   color="primary"
                 >
-                  See the price
+                  Star on GitHub
                 </UButton>
                 <UButton
                   to="/login"
@@ -149,14 +152,14 @@ useSchemaOrg([
                 </div>
                 <div class="text-center">
                   <UIcon
-                    name="i-lucide-receipt"
+                    name="i-lucide-scale"
                     class="text-primary text-3xl mb-2 mx-auto"
                   />
                   <div class="font-semibold mb-1">
-                    One-time price
+                    Free, MIT License
                   </div>
                   <div class="text-sm text-neutral">
-                    Lifetime updates through GitHub
+                    Updates in the public GitHub repo
                   </div>
                 </div>
                 <div class="text-center">
@@ -165,7 +168,7 @@ useSchemaOrg([
                     class="text-primary text-3xl mb-2 mx-auto"
                   />
                   <div class="font-semibold mb-1">
-                    Unlimited projects
+                    Commercial use allowed
                   </div>
                   <div class="text-sm text-neutral">
                     Client work included

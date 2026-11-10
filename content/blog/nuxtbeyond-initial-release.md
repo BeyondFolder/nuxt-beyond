@@ -77,25 +77,7 @@ NuxtBeyond comes with everything you need to build and deploy production-ready A
 
 ## Pricing
 
-NuxtBeyond is available as a **one-time purchase** with lifetime access. No subscriptions, no recurring fees - buy once, own forever.
-
-### Current Pricing (Limited Time)
-
-**NuxtBeyond Boilerplate** - ~~$249~~ **$59**
-- Full source code access
-- All features included
-- Lifetime updates
-- Discord community access
-- Priority email support
-
-**Boilerplate + Distribution Framework** - ~~$399~~ **$89** (Coming Soon)
-- Everything in the boilerplate
-- Claude Code Distribution Framework
-- Build and distribute custom AI agents
-- Agent marketplace integration
-- Monetization tools
-
-Price increases by $10 every 5 sales, so grab it while it's at the lowest price!
+**Update:** NuxtBeyond is now free and open source under the MIT License. The full source code is on [GitHub](https://github.com/BeyondFolder/nuxt-beyond), and updates are pushed to the public repository.
 
 ## Perfect For
 
@@ -118,19 +100,18 @@ Unlike other boilerplates that focus on one aspect (authentication OR payments O
 
 Ready to ship your AI-powered SaaS product? Get NuxtBeyond today:
 
-1. **Purchase** - Get instant access to the private GitHub repository
-2. **Clone** - Download the complete source code
-3. **Configure** - Set up your environment variables
-4. **Deploy** - Push to Cloudflare with one command
-5. **Ship** - Your AI-powered SaaS is live!
+1. **Clone** - Get the complete source code from [GitHub](https://github.com/BeyondFolder/nuxt-beyond)
+2. **Configure** - Set up your environment variables
+3. **Deploy** - Push to Cloudflare with one command
+4. **Ship** - Your AI-powered SaaS is live!
 
-Visit [nuxtbeyond.com](/) to get started, or try our [live demo](/login) to see it in action (use the demo accounts to explore all features).
+Star the repo on [GitHub](https://github.com/BeyondFolder/nuxt-beyond) to follow updates, or try our [live demo](/login) to see it in action (use the demo accounts to explore all features).
 
 ## What's Next
 
 We're actively working on:
 
-- **Claude Code Distribution Framework** - Build and monetize custom AI agents
+- **Distribution Toolkit** - Build and monetize custom AI agents
 - **More Integrations** - Additional AI providers, auth methods, and payment processors
 - **Enhanced Security** - Advanced prompt injection protection and security features
 - **Video Tutorials** - Step-by-step guides for common customizations

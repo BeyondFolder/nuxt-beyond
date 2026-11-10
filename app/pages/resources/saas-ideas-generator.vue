@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { GITHUB_REPO_URL } from '#shared/constants';
+
 definePageMeta({
   layout: 'default',
 });
@@ -286,7 +288,8 @@ async function generateIdeas() {
 
               <div class="mt-auto pt-3 border-t border-neutral-100 dark:border-neutral-800">
                 <ULink
-                  to="/#pricing"
+                  :to="GITHUB_REPO_URL"
+                  target="_blank"
                   class="text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
                 >
                   Build this with NuxtBeyond
@@ -303,8 +306,8 @@ async function generateIdeas() {
             title="Have your idea?"
           >
             <template #description>
-              NuxtBeyond ships with auth, payments, AI chat, and edge deployment — start building today.
-              <ULink to="/#pricing" class="font-medium underline ml-1">Get NuxtBeyond →</ULink>
+              NuxtBeyond ships with auth, payments, AI chat, and edge deployment, free and open source on GitHub.
+              <ULink :to="GITHUB_REPO_URL" target="_blank" class="font-medium underline ml-1">Get NuxtBeyond on GitHub →</ULink>
             </template>
           </UAlert>
         </div>
@@ -343,9 +346,10 @@ async function generateIdeas() {
           </p>
           <UButton
             :to="page!.cta!.button.to"
+            :target="page!.cta!.button.to.startsWith('http') ? '_blank' : undefined"
             color="primary"
             size="lg"
-            icon="i-lucide-rocket"
+            icon="i-simple-icons-github"
           >
             {{ page!.cta!.button.label }}
           </UButton>

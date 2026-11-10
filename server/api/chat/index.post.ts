@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
   if (chatCount >= DEMO_CONFIG.maxUserChatsPerDay) {
     throw createError({
       statusCode: 429,
-      statusMessage: `Demo chat limit reached (${DEMO_CONFIG.maxUserChatsPerDay} per day). This limit helps us manage demo costs. Get your own NuxtBeyond instance for unlimited chats!`,
+      statusMessage: `Demo chat limit reached (${DEMO_CONFIG.maxUserChatsPerDay} per day). This limit helps us manage demo costs. Clone NuxtBeyond from GitHub to run your own instance.`,
     });
   }
 

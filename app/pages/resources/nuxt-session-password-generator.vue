@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { GITHUB_REPO_URL } from '#shared/constants';
+
 definePageMeta({
   layout: 'default',
 });
@@ -297,8 +299,8 @@ onMounted(generateSecret);
 
         <div class="text-center mt-8 space-y-2">
           <p class="text-sm text-neutral-600 dark:text-neutral-400">
-            Nuxt Beyond ships auth (nuxt-auth-utils), Stripe and Cloudflare deploy wired up, for a
-            <ULink to="/#pricing" class="text-primary-600 dark:text-primary-400 hover:underline">one-time price</ULink>.
+            Nuxt Beyond ships auth (nuxt-auth-utils), Stripe and Cloudflare deploy wired up, free and open source
+            <ULink :to="GITHUB_REPO_URL" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">on GitHub</ULink>.
           </p>
           <p class="text-sm text-neutral-500 dark:text-neutral-400">
             Free tool by <ULink to="/" class="text-primary-600 dark:text-primary-400 hover:underline">NuxtBeyond</ULink>

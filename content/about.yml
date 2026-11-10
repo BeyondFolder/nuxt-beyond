@@ -2,7 +2,7 @@ seo:
   title: 'About NuxtBeyond: the AI-first Nuxt 4 boilerplate'
   description: NuxtBeyond is an AI-first Nuxt 4 boilerplate for SaaS products, with auth, Stripe or Polar billing, AI chat with RAG and Cloudflare deploys. Built by Rareș Serban.
 title: About NuxtBeyond
-description: NuxtBeyond is an AI-first Nuxt 4 boilerplate for building SaaS products. You buy the source code once and start your product with login, billing, AI chat and deployment already working.
+description: NuxtBeyond is a free, open-source (MIT) Nuxt 4 boilerplate for building AI SaaS products. Clone it from GitHub and start your product with login, billing, AI chat and deployment already working.
 sections:
   - title: What's in it
     paragraphs:
@@ -21,7 +21,7 @@ sections:
   - title: Who builds it
     paragraphs:
       - I'm Rareș Serban, a software engineer and solo founder in Cluj-Napoca, Romania. I build and maintain NuxtBeyond on my own.
-      - I built AI SaaS products with Nuxt for 6 months and kept copying the same auth, Stripe and AI setup between repos. So I pulled it out into one boilerplate. I start every new project from it, and the updates go to the GitHub repository buyers get access to.
+      - I built AI SaaS products with Nuxt for 6 months and kept copying the same auth, Stripe and AI setup between repos. So I pulled it out into one boilerplate. I start every new project from it, and the updates go to the public GitHub repository.
 facts:
   title: Key facts
   rows:
@@ -36,11 +36,12 @@ facts:
     - label: Launched
       value: January 2026
     - label: Pricing
-      value: A one-time payment, and the launch price goes up every 5 sales (see the [current price](/#pricing)).
+      value: Free. The full source code is on [GitHub](https://github.com/BeyondFolder/nuxt-beyond).
     - label: License
-      value: Unlimited commercial projects, with lifetime updates through the GitHub repository
+      value: MIT License, so personal and commercial use are both allowed
     - label: Contact
       value: "[@raress96 on X](https://x.com/raress96) or [LinkedIn](https://www.linkedin.com/in/raress96/)"
 cta:
-  label: See the current price
-  to: /#pricing
+  label: View on GitHub
+  to: https://github.com/BeyondFolder/nuxt-beyond
+  target: _blank

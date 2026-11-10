@@ -1,141 +1,96 @@
 seo:
   title: Terms of Service | NuxtBeyond
-  description: Terms and conditions for purchasing and using the NuxtBeyond boilerplate. Read about licensing, usage rights, and support.
+  description: Terms for using the nuxtbeyond.com website and live demo. The NuxtBeyond source code is free and open source under the MIT License.
 title: Terms of Service
-lastUpdated: January 24, 2025
+lastUpdated: November 10, 2026
 sections:
   - title: Agreement to Terms
     content: |
-      These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and CraftCodely SRL ("NuxtBeyond," "we," "us," or "our") governing your purchase and use of the NuxtBeyond boilerplate at nuxtbeyond.com.
+      These Terms of Service ("Terms") govern your use of the nuxtbeyond.com website and the live demo hosted on it. The website and demo are run by Rareș Serban ("NuxtBeyond," "we," "us," or "our").
 
-      By purchasing NuxtBeyond, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, you may not purchase or use NuxtBeyond.
+      By using the website or the demo, you agree to these Terms and to our [Privacy Policy](/privacy-policy). If you do not agree, please do not use them.
 
-  - title: Eligibility
+  - title: What NuxtBeyond Is
     content: |
-      You must be at least 18 years old to purchase NuxtBeyond. By making a purchase, you represent and warrant that:
+      NuxtBeyond is an open-source, AI-first Nuxt 4 boilerplate for building SaaS products. It has three parts:
 
-      - You are at least 18 years of age
-      - You have the legal capacity to enter into binding contracts
-      - You will provide accurate, current, and complete information during purchase
-      - You have the authority to use the payment method provided
+      - **Source code** - The boilerplate itself, published on [GitHub](https://github.com/BeyondFolder/nuxt-beyond) under the MIT License
+      - **Website** - The public site at nuxtbeyond.com, including the blog and free tools
+      - **Live demo** - A hosted copy of the app that you can try with shared demo accounts
 
-  - title: Product Description
+      NuxtBeyond is free. Nothing is sold on this website.
+
+  - title: Open-Source License
     content: |
-      NuxtBeyond is a software boilerplate (starter template) for building AI-powered SaaS applications. Your purchase includes:
+      The NuxtBeyond source code is licensed under the [MIT License](https://opensource.org/license/mit). The LICENSE file in the GitHub repository is the license that applies to the code, and these Terms do not limit any rights it gives you.
 
-      - **Source code** - Complete access to the NuxtBeyond codebase
-      - **Documentation** - Setup guides and CLAUDE.md for AI-assisted development
-      - **Lifetime updates** - Access to all future updates and improvements
-      - **Discord community** - Access to our developer community for support and discussions
+      In short, the MIT License lets you use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the code, including in commercial projects, as long as you keep the copyright notice and license text. The code is provided "as is", without warranty.
 
-      The boilerplate is designed to help developers build their own products faster. It is not a hosted service or SaaS platform.
+      NuxtBeyond also depends on third-party open-source packages (such as Nuxt, Vue, and Tailwind CSS) that come with their own licenses. You are responsible for complying with them.
 
-  - title: Pricing and Payment
-    subsections:
-      - subtitle: Available Products
-        content: |
-          NuxtBeyond is available in the following packages:
-
-          - **NuxtBeyond Boilerplate** - Complete Nuxt 4 boilerplate for AI-powered SaaS
-          - **Boilerplate + Distribution Framework** - Everything in the boilerplate plus Claude Code Distribution Framework (coming soon)
-
-          Pricing is displayed on our website and may change at any time. Price changes do not affect existing purchases.
-
-      - subtitle: One-Time Purchase
-        content: |
-          - **Payment processing** - All payments are processed securely through Stripe
-          - **One-time payment** - NuxtBeyond is a one-time purchase, not a subscription
-          - **Instant access** - You receive access to the boilerplate immediately after purchase
-          - **No recurring charges** - You will not be charged again for updates or continued access
-
-      - subtitle: Refunds
-        content: |
-          Due to the digital nature of the product and immediate access to source code:
-
-          - **No refunds** - All sales are final. We do not offer refunds after purchase.
-          - **Pre-purchase review** - We encourage you to review the product features, demo, and documentation before purchasing.
-          - **Technical issues** - If you experience technical issues accessing your purchase, contact support@nuxtbeyond.com for assistance.
-
-  - title: License Grant
+  - title: Your Projects
     content: |
-      Upon purchase, we grant you a non-exclusive, non-transferable license to:
+      You own the applications, products, and services you build with NuxtBeyond. We make no claim to your code, designs, data, or business.
 
-      - **Use** - Use the NuxtBeyond boilerplate for your own projects
-      - **Modify** - Modify the source code to suit your needs
-      - **Deploy** - Deploy unlimited applications built with the boilerplate
-      - **Commercial use** - Use the boilerplate for commercial projects and client work
-
-      This license is granted to you personally (or to your organization if purchased for business use) and may not be shared, resold, or redistributed.
-
-  - title: License Restrictions
+  - title: The Live Demo
     content: |
-      You may NOT:
+      The live demo lets you try NuxtBeyond before you clone it. When you use it:
 
-      - **Redistribute** - Share, resell, or redistribute the boilerplate source code
-      - **Competing products** - Use the boilerplate to create a competing boilerplate or template product
-      - **Sub-license** - Grant licenses to third parties
-      - **Public repositories** - Publish the boilerplate code in public repositories (private repositories are allowed)
-      - **Remove attribution** - Remove or alter copyright notices or attribution in the source code
+      - **Shared accounts** - The demo uses shared login details that anyone can use. Other visitors may see the chats, documents, images, videos, and support requests you create.
+      - **No personal or confidential data** - Do not upload or type anything personal, confidential, or sensitive into the demo.
+      - **Usage limits** - Chats, chat widget conversations, image generation, and video generation have daily limits to keep costs under control.
+      - **No guarantees** - The demo may be reset, changed, limited, or taken offline at any time, and demo data may be deleted without notice.
+      - **Evaluation only** - Do not rely on the demo to store data or serve real users.
 
-      Violation of these restrictions may result in license termination without refund.
-
-  - title: Intellectual Property Rights
-    subsections:
-      - subtitle: Our Property
-        content: |
-          NuxtBeyond and its source code, documentation, design, and branding are owned by CraftCodely SRL and protected by intellectual property laws. Your purchase grants you a license to use the code, not ownership of it.
-
-      - subtitle: Your Projects
-        content: |
-          You retain full ownership of any applications, products, or services you build using the NuxtBeyond boilerplate. We make no claim to your custom code, designs, or business.
-
-      - subtitle: Third-Party Components
-        content: |
-          NuxtBeyond includes open-source dependencies (Nuxt, Vue, Tailwind, etc.) that are subject to their own licenses. You must comply with all applicable open-source licenses when using the boilerplate.
-
-  - title: Updates and Support
+  - title: Acceptable Use
     content: |
-      - **Lifetime updates** - Your purchase includes access to all future updates to the boilerplate
-      - **Update delivery** - Updates are made available through the download portal or repository access
-      - **No guaranteed timeline** - We do not guarantee specific update schedules or features
-      - **Community support** - Support is provided through our Discord community
-      - **Email support** - You may contact support@nuxtbeyond.com for assistance
+      When using the website or demo, you agree not to:
+
+      - Break the law or infringe anyone's rights
+      - Upload malware, or content that is illegal, harmful, hateful, or sexually explicit
+      - Try to get around rate limits, demo limits, CAPTCHA, or other security measures
+      - Attack or overload the website, scrape it at scale, or try to gain unauthorized access to it or its infrastructure
+      - Use the AI features to generate content that breaks the usage policies of the AI providers behind the demo
+
+  - title: AI-Generated Content
+    content: |
+      The demo uses AI models to answer questions and to generate text, images, and videos. AI output can be wrong, incomplete, or unexpected. Do not rely on it for legal, medical, financial, or other important decisions.
+
+  - title: Third-Party Services and Links
+    content: |
+      The website links to third-party sites such as GitHub, X, and LinkedIn, and the demo runs on third-party services such as Cloudflare and OpenAI. Those services have their own terms and privacy policies, and we are not responsible for them.
+
+      If you build your own app with NuxtBeyond, the services you connect (for example Cloudflare, OpenAI, Stripe or Polar, and Resend) run on your own accounts, under your own agreements with those providers.
 
   - title: Disclaimer of Warranties
     content: |
-      THE NUXTBEYOND BOILERPLATE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:
+      THE WEBSITE, THE LIVE DEMO, AND THE NUXTBEYOND SOURCE CODE ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
 
-      - Warranties of merchantability or fitness for a particular purpose
-      - Warranties that the boilerplate will meet your specific requirements
-      - Warranties that the boilerplate will be error-free or uninterrupted
-      - Warranties regarding third-party services (Cloudflare, Stripe, etc.)
-
-      You are responsible for evaluating the boilerplate's suitability for your needs before purchase.
+      We do not promise that the website or demo will be available, secure, or error-free, or that the boilerplate will meet your specific requirements.
 
   - title: Limitation of Liability
     content: |
-      TO THE MAXIMUM EXTENT PERMITTED BY LAW:
+      To the maximum extent permitted by law:
 
-      - **Limited liability** - Our total liability for any claim arising from your use of NuxtBeyond is limited to the amount you paid for the boilerplate
       - **Excluded damages** - We are not liable for indirect, incidental, consequential, or punitive damages, including lost profits, data loss, or business interruption
-      - **Third-party services** - We are not liable for issues caused by third-party services (hosting providers, payment processors, AI services, etc.)
-      - **Your responsibility** - You are solely responsible for the applications you build and deploy using the boilerplate
+      - **Free of charge** - The website, demo, and source code are provided for free, and we are not liable for damages arising from your use of them
+      - **Third-party services** - We are not liable for issues caused by third-party services (hosting providers, AI services, payment processors, and similar)
+      - **Your responsibility** - You are solely responsible for the applications you build and deploy with the boilerplate
+
+      Nothing in these Terms limits liability that cannot be limited under applicable law.
 
   - title: Indemnification
     content: |
-      You agree to indemnify, defend, and hold harmless CraftCodely SRL, its officers, directors, employees, and agents from any claims, losses, damages, liabilities, and expenses (including legal fees) arising from:
+      You agree to indemnify and hold harmless Rareș Serban from any claims, losses, damages, liabilities, and expenses (including legal fees) arising from:
 
-      - Your use of NuxtBeyond
+      - Your misuse of the website or demo
       - Applications you build or deploy using the boilerplate
       - Your violation of these Terms
       - Your violation of any third-party rights
 
-  - title: Termination
+  - title: Suspension
     content: |
-      - **License termination** - We may terminate your license if you violate these Terms, particularly the license restrictions
-      - **Effect of termination** - Upon termination, you must delete all copies of the boilerplate source code
-      - **No refund** - No refund will be provided upon termination for Terms violation
-      - **Survival** - Sections regarding intellectual property, liability, indemnification, and dispute resolution survive termination
+      We may block or limit access to the website or demo for anyone who breaks these Terms or puts the service at risk. This does not affect your rights under the MIT License for any copy of the source code you already have.
 
   - title: Dispute Resolution and Governing Law
     content: |
@@ -145,24 +100,23 @@ sections:
 
   - title: Changes to Terms
     content: |
-      We may update these Terms from time to time. Changes will be posted on this page with an updated "Last Updated" date. Continued use of NuxtBeyond after changes take effect constitutes acceptance of the updated Terms.
-
-      Material changes to license terms will not retroactively affect existing purchases.
+      We may update these Terms from time to time. Changes will be posted on this page with an updated "Last Updated" date. Continued use of the website or demo after changes take effect means you accept the updated Terms.
 
   - title: General Provisions
     content: |
-      - **Entire agreement** - These Terms and our Privacy Policy constitute the entire agreement between you and NuxtBeyond regarding your purchase
+      - **Entire agreement** - These Terms and our Privacy Policy are the entire agreement between you and us about the website and demo. Your use of the source code is governed by the MIT License.
       - **Severability** - If any provision is found unenforceable, the remaining provisions remain in effect
       - **No waiver** - Our failure to enforce any right or provision does not constitute a waiver
-      - **Assignment** - You may not assign your rights under these Terms. We may assign our rights without restriction.
 
   - title: Contact Us
     content: |
-      If you have questions about these Terms of Service, contact us at:
+      If you have questions about these Terms of Service, contact:
 
-      **CraftCodely SRL**
+      **Rareș Serban**
 
       Email: support@nuxtbeyond.com
+
+      X: [@raress96](https://x.com/raress96)
 
       Location: Romania
 

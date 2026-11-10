@@ -75,11 +75,11 @@ useSchemaOrg([
         <div class="text-center">
           <UButton
             :to="page.cta.to"
+            :target="page.cta.target"
             :label="page.cta.label"
             size="xl"
             color="primary"
-            icon="i-lucide-arrow-right"
-            trailing
+            icon="i-simple-icons-github"
           />
         </div>
       </div>

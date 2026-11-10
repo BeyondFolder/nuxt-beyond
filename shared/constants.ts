@@ -59,3 +59,5 @@ export const ALLOWED_LOGO_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'imag
 export const MAX_LOGO_SIZE = 0.5 * 1024 * 1024; // 0.5MB in bytes
 
 export const THEME_PRIMARY_COLOR = '#0d9488';
+
+export const GITHUB_REPO_URL = 'https://github.com/BeyondFolder/nuxt-beyond';

@@ -28,18 +28,18 @@ Prices and feature lists below were checked on each product's own site on 2026-0
 
 **ShipAhead** is a Nuxt 4 SaaS kit: auth (including magic links), Stripe / Polar / Dodo, Postgres (Supabase or Neon) with Drizzle, i18n, PWA, cron, an admin panel, a blog, and AI chat plus text and image generation through OpenRouter. It is $99 right now ($199 list, $100 off for the first 100 customers, 4 left on 2026-09-26). It does not list RAG or an embeddable chat widget.
 
-**Nuxt Beyond** is a Nuxt 4 kit built around AI products: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, Stripe or Polar, and project-based workspaces on Cloudflare Workers + D1. It is :launch-price one-time. Auth is basic. There is no i18n, no PWA, no cron UI. Two people have bought it.
+**Nuxt Beyond** is a Nuxt 4 kit built around AI products: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, Stripe or Polar, and project-based workspaces on Cloudflare Workers + D1. It is free and open source under the MIT License. Auth is basic. There is no i18n, no PWA, no cron UI. The community is tiny.
 
 Pick ShipAhead if you want a classic Nuxt SaaS shell, Postgres, i18n, and model-switchable chat/image gen. Pick Nuxt Beyond if the product is document Q&A or a chatbot you paste onto someone else's site.
 
 ## Feature comparison
 
-| Feature | ShipAhead ($99 promo / $199 list) | Nuxt Beyond (:launch-price) |
+| Feature | ShipAhead ($99 promo / $199 list) | Nuxt Beyond (free, MIT) |
 |---------|-----------------------------------|-------------------|
 | **Framework** | Nuxt 4 (Vue 3) | Nuxt 4 (Vue 3) |
 | **AI chat** | Yes (OpenRouter, switch GPT model) | Vercel AI SDK v6, streaming, tool calling |
 | **RAG / semantic search** | Not listed | Cloudflare AI Search (formerly AutoRAG) |
-| **Image generation** | Yes (OpenRouter) | Present in the repo around retired OpenAI image APIs; do not buy it for that |
+| **Image generation** | Yes (OpenRouter) | Present in the repo around retired OpenAI image APIs; do not pick it for that |
 | **Embeddable widget** | Not listed | One-line script, domain validation |
 | **Prompt injection protection** | Not listed | Yes |
 | **Auth** | Email/password, magic links, Google, admin area | Google OAuth + email/password |
@@ -51,14 +51,14 @@ Pick ShipAhead if you want a classic Nuxt SaaS shell, Postgres, i18n, and model-
 | **PWA / cron / admin** | Yes | No dedicated PWA, cron UI, or admin panel |
 | **Blog** | Nuxt Content | Nuxt Content |
 | **File storage** | S3-compatible (R2 logo also on the page) | Cloudflare R2 |
-| **Community** | 95+ makers, Discord | Small (launched January 2026, 2 sales) |
+| **Community** | 95+ makers, Discord | Small (launched January 2026, now open source) |
 | **Refunds** | None | None by default; case by case if you DM me on X |
 
 ShipAhead source: [shipahe.ad](https://shipahe.ad/) (checked 2026-09-26). Nuxt Beyond: [nuxtbeyond.com](https://nuxtbeyond.com/) (checked 2026-09-26).
 
 ## Where ShipAhead wins
 
-I am not going to pretend a newer kit with 2 sales beats a $99 kit with 95+ buyers on "feels safe to purchase."
+I am not going to pretend a newer kit with a tiny community beats a $99 kit with 95+ buyers on "feels safe to pick."
 
 ### It is a fuller SaaS shell
 
@@ -86,7 +86,7 @@ If your users will fight you over "I don't want another password," magic links m
 
 ### Social proof
 
-95+ makers and a Discord vs 2 sales. I will not dress that up. ShipAhead has been through more other people's apps. Bug reports exist in a channel you can join. Nuxt Beyond is me, the repo, and lifetime updates I actually use on my own products.
+95+ makers and a Discord vs a tiny community. I will not dress that up. ShipAhead has been through more other people's apps. Bug reports exist in a channel you can join. Nuxt Beyond is me, the public repo, and updates I actually use on my own products.
 
 ### AI coding agents are table stakes
 
@@ -138,7 +138,7 @@ ShipAhead's public page does not list RAG, embeddings, or document search. If th
 
 Nuxflare Pro does list a RAG chatbot demo on Cloudflare Vectorize. So "Nuxt Beyond is the only Nuxt kit with RAG" is false. What I will say is: RAG is the product in this repo, not a demo app next to notes and a URL shortener. Full walkthrough: [How to build an AI chatbot with RAG in Nuxt 4](/blog/how-to-build-ai-chatbot-with-rag-nuxt-4).
 
-Image generation: ShipAhead has it via OpenRouter. Nuxt Beyond still has image/video code paths built on OpenAI APIs that OpenAI has retired. Do not buy Nuxt Beyond because you want DALL-E or Sora. That claim on my homepage is stale. If image gen is the product, ShipAhead is the one that still advertises a working path.
+Image generation: ShipAhead has it via OpenRouter. Nuxt Beyond still has image/video code paths built on OpenAI APIs that OpenAI has retired. Do not pick Nuxt Beyond because you want DALL-E or Sora. That claim on my homepage is stale. If image gen is the product, ShipAhead is the one that still advertises a working path.
 
 ## Database and hosting
 
@@ -185,19 +185,19 @@ Between these two: ShipAhead has the longer auth list (magic links, admin). Nuxt
 
 | | ShipAhead | Nuxt Beyond |
 |---|-----------|-------------|
-| **Entry** | $99 promo ($199 list). $100 off for the first 100 customers, 4 left on 2026-09-26. | :launch-price boilerplate (list $249). It goes up $10 every 5 sales. |
-| **Bundle** | Not listed as a second SKU | $89 with the distribution framework |
-| **Updates** | Lifetime | Lifetime |
-| **Projects** | Unlimited | Unlimited |
-| **Refunds** | No | No by default |
+| **Entry** | $99 promo ($199 list). $100 off for the first 100 customers, 4 left on 2026-09-26. | Free (MIT License) |
+| **Bundle** | Not listed as a second SKU | None, one free repo |
+| **Updates** | Lifetime | Public GitHub repo |
+| **Projects** | Unlimited | Any, under MIT |
+| **Refunds** | No | Not applicable (free) |
 
-Sources: [ShipAhead pricing](https://shipahe.ad/) and [Nuxt Beyond pricing](/#pricing), both checked 2026-09-26.
+Sources: [ShipAhead pricing](https://shipahe.ad/) (checked 2026-09-26) and the [Nuxt Beyond GitHub repo](https://github.com/BeyondFolder/nuxt-beyond).
 
-Both are one-time.
+ShipAhead is a one-time payment. Nuxt Beyond is free and open source.
 
 ShipAhead's $99 is a first-100 discount. If you like the kit, the promo ending is a reason to buy it, not a reason to skip the comparison.
 
-Nuxt Beyond is cheaper because it is newer and narrower. You are paying for the RAG and widget work, not for 95 people who can unblock you in Discord.
+Nuxt Beyond is free and open source, and it is newer and narrower. You get the RAG and widget work, not 95 people who can unblock you in Discord.
 
 ## When to choose ShipAhead
 
@@ -236,7 +236,7 @@ They overlap on Nuxt 4, Stripe, Polar, Drizzle, and "AI" on the landing page. Th
 
 If you are still shopping the whole Nuxt field, start with [best Nuxt 4 boilerplates compared](/blog/best-nuxt-boilerplates-compared), then come back here only if ShipAhead is still in the tab.
 
-Current Nuxt Beyond price is on the [pricing section](/#pricing).
+Nuxt Beyond is free and open source. Get it on [GitHub](https://github.com/BeyondFolder/nuxt-beyond).
 
 ---
 

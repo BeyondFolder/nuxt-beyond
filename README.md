@@ -45,7 +45,7 @@ The AI-first Nuxt 4 boilerplate for building SaaS products. Ship in days, not mo
 
 ```bash
 # Clone the repository
-git clone https://github.com/nuxtbeyond/nuxt-beyond.git
+git clone https://github.com/BeyondFolder/nuxt-beyond.git
 cd nuxt-beyond
 
 # Install dependencies
@@ -651,11 +651,9 @@ Remote resource IDs are set in `wrangler.jsonc` under the `env.remote` section:
 
 ## License
 
-Proprietary License - see LICENSE file for details.
-
-You may use this software to build your own applications, but you may not redistribute, sell, or share the boilerplate itself.
+MIT License, see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
 - [Documentation](https://nuxtbeyond.com/docs)
-- [GitHub Issues](https://github.com/nuxtbeyond/nuxt-beyond/issues)
+- [GitHub Issues](https://github.com/BeyondFolder/nuxt-beyond/issues)
