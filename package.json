@@ -2,8 +2,8 @@
   "name": "nuxt-beyond",
   "version": "1.0.0",
   "description": "An AI-first Nuxt 4 boilerplate for building SaaS products with chat, RAG, authentication, and billing",
-  "author": "Raress96",
-  "license": "SEE LICENSE IN LICENSE",
+  "author": "Rareș Serban",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/BeyondFolder/nuxt-beyond"

@@ -1,141 +1,71 @@
 # NuxtBeyond - AI-First Nuxt 4 Boilerplate
 
-> Production-ready Nuxt 4 starter with AI chat, image generation, authentication, billing, and more. Ship your AI-powered SaaS in hours, not weeks.
+> Open-source (MIT) Nuxt 4 boilerplate for AI-powered SaaS: AI chat with RAG, embeddable chat widget, AI image generation, authentication, Stripe or Polar billing, and Cloudflare deployment.
 
 ## Overview
 
-NuxtBeyond is a comprehensive Nuxt 4 boilerplate designed for building AI-powered applications. It includes everything you need to launch a modern SaaS: AI chat, AI image generation, user authentication, Stripe billing, project management, and a beautiful dark mode UI.
+NuxtBeyond is a free, open-source Nuxt 4 boilerplate released under the MIT License. Fork it, modify it, and use it for personal or commercial projects. It ships as a working multi-tenant SaaS (an AI support chatbot with a knowledge base) that you can rebrand, extend, or strip down.
 
 ## Key Features
 
-- **AI Chat**: Built-in conversational AI powered by Cloudflare Workers AI (Llama 3.3 70B Instruct) with streaming responses
-- **AI Image Generation**: Create and edit images using OpenAI's DALL-E and image editing models
-- **Authentication**: Google OAuth + credentials-based auth with nuxt-auth-utils
-- **Stripe Billing**: Complete subscription billing with checkout, customer portal, and webhooks
-- **Project Management**: Multi-project support with role-based access control
-- **Dark Mode**: Beautiful dark/light theme with seamless transitions
-- **Database**: Cloudflare D1 (SQLite) with Drizzle ORM
-- **File Storage**: Cloudflare R2 via NuxtHub blob storage
+- **AI Chat with RAG**: Streaming responses with Vercel AI SDK v6, OpenAI models via Cloudflare AI Gateway, knowledge base search with Cloudflare AI Search (AutoRAG)
+- **Embeddable Widget**: One-line script that adds a chat bubble to allowed domains
+- **Human Support Escalation**: The AI can hand a conversation to your team; answered questions can be added back to the knowledge base (self learning)
+- **AI Image Generation**: Generate and edit images with OpenAI gpt-image-1.5
+- **Authentication**: Google OAuth and email/password with nuxt-auth-utils, email verification, password reset
+- **Billing**: Stripe or Polar subscriptions (selected with `PAYMENT_PROVIDER`), checkout, customer portal, webhooks, plan-based feature limits
+- **Multi-tenant Projects**: Role-based access (admin/member) and email invitations
 - **Email**: Transactional emails with Resend
-- **SEO**: Built-in SEO resources and tools for organic traffic
 
 ## Technology Stack
 
-- **Frontend**: Nuxt 4 with Vue 3 Composition API
-- **UI**: Nuxt UI v4 (alpha) with semantic colors and components
-- **AI**:
-  - Chat: Cloudflare Workers AI (Llama 3.3 70B Instruct)
-  - Images: OpenAI DALL-E 3 and gpt-image-1.5
-  - AI SDK v6 with streaming support
-- **Database**: Cloudflare D1 with Drizzle ORM
-- **Storage**: Cloudflare R2 for file uploads
-- **Auth**: nuxt-auth-utils with Google OAuth
-- **Billing**: Stripe subscriptions with webhooks
-- **Deployment**: Cloudflare Pages via NuxtHub
-- **Email**: Resend for transactional emails
+- **Frontend**: Nuxt 4, Vue 3, TypeScript
+- **UI**: Nuxt UI v4, Tailwind CSS, dark mode
+- **AI**: Vercel AI SDK v6, OpenAI via Cloudflare AI Gateway, Cloudflare AI Search, Workers AI
+- **Database**: Cloudflare D1 (SQLite) with Drizzle ORM
+- **Storage**: Cloudflare R2 via NuxtHub
+- **Deployment**: Cloudflare Workers via NuxtHub
 
 ## Project Structure
 
-- `app/` - Nuxt application code
-  - `pages/` - File-based routing
-  - `layouts/` - Dashboard, auth, and default layouts
-  - `components/` - Reusable Vue components
-  - `composables/` - Vue composables
-- `server/` - Nuxt server API routes and utilities
-  - `api/` - API endpoints
-  - `db/` - Database schema and migrations
-  - `utils/` - Server utilities
-- `shared/` - Shared types and constants
+- `app/` - Pages, layouts, components, composables
+- `server/` - API routes, database schema and queries, utilities
+- `shared/` - Shared types and constants (plan limits in `shared/constants.ts`)
+- `content/` - Landing page, pricing copy, and blog (Nuxt Content)
 
-## Features Breakdown
+## Sample Pricing Plans
 
-### AI Chat
-- Streaming chat responses with AI SDK v6
-- Chat history organized by date
-- Delete and manage conversations
-- Model: Cloudflare Workers AI Llama 3.3 70B Instruct
+The repo includes three sample plans to demonstrate plan-based feature gating. Limits live in `shared/constants.ts`; prices and copy live in `content/index.yml`. Paid plans are billed monthly per project.
 
-### AI Image Generation
-- Generate images from text prompts
-- Edit existing images with natural language
-- Chat-like interface for iterative refinement
-- Download generated images
-- Model: OpenAI DALL-E 3 and gpt-image-1.5
-
-### Authentication
-- Google OAuth integration
-- Credentials-based authentication
-- Password reset functionality
-- Email verification
-- Session management
-
-### Billing
-- Stripe subscription management
-- Multiple pricing tiers
-- Customer portal for self-service
-- Webhook handling for automated updates
-- Trial support (7-day free trial for Standard plan)
-
-### Project Management
-- Multi-project support per user
-- Role-based access (admin/member)
-- Project configuration and customization
-- Knowledge base file uploads
-- Plan-based feature limits
-
-## Pricing Plans
-
-**Free**: $0/month - Basic features for testing and development
-
-**Starter**: $24/month - Small projects with essential features
-
-**Standard**: $49/month - Most popular, includes 7-day free trial
-
-**Pro**: $99/month - Advanced features for power users
-
-## Deployment
-
-Deployed on Cloudflare via NuxtHub with:
-- Automatic builds on git push
-- Edge deployment for global performance
-- Zero-downtime deployments
-- Environment variable management
+- **Free** ($0/month): 5 documents (0.1MB each), 200 AI replies/month, embeddable chat widget
+- **Pro** ($29/month): 50 documents (2MB each), 5,000 AI replies/month, human support escalation, self learning, 7-day free trial
+- **Advanced** ($79/month): 100 documents (4MB each), 10,000 AI replies/month, human support escalation, self learning
 
 ## Development
 
 ```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Generate database migrations
-npm run db:generate
-
-# Type checking
-npm run typecheck
-
-# Linting
-npm run lint
+npm install          # Install dependencies
+npm run dev          # Start dev server
+npm run build        # Build for production
+npm run db:generate  # Generate database migrations
+npm run typecheck    # Type checking
+npm run lint         # Linting
+npx nuxthub deploy   # Deploy to Cloudflare
 ```
 
 ## Use Cases
 
-- AI chatbot SaaS platforms
-- Image generation applications
+- AI chatbot and customer support SaaS
 - Multi-tenant SaaS products
+- AI image generation tools
 - AI-powered tools and utilities
-- Customer support platforms
-- Content creation tools
+
+## License
+
+MIT. See the LICENSE file in the repository.
 
 ## GitHub
 
 Repository: https://github.com/BeyondFolder/nuxt-beyond
 
-## Contact
-
-For questions or support, please open an issue on GitHub.
+Questions, bugs, and contributions: open an issue or pull request on GitHub.

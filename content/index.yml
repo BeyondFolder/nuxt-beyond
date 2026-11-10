@@ -1,6 +1,6 @@
 seo:
   title: NuxtBeyond - The AI-First Nuxt 4 Boilerplate
-  description: Ship AI-powered SaaS products in days, not months. Full-stack Nuxt 4 boilerplate with AI chat, RAG, authentication, Stripe billing, and Cloudflare deployment.
+  description: Ship AI-powered SaaS products in days, not months. Open-source, full-stack Nuxt 4 boilerplate with AI chat, RAG, authentication, Stripe or Polar billing, and Cloudflare deployment.
 title: Ship AI-powered apps [in days]{.text-primary}, not months
 description: The complete Nuxt 4 boilerplate for building AI-first SaaS products. Authentication, payments, AI chat with RAG, embeddable widgets, and Cloudflare deployment - all pre-configured.
 hero:
@@ -32,7 +32,7 @@ section:
     - title: Production-Ready Auth
       description: Google OAuth and credentials auth with email verification, password reset, and session management.
       class: border-l border-default pt-4 pl-4
-    - title: Stripe Subscriptions
+    - title: Stripe or Polar Subscriptions
       description: Complete billing flow with webhooks, customer portal, and plan management.
       class: border-l border-default pt-4 pl-4
 features:
@@ -49,7 +49,7 @@ features:
       icon: i-lucide-lock
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
-    - title: Stripe Billing
+    - title: Stripe or Polar Billing
       description: Subscription management, checkout sessions, customer portal, webhooks, and plan-based feature gating.
       icon: i-lucide-credit-card
       ui:
@@ -83,57 +83,51 @@ steps:
       description: Deploy to Cloudflare with one command. Your AI-powered SaaS is live.
       image: /images/homepage/live.svg
 pricing:
-  title: '[One-time]{.text-primary} purchase, lifetime access'
-  description: No subscriptions. Buy once, own forever. Includes all future updates.
+  title: Simple, [transparent]{.text-primary} pricing
+  description: Start free and upgrade as your project grows. Paid plans are billed monthly per project.
   plans:
     - title: Free
       planName: free
-      description: For testing and demo
+      description: For trying things out
       price: $0
-      billing_cycle: forever
+      billing_cycle: /month
       features:
-        - 5 documents
+        - 5 documents (0.1MB each)
         - 200 AI replies/month
-        - Basic support
-        - All core features
+        - Embeddable chat widget
       button:
         label: Get Started Free
         variant: outline
         to: '/signup'
     - title: Pro
       planName: pro
-      description: For serious builders
-      price: $199
-      discount: $59
-      billing_cycle: one-time
+      description: For growing products
+      price: $29
+      billing_cycle: /month
       features:
-        - Full source code access
-        - Private GitHub access
-        - Premium documentation
-        - Discord community
-        - Lifetime updates
-        - Priority support
+        - 50 documents (2MB each)
+        - 5,000 AI replies/month
+        - Human support escalation
+        - Self learning*
+        - 7-day free trial
       button:
-        label: Get Pro Access
+        label: Start Free Trial
         variant: solid
         to: '/signup'
       highlight: true
-      badge: Best Value
+      badge: Most Popular
     - title: Advanced
       planName: advanced
-      description: For teams and agencies
-      price: $299
-      discount: $129
-      billing_cycle: one-time
+      description: For larger teams
+      price: $79
+      billing_cycle: /month
       features:
-        - Everything in Pro
-        - Custom integrations
-        - Dedicated support
-        - 2 support calls with founder
-        - Team onboarding
-        - Custom licensing
+        - 100 documents (4MB each)
+        - 10,000 AI replies/month
+        - Human support escalation
+        - Self learning*
       button:
-        label: Get Advanced Access
+        label: Get Advanced
         variant: solid
         to: '/signup'
 testimonials:
@@ -155,16 +149,16 @@ faqs:
   description: ''
   items:
     - label: What's included in the boilerplate?
-      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, authentication (Google OAuth + credentials), Stripe subscriptions, embeddable widget, Nuxt UI v4, dark mode, and Cloudflare deployment.'
+      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, authentication (Google OAuth + credentials), Stripe or Polar subscriptions, embeddable widget, Nuxt UI v4, dark mode, and Cloudflare deployment.'
       icon: i-lucide-package
     - label: What tech stack does it use?
-      content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK, Stripe, and nuxt-auth-utils.'
+      content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK, Stripe or Polar, and nuxt-auth-utils.'
       icon: i-lucide-layers
-    - label: Can I use this for commercial projects?
-      content: 'Yes! The boilerplate includes a license that allows unlimited commercial projects. Build and sell as many products as you want.'
+    - label: Is NuxtBeyond open source?
+      content: 'Yes. NuxtBeyond is open source under the MIT License. You can fork it, modify it, and use it for personal or commercial projects. See the [GitHub repository](https://github.com/BeyondFolder/nuxt-beyond).'
       icon: i-lucide-briefcase
     - label: How is the AI integration set up?
-      content: 'Uses Vercel AI SDK v6 for streaming responses, Cloudflare AutoRAG for RAG/knowledge base search, and Workers AI for model inference. Supports tool calling and human handoff.'
+      content: 'Uses Vercel AI SDK v6 for streaming responses, Cloudflare AutoRAG for RAG/knowledge base search, and OpenAI models routed through Cloudflare AI Gateway. Supports tool calling and human handoff.'
       icon: i-lucide-brain
     - label: Does it include authentication?
       content: 'Yes! Full authentication with Google OAuth, email/password, email verification, password reset, and session management using nuxt-auth-utils.'
@@ -172,8 +166,8 @@ faqs:
     - label: How does deployment work?
       content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack including database, storage, and KV.'
       icon: i-lucide-rocket
-    - label: What support is included?
-      content: 'Pro includes Discord community access and priority email support. Enterprise includes dedicated support and custom integrations.'
+    - label: How do I get help or contribute?
+      content: 'Open an issue or a pull request on [GitHub](https://github.com/BeyondFolder/nuxt-beyond). Bug reports, fixes, and improvements are welcome.'
       icon: i-lucide-headphones
 cta:
   title: Stop rebuilding the same features. [Ship your AI product today.]{.text-primary}
