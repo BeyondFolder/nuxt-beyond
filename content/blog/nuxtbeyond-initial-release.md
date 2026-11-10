@@ -111,12 +111,11 @@ Star the repo on [GitHub](https://github.com/BeyondFolder/nuxt-beyond) to follow
 
 We're actively working on:
 
-- **Distribution Toolkit** - Build and monetize custom AI agents
 - **More Integrations** - Additional AI providers, auth methods, and payment processors
 - **Enhanced Security** - Advanced prompt injection protection and security features
 - **Video Tutorials** - Step-by-step guides for common customizations
 
-Have questions? Join our [Discord community](#) or reach out on [X](https://x.com/raress96).
+Have questions? Open an issue on [GitHub](https://github.com/BeyondFolder/nuxt-beyond/issues) or reach out on [X](https://x.com/raress96).
 
 ---
 
