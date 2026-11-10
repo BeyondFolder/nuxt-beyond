@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GITHUB_REPO_URL, type PlanName, planNames, PLANS_CONSTANTS } from '#shared/constants';
+import { GITHUB_REPO_URL, type PlanName, planNames, planTitles, PLANS_CONSTANTS } from '#shared/constants';
 
 definePageMeta({
   layout: 'dashboard',
@@ -27,12 +27,6 @@ const subscriptionStatus = computed(() => dashboardData.value?.currentProject?.s
 if (!projectId.value) {
   throw createError({ statusCode: 404, statusMessage: 'No project found', fatal: true });
 }
-
-const planTitles: Record<PlanName, string> = {
-  free: 'Free',
-  boilerplate: 'Pro',
-  bundle: 'Advanced',
-};
 
 const bytesToMegabytes = (bytes: number) => bytes / (1024 * 1024);
 
@@ -170,7 +164,7 @@ useSeoMeta({
           color="neutral"
           variant="soft"
           title="*Self Learning"
-          description="After your support team handles a case, the answer can be automatically included in the AI's training data for future responses"
+          description="Your team can add answered support questions to the knowledge base, so the AI can use those answers in future replies."
         />
       </UPageSection>
     </template>

@@ -655,5 +655,5 @@ MIT License, see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- [Documentation](https://nuxtbeyond.com/docs)
+- [Documentation](https://github.com/BeyondFolder/nuxt-beyond#readme)
 - [GitHub Issues](https://github.com/BeyondFolder/nuxt-beyond/issues)

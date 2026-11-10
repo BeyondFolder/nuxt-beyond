@@ -32,6 +32,11 @@ useHead({
         'applicationCategory': 'DeveloperApplication',
         'operatingSystem': 'Web',
         'description': description,
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD',
+        },
       }),
     },
     {
