@@ -91,7 +91,7 @@ Before deploying, replace the sample branding and placeholders:
 
 ## Billing (Stripe or Polar)
 
-Set `PAYMENT_PROVIDER=stripe` (default) or `PAYMENT_PROVIDER=polar`. Checkout and portal endpoints are provider-neutral (`server/utils/billing/provider.ts`); only the webhook differs. Plans map to provider products by `planName`, and only monthly prices are supported by default.
+Set `PAYMENT_PROVIDER=stripe` (default) or `PAYMENT_PROVIDER=polar`. Checkout and portal endpoints are provider-neutral (`server/utils/billing/provider.ts`); only the webhook differs. Plans map to provider products by `planName`, and only monthly prices are supported by default. New Stripe customers get a 7-day trial on Pro (`server/utils/billing/stripe.ts`); the app sets no trial for Polar, so the billing page only promotes one with Stripe.
 
 **Stripe**
 1. Create a monthly price for each paid plan with the lookup key `{planName}_monthly` (for example `pro_monthly`).

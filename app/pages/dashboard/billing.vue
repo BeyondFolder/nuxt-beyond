@@ -44,8 +44,9 @@ if (!projectId.value) {
   throw createError({ statusCode: 404, statusMessage: 'No project found', fatal: true });
 }
 
+// The 7-day Pro trial is only set up for Stripe (server/utils/billing/stripe.ts).
 const shouldPromoteProTrial = computed(() => {
-  return currentPlan.value === 'free' && !billingSubscriptionId.value;
+  return paymentProvider === 'stripe' && currentPlan.value === 'free' && !billingSubscriptionId.value;
 });
 
 const isLoading = ref(false);

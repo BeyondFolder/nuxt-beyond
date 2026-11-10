@@ -71,11 +71,11 @@ export const collections = {
           createBaseSchema().extend({
             planName: z.enum(planNames),
             price: z.string().nonempty(),
-            discount: z.string(),
+            discount: z.string().optional(),
             button: createLinkSchema(),
             features: z.array(z.string().nonempty()),
             highlight: z.boolean().optional(),
-            billing_period: z.string().nonempty(),
+            billing_period: z.string().optional(),
             billing_cycle: z.string().nonempty(),
             badge: z.string().optional(),
           })
