@@ -13,7 +13,7 @@ An AI-first Nuxt 4 boilerplate for building SaaS products. Open source under the
 - AI chat with RAG over your own documents, powered by Cloudflare AutoRAG (AI Search)
 - Vercel AI SDK v6 with streaming responses and tool calling (knowledge base search, human support escalation)
 - Embeddable chat widget: one script tag, iframe-isolated, with domain allowlists
-- Extra demo pages for user chat, image generation, and video generation
+- Extra demo pages for user chat, image generation, and video generation (Google Gemini Omni Flash, optional)
 
 **Auth**
 - Google OAuth and email/password login via `nuxt-auth-utils`
@@ -57,7 +57,7 @@ Every variable is listed with a placeholder in [`.env.example`](./.env.example).
 | Site | `NUXT_SITE_URL`, `NUXT_PUBLIC_SITE_URL`, `NUXT_SITE_ENV` (optional) |
 | Auth | `NUXT_SESSION_PASSWORD` (32+ chars), `NUXT_OAUTH_GOOGLE_CLIENT_ID`, `NUXT_OAUTH_GOOGLE_CLIENT_SECRET` |
 | Email (Resend) | `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, `NO_REPLY_EMAIL`, `SUPPORT_EMAIL` |
-| Cloudflare and AI | `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_AI_GATEWAY_ID`, `CLOUDFLARE_AUTO_RAG_ID`, `CLOUDFLARE_AUTO_RAG_API_TOKEN`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` (optional) |
+| Cloudflare and AI | `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_AI_GATEWAY_ID`, `CLOUDFLARE_AUTO_RAG_ID`, `CLOUDFLARE_AUTO_RAG_API_TOKEN`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` (optional), `GEMINI_API_KEY` (optional, video generation) |
 | Billing switch | `PAYMENT_PROVIDER` = `stripe` or `polar` |
 | Stripe | `NUXT_STRIPE_KEY`, `NUXT_PUBLIC_STRIPE_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PROMO_CODE` (optional) |
 | Polar | `POLAR_MODE` (`sandbox` or `production`), `POLAR_ACCESS_TOKEN`, `POLAR_WEBHOOK_SECRET` |

@@ -12,6 +12,7 @@ NuxtBeyond is a free, open-source Nuxt 4 boilerplate released under the MIT Lice
 - **Embeddable Widget**: One-line script that adds a chat bubble to allowed domains
 - **Human Support Escalation**: The AI can hand a conversation to your team; answered questions can be added back to the knowledge base (self learning)
 - **AI Image Generation**: Generate and edit images with OpenAI gpt-image-1.5
+- **AI Video Generation (optional)**: Text or image to video, plus follow-up edits, with Google Gemini Omni Flash; needs a paid-tier `GEMINI_API_KEY`
 - **Authentication**: Google OAuth and email/password with nuxt-auth-utils, email verification, password reset
 - **Billing**: Stripe or Polar subscriptions (selected with `PAYMENT_PROVIDER`), checkout, customer portal, webhooks, plan-based feature limits
 - **Multi-tenant Projects**: Role-based access (admin/member) and email invitations
