@@ -1,5 +1,5 @@
 import { eq, and } from 'drizzle-orm';
-import OpenAI from 'openai';
+import { blob } from 'hub:blob';
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -22,22 +22,25 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'Video chat not found' });
   }
 
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
   console.log('Deleting video chat:', id, 'with', chat.messages.length, 'messages');
 
-  for (const message of chat.messages) {
-    if (message.jobId) {
-      try {
-        console.log('Deleting video from OpenAI. Job ID:', message.jobId);
-        await openai.videos.delete(message.jobId);
-        console.log('Successfully deleted video from OpenAI. Job ID:', message.jobId);
-      } catch (error: any) {
-        console.error('Failed to delete video from OpenAI. Job ID:', message.jobId, 'Error:', error);
+  const ai = getGeminiClient();
+
+  if (ai) {
+    const jobIds = chat.messages.filter((message) => message.role === 'assistant' && message.jobId).map((message) => message.jobId!);
+    const results = await Promise.allSettled(jobIds.map((jobId) => ai.interactions.delete(jobId)));
+
+    results.forEach((result, index) => {
+      if (result.status === 'rejected') {
+        console.error('Failed to delete Gemini interaction:', jobIds[index], 'Error:', result.reason);
       }
-    }
+    });
+  }
+
+  const blobs = await blob.list({ prefix: `videos/${user.id}/${id}/` });
+
+  if (blobs.blobs.length) {
+    await blob.del(blobs.blobs.map((b) => b.pathname));
   }
 
   await db.delete(tables.videoChats).where(and(eq(tables.videoChats.id, id), eq(tables.videoChats.userId, user.id)));

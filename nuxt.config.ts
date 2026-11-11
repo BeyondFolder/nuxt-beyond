@@ -48,9 +48,9 @@ export default defineNuxtConfig({
     preview: {
       api: 'https://api.nuxt.studio',
       gitInfo: {
-        name: 'nuxtbeyond-app',
+        name: 'nuxt-beyond',
         owner: 'BeyondFolder',
-        url: 'https://github.com/BeyondFolder/nuxtbeyond-app',
+        url: 'https://github.com/BeyondFolder/nuxt-beyond',
       },
     },
   },
