@@ -119,6 +119,7 @@
   // - POLAR_ACCESS_TOKEN: Polar org access token (only if PAYMENT_PROVIDER=polar)
   // - POLAR_WEBHOOK_SECRET: Polar webhook signing secret (only if PAYMENT_PROVIDER=polar)
   // - RESEND_API_KEY: Resend API key
+  // - GEMINI_API_KEY: Google Gemini API key for video generation (optional)
   // - CLOUDFLARE_AUTO_RAG_API_TOKEN: AutoRAG API token
   // - NUXT_TURNSTILE_SECRET_KEY: Turnstile secret key
   "keep_vars": true
