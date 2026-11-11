@@ -32,7 +32,6 @@ useSeoMeta({
   title: data.value.title || 'AI Video Generation',
 });
 
-
 const input = ref('');
 const loading = ref(false);
 const polling = ref(false);
@@ -197,7 +196,6 @@ onUnmounted(stopPolling);
         </div>
 
         <div class="sticky bottom-0 bg-default pt-4 border-t border-default">
-
           <div class="flex gap-2">
             <UTextarea
               v-model="input"

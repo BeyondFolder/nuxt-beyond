@@ -17,7 +17,6 @@ const loading = ref(false);
 const toast = useToast();
 const imageFiles = ref<File | null>(null);
 
-
 async function convertImageToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -131,7 +130,6 @@ const quickPrompts = [
         <h1 class="text-3xl sm:text-4xl text-highlighted font-bold">
           What video would you like to create?
         </h1>
-
 
         <div class="flex gap-2">
           <UTextarea
