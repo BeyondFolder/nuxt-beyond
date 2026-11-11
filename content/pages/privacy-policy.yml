@@ -1,163 +1,113 @@
 seo:
-  title: Privacy Policy | NuxtBeyond
-  description: Learn how NuxtBeyond collects, uses, and protects your personal data. GDPR-compliant privacy policy for our AI chatbot platform.
+  title: 'Privacy Policy | [Your App]'
+  description: 'How [Your App] collects, uses, and protects personal data. Starter template: replace the placeholders before publishing.'
 title: Privacy Policy
-lastUpdated: December 11, 2025
+lastUpdated: '[Month Day, Year]'
 sections:
+  - title: About This Template
+    content: |
+      This page is a starter template included with the NuxtBeyond open-source boilerplate. It describes the data the boilerplate collects out of the box, but it is not legal advice.
+
+      Before publishing, replace every placeholder in square brackets (such as [Your Company], [Your App] and [yourdomain.com]), update the lists below to match the features and providers you actually use, and have the result reviewed by a qualified lawyer in your jurisdiction. Then delete this section.
+
   - title: Introduction
     content: |
-      CraftCodely SRL ("we," "us," or "our") operates NuxtBeyond, an AI-powered chatbot platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service at nuxtbeyond.com.
+      [Your Company] ("we", "us" or "our") operates [Your App] at [yourdomain.com] (the "Service"). This Privacy Policy explains what information we collect, how we use and share it, and the choices you have.
 
-      We are committed to protecting your privacy and complying with the General Data Protection Regulation (GDPR) and other applicable data protection laws. By using NuxtBeyond, you agree to the collection and use of information in accordance with this policy.
+      We aim to comply with the data protection laws that apply to us, including the General Data Protection Regulation (GDPR) where applicable.
 
   - title: Information We Collect
     subsections:
-      - subtitle: Personal Information
+      - subtitle: Account Information
         content: |
-          When you register for an account, we collect:
+          - **Email address and name** - Used to create and secure your account and to contact you
+          - **Password** - Stored only as a salted hash, never in plain text
+          - **Google sign-in data** - If you sign in with Google, we receive your name, email, and profile picture
 
-          - **Email address** - Used for account authentication and communication
-          - **Name** - Used for personalization and identification
-          - **Password** - Encrypted and stored securely for account access
-          - **Google OAuth data** - If you sign up via Google (name, email, profile picture)
-
-      - subtitle: Widget Data
+      - subtitle: Project and Chat Data
         content: |
-          When you create and configure AI chatbots, we collect:
-
-          - **Widget configuration** - Name, description, appearance settings, domain restrictions
-          - **Knowledge base content** - Documents and text you upload to train your chatbot
-          - **Chat conversations** - Messages between your customers and the AI chatbot
-          - **Support escalations** - Customer questions that require human assistance
+          - **Project settings** - Name, description, appearance settings, and allowed domains for your widget
+          - **Knowledge base content** - Documents and text you upload
+          - **Chat conversations** - Messages exchanged between your visitors and the AI assistant
+          - **Support escalations** - Questions escalated to a human and the replies to them, including the name and email a visitor provides
+          - **Team invitations** - Email addresses of people you invite to a project
 
       - subtitle: Payment Information
         content: |
-          We use Stripe for payment processing. We store:
-
-          - **Stripe customer ID** - Links your widget to Stripe account
-          - **Subscription status** - Current plan and billing cycle information
-
-          We do not store credit card numbers or payment details. All payment information is handled securely by Stripe in accordance with PCI-DSS standards.
+          Payments are handled by [Stripe / Polar]. We store only the customer and subscription identifiers and your subscription status. We do not store card numbers or full payment details.
 
       - subtitle: Technical Information
         content: |
-          We automatically collect certain information when you use our service:
-
-          - **Usage data** - Features accessed, pages viewed, time spent
-          - **Device information** - Browser type, operating system, IP address
-          - **Cookies** - Session cookies for authentication and functionality
+          - **IP address and browser information** - Used for security, abuse prevention, and rate limiting
+          - **Cookies** - A session cookie keeps you signed in (see Cookies below)
+          - **Analytics** - [Describe any analytics tools you add, or remove this line.]
 
   - title: How We Use Your Information
     content: |
-      We use your information for the following purposes:
+      We use your information to:
 
-      - **Service delivery** - To provide and maintain the NuxtBeyond platform
-      - **AI chatbot functionality** - To train and operate your custom AI chatbots
-      - **Account management** - To manage your account, subscriptions, and billing
-      - **Communication** - To send service updates, security alerts, and support responses
-      - **Improvement** - To analyze usage patterns and improve our service
-      - **Legal compliance** - To comply with legal obligations and enforce our Terms of Service
+      - Provide, maintain, and secure the Service
+      - Generate AI responses from your knowledge base content
+      - Manage your account, projects, team members, and subscription
+      - Send service emails such as verification, password reset, invitations, and support notifications
+      - Comply with legal obligations and enforce our Terms of Service
 
-      We process your data based on the following legal grounds:
+      Where GDPR applies, we rely on these legal bases: performance of a contract, our legitimate interests (such as keeping the Service secure), your consent where we ask for it, and compliance with legal obligations.
 
-      - **Contract performance** - Processing necessary to provide our services
-      - **Legitimate interests** - Improving our service and preventing fraud
-      - **Consent** - When you provide explicit consent for specific processing
-      - **Legal obligation** - Complying with laws and regulations
-
-  - title: Data Sharing and Third Parties
+  - title: Service Providers
     content: |
-      We do not sell, trade, or rent your personal information to third parties. We share data only with trusted service providers who assist in operating our platform:
+      We do not sell your personal information. We share data only with providers that help us run the Service. Remove any you do not use:
 
-      - **Cloudflare** - Hosting provider for infrastructure, databases (D1), file storage (R2), and AI processing (Workers AI)
-      - **Stripe** - Payment processing and subscription management
-      - **Google OAuth** - Authentication service (only if you choose to sign in with Google)
+      - **Cloudflare** - Hosting, database (D1), file storage (R2), key-value storage (KV), AI Gateway, AI Search, and Turnstile bot protection
+      - **[AI provider, e.g. OpenAI]** - Generates AI responses from chat messages and relevant knowledge base content
+      - **[Stripe / Polar]** - Payment processing and subscription management
+      - **Google** - Sign-in, only if you choose to sign in with Google
       - **Resend** - Transactional email delivery
 
-      All third-party providers are bound by data protection agreements and process data only as instructed. They do not use your data for their own purposes.
-
-  - title: Data Storage and Security
+  - title: Data Security
     content: |
-      **Storage location:** Your data is stored on Cloudflare's infrastructure, which may include servers located in the European Union and other regions.
-
-      **Security measures:** We implement industry-standard security practices:
-
-      - Encrypted passwords using bcrypt hashing
-      - HTTPS encryption for all data in transit
-      - Secure authentication with session tokens
-      - Regular security audits and updates
-      - Access controls and monitoring
-
-      While we strive to protect your information, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.
+      We use reasonable measures to protect your data, including hashed passwords, HTTPS for data in transit, secure session cookies, and role-based access to projects. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.
 
   - title: Data Retention
     content: |
-      We retain your personal data for as long as your account is active or as needed to provide you services. Specific retention periods:
+      We keep personal data for as long as your account is active or as needed to provide the Service. [Adjust these periods to your practices:]
 
-      - **Account data** - Retained until account deletion is requested
-      - **Chat conversations** - Retained for the lifetime of the widget or until deletion
-      - **Payment records** - Retained for 7 years to comply with tax and accounting regulations
-      - **Backup data** - May be retained for up to 30 days in secure backups
+      - **Account and project data** - Until you delete it or ask us to delete your account
+      - **Payment records** - As long as required by tax and accounting law [e.g. X years]
+      - **Backups** - Up to [X] days after deletion
 
-  - title: Your GDPR Rights
+  - title: Your Rights
     content: |
-      If you are located in the European Union, you have the following rights under GDPR:
+      Depending on where you live, you may have the right to access, correct, delete, restrict, or export your personal data, to object to certain processing, and to withdraw consent at any time.
 
-      - **Right to access** - Request a copy of your personal data
-      - **Right to rectification** - Correct inaccurate or incomplete data
-      - **Right to erasure** - Request deletion of your personal data (see Account Deletion below)
-      - **Right to restriction** - Request limitation of data processing
-      - **Right to data portability** - Receive your data in a machine-readable format
-      - **Right to object** - Object to certain types of data processing
-      - **Right to withdraw consent** - Withdraw consent for data processing at any time
-
-      To exercise any of these rights, contact us at support@nuxtbeyond.com. We will respond within 30 days.
+      To exercise these rights, email [privacy@yourdomain.com]. We will respond within [30] days.
 
   - title: Account Deletion
     content: |
-      You can request account deletion at any time by emailing support@nuxtbeyond.com. Upon receiving your request, we will:
+      You can request deletion of your account at any time by emailing [support@yourdomain.com]. After verifying your identity, we will delete your account, projects, knowledge base content, and chat conversations, and cancel any active subscription. Some data may remain in backups or be kept where the law requires it, as described in Data Retention.
 
-      1. Verify your identity to ensure security
-      2. Delete your account and associated personal data immediately
-      3. Remove all widgets, knowledge base content, and chat conversations
-      4. Cancel any active subscriptions (no refunds for partial billing periods)
-
-      Please note that some data may remain in secure backups for up to 30 days before permanent deletion. Payment records will be retained for 7 years to comply with legal obligations.
-
-  - title: Cookies and Tracking
+  - title: Cookies
     content: |
-      We use cookies to:
-
-      - Maintain your logged-in session
-      - Remember your preferences
-      - Analyze site usage and performance
-
-      You can control cookies through your browser settings. Disabling cookies may limit certain functionality of our service.
+      We use a session cookie to keep you signed in. [List any other cookies you add, such as analytics or preferences.] You can control cookies in your browser settings, but disabling them may prevent you from signing in.
 
   - title: Children's Privacy
     content: |
-      NuxtBeyond is a business tool intended for users aged 18 and older. We do not knowingly collect personal information from children under 18. If we discover that a child has provided us with personal data, we will delete it immediately.
+      The Service is not intended for anyone under [18]. We do not knowingly collect personal data from children. If we learn that a child has provided personal data, we will delete it.
 
   - title: International Data Transfers
     content: |
-      Your data may be transferred to and processed in countries outside the European Economic Area (EEA). When we transfer data internationally, we ensure appropriate safeguards are in place, such as:
-
-      - Standard Contractual Clauses approved by the European Commission
-      - Data processing agreements with third-party providers
-      - Compliance with GDPR requirements for international transfers
+      Your data may be processed in countries other than your own, including by the providers listed above. Where required, we use appropriate safeguards such as data processing agreements and Standard Contractual Clauses.
 
   - title: Changes to This Policy
     content: |
-      We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last Updated" date. Significant changes will be communicated via email. Continued use of our service after changes constitutes acceptance of the updated policy.
+      We may update this Privacy Policy from time to time. We will post changes on this page with a new "Last updated" date and notify you of significant changes by email.
 
   - title: Contact Us
     content: |
-      If you have questions about this Privacy Policy or our data practices, contact us at:
+      Questions about this Privacy Policy or your data? Contact us:
 
-      **CraftCodely SRL**
-      
-      Email: support@nuxtbeyond.com
-      
-      Location: Romania
+      **[Your Company]**
 
-      For GDPR-related inquiries or to exercise your data rights, email support@nuxtbeyond.com with "GDPR Request" in the subject line.
+      Email: [privacy@yourdomain.com]
+
+      Address: [Your Company Address]

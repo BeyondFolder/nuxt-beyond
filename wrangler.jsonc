@@ -38,14 +38,14 @@
     {
       "binding": "DB",
       "remote": false,
-      "database_id": "e7e82908-1612-49fe-97b0-f3776bf04fe0" // Should be changed to your D1 database ID
+      "database_id": "your-d1-database-id" // Should be changed to your D1 database ID
     }
   ],
   "kv_namespaces": [
     {
       "binding": "KV",
       "remote": false,
-      "id": "b64c1a8d9e414f52a5f2264422af2cbb" // Should be changed to your KV id
+      "id": "your-kv-namespace-id" // Should be changed to your KV namespace ID
     }
   ],
   // Environment for testing with remote Cloudflare resources
@@ -72,14 +72,14 @@
         {
           "binding": "DB",
           "remote": true,
-          "database_id": "e7e82908-1612-49fe-97b0-f3776bf04fe0" // Should be changed to your D1 database ID
+          "database_id": "your-d1-database-id" // Should be changed to your D1 database ID
         }
       ],
       "kv_namespaces": [
         {
           "binding": "KV",
           "remote": true,
-          "id": "b64c1a8d9e414f52a5f2264422af2cbb" // Should be changed to your KV id
+          "id": "your-kv-namespace-id" // Should be changed to your KV namespace ID
         }
       ]
     }
@@ -116,6 +116,7 @@
   // - POLAR_ACCESS_TOKEN: Polar org access token (only if PAYMENT_PROVIDER=polar)
   // - POLAR_WEBHOOK_SECRET: Polar webhook signing secret (only if PAYMENT_PROVIDER=polar)
   // - RESEND_API_KEY: Resend API key
+  // - GEMINI_API_KEY: Google Gemini API key for video generation (optional)
   // - CLOUDFLARE_AUTO_RAG_API_TOKEN: AutoRAG API token
   // - NUXT_TURNSTILE_SECRET_KEY: Turnstile secret key
   "keep_vars": true

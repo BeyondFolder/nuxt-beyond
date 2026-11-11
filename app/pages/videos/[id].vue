@@ -37,10 +37,12 @@ const loading = ref(false);
 const polling = ref(false);
 let pollInterval: NodeJS.Timeout | null = null;
 
-const lastAssistantVideo = computed(() => {
-  const assistantMessages = data.value?.messages.filter((m) => m.role === 'assistant' && m.jobId) || [];
-  return assistantMessages.at(-1)?.jobId ?? null;
-});
+function stopPolling() {
+  if (pollInterval) {
+    clearInterval(pollInterval);
+    pollInterval = null;
+  }
+}
 
 const hasProcessingVideos = computed(() => {
   return data.value?.messages.some((m) => m.status === 'processing') || false;
@@ -56,16 +58,28 @@ async function pollVideoStatus() {
   try {
     const result = await $fetch(`/api/videos/${route.params.id}/poll`);
 
-    if ('updates' in result && result.updates.length > 0) {
+    for (const update of result.updates) {
+      if (update.status === 'failed') {
+        toast.add({
+          title: 'Video generation failed',
+          description: update.error,
+          color: 'error',
+        });
+      }
+    }
+
+    if (result.updates.length > 0) {
       await refresh();
     }
 
-    if (!result.hasProcessing && pollInterval) {
-      clearInterval(pollInterval);
-      pollInterval = null;
+    if (!result.hasProcessing) {
+      stopPolling();
     }
   } catch (err: any) {
     console.error('Polling error:', err);
+    if (err.statusCode === 503) {
+      stopPolling();
+    }
   } finally {
     polling.value = false;
   }
@@ -83,7 +97,6 @@ async function generateVideo() {
       method: 'POST',
       body: {
         prompt: input.value,
-        previousVideoId: lastAssistantVideo.value,
       },
     });
 
@@ -118,11 +131,7 @@ onMounted(() => {
   }
 });
 
-onUnmounted(() => {
-  if (pollInterval) {
-    clearInterval(pollInterval);
-  }
-});
+onUnmounted(stopPolling);
 </script>
 
 <template>

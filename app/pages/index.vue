@@ -297,7 +297,7 @@ function openProject() {
         color="neutral"
         variant="soft"
         title="*Self Learning"
-        description="After your support team handles a case, the answer can be automatically included in the AI's training data for future responses"
+        description="Admins can add answered support questions to the knowledge base, so the AI can use those answers in future replies."
       />
     </UPageSection>
 
