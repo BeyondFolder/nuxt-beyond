@@ -429,15 +429,15 @@ useHead({
       }"
     >
       <template #title>
-        {{ page.faqs.title }}
+        {{ page!.faqs.title }}
       </template>
 
       <template #description>
-        {{ page.faqs.description }}
+        {{ page!.faqs.description }}
       </template>
 
       <UAccordion
-        :items="page.faqs.items"
+        :items="page!.faqs.items"
         class="mt-6 max-w-3xl mx-auto"
         :unmount-on-hide="false"
         :ui="{
@@ -462,15 +462,15 @@ useHead({
 
       <UContainer class="py-20 sm:py-28 text-center">
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto">
-          <MDC :value="page.cta.title" unwrap="p" />
+          <MDC :value="page!.cta.title" unwrap="p" />
         </h2>
 
         <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto">
-          {{ page.cta.description }}
+          {{ page!.cta.description }}
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <UButton v-for="link in page.cta.links" :key="link.label" v-bind="link" />
+          <UButton v-for="link in page!.cta.links" :key="link.label" v-bind="link" />
         </div>
       </UContainer>
     </section>
