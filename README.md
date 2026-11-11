@@ -147,6 +147,6 @@ Issues and pull requests are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
-[MIT](./LICENSE) © Rareș Serban
+[MIT](./LICENSE) © BeyondFolder
 
 Made by [@raress96](https://x.com/raress96).
