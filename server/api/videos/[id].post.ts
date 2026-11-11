@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Video chat ID is required' });
   }
 
-  const apiKey = requireGeminiApiKey();
+  const ai = requireGeminiClient();
 
   const body = await readValidatedBody(
     event,
@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
     .returning();
 
   try {
-    const interaction = await startVideoInteraction(apiKey, {
+    const interaction = await startVideoInteraction(ai, {
       prompt: body.prompt,
       previousInteractionId: previousVideoId,
     });

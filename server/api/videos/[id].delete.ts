@@ -25,13 +25,13 @@ export default defineEventHandler(async (event) => {
   console.log('Deleting video chat:', id, 'with', chat.messages.length, 'messages');
 
   // Best effort: also delete the interactions Google stores for edits (kept up to 55 days otherwise)
-  const apiKey = getGeminiApiKey();
+  const ai = getGeminiClient();
 
-  if (apiKey) {
+  if (ai) {
     for (const message of chat.messages) {
       if (message.role === 'assistant' && message.jobId) {
         try {
-          await deleteInteraction(apiKey, message.jobId);
+          await ai.interactions.delete(message.jobId);
         } catch (error) {
           console.error('Failed to delete Gemini interaction:', message.jobId, 'Error:', error);
         }

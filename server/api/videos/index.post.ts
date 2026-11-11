@@ -4,7 +4,7 @@ import { VIDEO_GENERATION } from '#shared/constants';
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
-  const apiKey = requireGeminiApiKey();
+  const ai = requireGeminiClient();
 
   const body = await readValidatedBody(
     event,
@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
   });
 
   try {
-    const interaction = await startVideoInteraction(apiKey, { prompt: body.prompt, image });
+    const interaction = await startVideoInteraction(ai, { prompt: body.prompt, image });
 
     console.log('Video generation started. Interaction ID:', interaction.id, 'status:', interaction.status);
 

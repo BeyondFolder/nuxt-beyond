@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
   const { id } = getRouterParams(event);
 
-  const apiKey = requireGeminiApiKey();
+  const ai = requireGeminiClient();
 
   const db = useDrizzle();
 
@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
     const timedOut = Date.now() - message.createdAt.getTime() > MAX_PROCESSING_MS;
 
     try {
-      const interaction = await getInteraction(apiKey, message.jobId!);
+      const interaction = await ai.interactions.get(message.jobId!);
 
       if (interaction.status === 'in_progress') {
         if (timedOut) {
@@ -49,19 +49,16 @@ export default defineEventHandler(async (event) => {
         continue;
       }
 
+      // The SDK puts the last video of the model output in `output_video`, inline as base64
       const video =
-        interaction.status === 'completed' || interaction.status === 'incomplete' ? findVideoOutput(interaction) : undefined;
+        interaction.status === 'completed' || interaction.status === 'incomplete' ? interaction.output_video : undefined;
 
-      if (!video) {
+      if (!video?.data) {
         await markFailed(message.id, getInteractionError(interaction));
         continue;
       }
 
-      const videoBytes = await downloadVideo(apiKey, video);
-
-      if (!videoBytes) {
-        continue; // URI-delivered file still processing, try again on the next poll
-      }
+      const videoBytes = Buffer.from(video.data, 'base64');
 
       const filename = `videos/${user.id}/${chat.id}/${crypto.randomUUID()}.mp4`;
 
@@ -87,7 +84,7 @@ export default defineEventHandler(async (event) => {
         status: 'completed',
       });
     } catch (error) {
-      if (error instanceof GeminiApiError && error.status === 404) {
+      if (getGeminiErrorStatus(error) === 404) {
         await markFailed(message.id, 'The video job no longer exists on Google');
       } else if (timedOut) {
         await markFailed(message.id, 'Video generation timed out');
