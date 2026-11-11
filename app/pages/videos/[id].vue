@@ -32,8 +32,6 @@ useSeoMeta({
   title: data.value.title || 'AI Video Generation',
 });
 
-const { data: videoConfig } = await useFetch('/api/video-config', { key: 'video-config' });
-const configured = computed(() => videoConfig.value?.configured !== false);
 
 const input = ref('');
 const loading = ref(false);
@@ -91,7 +89,7 @@ async function pollVideoStatus() {
 
 // Edits the latest video in this chat (the server picks it), or starts a new one if there is none yet
 async function generateVideo() {
-  if (!input.value.trim() || !configured.value) {
+  if (!input.value.trim()) {
     return;
   }
 
@@ -131,7 +129,7 @@ function downloadVideo(videoUrl: string) {
 }
 
 onMounted(() => {
-  if (hasProcessingVideos.value && configured.value) {
+  if (hasProcessingVideos.value) {
     pollInterval = setInterval(pollVideoStatus, 5000);
   }
 });
@@ -199,13 +197,12 @@ onUnmounted(stopPolling);
         </div>
 
         <div class="sticky bottom-0 bg-default pt-4 border-t border-default">
-          <VideoSetupNotice v-if="!configured" class="mb-4" />
 
           <div class="flex gap-2">
             <UTextarea
               v-model="input"
               :rows="2"
-              :disabled="loading || hasProcessingVideos || !configured"
+              :disabled="loading || hasProcessingVideos"
               placeholder="Describe the changes you want..."
               class="flex-1"
               @keydown.meta.enter="generateVideo"
@@ -216,7 +213,7 @@ onUnmounted(stopPolling);
           <div class="flex justify-end mt-2">
             <UButton
               :loading="loading"
-              :disabled="!input.trim() || hasProcessingVideos || !configured"
+              :disabled="!input.trim() || hasProcessingVideos"
               icon="i-lucide-video"
               label="Edit Video"
               @click="generateVideo"

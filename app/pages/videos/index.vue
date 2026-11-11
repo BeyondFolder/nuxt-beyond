@@ -17,9 +17,6 @@ const loading = ref(false);
 const toast = useToast();
 const imageFiles = ref<File | null>(null);
 
-const { data: videoConfig } = await useFetch('/api/video-config', { key: 'video-config' });
-const configured = computed(() => videoConfig.value?.configured !== false);
-const disabled = computed(() => loading.value || !configured.value);
 
 async function convertImageToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -34,7 +31,7 @@ async function convertImageToBase64(file: File): Promise<string> {
 }
 
 async function generateVideo() {
-  if (!input.value.trim() || !configured.value) {
+  if (!input.value.trim()) {
     return;
   }
 
@@ -135,13 +132,12 @@ const quickPrompts = [
           What video would you like to create?
         </h1>
 
-        <VideoSetupNotice v-if="!configured" />
 
         <div class="flex gap-2">
           <UTextarea
             v-model="input"
             :rows="3"
-            :disabled="disabled"
+            :disabled="loading"
             placeholder="Describe the video you want to generate..."
             class="flex-1"
             @keydown.meta.enter="generateVideo"
@@ -152,7 +148,7 @@ const quickPrompts = [
         <UFileUpload
           v-model="imageFiles"
           :accept="VIDEO_GENERATION.REFERENCE_IMAGE_TYPES.join(',')"
-          :disabled="disabled"
+          :disabled="loading"
           label="Click or drag and drop to upload reference image"
           :description="`Optional: an image to guide the video (PNG, JPEG, WebP, HEIC or HEIF, up to ${formatBytesToMB(VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE)})`"
           icon="i-lucide-image"
@@ -168,7 +164,7 @@ const quickPrompts = [
         <div class="flex justify-end">
           <UButton
             :loading="loading"
-            :disabled="!input.trim() || !configured"
+            :disabled="!input.trim()"
             icon="i-lucide-video"
             label="Generate"
             @click="generateVideo"
@@ -181,7 +177,7 @@ const quickPrompts = [
             :key="prompt.label"
             :icon="prompt.icon"
             :label="prompt.label"
-            :disabled="disabled"
+            :disabled="loading"
             size="sm"
             color="neutral"
             variant="outline"

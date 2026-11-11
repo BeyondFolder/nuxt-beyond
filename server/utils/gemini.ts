@@ -50,12 +50,16 @@ export function getGeminiApiKey() {
   return process.env.GEMINI_API_KEY || '';
 }
 
-// Video generation is optional: without a key the endpoints answer 503 and the pages show a notice.
+// Video generation is optional: without a key the endpoints answer 503 and the page shows the message as a toast.
 export function requireGeminiApiKey() {
   const apiKey = getGeminiApiKey();
 
   if (!apiKey) {
-    throw createError({ statusCode: 503, statusMessage: "Video generation isn't configured" });
+    throw createError({
+      statusCode: 503,
+      statusMessage: "Video generation isn't configured",
+      message: 'Video generation is turned off. Set GEMINI_API_KEY to enable it.',
+    });
   }
 
   return apiKey;

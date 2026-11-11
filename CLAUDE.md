@@ -278,7 +278,7 @@ The `/videos` demo uses Google Gemini Omni Flash through the Interactions API wi
 - `POST /api/videos` and `POST /api/videos/[id]` start a background interaction (`background: true`) and store its id in `videoChatMessages.jobId` with status `processing`
 - `GET /api/videos/[id]/poll` checks the interaction and saves the finished MP4 to blob storage
 - Follow-up prompts edit the chat's latest finished video via `previous_interaction_id`
-- Without `GEMINI_API_KEY`, the generation endpoints return 503 and the pages show a notice (`GET /api/video-config`)
+- Without `GEMINI_API_KEY`, the generation endpoints return 503 and the page shows the error as a toast
 
 ### Prompt Injection Protection
 
