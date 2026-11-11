@@ -12,7 +12,7 @@ authors:
     avatar:
       src: /images/rares-serban.jpg
 date: 2026-03-22
-updatedAt: 2026-10-11
+updatedAt: 2026-11-11
 badge:
   label: Comparison
 ---
@@ -159,7 +159,7 @@ How the RAG path is wired: [How to build an AI chatbot with RAG in Nuxt 4](/blog
 - No i18n. Supastarter, ShipAhead, and Nuxflare have it.
 - Two sales. That is not a community. ShipFast has 8,429 makers. I will not dress it up.
 - Docs are thinner than Supastarter.
-- Image and video generation in the repo sat on OpenAI APIs that OpenAI retired. Do not buy this kit for DALL-E or Sora. They are gone.
+- Video generation works again: in November 2026 it moved from Sora, which OpenAI retired, to Google Gemini Omni Flash. Image generation runs on OpenAI's gpt-image-1.5, which OpenAI retires on December 1, 2026, so don't buy this kit for images yet.
 - Deploy is `wrangler` / Workers CI. NuxtHub's one-command deploy was retired on 2026-01-31.
 
 **Pick Nuxt Beyond if** you are building document chat, a helpdesk bot over your files, or a widget other companies put on their sites. Do not pick it for enterprise auth, i18n, or "I want the biggest Discord."
