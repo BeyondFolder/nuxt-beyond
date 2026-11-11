@@ -24,25 +24,23 @@ export default defineEventHandler(async (event) => {
 
   console.log('Deleting video chat:', id, 'with', chat.messages.length, 'messages');
 
-  // Best effort: also delete the interactions Google stores for edits (kept up to 55 days otherwise)
   const ai = getGeminiClient();
 
   if (ai) {
-    for (const message of chat.messages) {
-      if (message.role === 'assistant' && message.jobId) {
-        try {
-          await ai.interactions.delete(message.jobId);
-        } catch (error) {
-          console.error('Failed to delete Gemini interaction:', message.jobId, 'Error:', error);
-        }
+    const jobIds = chat.messages.filter((message) => message.role === 'assistant' && message.jobId).map((message) => message.jobId!);
+    const results = await Promise.allSettled(jobIds.map((jobId) => ai.interactions.delete(jobId)));
+
+    results.forEach((result, index) => {
+      if (result.status === 'rejected') {
+        console.error('Failed to delete Gemini interaction:', jobIds[index], 'Error:', result.reason);
       }
-    }
+    });
   }
 
   const blobs = await blob.list({ prefix: `videos/${user.id}/${id}/` });
 
-  for (const b of blobs.blobs) {
-    await blob.del(b.pathname);
+  if (blobs.blobs.length) {
+    await blob.del(blobs.blobs.map((b) => b.pathname));
   }
 
   await db.delete(tables.videoChats).where(and(eq(tables.videoChats.id, id), eq(tables.videoChats.userId, user.id)));

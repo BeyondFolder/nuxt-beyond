@@ -1,8 +1,6 @@
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
 
-// Follow-up prompt in a video chat. It edits the latest finished video through Omni's
-// previous_interaction_id, or generates a new video when the chat has none yet.
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
   const { id } = getRouterParams(event);
@@ -35,13 +33,11 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'Video chat not found' });
   }
 
-  // Omni rejects a turn chained to an interaction that is still running
   if (chat.messages.some((m) => m.status === 'processing')) {
     throw createError({ statusCode: 409, statusMessage: 'A video is still generating. Wait for it to finish first.' });
   }
 
-  // Taken from this chat on the server, so a user can only build on their own videos
-  const previousVideoId =
+  let previousVideoId =
     chat.messages.filter((m) => m.role === 'assistant' && m.status === 'completed' && m.jobId).at(-1)?.jobId ?? null;
 
   const [userMessage] = await db
@@ -55,10 +51,31 @@ export default defineEventHandler(async (event) => {
     .returning();
 
   try {
-    const interaction = await startVideoInteraction(ai, {
-      prompt: body.prompt,
-      previousInteractionId: previousVideoId,
-    });
+    let interaction;
+
+    try {
+      interaction = await startVideoInteraction(ai, {
+        prompt: body.prompt,
+        previousInteractionId: previousVideoId,
+      });
+    } catch (error) {
+      const status = getGeminiErrorStatus(error);
+
+      if (!previousVideoId || (status !== 400 && status !== 404)) {
+        throw error;
+      }
+
+      console.warn('Previous video interaction is unavailable, starting a new video instead:', previousVideoId, error);
+      previousVideoId = null;
+      interaction = await startVideoInteraction(ai, { prompt: body.prompt });
+
+      if (userMessage) {
+        await db
+          .update(tables.videoChatMessages)
+          .set({ previousVideoId: null })
+          .where(eq(tables.videoChatMessages.id, userMessage.id));
+      }
+    }
 
     console.log('Video generation started. Interaction ID:', interaction.id, 'previous:', previousVideoId);
 

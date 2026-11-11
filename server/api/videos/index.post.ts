@@ -14,7 +14,6 @@ export default defineEventHandler(async (event) => {
     }).parse
   );
 
-  // Optional reference image, sent by the page as a data URL (data:image/png;base64,...)
   let image: { data: string; mimeType: string } | undefined;
 
   if (body.imageBase64) {
@@ -22,8 +21,8 @@ export default defineEventHandler(async (event) => {
     const mimeType = body.imageBase64.slice(0, commaIndex).match(/^data:(.+);base64$/)?.[1];
     const data = body.imageBase64.slice(commaIndex + 1);
 
-    if (commaIndex === -1 || !mimeType || !(VIDEO_GENERATION.REFERENCE_IMAGE_TYPES as readonly string[]).includes(mimeType)) {
-      throw createError({ statusCode: 400, statusMessage: 'The reference image must be a PNG, JPEG, WebP, HEIC or HEIF file' });
+    if (commaIndex === -1 || !mimeType || !VIDEO_GENERATION.REFERENCE_IMAGE_TYPES.includes(mimeType)) {
+      throw createError({ statusCode: 400, statusMessage: `The reference image must be a ${VIDEO_GENERATION.REFERENCE_IMAGE_LABEL} file` });
     }
 
     if ((data.length * 3) / 4 > VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE) {

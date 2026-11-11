@@ -77,7 +77,6 @@ async function pollVideoStatus() {
     }
   } catch (err: any) {
     console.error('Polling error:', err);
-    // 503: video generation isn't configured, so polling can't make progress
     if (err.statusCode === 503) {
       stopPolling();
     }
@@ -86,7 +85,6 @@ async function pollVideoStatus() {
   }
 }
 
-// Edits the latest video in this chat (the server picks it), or starts a new one if there is none yet
 async function generateVideo() {
   if (!input.value.trim()) {
     return;

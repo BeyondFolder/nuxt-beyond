@@ -1,7 +1,6 @@
 import { blob } from 'hub:blob';
 import { eq } from 'drizzle-orm';
 
-// A job still running after this long is marked failed, so a lost interaction can't leave the chat stuck
 const MAX_PROCESSING_MS = 30 * 60 * 1000;
 
 export default defineEventHandler(async (event) => {
@@ -42,14 +41,16 @@ export default defineEventHandler(async (event) => {
     try {
       const interaction = await ai.interactions.get(message.jobId!);
 
-      if (interaction.status === 'in_progress') {
+      if (isInteractionRunning(interaction.status)) {
         if (timedOut) {
+          await ai.interactions.cancel(message.jobId!).catch((error) => {
+            console.error('Failed to cancel Gemini interaction:', message.jobId, 'Error:', error);
+          });
           await markFailed(message.id, 'Video generation timed out');
         }
         continue;
       }
 
-      // The SDK puts the last video of the model output in `output_video`, inline as base64
       const video =
         interaction.status === 'completed' || interaction.status === 'incomplete' ? interaction.output_video : undefined;
 
@@ -89,7 +90,6 @@ export default defineEventHandler(async (event) => {
       } else if (timedOut) {
         await markFailed(message.id, 'Video generation timed out');
       } else {
-        // Network or provider hiccup: keep the job and retry on the next poll
         console.error('Video polling error for interaction:', message.jobId, 'Error:', error);
       }
     }

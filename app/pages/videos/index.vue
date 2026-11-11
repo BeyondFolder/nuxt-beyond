@@ -42,10 +42,10 @@ async function generateVideo() {
     if (imageFiles.value) {
       const file = imageFiles.value;
 
-      if (!(VIDEO_GENERATION.REFERENCE_IMAGE_TYPES as readonly string[]).includes(file.type)) {
+      if (!VIDEO_GENERATION.REFERENCE_IMAGE_TYPES.includes(file.type)) {
         toast.add({
           title: 'Invalid file type',
-          description: 'Please upload a PNG, JPEG, WebP, HEIC or HEIF image',
+          description: `Please upload a ${VIDEO_GENERATION.REFERENCE_IMAGE_LABEL} image`,
           color: 'error',
         });
         loading.value = false;
@@ -148,7 +148,7 @@ const quickPrompts = [
           :accept="VIDEO_GENERATION.REFERENCE_IMAGE_TYPES.join(',')"
           :disabled="loading"
           label="Click or drag and drop to upload reference image"
-          :description="`Optional: an image to guide the video (PNG, JPEG, WebP, HEIC or HEIF, up to ${formatBytesToMB(VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE)})`"
+          :description="`Optional: an image to guide the video (${VIDEO_GENERATION.REFERENCE_IMAGE_LABEL}, up to ${formatBytesToMB(VIDEO_GENERATION.MAX_REFERENCE_IMAGE_SIZE)})`"
           icon="i-lucide-image"
           color="primary"
           highlight

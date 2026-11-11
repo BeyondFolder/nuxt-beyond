@@ -276,8 +276,8 @@ The `getInformation` tool uses Cloudflare AI Search (AutoRAG) which requires R2 
 The `/videos` demo uses Google Gemini Omni Flash through the Interactions API, using the official `@google/genai` SDK (`server/utils/gemini.ts`). Import it from `@google/genai/web` (fetch only, runs on Workers) and keep `apiVersion: 'v1beta'`, since Omni isn't served on the SDK's default `v1`. Model and defaults (aspect ratio, resolution, duration) live in `VIDEO_GENERATION` in `shared/constants.ts`.
 
 - `POST /api/videos` and `POST /api/videos/[id]` start a background interaction (`background: true`) and store its id in `videoChatMessages.jobId` with status `processing`
-- `GET /api/videos/[id]/poll` checks the interaction and saves the finished MP4 to blob storage
-- Follow-up prompts edit the chat's latest finished video via `previous_interaction_id`
+- `GET /api/videos/[id]/poll` checks the interaction and saves the finished MP4 (`output_video`, inline base64) to blob storage. `in_progress` and `queued` count as running; after 30 minutes the interaction is cancelled and the message marked failed
+- Follow-up prompts edit the chat's latest finished video via `previous_interaction_id`. If Google no longer has that interaction (stored 55 days, or an old Sora job id), the server starts a new video instead
 - Without `GEMINI_API_KEY`, the generation endpoints return 503 and the page shows the error as a toast
 
 ### Prompt Injection Protection

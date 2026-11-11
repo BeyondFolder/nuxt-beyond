@@ -69,5 +69,6 @@ export const VIDEO_GENERATION = {
   RESOLUTION: '720p', // '360p', '720p', '1080p' or '4k'
   DURATION_SECONDS: 8, // whole seconds, 3 to 15
   MAX_REFERENCE_IMAGE_SIZE: 10 * 1024 * 1024, // 10MB, checked before base64 encoding
-  REFERENCE_IMAGE_TYPES: ['image/png', 'image/jpeg', 'image/webp', 'image/heic', 'image/heif'],
+  REFERENCE_IMAGE_TYPES: ['image/png', 'image/jpeg', 'image/webp'] as string[],
+  REFERENCE_IMAGE_LABEL: 'PNG, JPEG or WebP',
 } as const;
