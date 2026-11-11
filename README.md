@@ -91,7 +91,7 @@ Before deploying, replace the sample branding and placeholders:
 
 ## Billing (Stripe or Polar)
 
-Set `PAYMENT_PROVIDER=stripe` (default) or `PAYMENT_PROVIDER=polar`. Checkout and portal endpoints are provider-neutral (`server/utils/billing/provider.ts`); only the webhook differs. Plans map to provider products by `planName`, and only monthly prices are supported by default.
+Set `PAYMENT_PROVIDER=stripe` (default) or `PAYMENT_PROVIDER=polar`. Checkout and portal endpoints are provider-neutral (`server/utils/billing/provider.ts`); only the webhook differs. Plans map to provider products by `planName`, and only monthly prices are supported by default. The billing page promotes a 7-day trial on Pro. With Stripe the app sets it at checkout (`server/utils/billing/stripe.ts`); with Polar you set it on the product in the Polar dashboard.
 
 **Stripe**
 1. Create a monthly price for each paid plan with the lookup key `{planName}_monthly` (for example `pro_monthly`).
@@ -99,7 +99,7 @@ Set `PAYMENT_PROVIDER=stripe` (default) or `PAYMENT_PROVIDER=polar`. Checkout an
 3. Put its signing secret in `STRIPE_WEBHOOK_SECRET`. For local testing: `stripe listen --forward-to localhost:3000/api/webhooks/stripe`.
 
 **Polar**
-1. Create a product for each paid plan with the metadata field `planName` (for example `pro`).
+1. Create a product for each paid plan with the metadata field `planName` (for example `pro`), and give the Pro product a 7-day free trial.
 2. Create an Organization Access Token with `products:read`, `checkouts:write`, and `customer_sessions:write`, and set it as `POLAR_ACCESS_TOKEN`.
 3. Add a webhook endpoint at `https://<your-domain>/api/webhooks/polar` for `subscription.created`, `subscription.updated`, and `subscription.revoked`, and put its secret in `POLAR_WEBHOOK_SECRET`.
 

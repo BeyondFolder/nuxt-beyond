@@ -35,7 +35,7 @@ npm run preview      # Preview production build
 npm run lint         # Run ESLint with auto-fix
 npm run typecheck    # TypeScript type checking
 npm run db:generate  # Generate Drizzle migrations
-npx nuxthub deploy   # Deploy to Cloudflare
+npm run deploy       # Deploy to Cloudflare Workers (Wrangler)
 ```
 
 **Remote Development Mode:**

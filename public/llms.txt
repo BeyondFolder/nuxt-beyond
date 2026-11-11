@@ -50,7 +50,7 @@ npm run build        # Build for production
 npm run db:generate  # Generate database migrations
 npm run typecheck    # Type checking
 npm run lint         # Linting
-npx nuxthub deploy   # Deploy to Cloudflare
+npm run deploy       # Deploy to Cloudflare Workers (Wrangler)
 ```
 
 ## Use Cases
