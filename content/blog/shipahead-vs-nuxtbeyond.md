@@ -53,7 +53,7 @@ Pick ShipAhead if you want a classic Nuxt SaaS shell, Postgres, i18n, and model-
 | **Blog** | Nuxt Content | Nuxt Content |
 | **File storage** | S3-compatible (R2 logo also on the page) | Cloudflare R2 |
 | **Community** | 95+ makers, Discord | Small (launched January 2026, now open source) |
-| **Refunds** | None | None by default; case by case if you DM me on X |
+| **Refunds** | None | Not applicable (free) |
 
 ShipAhead source: [shipahe.ad](https://shipahe.ad/) (checked 2026-09-26). Nuxt Beyond: [nuxtbeyond.com](https://nuxtbeyond.com/) (checked 2026-09-26).
 

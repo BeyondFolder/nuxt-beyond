@@ -22,7 +22,7 @@ Miss one, and a customer sees another customer's data. That's the whole risk in 
 
 This guide covers how to build a multi-tenant SaaS in Nuxt 4 and deploy it to Cloudflare Workers. Tenant modeling with D1 and Drizzle, scoping queries so you can't leak data by accident, per-tenant limits tied to billing, and the deploy details that only show up after your first production push.
 
-The code here is close to what runs in [NuxtBeyond](/#pricing), so it's been through the "why is this 500ing only in production" phase.
+The code here is close to what runs in [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond), so it's been through the "why is this 500ing only in production" phase.
 
 ## Pick your tenancy model first
 

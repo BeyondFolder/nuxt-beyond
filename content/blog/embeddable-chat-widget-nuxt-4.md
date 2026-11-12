@@ -20,7 +20,7 @@ Every chatbot SaaS ends up in the same place: your customer wants a bubble in th
 
 That script tag is deceptively hard. It runs on a page you don't control, next to CSS you've never seen, inside a Content Security Policy someone wrote in 2019. Your session cookies are third-party cookies there, so Safari drops them. Your bubble fights whatever `z-index: 99999` element the site owner already has. And anyone who reads the page source can copy the snippet onto their own domain and burn your API credits.
 
-This guide walks through building that widget properly in Nuxt 4 on Cloudflare. The code is close to what actually ships in [NuxtBeyond](/#pricing), so it's been through the "why doesn't this work on Safari" phase already.
+This guide walks through building that widget properly in Nuxt 4 on Cloudflare. The code is close to what actually ships in [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond), so it's been through the "why doesn't this work on Safari" phase already.
 
 ## What we're building
 

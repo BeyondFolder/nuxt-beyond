@@ -120,8 +120,8 @@ const columns = [
     <template #left>
       <div class="flex flex-col gap-1">
         <p class="text-sm text-muted">
-          Copyright © {{ new Date().getFullYear() }} Rareș Serban. NuxtBeyond is open source under the
-          <ULink :to="GITHUB_REPO_URL" target="_blank" rel="noopener" class="text-primary">MIT License</ULink>.
+          Copyright © {{ new Date().getFullYear() }} BeyondFolder. NuxtBeyond is open source under the
+          <ULink :to="`${GITHUB_REPO_URL}/blob/main/LICENSE`" target="_blank" rel="noopener" class="text-primary">MIT License</ULink>.
         </p>
         <p class="text-sm text-muted">
           Also by Rareș:

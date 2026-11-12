@@ -2,7 +2,7 @@ seo:
   title: Privacy Policy | NuxtBeyond
   description: How the nuxtbeyond.com website and live demo handle your data. NuxtBeyond is a free, open-source Nuxt 4 boilerplate under the MIT License.
 title: Privacy Policy
-lastUpdated: November 10, 2026
+lastUpdated: November 12, 2026
 sections:
   - title: Introduction
     content: |
@@ -23,9 +23,7 @@ sections:
           When you use the demo, we store what you create in it, such as:
 
           - **Chats** - Messages you send to the AI assistant and the replies
-          - **Knowledge base** - Documents and text you upload to the demo project
-          - **Generated media** - Images and videos you generate
-          - **Project settings** - Changes you make to the demo project
+          - **Generated media** - Images and videos you generate, and any reference image you upload for a video
           - **Support requests** - If you ask the chat widget to contact human support, the email address, optional name, and question you provide
 
           The demo accounts are shared, so other visitors may see this content. Please do not enter personal, confidential, or sensitive information. If you are only testing the support flow, use a placeholder email address.
@@ -63,7 +61,8 @@ sections:
       We do not sell, trade, or rent your personal information. We share data only with the service providers that run the website and demo:
 
       - **Cloudflare** - Hosting (Workers), database (D1), file storage (R2), rate limiting storage (KV), CAPTCHA (Turnstile), and AI services (AI Gateway, AI Search, and Workers AI, which runs the dashboard chat and the free SaaS Ideas Generator)
-      - **OpenAI** - Generates chat widget replies, images, and videos in the demo. Your prompts, and knowledge base content relevant to them, are sent to OpenAI through Cloudflare AI Gateway
+      - **OpenAI** - Generates chat widget replies and images in the demo. Your prompts, and knowledge base content relevant to them, are sent to OpenAI through Cloudflare AI Gateway
+      - **Google** - Generates videos in the demo with Gemini. Your video prompts and any reference image are sent to Google's Gemini API, which keeps each generation for up to 55 days so a follow-up prompt can edit it. Deleting a video chat also deletes them at Google
       - **Datafa.st** - Website analytics
 
       The website footer also shows badge images loaded from directory sites that list NuxtBeyond. As with any image on the web, those sites receive your IP address and browser details when the image loads.

@@ -44,7 +44,7 @@ NuxifySaaS did not resolve last time I checked it. Nuxt Starter AI's own site wa
 
 | Feature | Nuxt Beyond | Supastarter | SuperSaas | ShipAhead | NuxtBase | Nuxflare Pro |
 |---------|-------------|-------------|-----------|-----------|----------|--------------|
-| **Price (one-time)** | Free (MIT License) | $349 / $799 / $1,499 | $149 ($199 all-access) | $99 promo / $199 list | $299 / $599 | $99 early bird / $149 |
+| **Price** | Free (MIT License) | $349 / $799 / $1,499 | $149 ($199 all-access) | $99 promo / $199 list | $299 / $599 | $99 early bird / $149 |
 | **Framework** | Nuxt 4 | Nuxt 4, Next.js, TanStack Start | Nuxt 4 | Nuxt 4 | Nuxt 4 | Nuxt |
 | **AI chat** | Vercel AI SDK v6, streaming | AI workflows / chatbot examples | Demo app | OpenRouter chat, text, image | Streaming chat + org credits | RAG chatbot demo, image gen demo |
 | **RAG / document search** | Cloudflare AI Search (formerly AutoRAG), per-project knowledge | Not listed as product RAG | Not listed | Not listed | Not listed | Listed as an AI demo on Vectorize |

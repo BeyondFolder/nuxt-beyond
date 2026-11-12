@@ -49,7 +49,7 @@ useHead({
           'name': faq.label,
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': faq.content,
+            'text': faq.content.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'),
           },
         })),
       }),

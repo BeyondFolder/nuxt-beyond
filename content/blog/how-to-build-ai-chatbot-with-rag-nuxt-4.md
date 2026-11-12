@@ -20,7 +20,7 @@ Most "AI chatbot" tutorials stop at wiring `streamText` to an OpenAI key. That g
 
 RAG (retrieval augmented generation) fixes that. You store your docs somewhere searchable, retrieve the relevant chunks at question time, and hand them to the model as context. The model answers from your content instead of its training data.
 
-This guide walks through building that in Nuxt 4 on Cloudflare, using AI Search (the feature formerly called AutoRAG) so you don't have to run your own embedding pipeline or vector database. Every code snippet here is close to what actually runs in [NuxtBeyond](/#pricing), so it's tested in production rather than sketched out for a blog post.
+This guide walks through building that in Nuxt 4 on Cloudflare, using AI Search (the feature formerly called AutoRAG) so you don't have to run your own embedding pipeline or vector database. Every code snippet here is close to what actually runs in [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond), so it's tested in production rather than sketched out for a blog post.
 
 ## What we're building
 

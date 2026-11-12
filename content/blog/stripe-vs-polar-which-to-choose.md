@@ -17,7 +17,7 @@ badge:
   label: Comparison
 ---
 
-I've shipped products on Stripe for years, and recently added Polar to [NuxtBeyond](/#pricing) as a second payment option. After wiring up both, the choice is less about "which is better" and more about "how much of the tax and compliance headache do you want to own."
+I've shipped products on Stripe for years, and recently added Polar to [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond) as a second payment option. After wiring up both, the choice is less about "which is better" and more about "how much of the tax and compliance headache do you want to own."
 
 The first version of this post, from June 2026, missed something: Stripe Managed Payments, Stripe's own merchant of record option, went GA in April. That turns this into a three-way choice. Fees and limits below were checked on each provider's own pages on 2026-10-17.
 

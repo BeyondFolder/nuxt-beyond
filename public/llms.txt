@@ -27,7 +27,7 @@ It ships as a working multi-tenant SaaS (an AI support chatbot with a knowledge 
 - **AI**: Vercel AI SDK v6, OpenAI via Cloudflare AI Gateway, Cloudflare AI Search, Workers AI
 - **Database**: Cloudflare D1 (SQLite) with Drizzle ORM
 - **Storage**: Cloudflare R2 via NuxtHub
-- **Deployment**: Cloudflare Workers via NuxtHub
+- **Deployment**: Cloudflare Workers, with `npm run deploy` (Wrangler) or Cloudflare Workers Builds
 
 ## Project Structure
 

@@ -20,7 +20,7 @@ Adding Stripe to a Nuxt app looks like a two hour job. Install the module, creat
 
 Then you discover the actual work: your database has to stay in sync with Stripe's idea of the subscription, forever, through upgrades, downgrades, failed payments, cancellations that take effect next month, and reactivations. That sync is the whole feature, and checkout is maybe 10% of it.
 
-This guide covers the full path in Nuxt 4: checkout sessions, webhook signature verification (including the part that breaks on Cloudflare Workers), the customer portal, and enforcing plan limits server-side. The code is close to what ships in [NuxtBeyond](/#pricing), so it's been through production rather than just the docs.
+This guide covers the full path in Nuxt 4: checkout sessions, webhook signature verification (including the part that breaks on Cloudflare Workers), the customer portal, and enforcing plan limits server-side. The code is close to what ships in [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond), so it's been through production rather than just the docs.
 
 ## What you're actually building
 

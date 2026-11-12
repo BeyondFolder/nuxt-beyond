@@ -162,7 +162,7 @@ fullStackFeatures:
       description: Nuxt Content integration with markdown support, SEO optimization, and landing page YAML configuration.
       icon: i-lucide-file-text
     - title: Cloudflare Edge Stack
-      description: D1 database, R2 storage, KV caching, Workers runtime, all pre-configured. One-command deploy via NuxtHub, with support for Vercel, Netlify, and other providers.
+      description: D1 database, R2 storage, KV caching, Workers runtime, all pre-configured. Deploy with `npm run deploy` (Wrangler) or from Git with Cloudflare Workers Builds.
       icon: i-simple-icons-cloudflare
 aiAgents:
   title: Built for [AI Coding Agents]{.text-primary}
@@ -304,10 +304,10 @@ faqs:
       content: 'Yes. NuxtBeyond is released under the MIT License, so you can use it for personal and commercial projects, including client work and products you sell. Keep the copyright and license notice in your copy of the code.'
       icon: i-lucide-briefcase
     - label: How does deployment work?
-      content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack: database (D1), file storage (R2), KV store, and Workers. Edge-native performance worldwide.'
+      content: 'It deploys to Cloudflare Workers. Run `npm run deploy` (Wrangler) from your machine, or connect the repo to Cloudflare Workers Builds to deploy on every push. The database (D1), file storage (R2), and KV store are Cloudflare bindings set in `wrangler.jsonc`.'
       icon: i-lucide-rocket
     - label: Is NuxtBeyond really free?
-      content: 'Yes. The full source code is free on [GitHub](https://github.com/BeyondFolder/nuxt-beyond) under the MIT License. Running your app can still cost money: the services you connect, like Cloudflare, OpenAI, Stripe or Polar, and Resend, bill you under their own pricing.'
+      content: 'Yes. The full source code is free on [GitHub](https://github.com/BeyondFolder/nuxt-beyond) under the MIT License. Running your app can still cost money: the services you connect, like Cloudflare, OpenAI, Google Gemini (for video), Stripe or Polar, and Resend, bill you under their own pricing.'
       icon: i-lucide-scale
     - label: How do I receive updates?
       content: 'Updates are pushed to the public [GitHub repository](https://github.com/BeyondFolder/nuxt-beyond). Star or watch the repo to follow changes, then pull the ones you want into your copy.'

@@ -2,7 +2,7 @@ seo:
   title: Terms of Service | NuxtBeyond
   description: Terms for using the nuxtbeyond.com website and live demo. The NuxtBeyond source code is free and open source under the MIT License.
 title: Terms of Service
-lastUpdated: November 10, 2026
+lastUpdated: November 12, 2026
 sections:
   - title: Agreement to Terms
     content: |
@@ -36,7 +36,7 @@ sections:
     content: |
       The live demo lets you try NuxtBeyond before you clone it. When you use it:
 
-      - **Shared accounts** - The demo uses shared login details that anyone can use. Other visitors may see the chats, documents, images, videos, and support requests you create.
+      - **Shared accounts** - The demo uses shared login details that anyone can use. Other visitors may see the chats, images, videos, and support requests you create.
       - **No personal or confidential data** - Do not upload or type anything personal, confidential, or sensitive into the demo.
       - **Usage limits** - Chats, chat widget conversations, image generation, and video generation have daily limits to keep costs under control.
       - **No guarantees** - The demo may be reset, changed, limited, or taken offline at any time, and demo data may be deleted without notice.
