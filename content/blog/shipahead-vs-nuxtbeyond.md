@@ -40,7 +40,7 @@ Pick ShipAhead if you want a classic Nuxt SaaS shell, Postgres, i18n, and model-
 | **Framework** | Nuxt 4 (Vue 3) | Nuxt 4 (Vue 3) |
 | **AI chat** | Yes (OpenRouter, switch GPT model) | Vercel AI SDK v6, streaming, tool calling |
 | **RAG / semantic search** | Not listed | Cloudflare AI Search (formerly AutoRAG) |
-| **Image generation** | Yes (OpenRouter) | OpenAI gpt-image-1.5, which OpenAI retires on 2026-12-01; do not buy it for that |
+| **Image generation** | Yes (OpenRouter) | Yes (OpenAI gpt-image-2.6-flare) |
 | **Embeddable widget** | Not listed | One-line script, domain validation |
 | **Prompt injection protection** | Not listed | Yes |
 | **Auth** | Email/password, magic links, Google, admin area | Google OAuth + email/password |
@@ -139,7 +139,7 @@ ShipAhead's public page does not list RAG, embeddings, or document search. If th
 
 Nuxflare Pro does list a RAG chatbot demo on Cloudflare Vectorize. So "Nuxt Beyond is the only Nuxt kit with RAG" is false. What I will say is: RAG is the product in this repo, not a demo app next to notes and a URL shortener. Full walkthrough: [How to build an AI chatbot with RAG in Nuxt 4](/blog/how-to-build-ai-chatbot-with-rag-nuxt-4).
 
-Image generation: ShipAhead has it via OpenRouter. Nuxt Beyond's image route runs on OpenAI's gpt-image-1.5, which OpenAI retires on December 1, 2026, so do not buy Nuxt Beyond for images yet. If image gen is the product, ShipAhead is the one with a path that keeps working. Video is different: in November 2026 I moved it from Sora, which OpenAI retired, to Google Gemini Omni Flash, and it works again.
+Image generation: ShipAhead has it via OpenRouter. Nuxt Beyond has it too, on OpenAI's gpt-image-2.6-flare since November 2026. That's also when I moved video from Sora, which OpenAI retired, to Google Gemini Omni Flash.
 
 ## Database and hosting
 
@@ -223,7 +223,7 @@ Pick Nuxt Beyond if:
 - The budget is tight and you still need auth, Stripe or Polar, and project workspaces
 - You already write Vue/Nuxt and you do not need i18n on day one
 
-Do not pick Nuxt Beyond if you need magic links, 2FA, passkeys, i18n, a PWA, a cron UI, or a busy Discord. Those gaps are real. Also do not pick it for image generation yet. Its OpenAI model retires on December 1, 2026, and I still have to swap it.
+Do not pick Nuxt Beyond if you need magic links, 2FA, passkeys, i18n, a PWA, a cron UI, or a busy Discord. Those gaps are real.
 
 If the team only hires React, neither of these is the conversation. That one is [ShipFast vs Nuxt Beyond](/blog/shipfast-vs-nuxtbeyond).
 

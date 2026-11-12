@@ -29,7 +29,7 @@ Prices below were checked on 2026-10-03 on [shipfa.st](https://shipfa.st/) and [
 
 **ShipFast** is a Next.js SaaS kit with auth, Stripe, a blog, emails, and a giant community. It is $199 Starter / $249 All-in one-time ($299 with CodeFast). It does not ship AI. It does not ship multi-tenancy. The default database is MongoDB.
 
-**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is :launch-price one-time. The community is small. Auth is basic. Video generation runs on Google Gemini Omni Flash. Do not buy it for images yet, since its OpenAI image model retires on December 1, 2026.
+**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is :launch-price one-time. The community is small. Auth is basic. Image and video generation run on OpenAI's gpt-image-2.6-flare and Google Gemini Omni Flash.
 
 Pick ShipFast if you are a React developer who wants the most popular kit and you are not building an AI product. Pick Nuxt Beyond if you want Vue/Nuxt, RAG, or a chatbot you can embed on customer sites.
 
@@ -41,7 +41,7 @@ Pick ShipFast if you are a React developer who wants the most popular kit and yo
 | **AI chat** | No | Vercel AI SDK v6, streaming, tool calling |
 | **RAG / semantic search** | No | Cloudflare AI Search (formerly AutoRAG) |
 | **Embeddable widget** | No | One-line script, domain validation |
-| **Image / video gen** | No | Video with Google Gemini Omni Flash; images on OpenAI gpt-image-1.5, which retires on 2026-12-01 |
+| **Image / video gen** | No | Images with OpenAI gpt-image-2.6-flare, video with Google Gemini Omni Flash |
 | **Prompt injection protection** | No | Yes |
 | **Auth** | NextAuth (Google, magic links) | Google OAuth + email/password |
 | **Payments** | Stripe, Lemon Squeezy | Stripe + Polar |
@@ -163,7 +163,7 @@ The generation side is Vercel AI SDK v6 `streamText` with a `getInformation` too
 
 With ShipFast you start from a working SaaS shell and *then* design ingestion, chunking, embeddings, retrieval filters, streaming, and evals. That is the right call if AI is a "maybe later" checkbox. It is the wrong call if the product *is* the chatbot.
 
-Image and video generation used to be a split. Nuxt Beyond's video route moved from Sora, which OpenAI retired, to Google Gemini Omni Flash in November 2026, so it works again. Its image route runs on gpt-image-1.5, which OpenAI retires on December 1, 2026. ShipFast does not ship image gen either. If your product is "type a prompt, get an image," neither kit is the reason to buy right now.
+Image and video generation used to be a split. Since November 2026 Nuxt Beyond runs images on OpenAI's gpt-image-2.6-flare and video on Google Gemini Omni Flash (it used Sora before, which OpenAI retired). ShipFast does not ship image gen. If your product is "type a prompt, get an image," Nuxt Beyond is the one with it built in.
 
 ## Database and hosting, without the tribal war
 

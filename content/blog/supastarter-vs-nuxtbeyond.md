@@ -39,7 +39,7 @@ If you're building a traditional SaaS (CRM, project management, analytics dashbo
 | **AI Chat** | Vercel AI SDK (GPT-4o-mini, Claude, streaming) | Vercel AI SDK v6 (streaming, tool calling) |
 | **RAG / Semantic Search** | No | Cloudflare AutoRAG |
 | **Embeddable Widget** | No | Yes (one-line script) |
-| **Image Generation** | DALL-E 3 | OpenAI gpt-image-1.5 |
+| **Image Generation** | DALL-E 3 | OpenAI gpt-image-2.6-flare |
 | **Video Generation** | No | Google Gemini Omni Flash |
 | **Multi-Tenancy** | Yes (organizations, teams) | Yes (project-based) |
 | **i18n** | Yes (EN, DE, ES, FR) | No |
@@ -103,7 +103,7 @@ No other Nuxt boilerplate has this.
 
 ### Video Generation
 
-NuxtBeyond generates video with Google Gemini Omni Flash (text or image to video, plus follow-up edits), alongside OpenAI's gpt-image-1.5 for images. Supastarter has DALL-E 3 but no video generation.
+NuxtBeyond generates video with Google Gemini Omni Flash (text or image to video, plus follow-up edits), alongside OpenAI's gpt-image-2.6-flare for images. Supastarter has DALL-E 3 but no video generation.
 
 ### Cloudflare Edge Deployment
 
