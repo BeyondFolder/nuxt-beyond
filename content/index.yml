@@ -34,12 +34,12 @@ aiShowcase:
       color: text-info
     - id: images
       title: Image Generation
-      description: Generate images from text prompts with OpenAI DALL-E 3
+      description: Generate images from text prompts with OpenAI GPT Image
       icon: i-lucide-image
       color: text-warning
     - id: video
       title: Video Generation
-      description: Create videos from text and images with OpenAI Sora
+      description: Create videos from text and images, then edit them with follow-up prompts, using Google Gemini Omni Flash
       icon: i-lucide-film
       color: text-error
     - id: rag
@@ -95,7 +95,7 @@ aiFeatures:
         - Custom system prompts per project
         - Chat history persistence
     - title: Image Generation
-      description: Text-to-image with DALL-E 3 integration
+      description: Text-to-image with OpenAI GPT Image
       icon: i-lucide-image-plus
       color: warning
       features:
@@ -104,7 +104,7 @@ aiFeatures:
         - Integrated into chat interface
         - R2 storage for generated images
     - title: Video Generation
-      description: Text-to-video with OpenAI Sora
+      description: Text-to-video and video edits with Google Gemini Omni Flash
       icon: i-lucide-film
       color: error
       features:
@@ -256,6 +256,7 @@ pricing:
     features:
       - Full source code on GitHub
       - AI Chat with RAG (Cloudflare AI Search)
+      - Image & Video Generation (OpenAI GPT Image, Gemini Omni Flash)
       - Authentication (Google OAuth + Credentials)
       - Billing & Subscriptions (Stripe or Polar)
       - Embeddable Chat Widget
@@ -291,10 +292,10 @@ faqs:
   description: Everything you need to know about NuxtBeyond.
   items:
     - label: What's included in the boilerplate?
-      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, image generation (DALL-E 3), video generation (Sora), authentication (Google OAuth + credentials), subscriptions with Stripe or Polar, embeddable widget, multi-tenancy, Nuxt UI v4, dark mode, and zero-config Cloudflare deployment.'
+      content: 'Full-stack Nuxt 4 app with: AI chat using Vercel AI SDK v6 and Cloudflare AutoRAG, image generation (OpenAI GPT Image), video generation (Google Gemini Omni Flash), authentication (Google OAuth + credentials), subscriptions with Stripe or Polar, embeddable widget, multi-tenancy, Nuxt UI v4, dark mode, and zero-config Cloudflare deployment.'
       icon: i-lucide-package
     - label: What AI features are included?
-      content: 'RAG (Retrieval-Augmented Generation) with Cloudflare AI Search for semantic document search, streaming AI responses via Vercel AI SDK v6, tool calling, image generation with DALL-E 3, video generation with OpenAI Sora, custom system prompts, and prompt injection protection.'
+      content: 'RAG (Retrieval-Augmented Generation) with Cloudflare AI Search for semantic document search, streaming AI responses via Vercel AI SDK v6, tool calling, image generation with OpenAI GPT Image, video generation with Google Gemini Omni Flash, custom system prompts, and prompt injection protection.'
       icon: i-lucide-sparkles
     - label: What tech stack does it use?
       content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK v6, OpenAI (via Cloudflare AI Gateway), Stripe or Polar, Resend, and nuxt-auth-utils.'

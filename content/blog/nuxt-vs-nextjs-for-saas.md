@@ -12,7 +12,7 @@ authors:
     avatar:
       src: /images/rares-serban.jpg
 date: 2026-10-05
-updatedAt: 2026-10-11
+updatedAt: 2026-11-11
 badge:
   label: Comparison
 ---
@@ -140,7 +140,7 @@ This is where my bias kicks in. Nuxt Beyond does it on Cloudflare: AI Search (fo
 
 To be fair about it, I'm not the only Nuxt kit with RAG. Nuxflare Pro lists a RAG chatbot demo on Cloudflare Vectorize. On the Next.js side I haven't audited every kit, so I won't claim none of them ship retrieval. ShipFast didn't when I checked.
 
-And one thing not to pick Nuxt Beyond for: image and video generation. Those routes sat on DALL-E and Sora, and OpenAI retired both APIs. They're gone, and I'm not going to pretend otherwise.
+Image and video generation are back on current models. In November 2026 I moved video from Sora, which OpenAI retired, to Google Gemini Omni Flash, and images to OpenAI's gpt-image-2.6-flare. Those APIs change fast, so expect more swaps like that.
 
 ## Boilerplate economics (dated prices)
 

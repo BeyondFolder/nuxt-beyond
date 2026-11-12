@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GITHUB_REPO_URL, type PlanName, planNames, planTitles, PLANS_CONSTANTS } from '#shared/constants';
+import { type PlanName, planNames } from '#shared/constants';
 
 definePageMeta({
   layout: 'dashboard',
@@ -10,8 +10,12 @@ defineRouteRules({
   prerender: false,
 });
 
+const { data: page } = await useAsyncData('index', () => queryCollection('index').first());
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Pricing data not found', fatal: true });
+}
+
 const router = useRouter();
-const toast = useToast();
 const { data: dashboardData } = await useFetch('/api/dashboard', { key: 'api/dashboard' });
 
 const isAdmin = computed(() => dashboardData.value?.currentProjectRole === 'admin');
@@ -20,33 +24,29 @@ if (!isAdmin.value) {
   navigateTo('/dashboard');
 }
 
+const paymentProvider = useRuntimeConfig().public.paymentProvider;
+
 const projectId = computed(() => dashboardData.value?.currentProject?.id);
 const currentPlan = computed<PlanName>(() => dashboardData.value?.currentProject?.planName || 'free');
 const subscriptionStatus = computed(() => dashboardData.value?.currentProject?.subscriptionStatus || 'inactive');
+const billingSubscriptionId = computed(() =>
+  paymentProvider === 'polar'
+    ? dashboardData.value?.currentProject?.polarSubscriptionId
+    : dashboardData.value?.currentProject?.stripeSubscriptionId
+);
 
 if (!projectId.value) {
   throw createError({ statusCode: 404, statusMessage: 'No project found', fatal: true });
 }
 
-const bytesToMegabytes = (bytes: number) => bytes / (1024 * 1024);
-
-const plans = planNames.map((planName) => {
-  const limits = PLANS_CONSTANTS[planName];
-
-  return {
-    planName,
-    title: planTitles[planName],
-    features: [
-      `${limits.MAX_NB_OF_FILES} documents`,
-      `${bytesToMegabytes(limits.MAX_FILE_SIZE)}MB max file size`,
-      `${limits.MAX_NB_OF_AI_REPLIES.toLocaleString('en-US')} AI replies/month`,
-      ...(limits.SUPPORT_ESCALATION ? ['Human support escalation'] : []),
-      ...(limits.SELF_LEARNING ? ['Self learning*'] : []),
-    ],
-  };
-});
+const isLoading = ref(false);
+const selectedPlanIndex = ref<number | null>(null);
 
 const getButtonLabel = (planName: PlanName) => {
+  if (planName === 'boilerplate' || planName === 'bundle') {
+    return 'Purchase Now';
+  }
+
   if (planName === 'free' && currentPlan.value === 'free') {
     return 'Continue as Free';
   }
@@ -66,37 +66,54 @@ const getButtonLabel = (planName: PlanName) => {
 };
 
 const getPlanHighlight = (planName: PlanName) => {
+  if (planName === 'boilerplate') {
+    return true;
+  }
+
   return planName !== 'free' && planName === currentPlan.value;
 };
 
-const getPlanBadge = (planName: PlanName) => {
-  if (planName === currentPlan.value) {
+const getPlanBadge = (plan: any) => {
+  if (plan.planName === currentPlan.value) {
     return 'Current Plan';
+  }
+
+  if (plan.badge && (currentPlan.value === 'free' || !currentPlan.value)) {
+    return plan.badge;
   }
 
   return undefined;
 };
 
-const handlePlanClick = (planName: PlanName) => {
+const mockPaymentLinks: Record<string, string> = {
+  free: '/dashboard',
+  pro: 'https://buy.stripe.com/test_pro',
+  advanced: 'https://buy.stripe.com/test_advanced',
+  boilerplate: 'https://buy.stripe.com/test_28EbJ2800dNnfMK6ab9ws00?prefilled_promo_code=BOILERPLATE1',
+  bundle: 'https://buy.stripe.com/test_00w7sM0xydNnfMKdCD9ws01?prefilled_promo_code=BUNDLE1',
+};
+
+const handleSubscribe = async (planName: PlanName, planIndex: number) => {
+  if (!projectId.value) {
+    return;
+  }
+
   if (planName === 'free' && currentPlan.value === 'free') {
     router.push('/dashboard');
     return;
   }
 
-  toast.add({
-    title: 'Checkout is turned off in the demo',
-    description: 'Clone NuxtBeyond from GitHub and connect Stripe or Polar to turn on real checkout.',
-    icon: 'i-lucide-info',
-    color: 'info',
-    actions: [
-      {
-        label: 'View on GitHub',
-        icon: 'i-simple-icons-github',
-        to: GITHUB_REPO_URL,
-        target: '_blank',
-      },
-    ],
-  });
+  isLoading.value = true;
+  selectedPlanIndex.value = planIndex;
+
+  const paymentLink = mockPaymentLinks[planName];
+  if (paymentLink) {
+    window.location.href = paymentLink;
+    return;
+  }
+
+  isLoading.value = false;
+  selectedPlanIndex.value = null;
 };
 
 useSeoMeta({
@@ -117,14 +134,16 @@ useSeoMeta({
 
     <template #body>
       <UPageSection
-        title="Plans and billing"
-        description="Checkout is turned off in this demo. In your own copy of NuxtBeyond, these plans connect to Stripe or Polar."
         :ui="{
           container: 'max-w-7xl mx-auto',
           title: 'text-center',
           description: 'text-center',
         }"
       >
+        <template #title>
+          <MDC :value="page?.pricing.title ?? ''" />
+        </template>
+
         <UAlert
           v-if="subscriptionStatus === 'canceling'"
           class="w-auto mx-auto  -mt-8"
@@ -137,23 +156,29 @@ useSeoMeta({
 
         <UPricingPlans scale compact>
           <UPricingPlan
-            v-for="plan in plans"
-            :key="plan.planName"
+            v-for="(plan, index) in page?.pricing.plans"
+            :key="index"
             :title="plan.title"
+            :description="plan.description"
+            :price="plan.price"
+            :discount="!billingSubscriptionId ? plan.discount : undefined"
+            :billing-period="plan.billing_period"
+            :billing-cycle="plan.billing_cycle"
             :highlight="getPlanHighlight(plan.planName)"
             :scale="getPlanHighlight(plan.planName)"
             variant="subtle"
             :features="plan.features"
-            :badge="getPlanBadge(plan.planName)"
+            :badge="getPlanBadge(plan)"
           >
             <template #footer>
               <UButton
-                :label="getButtonLabel(plan.planName)"
+                :label="isLoading && selectedPlanIndex === index ? 'Processing...' : getButtonLabel(plan.planName)"
                 :color="getPlanHighlight(plan.planName) ? 'primary' : 'neutral'"
                 :variant="getPlanHighlight(plan.planName) ? 'solid' : 'subtle'"
+                :loading="isLoading && selectedPlanIndex === index"
                 block
                 class="cursor-pointer"
-                @click="handlePlanClick(plan.planName)"
+                @click="handleSubscribe(plan.planName, index)"
               />
             </template>
           </UPricingPlan>
@@ -164,7 +189,7 @@ useSeoMeta({
           color="neutral"
           variant="soft"
           title="*Self Learning"
-          description="Your team can add answered support questions to the knowledge base, so the AI can use those answers in future replies."
+          description="Admins can add answered support questions to the knowledge base, so the AI can use those answers in future replies."
         />
       </UPageSection>
     </template>

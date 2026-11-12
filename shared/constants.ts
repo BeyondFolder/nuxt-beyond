@@ -68,3 +68,22 @@ export const MAX_LOGO_SIZE = 0.5 * 1024 * 1024; // 0.5MB in bytes
 export const THEME_PRIMARY_COLOR = '#0d9488';
 
 export const GITHUB_REPO_URL = 'https://github.com/BeyondFolder/nuxt-beyond';
+
+// Image generation and edits with OpenAI GPT Image. gpt-image-1.5 shuts down on 2026-12-01 and gpt-image-2 on
+// 2027-02-10; Flare is the 2.6 model for interactive editing: https://developers.openai.com/api/docs/deprecations
+export const IMAGE_GENERATION = {
+  MODEL: 'gpt-image-2.6-flare', // or 'gpt-image-2.6-sunburst' for detailed compositions, same price
+} as const;
+
+// Video generation with Google Gemini Omni Flash (Interactions API): https://aistudio.google.com/docs/omni
+// Paid tier only. At 720p it costs about $0.07 per second of video, so about $0.56 for an 8s clip;
+// 1080p and 4k are upscaled and cost more: https://aistudio.google.com/docs/pricing#gemini-omni-1.2-flash
+export const VIDEO_GENERATION = {
+  MODEL: 'gemini-omni-1.2-flash',
+  ASPECT_RATIO: '16:9', // '16:9' or '9:16'
+  RESOLUTION: '720p', // '360p', '720p', '1080p' or '4k'
+  DURATION_SECONDS: 8, // whole seconds, 3 to 15
+  MAX_REFERENCE_IMAGE_SIZE: 10 * 1024 * 1024, // 10MB, checked before base64 encoding
+  REFERENCE_IMAGE_TYPES: ['image/png', 'image/jpeg', 'image/webp'] as string[],
+  REFERENCE_IMAGE_LABEL: 'PNG, JPEG or WebP',
+} as const;

@@ -1,6 +1,6 @@
 # NuxtBeyond - AI-First Nuxt 4 Boilerplate
 
-> Free, open-source (MIT) Nuxt 4 boilerplate for AI-powered SaaS: AI chat with RAG, embeddable chat widget, AI image generation, authentication, Stripe or Polar billing, and Cloudflare deployment. nuxtbeyond.com is the project's website and hosted demo. The code is on GitHub.
+> Free, open-source (MIT) Nuxt 4 boilerplate for AI-powered SaaS: AI chat with RAG, embeddable chat widget, AI image and video generation, authentication, Stripe or Polar billing, and Cloudflare deployment. nuxtbeyond.com is the project's website and hosted demo. The code is on GitHub.
 
 ## Overview
 
@@ -13,7 +13,8 @@ It ships as a working multi-tenant SaaS (an AI support chatbot with a knowledge 
 - **AI Chat with RAG**: Streaming responses with Vercel AI SDK v6, OpenAI models via Cloudflare AI Gateway, knowledge base search with Cloudflare AI Search (AutoRAG)
 - **Embeddable Widget**: One-line script that adds a chat bubble to allowed domains
 - **Human Support Escalation**: The AI can hand a conversation to your team; answered questions can be added back to the knowledge base (self learning)
-- **AI Image Generation**: Generate and edit images with OpenAI gpt-image-1.5
+- **AI Image Generation**: Generate and edit images with OpenAI GPT Image (`gpt-image-2.6-flare`)
+- **AI Video Generation (optional)**: Text or image to video, plus follow-up edits, with Google Gemini Omni Flash; needs a paid-tier `GEMINI_API_KEY`
 - **Authentication**: Google OAuth and email/password with nuxt-auth-utils, email verification, password reset
 - **Billing**: Stripe or Polar subscriptions (selected with `PAYMENT_PROVIDER`), checkout, customer portal, webhooks, plan-based feature limits
 - **Multi-tenant Projects**: Role-based access (admin/member) and email invitations
@@ -45,7 +46,7 @@ The repo includes three sample plans (Free, Pro, Advanced) to demonstrate plan-b
 
 ## Hosted Demo
 
-Try the app at https://nuxtbeyond.com/login with the demo admin or member account shown on the login page. The demo runs the real dashboard, AI chat, image generation, and support chatbot, with shared daily limits on AI usage. Sign-up, Google sign-in, checkout, uploads, and project or team changes are turned off.
+Try the app at https://nuxtbeyond.com/login with the demo admin or member account shown on the login page. The demo runs the real dashboard, AI chat, image and video generation, and support chatbot, with shared daily limits on AI usage. Sign-up, Google sign-in, checkout, uploads, and project or team changes are turned off.
 
 ## Pages
 
@@ -96,7 +97,7 @@ npm run deploy       # Deploy to Cloudflare Workers (Wrangler)
 
 - AI chatbot and customer support SaaS
 - Multi-tenant SaaS products
-- AI image generation tools
+- AI image and video generation tools
 - AI-powered tools and utilities
 
 ## License

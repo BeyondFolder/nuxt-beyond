@@ -4,6 +4,7 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { blob } from 'hub:blob';
 import { DEMO_CONFIG } from '#shared/demo';
 import { kv } from 'hub:kv'
+import { IMAGE_GENERATION } from '#shared/constants';
 
 export default defineEventHandler(async (event) => {
   const today = new Date().toDateString();
@@ -53,7 +54,7 @@ export default defineEventHandler(async (event) => {
   const openai = createOpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
   });
-  const modelOpenAI = openai.image('gpt-image-1.5');
+  const modelOpenAI = openai.image(IMAGE_GENERATION.MODEL);
 
   try {
     const blobPath = body.sourceImageUrl.replace('/blob/', '');
