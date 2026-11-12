@@ -256,8 +256,8 @@ pricing:
     features:
       - Full source code on GitHub
       - AI Chat with RAG (Cloudflare AI Search)
-      - Image & Video Generation (OpenAI GPT Image, Gemini Omni Flash)
-      - Authentication (Google OAuth + Credentials)
+      - AI Image & Video (GPT Image, Gemini)
+      - Authentication (Google + Credentials)
       - Billing & Subscriptions (Stripe or Polar)
       - Embeddable Chat Widget
       - Multi-tenant Projects
