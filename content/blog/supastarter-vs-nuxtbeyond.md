@@ -12,6 +12,7 @@ authors:
     avatar:
       src: /images/rares-serban.jpg
 date: 2026-04-09
+updatedAt: 2026-11-11
 badge:
   label: Comparison
 ---
@@ -38,8 +39,8 @@ If you're building a traditional SaaS (CRM, project management, analytics dashbo
 | **AI Chat** | Vercel AI SDK (GPT-4o-mini, Claude, streaming) | Vercel AI SDK v6 (streaming, tool calling) |
 | **RAG / Semantic Search** | No | Cloudflare AutoRAG |
 | **Embeddable Widget** | No | Yes (one-line script) |
-| **Image Generation** | DALL-E 3 | DALL-E 3 |
-| **Video Generation** | No | OpenAI Sora |
+| **Image Generation** | DALL-E 3 | OpenAI gpt-image-2.6-flare |
+| **Video Generation** | No | Google Gemini Omni Flash |
 | **Multi-Tenancy** | Yes (organizations, teams) | Yes (project-based) |
 | **i18n** | Yes (EN, DE, ES, FR) | No |
 | **Database** | Prisma 7 or Drizzle (PostgreSQL/SQLite/MySQL) | Drizzle + Cloudflare D1 |
@@ -102,7 +103,7 @@ No other Nuxt boilerplate has this.
 
 ### Video Generation
 
-NuxtBeyond integrates OpenAI Sora for video generation alongside DALL-E 3 for images. Supastarter has DALL-E 3 but no video generation.
+NuxtBeyond generates video with Google Gemini Omni Flash (text or image to video, plus follow-up edits), alongside OpenAI's gpt-image-2.6-flare for images. Supastarter has DALL-E 3 but no video generation.
 
 ### Cloudflare Edge Deployment
 
@@ -150,7 +151,7 @@ Pick NuxtBeyond if:
 - **You want to sell embeddable AI widgets** — the widget system lets you build chatbot-as-a-service from day one
 - **You're deploying on Cloudflare** — native D1, R2, KV, Workers integration with generous free tiers
 - **You're a solo founder on a budget**: the deepest AI features in any Nuxt boilerplate, for :launch-price one-time
-- **You need image and video generation** — DALL-E 3 + Sora built in
+- **You need video generation** — Google Gemini Omni Flash built in
 - **Security for AI outputs matters** — prompt injection protection included
 
 ## What I'd Do

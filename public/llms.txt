@@ -9,7 +9,8 @@ NuxtBeyond is a comprehensive Nuxt 4 boilerplate designed for building AI-powere
 ## Key Features
 
 - **AI Chat**: Built-in conversational AI powered by Cloudflare Workers AI (Llama 3.3 70B Instruct) with streaming responses
-- **AI Image Generation**: Create and edit images using OpenAI's DALL-E and image editing models
+- **AI Image Generation**: Create and edit images with OpenAI GPT Image (gpt-image-2.6-flare)
+- **AI Video Generation**: Text or image to video, plus follow-up edits, with Google Gemini Omni Flash
 - **Authentication**: Google OAuth + credentials-based auth with nuxt-auth-utils
 - **Stripe Billing**: Complete subscription billing with checkout, customer portal, and webhooks
 - **Project Management**: Multi-project support with role-based access control
@@ -25,7 +26,8 @@ NuxtBeyond is a comprehensive Nuxt 4 boilerplate designed for building AI-powere
 - **UI**: Nuxt UI v4 (alpha) with semantic colors and components
 - **AI**:
   - Chat: Cloudflare Workers AI (Llama 3.3 70B Instruct)
-  - Images: OpenAI DALL-E 3 and gpt-image-1.5
+  - Images: OpenAI gpt-image-2.6-flare
+  - Video: Google Gemini Omni Flash
   - AI SDK v6 with streaming support
 - **Database**: Cloudflare D1 with Drizzle ORM
 - **Storage**: Cloudflare R2 for file uploads
@@ -60,7 +62,12 @@ NuxtBeyond is a comprehensive Nuxt 4 boilerplate designed for building AI-powere
 - Edit existing images with natural language
 - Chat-like interface for iterative refinement
 - Download generated images
-- Model: OpenAI DALL-E 3 and gpt-image-1.5
+- Model: OpenAI gpt-image-2.6-flare
+
+### AI Video Generation
+- Generate videos from a text prompt, optionally guided by a reference image
+- Edit the latest video with follow-up prompts
+- Model: Google Gemini Omni Flash
 
 ### Authentication
 - Google OAuth integration

@@ -6,6 +6,7 @@ import { blob } from 'hub:blob';
 import { createAiGateway } from 'ai-gateway-provider';
 import { DEMO_CONFIG } from '#shared/demo';
 import { kv } from 'hub:kv'
+import { IMAGE_GENERATION } from '#shared/constants';
 
 export default defineEventHandler(async (event) => {
   const today = new Date().toDateString();
@@ -61,7 +62,7 @@ export default defineEventHandler(async (event) => {
   const openai = createOpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
   });
-  const modelOpenAI = aiGateway([openai.image('gpt-image-1.5')] as unknown as Parameters<typeof aiGateway>[0]);
+  const modelOpenAI = aiGateway([openai.image(IMAGE_GENERATION.MODEL)] as unknown as Parameters<typeof aiGateway>[0]);
 
   try {
     console.log('Generating image for prompt:', body.prompt, '...');

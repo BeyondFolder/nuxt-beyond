@@ -12,6 +12,7 @@ authors:
     avatar:
       src: /images/rares-serban.jpg
 date: 2026-09-26
+updatedAt: 2026-11-11
 badge:
   label: Comparison
 ---
@@ -39,7 +40,7 @@ Pick ShipAhead if you want a classic Nuxt SaaS shell, Postgres, i18n, and model-
 | **Framework** | Nuxt 4 (Vue 3) | Nuxt 4 (Vue 3) |
 | **AI chat** | Yes (OpenRouter, switch GPT model) | Vercel AI SDK v6, streaming, tool calling |
 | **RAG / semantic search** | Not listed | Cloudflare AI Search (formerly AutoRAG) |
-| **Image generation** | Yes (OpenRouter) | Present in the repo around retired OpenAI image APIs; do not buy it for that |
+| **Image generation** | Yes (OpenRouter) | Yes (OpenAI gpt-image-2.6-flare) |
 | **Embeddable widget** | Not listed | One-line script, domain validation |
 | **Prompt injection protection** | Not listed | Yes |
 | **Auth** | Email/password, magic links, Google, admin area | Google OAuth + email/password |
@@ -138,7 +139,7 @@ ShipAhead's public page does not list RAG, embeddings, or document search. If th
 
 Nuxflare Pro does list a RAG chatbot demo on Cloudflare Vectorize. So "Nuxt Beyond is the only Nuxt kit with RAG" is false. What I will say is: RAG is the product in this repo, not a demo app next to notes and a URL shortener. Full walkthrough: [How to build an AI chatbot with RAG in Nuxt 4](/blog/how-to-build-ai-chatbot-with-rag-nuxt-4).
 
-Image generation: ShipAhead has it via OpenRouter. Nuxt Beyond still has image/video code paths built on OpenAI APIs that OpenAI has retired. Do not buy Nuxt Beyond because you want DALL-E or Sora. That claim on my homepage is stale. If image gen is the product, ShipAhead is the one that still advertises a working path.
+Image generation: ShipAhead has it via OpenRouter. Nuxt Beyond has it too, on OpenAI's gpt-image-2.6-flare since November 2026. That's also when I moved video from Sora, which OpenAI retired, to Google Gemini Omni Flash.
 
 ## Database and hosting
 
@@ -222,7 +223,7 @@ Pick Nuxt Beyond if:
 - The budget is tight and you still need auth, Stripe or Polar, and project workspaces
 - You already write Vue/Nuxt and you do not need i18n on day one
 
-Do not pick Nuxt Beyond if you need magic links, 2FA, passkeys, i18n, a PWA, a cron UI, or a busy Discord. Those gaps are real. Also do not pick it for image or video generation in 2026. That path is broken until I migrate it.
+Do not pick Nuxt Beyond if you need magic links, 2FA, passkeys, i18n, a PWA, a cron UI, or a busy Discord. Those gaps are real.
 
 If the team only hires React, neither of these is the conversation. That one is [ShipFast vs Nuxt Beyond](/blog/shipfast-vs-nuxtbeyond).
 
