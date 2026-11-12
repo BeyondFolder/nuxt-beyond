@@ -16,6 +16,13 @@ export interface PlanConfig {
 export const planNames = ['free', 'boilerplate', 'bundle'] as const;
 export type PlanName = typeof planNames[number];
 
+// Display names for the plan keys. The keys stay `boilerplate` / `bundle` so existing demo data still resolves.
+export const planTitles: Record<PlanName, string> = {
+  free: 'Free',
+  boilerplate: 'Pro',
+  bundle: 'Advanced',
+};
+
 export const PLANS_CONSTANTS: Record<PlanName, PlanConfig> = {
   free: {
     MAX_TEXT_LENGTH: 20000,
