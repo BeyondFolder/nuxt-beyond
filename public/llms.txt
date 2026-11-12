@@ -11,7 +11,7 @@ NuxtBeyond is a free, open-source Nuxt 4 boilerplate released under the MIT Lice
 - **AI Chat with RAG**: Streaming responses with Vercel AI SDK v6, OpenAI models via Cloudflare AI Gateway, knowledge base search with Cloudflare AI Search (AutoRAG)
 - **Embeddable Widget**: One-line script that adds a chat bubble to allowed domains
 - **Human Support Escalation**: The AI can hand a conversation to your team; answered questions can be added back to the knowledge base (self learning)
-- **AI Image Generation**: Generate and edit images with OpenAI gpt-image-1.5
+- **AI Image Generation**: Generate and edit images with OpenAI GPT Image (`gpt-image-2.6-flare`)
 - **AI Video Generation (optional)**: Text or image to video, plus follow-up edits, with Google Gemini Omni Flash; needs a paid-tier `GEMINI_API_KEY`
 - **Authentication**: Google OAuth and email/password with nuxt-auth-utils, email verification, password reset
 - **Billing**: Stripe or Polar subscriptions (selected with `PAYMENT_PROVIDER`), checkout, customer portal, webhooks, plan-based feature limits

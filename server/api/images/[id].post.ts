@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { generateImage } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { blob } from 'hub:blob';
+import { IMAGE_GENERATION } from '#shared/constants';
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -39,7 +40,7 @@ export default defineEventHandler(async (event) => {
   const openai = createOpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
   });
-  const modelOpenAI = openai.image('gpt-image-1.5');
+  const modelOpenAI = openai.image(IMAGE_GENERATION.MODEL);
 
   try {
     const blobPath = body.sourceImageUrl.replace('/blob/', '');
