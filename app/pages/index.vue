@@ -370,9 +370,9 @@ useHead({
         </div>
 
         <UPageCTA
-          v-if="page.pricing.toolkit"
-          :description="page.pricing.toolkit.description"
-          :links="page.pricing.toolkit.links"
+          v-if="page!.pricing.toolkit"
+          :description="page!.pricing.toolkit.description"
+          :links="page!.pricing.toolkit.links"
           variant="soft"
           class="max-w-3xl mx-auto mt-12"
           :ui="{ container: 'py-10 sm:py-12 lg:py-12 gap-6', title: 'text-2xl sm:text-3xl', description: 'text-base sm:text-lg' }"
@@ -381,12 +381,12 @@ useHead({
             <div class="flex justify-center pt-8 -mb-6">
               <UBadge color="primary" variant="subtle" size="lg">
                 <UIcon name="i-lucide-megaphone" class="w-4 h-4 mr-1" />
-                {{ page.pricing.toolkit.badge }}
+                {{ page!.pricing.toolkit.badge }}
               </UBadge>
             </div>
           </template>
           <template #title>
-            <MDC :value="page.pricing.toolkit.title" unwrap="p" />
+            <MDC :value="page!.pricing.toolkit.title" unwrap="p" />
           </template>
         </UPageCTA>
       </UContainer>
