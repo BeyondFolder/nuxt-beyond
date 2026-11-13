@@ -60,6 +60,8 @@ sections:
 
       - **Cloudflare** - Hosting, database (D1), file storage (R2), key-value storage (KV), AI Gateway, AI Search, and Turnstile bot protection
       - **[AI provider, e.g. OpenAI]** - Generates AI responses from chat messages and relevant knowledge base content
+      - **[Image provider, e.g. OpenAI]** - Generates and edits images from prompts, if you offer image generation
+      - **[Video provider, e.g. Google Gemini]** - Generates videos from prompts and any reference image, if you offer video generation. Gemini keeps each generation for up to 55 days so it can be edited
       - **[Stripe / Polar]** - Payment processing and subscription management
       - **Google** - Sign-in, only if you choose to sign in with Google
       - **Resend** - Transactional email delivery

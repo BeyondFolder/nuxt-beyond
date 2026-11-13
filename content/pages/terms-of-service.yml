@@ -84,7 +84,7 @@ sections:
 
   - title: AI-Generated Content
     content: |
-      The Service uses third-party AI providers ([list your providers, for example OpenAI via Cloudflare AI Gateway]) to generate responses. You acknowledge that:
+      The Service uses third-party AI providers ([list your providers, for example OpenAI via Cloudflare AI Gateway, and Google Gemini for video]) to generate responses. You acknowledge that:
 
       - AI responses can be inaccurate or incomplete, and we do not guarantee their correctness
       - You are responsible for reviewing AI output before relying on it
