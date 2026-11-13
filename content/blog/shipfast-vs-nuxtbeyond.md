@@ -19,7 +19,7 @@ badge:
 
 I built Nuxt Beyond, so this is not a neutral review. I will still tell you when ShipFast is the better buy, because for a lot of people it is.
 
-ShipFast comes up in almost every boilerplate conversation. Marc Lou shipped it, 8,429 people bought it, and the Discord is huge. If you search "SaaS boilerplate" you will hit it. Nuxt Beyond is a Nuxt 4 starter I built for AI products: RAG chat, an embeddable widget, Stripe, and Cloudflare at the edge, for :launch-price one-time.
+ShipFast comes up in almost every boilerplate conversation. Marc Lou shipped it, 8,429 people bought it, and the Discord is huge. If you search "SaaS boilerplate" you will hit it. Nuxt Beyond is a Nuxt 4 starter I built for AI products: RAG chat, an embeddable widget, Stripe, and Cloudflare at the edge, free and open source under the MIT License.
 
 If you want the wider Nuxt field (Supastarter, SuperSaas, ShipAhead, NuxtBase, Nuxflare Pro), I already wrote a [full Nuxt 4 boilerplate comparison](/blog/best-nuxt-boilerplates-compared). This post is the head-to-head people actually search: ShipFast vs Nuxt Beyond.
 
@@ -29,13 +29,13 @@ Prices below were checked on 2026-10-03 on [shipfa.st](https://shipfa.st/) and [
 
 **ShipFast** is a Next.js SaaS kit with auth, Stripe, a blog, emails, and a giant community. It is $199 Starter / $249 All-in one-time ($299 with CodeFast). It does not ship AI. It does not ship multi-tenancy. The default database is MongoDB.
 
-**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is :launch-price one-time. The community is small. Auth is basic. Image and video generation run on OpenAI's gpt-image-2.6-flare and Google Gemini Omni Flash.
+**Nuxt Beyond** is a Nuxt 4 kit built around AI: Cloudflare AI Search (formerly AutoRAG), streaming chat, an embeddable widget, plus auth, Stripe (and Polar), and project-based multi-tenancy. It is free and open source under the MIT License. The community is small. Auth is basic. Image and video generation run on OpenAI's gpt-image-2.6-flare and Google Gemini Omni Flash.
 
 Pick ShipFast if you are a React developer who wants the most popular kit and you are not building an AI product. Pick Nuxt Beyond if you want Vue/Nuxt, RAG, or a chatbot you can embed on customer sites.
 
 ## Feature comparison
 
-| Feature | ShipFast ($199 / $249) | Nuxt Beyond (:launch-price) |
+| Feature | ShipFast ($199 / $249) | Nuxt Beyond (free, MIT) |
 |---------|---------------------|-------------------|
 | **Framework** | Next.js (React) | Nuxt 4 (Vue 3) |
 | **AI chat** | No | Vercel AI SDK v6, streaming, tool calling |
@@ -51,7 +51,7 @@ Pick ShipFast if you are a React developer who wants the most popular kit and yo
 | **Blog** | Yes | Yes (Nuxt Content) |
 | **Email** | Yes | Resend |
 | **i18n** | No | No |
-| **Community** | 8,429 makers, 5,000+ Discord | Small (launched January 2026, 2 sales) |
+| **Community** | 8,429 makers, 5,000+ Discord | Small (launched January 2026, now open source) |
 
 ## Where ShipFast wins
 
@@ -212,18 +212,18 @@ If you specifically need Lemon Squeezy, ShipFast has it. If you specifically nee
 
 | | ShipFast | Nuxt Beyond |
 |---|----------|-------------|
-| **Entry** | $199 Starter | :launch-price boilerplate |
-| **Top kit** | $249 All-in / $299 with CodeFast | $89 bundle (boilerplate + distribution framework) |
-| **Updates** | Lifetime | Lifetime |
-| **Projects** | Unlimited | Unlimited |
+| **Entry** | $199 Starter | Free (MIT License) |
+| **Top kit** | $249 All-in / $299 with CodeFast | Same free repo, no tiers |
+| **Updates** | Lifetime | Public GitHub repo |
+| **Projects** | Unlimited | Any, under MIT |
 
-Both are one-time.
+ShipFast is a one-time payment. Nuxt Beyond is free and open source.
 
 ShipFast’s price is the tax on community and brand. Some people on Reddit call it overpriced because free Next.js starters exist. That is true and incomplete. You are paying for a known path and a Discord, not for a unique architecture.
 
-Nuxt Beyond is cheaper because it is newer and narrower. You are paying for the AI and Cloudflare work, not for 8,429 people who can unblock you on Saturday night.
+Nuxt Beyond is free and open source, and it is newer and narrower. You get the AI and Cloudflare work, not 8,429 people who can unblock you on Saturday night.
 
-See [current pricing](/#pricing).
+Get Nuxt Beyond on [GitHub](https://github.com/BeyondFolder/nuxt-beyond).
 
 ## When to choose ShipFast
 

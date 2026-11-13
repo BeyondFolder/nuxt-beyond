@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { GITHUB_REPO_URL } from '#shared/constants';
+
 const nuxtApp = useNuxtApp();
 const { activeHeadings, updateHeadings } = useScrollspy();
 
@@ -9,7 +11,7 @@ const items = computed(() => [
     active: activeHeadings.value.includes('ai-features') && !activeHeadings.value.includes('pricing'),
   },
   {
-    label: 'Pricing',
+    label: 'Open Source',
     to: '/#pricing',
     active: activeHeadings.value.includes('pricing') && !activeHeadings.value.includes('faqs'),
   },
@@ -47,6 +49,16 @@ const { loggedIn } = useUserSession();
     <template #right>
       <UColorModeButton />
 
+      <UButton
+        icon="i-simple-icons-github"
+        color="neutral"
+        variant="ghost"
+        :to="GITHUB_REPO_URL"
+        target="_blank"
+        aria-label="NuxtBeyond on GitHub"
+        :class="{ 'lg:hidden': !loggedIn }"
+      />
+
       <template v-if="loggedIn">
         <UButton label="Dashboard" class="inline-flex" to="/dashboard" />
       </template>
@@ -69,7 +81,13 @@ const { loggedIn } = useUserSession();
           class="hidden lg:inline-flex"
         />
 
-        <UButton label="Buy Now" icon="i-lucide-shopping-cart" class="hidden lg:inline-flex" to="#pricing" />
+        <UButton
+          label="Star on GitHub"
+          icon="i-simple-icons-github"
+          :to="GITHUB_REPO_URL"
+          target="_blank"
+          class="hidden lg:inline-flex"
+        />
       </template>
     </template>
 

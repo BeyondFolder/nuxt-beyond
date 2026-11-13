@@ -16,6 +16,12 @@ export interface PlanConfig {
 export const planNames = ['free', 'boilerplate', 'bundle'] as const;
 export type PlanName = typeof planNames[number];
 
+export const planTitles: Record<PlanName, string> = {
+  free: 'Free',
+  boilerplate: 'Pro',
+  bundle: 'Advanced',
+};
+
 export const PLANS_CONSTANTS: Record<PlanName, PlanConfig> = {
   free: {
     MAX_TEXT_LENGTH: 20000,
@@ -59,6 +65,8 @@ export const ALLOWED_LOGO_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'imag
 export const MAX_LOGO_SIZE = 0.5 * 1024 * 1024; // 0.5MB in bytes
 
 export const THEME_PRIMARY_COLOR = '#0d9488';
+
+export const GITHUB_REPO_URL = 'https://github.com/BeyondFolder/nuxt-beyond';
 
 // Image generation and edits with OpenAI GPT Image. gpt-image-1.5 shuts down on 2026-12-01 and gpt-image-2 on
 // 2027-02-10; Flare is the 2.6 model for interactive editing: https://developers.openai.com/api/docs/deprecations

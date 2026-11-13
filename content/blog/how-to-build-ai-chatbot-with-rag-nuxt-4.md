@@ -20,7 +20,7 @@ Most "AI chatbot" tutorials stop at wiring `streamText` to an OpenAI key. That g
 
 RAG (retrieval augmented generation) fixes that. You store your docs somewhere searchable, retrieve the relevant chunks at question time, and hand them to the model as context. The model answers from your content instead of its training data.
 
-This guide walks through building that in Nuxt 4 on Cloudflare, using AI Search (the feature formerly called AutoRAG) so you don't have to run your own embedding pipeline or vector database. Every code snippet here is close to what actually runs in [NuxtBeyond](/#pricing), so it's tested in production rather than sketched out for a blog post.
+This guide walks through building that in Nuxt 4 on Cloudflare, using AI Search (the feature formerly called AutoRAG) so you don't have to run your own embedding pipeline or vector database. Every code snippet here is close to what actually runs in [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond), so it's tested in production rather than sketched out for a blog post.
 
 ## What we're building
 
@@ -359,7 +359,7 @@ Set your environment variables in the Cloudflare dashboard under Variables and S
 
 Everything above is roughly two weeks of work once you add document management, tenant scoping, sync polling, rate limiting, and a widget your customers can embed on their own site.
 
-That's what [NuxtBeyond](/#pricing) ships with: Cloudflare AI Search retrieval, the Vercel AI SDK v6 streaming stack, multi-tenant projects, an embeddable chat widget with domain validation, auth, and billing on both [Stripe and Polar](/blog/stripe-vs-polar-which-to-choose). It's :launch-price one-time with lifetime updates.
+That's what [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond) ships with: Cloudflare AI Search retrieval, the Vercel AI SDK v6 streaming stack, multi-tenant projects, an embeddable chat widget with domain validation, auth, and billing on both [Stripe and Polar](/blog/stripe-vs-polar-which-to-choose). It's free and open source under the MIT License.
 
 If you're still comparing options, I wrote a [full breakdown of Nuxt SaaS boilerplates](/blog/best-nuxt-boilerplates-compared) and a [head-to-head with Supastarter](/blog/supastarter-vs-nuxtbeyond). NuxtBeyond is the only one on that list with RAG in the box, which is the whole reason I built it.
 

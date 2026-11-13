@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { GITHUB_REPO_URL } from '#shared/constants';
+
 const columns = [
   {
     label: 'Free Tools',
@@ -51,12 +53,6 @@ const columns = [
         <UFooterColumns :columns="columns" :ui="{ right: 'flex flex-col gap-1' }">
           <template #right>
             <div class="w-auto mx-auto mb-6 flex gap-5 justify-center grid grid-cols-4">
-              <!--              <div class="flex"> -->
-              <!--                <a href="https://www.uneed.best/tool/claude-code-distribution-framework" target="_blank"> -->
-              <!--                  <img src="https://www.uneed.best/POTD2A.png" width="150" alt="Uneed POTD2 Badge" /> -->
-              <!--                </a> -->
-              <!--              </div> -->
-
               <div class="flex">
                 <a href="https://www.aidirectori.es" target="_blank"
                   ><img
@@ -123,7 +119,10 @@ const columns = [
 
     <template #left>
       <div class="flex flex-col gap-1">
-        <p class="text-sm text-muted">Copyright © {{ new Date().getFullYear() }} NuxtBeyond. All rights reserved.</p>
+        <p class="text-sm text-muted">
+          Copyright © {{ new Date().getFullYear() }} BeyondFolder. NuxtBeyond is open source under the
+          <ULink :to="`${GITHUB_REPO_URL}/blob/main/LICENSE`" target="_blank" rel="noopener" class="text-primary">MIT License</ULink>.
+        </p>
         <p class="text-sm text-muted">
           Also by Rareș:
           <ULink to="https://mailyond.com" target="_blank" rel="noopener" class="text-primary">Mailyond</ULink>
@@ -133,6 +132,14 @@ const columns = [
 
     <template #right>
       <em class="text-xs text-ellipsis">Made By Raress96</em>
+      <UButton
+        :to="GITHUB_REPO_URL"
+        target="_blank"
+        icon="i-simple-icons-github"
+        aria-label="NuxtBeyond on GitHub"
+        color="neutral"
+        variant="ghost"
+      />
       <UButton
         to="https://x.com/raress96"
         target="_blank"

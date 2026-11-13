@@ -1,5 +1,4 @@
 import { defineCollection, z } from '@nuxt/content';
-import { planNames } from './shared/constants';
 
 const variantEnum = z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link']);
 const colorEnum = z.enum(['primary', 'secondary', 'neutral', 'error', 'warning', 'success', 'info']);
@@ -114,20 +113,17 @@ export const collections = {
         ),
       }),
       pricing: createBaseSchema().extend({
-        plans: z.array(
-          createBaseSchema().extend({
-            planName: z.enum(planNames),
-            price: z.string().nonempty(),
-            discount: z.string().optional(),
-            button: createLinkSchema(),
-            features: z.array(z.string().nonempty()),
-            highlight: z.boolean().optional(),
-            billing_period: z.string().optional(),
-            billing_cycle: z.string().nonempty(),
-            badge: z.string().optional(),
-            distributionLink: z.string().optional(),
-          })
-        ),
+        badge: z.string().optional(),
+        offer: createBaseSchema().extend({
+          price: z.string().nonempty(),
+          billing_cycle: z.string().nonempty(),
+          features: z.array(z.string().nonempty()),
+          links: z.array(createLinkSchema()),
+        }),
+        toolkit: createBaseSchema().extend({
+          badge: z.string().optional(),
+          links: z.array(createLinkSchema()),
+        }).optional(),
       }),
       testimonials: createBaseSchema().extend({
         items: z.array(
@@ -266,6 +262,7 @@ export const collections = {
       cta: z.object({
         label: z.string().nonempty(),
         to: z.string().nonempty(),
+        target: targetEnum.optional(),
       }),
     }),
   }),

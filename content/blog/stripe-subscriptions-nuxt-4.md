@@ -20,7 +20,7 @@ Adding Stripe to a Nuxt app looks like a two hour job. Install the module, creat
 
 Then you discover the actual work: your database has to stay in sync with Stripe's idea of the subscription, forever, through upgrades, downgrades, failed payments, cancellations that take effect next month, and reactivations. That sync is the whole feature, and checkout is maybe 10% of it.
 
-This guide covers the full path in Nuxt 4: checkout sessions, webhook signature verification (including the part that breaks on Cloudflare Workers), the customer portal, and enforcing plan limits server-side. The code is close to what ships in [NuxtBeyond](/#pricing), so it's been through production rather than just the docs.
+This guide covers the full path in Nuxt 4: checkout sessions, webhook signature verification (including the part that breaks on Cloudflare Workers), the customer portal, and enforcing plan limits server-side. The code is close to what ships in [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond), so it's been through production rather than just the docs.
 
 ## What you're actually building
 
@@ -476,6 +476,6 @@ The pattern that makes subscriptions manageable: metadata carries your database 
 
 Get those five right and the rest is dashboard configuration.
 
-If you'd rather not build it, [NuxtBeyond](/#pricing) ships with all of it working: Stripe and Polar behind one provider interface, the webhook handlers above, the customer portal, per-project subscriptions with roles, and plan limits wired into the AI and upload endpoints. It's :launch-price one-time, with lifetime updates and unlimited projects.
+If you'd rather not build it, [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond) ships with all of it working: Stripe and Polar behind one provider interface, the webhook handlers above, the customer portal, per-project subscriptions with roles, and plan limits wired into the AI and upload endpoints. It's free and open source under the MIT License.
 
 Related reading: the [multi-tenant SaaS guide](/blog/multi-tenant-saas-cloudflare-workers-nuxt-4) for the tenant modeling this billing sits on top of, the [embeddable widget tutorial](/blog/embeddable-chat-widget-nuxt-4) for shipping a paid feature onto customer sites, and [best Nuxt boilerplates compared](/blog/best-nuxt-boilerplates-compared) if you're still evaluating options.

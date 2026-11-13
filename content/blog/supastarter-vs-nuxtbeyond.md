@@ -25,13 +25,13 @@ If you're comparing Nuxt boilerplates and trying to decide between these two, he
 
 **Supastarter** is the most mature Nuxt SaaS boilerplate. Enterprise-grade auth, five payment providers, i18n, excellent docs. It's $349 for a reason — you get a lot.
 
-**NuxtBeyond** is built specifically for AI products. Production RAG, embeddable chat widgets, image and video generation, Cloudflare edge deployment. It's :launch-price one-time.
+**NuxtBeyond** is built specifically for AI products. Production RAG, embeddable chat widgets, image and video generation, Cloudflare edge deployment. It's free and open source under the MIT License.
 
 If you're building a traditional SaaS (CRM, project management, analytics dashboard), Supastarter is probably the right call. If you're building an AI product (chatbots, knowledge bases, AI-powered search), NuxtBeyond was designed for that.
 
 ## Feature Comparison
 
-| Feature | Supastarter ($349) | NuxtBeyond (:launch-price) |
+| Feature | Supastarter ($349) | NuxtBeyond (free, MIT) |
 |---------|-------------------|-----------------|
 | **Framework** | Nuxt 4.3 + Next.js | Nuxt 4 |
 | **Auth** | better-auth (2FA, passkeys, RBAC, magic links) | Google OAuth + email/password |
@@ -117,20 +117,18 @@ NuxtBeyond includes prompt injection protection and response sanitization for AI
 
 ### Price
 
-Both are one-time payments with lifetime updates. But if you're a solo founder testing an idea, NuxtBeyond's :launch-price is easier to justify than $349, especially when it has deeper AI features. See the [full pricing details](/#pricing).
+Supastarter is a one-time payment with lifetime updates. NuxtBeyond is free and open source under the MIT License. If you're a solo founder testing an idea, free is easier to justify than $349, especially when it has deeper AI features. Get it on [GitHub](https://github.com/BeyondFolder/nuxt-beyond).
 
 ## Pricing Breakdown
 
 | Plan | Supastarter | NuxtBeyond |
 |------|------------|------------|
-| **Solo / Boilerplate** | $349 | :launch-price |
-| **Team** | $799 (5 seats) | N/A |
-| **Agency** | $1,499 (10 seats) | N/A (unlimited projects on the boilerplate license) |
-| **Updates** | Lifetime | Lifetime |
+| **Solo / Boilerplate** | $349 | Free (MIT License) |
+| **Team** | $799 (5 seats) | Same free repo |
+| **Agency** | $1,499 (10 seats) | Same free repo, commercial use allowed |
+| **Updates** | Lifetime | Public GitHub repo |
 
 Supastarter also offers a $149 architecture consulting session.
-
-NuxtBeyond has a $89 bundle that includes the Distribution Framework for customer acquisition help — aimed at indie hackers who need marketing guidance alongside the boilerplate.
 
 ## When to Choose Supastarter
 
@@ -150,13 +148,13 @@ Pick NuxtBeyond if:
 - **You're building an AI product** — chatbots, knowledge bases, AI search, document Q&A, or anything that needs RAG
 - **You want to sell embeddable AI widgets** — the widget system lets you build chatbot-as-a-service from day one
 - **You're deploying on Cloudflare** — native D1, R2, KV, Workers integration with generous free tiers
-- **You're a solo founder on a budget**: the deepest AI features in any Nuxt boilerplate, for :launch-price one-time
+- **You're a solo founder on a budget**: the deepest AI features in any Nuxt boilerplate, free under the MIT License
 - **You need video generation** — Google Gemini Omni Flash built in
 - **Security for AI outputs matters** — prompt injection protection included
 
 ## What I'd Do
 
-If someone asked me "which should I buy?" with no other context, I'd say Supastarter. It covers more use cases, it's more mature, and the auth and payment systems are in a different league.
+If someone asked me "which should I pick?" with no other context, I'd say Supastarter. It covers more use cases, it's more mature, and the auth and payment systems are in a different league.
 
 But if they said "I'm building an AI chatbot product" or "I want to sell an embeddable AI widget" — NuxtBeyond, and it's not close. The RAG infrastructure alone would take weeks to build from scratch, and no other Nuxt boilerplate has it.
 

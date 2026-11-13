@@ -2,17 +2,17 @@ seo:
   title: NuxtBeyond - AI-First Nuxt 4 Boilerplate for SaaS
   description: Build AI-powered SaaS products in days. Full-stack Nuxt 4 boilerplate with RAG, Cloudflare AI Search, authentication, Stripe or Polar billing, and edge deployment.
 title: Ship your AI SaaS this [weekend]{.text-primary}, not in months
-description: Stop wiring up auth, Stripe, and RAG pipelines from scratch. Clone a production-ready Nuxt 4 codebase with AI chat, image generation, multi-tenancy, and Cloudflare edge deployment — ready to ship.
+description: Stop wiring up auth, Stripe, and RAG pipelines from scratch. Clone a production-ready Nuxt 4 codebase with AI chat, image generation, multi-tenancy, and Cloudflare edge deployment, ready to ship.
 hero:
-  badge: 'Launch Price: {price} (increases every 5 sales)'
+  badge: 'Free and open source: MIT License, on GitHub'
   links:
-    - label: Get Instant Access
+    - label: Star on GitHub
       variant: solid
       color: primary
       size: xl
-      to: '#pricing'
-      icon: i-lucide-zap
-      trailing: true
+      to: 'https://github.com/BeyondFolder/nuxt-beyond'
+      target: _blank
+      icon: i-simple-icons-github
     - label: Try Demo
       variant: outline
       color: neutral
@@ -144,7 +144,7 @@ aiFeatures:
         - Domain allowlisting
 fullStackFeatures:
   title: '[Full-Stack]{.text-primary} Features Included'
-  description: Everything you need beyond AI. Authentication, payments, multi-tenancy—production-ready. All running on Cloudflare's edge network.
+  description: "Everything you need beyond AI. Authentication, payments, multi-tenancy: production-ready. All running on Cloudflare's edge network."
   features:
     - title: Authentication
       description: Google OAuth, email/password, verification, password reset, and session management with nuxt-auth-utils.
@@ -156,13 +156,13 @@ fullStackFeatures:
       description: Project-based isolation, team invitations, role-based access control (admin/member), and member management.
       icon: i-lucide-building-2
     - title: Email System
-      description: Transactional emails via Resend—verification, password reset, invitations, support notifications.
+      description: 'Transactional emails via Resend: verification, password reset, invitations, support notifications.'
       icon: i-lucide-send
     - title: Blog & Content
       description: Nuxt Content integration with markdown support, SEO optimization, and landing page YAML configuration.
       icon: i-lucide-file-text
     - title: Cloudflare Edge Stack
-      description: D1 database, R2 storage, KV caching, Workers runtime — all pre-configured. One-command deploy via NuxtHub, with support for Vercel, Netlify, and other providers.
+      description: D1 database, R2 storage, KV caching, Workers runtime, all pre-configured. Deploy with `npm run deploy` (Wrangler) or from Git with Cloudflare Workers Builds.
       icon: i-simple-icons-cloudflare
 aiAgents:
   title: Built for [AI Coding Agents]{.text-primary}
@@ -245,59 +245,52 @@ steps:
         npm run build && npm run deploy
         # That's it. You're live.
 pricing:
-  title: '[One-time]{.text-primary} purchase. Lifetime access.'
-  description: No subscriptions. No recurring fees. Pay once, build unlimited projects forever.
-  plans:
-    - title: NuxtBeyond Boilerplate
-      planName: boilerplate
-      description: Complete AI-first Nuxt 4 boilerplate
-      price: $249
-      discount: $59
-      billing_cycle: one-time
-      features:
-        - Full source code access
-        - AI Chat with RAG (Cloudflare AI Search)
-        - Image & Video Generation (OpenAI GPT Image, Gemini Omni Flash)
-        - Authentication (Google OAuth + Credentials)
-        - Billing & Subscriptions (Stripe or Polar)
-        - Embeddable Chat Widget
-        - Multi-tenant Projects
-        - Email System (Resend)
-        - CLAUDE.md for AI Coding Agents
-        - Lifetime Updates
-        - Support from Founder
-      button:
-        label: Get Instant Access
+  badge: MIT License
+  title: 'Free and [open source]{.text-primary}'
+  description: The full NuxtBeyond codebase is on GitHub under the MIT License. Clone it, change anything, and ship personal or commercial products with it.
+  offer:
+    title: NuxtBeyond
+    description: The complete AI-first Nuxt 4 boilerplate
+    price: Free
+    billing_cycle: MIT License
+    features:
+      - Full source code on GitHub
+      - AI Chat with RAG (Cloudflare AI Search)
+      - AI Image & Video (GPT Image, Gemini)
+      - Authentication (Google + Credentials)
+      - Billing & Subscriptions (Stripe or Polar)
+      - Embeddable Chat Widget
+      - Multi-tenant Projects
+      - Email System (Resend)
+      - CLAUDE.md for AI Coding Agents
+      - Commercial use allowed
+    links:
+      - label: Star on GitHub
         variant: solid
         color: primary
         size: xl
-        to: 'https://buy.stripe.com/bJe6oIeq0dJ72iu9dwdZ602?prefilled_promo_code=BOILERPLATE1'
+        to: 'https://github.com/BeyondFolder/nuxt-beyond'
         target: _blank
-      highlight: true
-      badge: Launch Price
-    - title: Bundle with Distribution Framework
-      planName: bundle
-      description: Build your AI SaaS and actually get customers
-      price: $399
-      discount: $89
-      billing_cycle: one-time
-      features:
-        - Everything in NuxtBeyond Boilerplate
-        - 8 AI agents (ICP scoring, lead sourcing, competitor analysis, SEO)
-        - 6 content skills (cold emails, LinkedIn DMs, X DMs, SEO articles)
-        - Cold outreach templates that hit 27% reply rate
-        - ICP evaluation framework (14 weighted criteria)
-        - Lead sourcing workflows (Apollo, Outscraper, Reddit, LinkedIn)
-        - Build AND distribute your SaaS
-      button:
-        label: Get Bundle
+        icon: i-simple-icons-github
+      - label: Try Demo
         variant: outline
         color: neutral
         size: xl
-        to: 'https://buy.stripe.com/bJe8wQchS34t4qC61kdZ601?prefilled_promo_code=BUNDLE1'
+        to: '/login'
+        icon: i-lucide-arrow-right
+  toolkit:
+    badge: Also by Rareș
+    title: 'Built your app? Now get your [first customers]{.text-primary}'
+    description: The Distribution Toolkit is a Claude Code growth system built from how 8+ founders got their customers. I've used it on 5 of my own products.
+    links:
+      - label: See the Distribution Toolkit
+        variant: solid
+        color: primary
+        size: lg
+        to: 'https://beyondfolder.com/distribution'
         target: _blank
-      distributionLink: https://beyondfolder.com/distribution
-      badge: Best Value
+        icon: i-lucide-arrow-right
+        trailing: true
 testimonials:
   title: Built by [developers]{.text-primary}, for developers
   description: Join the community of developers shipping AI-powered products faster.
@@ -321,25 +314,31 @@ faqs:
       content: 'Nuxt 4, Vue 3, TypeScript, Nuxt UI v4, Tailwind CSS, Drizzle ORM, Cloudflare D1/R2/KV, Vercel AI SDK v6, OpenAI (via Cloudflare AI Gateway), Stripe or Polar, Resend, and nuxt-auth-utils.'
       icon: i-lucide-layers
     - label: Can I use this for commercial projects?
-      content: 'Yes! Your license allows unlimited commercial projects. Build and sell as many AI-powered products as you want.'
+      content: 'Yes. NuxtBeyond is released under the MIT License, so you can use it for personal and commercial projects, including client work and products you sell. Keep the copyright and license notice in your copy of the code.'
       icon: i-lucide-briefcase
     - label: How does deployment work?
-      content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack—database (D1), file storage (R2), KV store, and Workers. Edge-native performance worldwide.'
+      content: 'It deploys to Cloudflare Workers. Run `npm run deploy` (Wrangler) from your machine, or connect the repo to Cloudflare Workers Builds to deploy on every push. The database (D1), file storage (R2), and KV store are Cloudflare bindings set in `wrangler.jsonc`.'
       icon: i-lucide-rocket
-    - label: Is there a refund policy?
-      content: "Due to the digital nature and instant access, refunds aren't offered by default. But if something's genuinely not what you expected, DM me on [@raress96 on X](https://x.com/raress96) and we'll figure it out."
-      icon: i-lucide-receipt
+    - label: Is NuxtBeyond really free?
+      content: 'Yes. The full source code is free on [GitHub](https://github.com/BeyondFolder/nuxt-beyond) under the MIT License. Running your app can still cost money: the services you connect, like Cloudflare, OpenAI, Google Gemini (for video), Stripe or Polar, and Resend, bill you under their own pricing.'
+      icon: i-lucide-scale
     - label: How do I receive updates?
-      content: 'Lifetime updates are included. You''ll receive access to the GitHub repository where all updates are pushed.'
+      content: 'Updates are pushed to the public [GitHub repository](https://github.com/BeyondFolder/nuxt-beyond). Star or watch the repo to follow changes, then pull the ones you want into your copy.'
       icon: i-lucide-refresh-cw
 cta:
   title: Stop building boilerplate. [Start shipping products.]{.text-primary}
-  description: Authentication, payments, AI chat, RAG, embeddable widgets—all pre-built. Focus on what makes your product unique.
+  description: Authentication, payments, AI chat, RAG and embeddable widgets, all pre-built and free on GitHub. Focus on what makes your product unique.
   links:
-    - label: Get Instant Access Now
+    - label: Star on GitHub
       variant: solid
       color: primary
       size: xl
-      to: '#pricing'
-      icon: i-lucide-zap
-      trailing: true
+      to: 'https://github.com/BeyondFolder/nuxt-beyond'
+      target: _blank
+      icon: i-simple-icons-github
+    - label: Try Demo
+      variant: outline
+      color: neutral
+      size: xl
+      to: '/login'
+      icon: i-lucide-arrow-right

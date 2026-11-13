@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
   if (videoCount >= DEMO_CONFIG.maxVideosPerDay) {
     throw createError({
       statusCode: 429,
-      statusMessage: `Demo video generation limit reached (${DEMO_CONFIG.maxVideosPerDay} per day). This limit helps us manage demo costs. Get your own NuxtBeyond instance for unlimited videos!`,
+      statusMessage: `Demo video generation limit reached (${DEMO_CONFIG.maxVideosPerDay} per day). This limit helps us manage demo costs. Clone NuxtBeyond from GitHub to run your own instance.`,
     });
   }
 

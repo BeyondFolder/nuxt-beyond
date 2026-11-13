@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PlanName, PLANS_CONSTANTS } from '#shared/constants';
+import { type PlanName, planTitles, PLANS_CONSTANTS } from '#shared/constants';
 
 definePageMeta({
   layout: 'dashboard',
@@ -41,6 +41,8 @@ const maxReplies = computed(() => {
   }
   return PLANS_CONSTANTS[planName as PlanName]?.MAX_NB_OF_AI_REPLIES || 0;
 });
+
+const currentPlanTitle = computed(() => planTitles[dashboardData.value?.currentProject?.planName || 'free']);
 
 const repliesThisMonth = computed(() => statsData.value?.repliesThisMonth || 0);
 
@@ -173,7 +175,7 @@ const stats = computed(() => {
                 size="lg"
                 class="capitalize"
               >
-                {{ dashboardData.currentProject.planName }} Plan
+                {{ currentPlanTitle }} Plan
 </UBadge
               >. Your AI chatbot will stop responding to new messages until you upgrade your plan or wait until next
               month.
@@ -219,7 +221,7 @@ const stats = computed(() => {
                 size="lg"
                 class="capitalize"
               >
-                {{ dashboardData.currentProject.planName }} Plan
+                {{ currentPlanTitle }} Plan
               </UBadge>
             </div>
           </template>

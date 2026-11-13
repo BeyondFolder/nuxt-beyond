@@ -22,7 +22,7 @@ Miss one, and a customer sees another customer's data. That's the whole risk in 
 
 This guide covers how to build a multi-tenant SaaS in Nuxt 4 and deploy it to Cloudflare Workers. Tenant modeling with D1 and Drizzle, scoping queries so you can't leak data by accident, per-tenant limits tied to billing, and the deploy details that only show up after your first production push.
 
-The code here is close to what runs in [NuxtBeyond](/#pricing), so it's been through the "why is this 500ing only in production" phase.
+The code here is close to what runs in [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond), so it's been through the "why is this 500ing only in production" phase.
 
 ## Pick your tenancy model first
 
@@ -332,6 +332,6 @@ The whole multi-tenant story is four habits: a tenant table that isn't the user 
 
 The Cloudflare part is mostly configuration discipline: declare bindings per environment, keep build-time and runtime variables in sync, and verify migrations ran against the remote database.
 
-If you'd rather not wire this yourself, [NuxtBeyond](/#pricing) ships with it done: multi-tenant projects with roles and invitations, D1 and Drizzle with the query layer above, R2 uploads scoped per project, KV rate limiting, Stripe or Polar billing per tenant, and a working `wrangler.jsonc` for both local and remote development. It's :launch-price one-time with lifetime updates, and unlimited projects, so agencies can use it across client work.
+If you'd rather not wire this yourself, [NuxtBeyond](https://github.com/BeyondFolder/nuxt-beyond) ships with it done: multi-tenant projects with roles and invitations, D1 and Drizzle with the query layer above, R2 uploads scoped per project, KV rate limiting, Stripe or Polar billing per tenant, and a working `wrangler.jsonc` for both local and remote development. It's free and open source under the MIT License, so agencies can use it across client work too.
 
 Related reading: the [RAG chatbot guide](/blog/how-to-build-ai-chatbot-with-rag-nuxt-4) covers the AI side on the same stack, the [embeddable widget tutorial](/blog/embeddable-chat-widget-nuxt-4) covers shipping a tenant's chatbot onto their own site, and [best Nuxt boilerplates compared](/blog/best-nuxt-boilerplates-compared) is the honest rundown if you're still evaluating options.

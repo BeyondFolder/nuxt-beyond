@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { GITHUB_REPO_URL } from '#shared/constants';
+
 const { data: page } = await useAsyncData('index', () => queryCollection('index').first());
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true });
@@ -17,24 +19,7 @@ useSeoMeta({
   twitterDescription: description,
 });
 
-const { plans } = page.value.pricing;
-const launchPrice = plans.find((plan) => plan.highlight)?.discount;
-const heroBadge = launchPrice && page.value.hero.badge?.replace('{price}', launchPrice);
-
-const offers = plans.flatMap((plan) => {
-  const price = Number((plan.discount ?? plan.price).replace(/[^\d.]/g, ''));
-  if (!price) {
-    return [];
-  }
-
-  return [{
-    '@type': 'Offer',
-    'name': plan.title,
-    'price': String(price),
-    'priceCurrency': 'USD',
-    'availability': 'https://schema.org/InStock',
-  }];
-});
+const heroBadge = page.value.hero.badge;
 
 useHead({
   script: [
@@ -47,7 +32,11 @@ useHead({
         'applicationCategory': 'DeveloperApplication',
         'operatingSystem': 'Web',
         'description': description,
-        'offers': offers,
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD',
+        },
       }),
     },
     {
@@ -60,7 +49,7 @@ useHead({
           'name': faq.label,
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': faq.content,
+            'text': faq.content.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'),
           },
         })),
       }),
@@ -80,7 +69,7 @@ useHead({
       <UContainer class="pt-16 sm:pt-20 lg:pt-28 pb-12">
         <div class="text-center max-w-4xl mx-auto mb-12">
           <UBadge v-if="heroBadge" color="primary" variant="subtle" size="lg" class="mb-6">
-            <UIcon name="i-lucide-sparkles" class="w-4 h-4 mr-1" />
+            <UIcon name="i-simple-icons-github" class="w-4 h-4 mr-1" />
             {{ heroBadge }}
           </UBadge>
 
@@ -217,7 +206,7 @@ useHead({
 
       <div class="mb-8 text-center">
         <p class="text-neutral-600 dark:text-neutral-400 mb-4 text-xl">Ready to ship your AI product?</p>
-        <UButton label="Get Instant Access" icon="i-lucide-zap" trailing size="xl" to="#pricing" />
+        <UButton label="Get it on GitHub" icon="i-simple-icons-github" size="xl" :to="GITHUB_REPO_URL" target="_blank" />
       </div>
     </UPageSection>
 
@@ -341,82 +330,65 @@ useHead({
 
     <section id="pricing" class="py-10 sm:py-16">
       <UContainer>
-        <div class="text-center mb-6">
-          <UBadge color="warning" variant="subtle" size="lg" class="mb-5">
-            <UIcon name="i-lucide-clock" class="w-4 h-4 mr-1" />
-            Limited Time Pricing
+        <div class="text-center mb-8">
+          <UBadge v-if="page.pricing.badge" color="primary" variant="subtle" size="lg" class="mb-5">
+            <UIcon name="i-lucide-scale" class="w-4 h-4 mr-1" />
+            {{ page.pricing.badge }}
           </UBadge>
 
           <h2 class="text-3xl sm:text-4xl font-bold mb-4">
             <MDC :value="page.pricing.title" unwrap="p" />
           </h2>
 
-          <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-2">
+          <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-2 max-w-2xl mx-auto">
             {{ page.pricing.description }}
           </p>
         </div>
 
-        <div class="text-center mb-8">
-          <p class="text-md text-warning font-medium">
-            Price increases by $10 every 5 sales · 2/5 sold at current price
-          </p>
-        </div>
+        <UPricingPlan
+          :title="page.pricing.offer.title"
+          :description="page.pricing.offer.description"
+          :price="page.pricing.offer.price"
+          :billing-cycle="page.pricing.offer.billing_cycle"
+          :features="page.pricing.offer.features"
+          highlight
+          variant="subtle"
+          class="max-w-lg mx-auto"
+        >
+          <template #footer>
+            <div class="flex flex-col gap-3 w-full">
+              <UButton v-for="link in page.pricing.offer.links" :key="link.label" v-bind="link" block />
+            </div>
+          </template>
+        </UPricingPlan>
 
-        <UPricingPlans compact>
-          <UPricingPlan
-            v-for="(plan, index) in page.pricing.plans"
-            :key="index"
-            :title="plan.title"
-            :price="plan.price"
-            :discount="plan.discount"
-            :billing-period="plan.billing_period"
-            :billing-cycle="plan.billing_cycle"
-            :highlight="plan.highlight"
-            variant="subtle"
-            :features="plan.features"
-            :button="plan.button"
-            :ui="{
-              root: 'relative',
-            }"
-          >
-            <template v-if="plan.badge" #badge>
-              <UBadge
-                v-if="plan.badge"
-                :color="plan.highlight ? 'primary' : 'neutral'"
-                size="md"
-                class="absolute -top-3 left-6"
-              >
-                {{ plan.badge }}
-              </UBadge>
-            </template>
-            <template #description>
-              {{ plan.description }}
-
-              <NuxtLink
-                v-if="plan.distributionLink"
-                :to="plan.distributionLink"
-                target="_blank"
-                class="text-primary hover:underline"
-                >Learn more</NuxtLink
-              >
-            </template>
-          </UPricingPlan>
-        </UPricingPlans>
-
-        <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-neutral-500">
-          <div class="flex items-center gap-2">
-            <UIcon name="i-lucide-lock" class="w-4 h-4" />
-            <span>Secure payment via Stripe</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <UIcon name="i-simple-icons-github" class="w-4 h-4" />
-            <span>GitHub access after purchase</span>
-          </div>
+        <div class="flex justify-center mt-6 text-sm text-neutral-500">
           <div class="flex items-center gap-2">
             <UIcon name="i-lucide-message-circle" class="w-4 h-4" />
             <span>Questions? <NuxtLink to="https://x.com/raress96" target="_blank" class="text-primary hover:underline">DM me</NuxtLink></span>
           </div>
         </div>
+
+        <UPageCTA
+          v-if="page!.pricing.toolkit"
+          :description="page!.pricing.toolkit.description"
+          :links="page!.pricing.toolkit.links"
+          variant="soft"
+          class="max-w-3xl mx-auto mt-12"
+          :ui="{ container: 'py-10 sm:py-12 lg:py-12 gap-6', title: 'text-2xl sm:text-3xl', description: 'text-base sm:text-lg' }"
+        >
+          <template #top>
+            <div class="flex justify-center pt-8 -mb-6">
+              <UBadge color="primary" variant="subtle" size="lg">
+                <UIcon name="i-lucide-megaphone" class="w-4 h-4 mr-1" />
+                {{ page!.pricing.toolkit.badge }}
+              </UBadge>
+            </div>
+          </template>
+          <template #title>
+            <MDC :value="page!.pricing.toolkit.title" unwrap="p" />
+          </template>
+        </UPageCTA>
       </UContainer>
     </section>
 
