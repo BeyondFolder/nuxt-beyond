@@ -285,7 +285,7 @@ pricing:
     links:
       - label: See the Distribution Toolkit
         variant: solid
-        color: neutral
+        color: primary
         size: lg
         to: 'https://beyondfolder.com/distribution'
         target: _blank
