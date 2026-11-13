@@ -72,5 +72,8 @@
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.14",
     "wrangler": "^4.149.0"
+  },
+  "overrides": {
+    "glob@^13.0.0": "^14.0.6"
   }
 }

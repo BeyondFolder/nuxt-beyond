@@ -242,7 +242,7 @@ useSeoMeta({
           color="neutral"
           variant="soft"
           title="*Self Learning"
-          description="Admins can add answered support questions to the knowledge base, so the AI can use those answers in future replies."
+          description="Your team can add answered support questions to the knowledge base, so the AI can use those answers in future replies."
         />
       </UPageSection>
     </template>
