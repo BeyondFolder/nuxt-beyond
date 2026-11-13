@@ -60,7 +60,7 @@ features:
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
     - title: NuxtHub + Cloudflare
-      description: D1 database, R2 blob storage, KV store, and zero-config deployment to Cloudflare Workers.
+      description: D1 database, R2 blob storage, KV store, and deployment to Cloudflare Workers with Wrangler.
       icon: i-lucide-cloud
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
@@ -164,7 +164,7 @@ faqs:
       content: 'Yes! Full authentication with Google OAuth, email/password, email verification, password reset, and session management using nuxt-auth-utils.'
       icon: i-lucide-lock
     - label: How does deployment work?
-      content: 'Zero-config deployment to Cloudflare via NuxtHub. One command deploys your entire stack including database, storage, and KV.'
+      content: 'It deploys to Cloudflare Workers. Run `npm run deploy` (Wrangler) from your machine, or connect the repo to Cloudflare Workers Builds to deploy on every push. The database (D1), file storage (R2), and KV store are Cloudflare bindings set in `wrangler.jsonc`.'
       icon: i-lucide-rocket
     - label: How do I get help or contribute?
       content: 'Open an issue or a pull request on [GitHub](https://github.com/BeyondFolder/nuxt-beyond). Bug reports, fixes, and improvements are welcome.'
