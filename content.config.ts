@@ -120,6 +120,10 @@ export const collections = {
           features: z.array(z.string().nonempty()),
           links: z.array(createLinkSchema()),
         }),
+        toolkit: createBaseSchema().extend({
+          badge: z.string().optional(),
+          links: z.array(createLinkSchema()),
+        }).optional(),
       }),
       testimonials: createBaseSchema().extend({
         items: z.array(

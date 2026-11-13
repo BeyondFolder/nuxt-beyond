@@ -362,16 +362,33 @@ useHead({
           </template>
         </UPricingPlan>
 
-        <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-neutral-500">
+        <div class="flex justify-center mt-6 text-sm text-neutral-500">
           <div class="flex items-center gap-2">
             <UIcon name="i-lucide-message-circle" class="w-4 h-4" />
             <span>Questions? <NuxtLink to="https://x.com/raress96" target="_blank" class="text-primary hover:underline">DM me</NuxtLink></span>
           </div>
-          <div class="flex items-center gap-2">
-            <UIcon name="i-lucide-megaphone" class="w-4 h-4" />
-            <span>Also by Rareș: <NuxtLink to="https://beyondfolder.com/distribution" target="_blank" class="text-primary hover:underline">Distribution Toolkit</NuxtLink></span>
-          </div>
         </div>
+
+        <UPageCTA
+          v-if="page.pricing.toolkit"
+          :description="page.pricing.toolkit.description"
+          :links="page.pricing.toolkit.links"
+          variant="soft"
+          class="max-w-3xl mx-auto mt-12"
+          :ui="{ container: 'py-10 sm:py-12 lg:py-12 gap-6', title: 'text-2xl sm:text-3xl', description: 'text-base sm:text-lg' }"
+        >
+          <template #top>
+            <div class="flex justify-center pt-8 -mb-6">
+              <UBadge color="primary" variant="subtle" size="lg">
+                <UIcon name="i-lucide-megaphone" class="w-4 h-4 mr-1" />
+                {{ page.pricing.toolkit.badge }}
+              </UBadge>
+            </div>
+          </template>
+          <template #title>
+            <MDC :value="page.pricing.toolkit.title" unwrap="p" />
+          </template>
+        </UPageCTA>
       </UContainer>
     </section>
 
