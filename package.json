@@ -23,9 +23,9 @@
     "deploy": "NODE_OPTIONS=--max-old-space-size=8192 wrangler deploy"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^3.0.140",
-    "@ai-sdk/openai": "^3.0.139",
-    "@ai-sdk/vue": "^3.0.325",
+    "@ai-sdk/anthropic": "^3.0.142",
+    "@ai-sdk/openai": "^3.0.143",
+    "@ai-sdk/vue": "^3.0.332",
     "@cloudflare/workers-types": "^5.20261009.1",
     "@google/genai": "^3.2.0",
     "@iconify-json/lucide": "^1.2.152",
@@ -48,7 +48,7 @@
     "@takumi-rs/wasm": "^2.20.0",
     "@unlok-co/nuxt-stripe": "^6.0.2",
     "@vueuse/nuxt": "^15.0.0",
-    "ai": "^6.0.325",
+    "ai": "^6.0.332",
     "ai-gateway-provider": "^3.2.0",
     "better-sqlite3": "^13.0.3",
     "date-fns": "^4.4.0",
